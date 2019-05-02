@@ -6,6 +6,12 @@
 \setlength{\hoffset}{-25mm}
 \def\zn{,\kern-0.09em,}
 
+\hypersetup{
+    colorlinks=true, %linkovi u boji
+    linktoc=all,     %linkovi ka svim odeljcima
+    linkcolor=blue,  %boja linka
+}
+
 \newcommand{\Lat}{\fontencoding{OT1}\fontfamily{cmr}\selectfont}
 
 \begin{document}
@@ -46,25 +52,21 @@ Molim da se odobri izrada master rada pod naslovom:
 %  -- unutrasnjost pravougaonika --                                           %
 %  Umesto donjeg teksta upisati znacaj i specificni cilj master rada          %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Znachaj teme i oblasti:}
-
-% 	Umesto donjeg teksta opisati značaj teme i oblasti	%
-
-Ovde opisati znachaj teme i oblasti.\\
-{\Lat Elixir} je dinamichan, funkcionalan programski jezik dizajniran za izgradnju skalabilnih i odrzhivih aplikacija. Pokrec1e se na {\Lat Erlang} vituelnoj mashini, pa samim tim i deli pogodna svojstva kao sto su konkurentnost i tolerisanje greshaka, koje dolaze sa ovim okruzhenjem. Takodje, {\Lat Elixir} je dizajniran da bude proshiriv omogc1avajuc1i nam da mozhemo prirodno da proshirimo jezik na odredjene domene kako bismo povec1ali svoju produktivnost. Jedan od domena u kome mozhemo iskoristiti {\Lat Elixir} je asembliranja genoma. Nasledna osnova svakog zivog bic1a odredjena je njegovim genomom. On sadrzhi kompletan skup naslednih informacija nekog organizma, te je rekonstrukcija genoma veoma vazhan problem u genetici. Postojec1e biotehnologije ne mogu citati ceo genom, jer je predugachak. Umesto toga, genom se mozhe rekonstruisati indirektno kroz asembliranje. 
-\\
+\textbf{Znachaj teme i oblasti:}\\
+{\Lat Elixir} je dinamichan, funkcionalan programski jezik dizajniran za izgradnju skalabilnih aplikacija i aplikacija lakih za odrzhavanje. Pokrec1e se na vituelnoj mashini programskog jezika {\Lat Erlang}, pa samim tim i deli pogodna svojstva kao shto su konkurentnost i tolerisanje greshaka, koje dolaze sa ovim okruzhenjem. Takodje, {\Lat Elixir} je dizajniran da bude proshiriv omoguc1avajuc1i nam da mozhemo prirodno da proshirimo jezik na odredjene domene kako bismo povec1ali svoju produktivnost. Jedan od domena u kome mozhemo iskoristiti {\Lat Elixir} je asembliranje genoma. Nasledna osnova svakog zhivog bic1a odredjena je njegovim genomom. On sadrzhi kompletan skup naslednih informacija nekog organizma, te je rekonstrukcija genoma veoma vazhan problem u genetici. Postojec1e biotehnologije ne mogu chitati ceo genom, jer je predugachak. Umesto toga, genom se mozhe rekonstruisati indirektno kroz asembliranje. U procesu asembliranja veoma bitan pojam je pojam k-mera. K-meri se odnose na sve moguc1e podskupine (duzhine k) iz chitanja dobijenog kroz sekvenciranje DNK.
 
 \textbf{Specifichni cilj rada:}\\
-Cilj ovog raga je implementacija algoritama iz oblasti asembliranja genoma uz demonstriranje specificnosti programskog jezika {\Lat Elixir} i njegovih svojstava. Neki od algoritama koji c1e biti obradjeni su algoritmi koji se bave utvrdjivanjem broja projavljivanja k-mera u datom skupu k-mera ({\Lat Jellyfish, DSK}),  algoritam za pronalazhenje svi Ojlerovih ciklusa u Debrujinovom grafu ({\Lat AllEulerianCycles}), algoritam za kreiranje Debrujinovog grafa na osnovu date DNK niske ({\Lat DebrujinGraph}) i drugi. Kroz implementaciju ovih algoritama uvidec1emo koje su osnovne i specifichne osobine {\Lat Elixir}-a, tipove podataka koji postoje u njemu i njegove prednosti i mane. 
-\\
+Cilj ovog rada je implementacija algoritama iz oblasti asembliranja genoma uz demonstriranje specifichnosti programskog jezika {\Lat Elixir} i njegovih svojstava. Neki od algoritama koji c1e biti obradjeni su algoritmi koji se bave utvrdjivanjem broja pojavljivanja k-mera u datom skupu k-mera,  algoritam za pronalazhenje svi Ojlerovih ciklusa u Debrujinovom grafu, algoritam za kreiranje Debrujinovog grafa na osnovu date DNK niske, ... Kroz implementaciju ovih algoritama uvidec1emo koje su osnovne i specifichne osobine jezika {\Lat Elixir}, tipove podataka koji postoje u njemu i njegove prednosti i mane. 
 
 \textbf{Ostale bitne informacije:}\\
-Knjiga u kojoj su opisani implemntirani algoritmi mozhe se pronac1i na ovom linku \\
-\url{{\Lat https://drive.google.com/file/d/1pi3yF3OoHwF6P3T63G5-wVlYigwNF5k1/view?usp=sharing}}.\\
-Neshto vishe o jeziku {\Lat Elixir} mozhe se pronac1i na ovoj adresi \\
-\url{{\Lat https://elixir-lang.org/}}
+Knjiga u kojoj su opisani implemntirani algoritmi: \\
+{\Lat Wing-Kin Sung, \textit{Algorithms for Next-Generation Sequencing},
+CRC Press, Taylor and Francis Group, 2017}.\\
+{\Lat on-line at} \url{{\Lat https://drive.google.com/file/d/1pi3yF3OoHwF6P3T63G5-wVlYigwNF5k1/view?usp=sharing}}.\\
+Zvanichna strana programskog jezika {\Lat Elixir}: \url{{\Lat https://elixir-lang.org/}}\\
+Knjiga programskog jezika {\Lat Elixir}:\\
+{\Lat Simon St. Laurent, J. David Eisenberg, \textit{Introducing Elixir}, O'Reilly Media, 2014}.
 \\
-
 
 %\begin{tabular}{|c|c|}
 %    \hline
