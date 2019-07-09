@@ -1,0 +1,499 @@
+% Format teze zasnovan je na paketu memoir
+% http://tug.ctan.org/macros/latex/contrib/memoir/memman.pdf ili
+% http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf
+% 
+% Prilikom zadavanja klase memoir, navedenim opcijama se podešava 
+% veličina slova (12pt) i jednostrano štampanje (oneside).
+% Ove parametre možete menjati samo ako pravite nezvanične verzije
+% mastera za privatnu upotrebu (na primer, u b5 varijanti ima smisla 
+% smanjiti 
+\documentclass[12pt,oneside]{memoir} 
+
+% Paket koji definiše sve specifičnosti master rada Matematičkog fakulteta
+\usepackage[latinica,biblatex]{matfmaster} 
+%
+% Podrazumevano pismo je ćirilica.
+%   Ako koristite pdflatex, a ne xetex, sav latinički tekst na srpskom jeziku
+%   treba biti okružen sa \lat{...} ili \begin{latinica}...\end{latinica}.
+%
+% Opicija [latinica]:
+%   ako želite da pišete latiniciom, dodajte opciju "latinica" tj.
+%   prethodni paket uključite pomoću: \usepackage[latinica]{matfmaster}.
+%   Ako koristite pdflatex, a ne xetex, sav ćirilički tekst treba biti
+%   okružen sa \cir{...} ili \begin{cirilica}...\end{cirilica}.
+%
+% Opcija [biblatex]:
+%   ako želite da koristite reference na više jezika i umesto paketa
+%   bibtex da koristite BibLaTeX/Biber, dodajte opciju "biblatex" tj.
+%   prethodni paket uključite pomoću: \usepackage[biblatex]{matfmaster}
+%
+% Opcija [b5paper]:
+%   ako želite da napravite verziju teze u manjem (b5) formatu, navedite
+%   opciju "b5paper", tj. prethodni paket uključite pomoću: 
+%   \usepackage[b5paper]{matfmaster}. Tada ima smisla razmisliti o promeni
+%   veličine slova (izmenom opcije 12pt na 11pt u \documentclass{memoir}).
+%
+% Naravno, opcije je moguće kombinovati.
+% Npr. \usepackage[b5paper,biblatex]{matfmaster}
+
+% Pomoćni paket koji generiše nasumičan tekst u kojem se javljaju sva slova
+% azbuke (nema potrebe koristiti ovo u pravim disertacijama)
+\usepackage[latinica]{pangrami}
+\usepackage{listings}
+
+% Datoteka sa literaturom u BibTex tj. BibLaTeX/Biber formatu
+\bib{matfmaster-primer}
+
+% Ime kandidata na srpskom jeziku (u odabranom pismu)
+\autor{Milena Dukanac}
+% Naslov teze na srpskom jeziku (u odabranom pismu)
+\naslov{Jezik Elixir kroz primene u oblasti sklapanja genoma}
+% Godina u kojoj je teza predana komisiji
+\godina{2019}
+% Ime i afilijacija mentora (u odabranom pismu)
+\mentor{dr Milena \textsc{Vujošević Janičić}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
+% Ime i afilijacija prvog člana komisije (u odabranom pismu)
+\komisijaA{dr Jovana \textsc{Kovačević}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
+% Ime i afilijacija drugog člana komisije (u odabranom pismu)
+\komisijaB{dr Vesna \textsc{Marinković}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
+% Ime i afilijacija trećeg člana komisije (opciono)
+% \komisijaC{}
+% Ime i afilijacija četvrtog člana komisije (opciono)
+% \komisijaD{}
+% Datum odbrane (odkomentarisati narednu liniju i upisati datum odbrane ako je poznat)
+% \datumodbrane{}
+
+% Apstrakt na srpskom jeziku (u odabranom pismu)
+\apstr{%
+%\pangrami
+}
+
+% Ključne reči na srpskom jeziku (u odabranom pismu)
+\kljucnereci{}
+
+\begin{document}
+% ==============================================================================
+% Uvodni deo teze
+\frontmatter
+% ==============================================================================
+% Naslovna strana
+\naslovna
+% Strana sa podacima o mentoru i članovima komisije
+\komisija
+% Strana sa posvetom (u odabranom pismu)
+\posveta{Mami i tati}
+% Strana sa podacima o disertaciji na srpskom jeziku
+\apstrakt
+% Sadržaj teze
+\tableofcontents*
+
+% ==============================================================================
+% Glavni deo teze
+\mainmatter
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+\chapter{Elixir} %A bio je Uvod
+% ------------------------------------------------------------------------------
+%\pangrami
+
+Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se smatra Jose Valim. Na njegov nastanak je uticao programski jezik \textbf{Erlang} i Eliksir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. Pri kreiranju programskog jezika Eliksir veliki uticaj u smislu sintakse imao je jezik \textbf{Ruby}. U Eliksiru ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. Takođe, Eliksir preuzima mnoge koncepte iz programskih jezika kao što su \textbf{Clojure, Haskell, i Python}. Ovaj programski jezik dizajniran je za izgradnju skalabilnih i lako održivih aplikacija, jednostavne je i moderne sintakse. Mnogo zanimljivih projekata u vezi sa robotikom je rađeno u Eliksiru zbog njegove funkcionalne prirode, izuzetnog rada u distrubiranim sistemima i tolerancije na greške, koja je na jako visokom nivou. Takođe se uspešno koristi u razvoju veba i u domenu ugradnog softvera.  (Wikipedia)
+
+Ruby je dinamičan programski jezik otvorenog koda nastao 1995. godine. Fokus kod ovog programskog jezika je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
+Ruby je takođe i interpretirani programski jezik, što znači da se izvorni kod prevodi u kod razumljiv kompjuteru prilikom svakog izvršavanja programa. Interpretirani programski jezici su sporiji od kompajliranih, ali su fleksibilniji i potrebno je kraće vreme za izradu programa.
+Međutim, sve više iskusnih Ruby programera se okreće Eliksiru. Zapravo, Eliksir je prvi jezik nakon Rubija koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem.
+
+Clojure je dinamičan programski jezik opšte namene nastao 2007. godine. On kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. Clojure je kompajlirani jezik, ali je i dalje potpuno dinamičan - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Clojure obezbeđuje lak pristup Java okvirima, sa opcionim tipovima saveta i zaključivanjem tipa, kako bi se osiguralo da pozivi u Javi mogu da izbegnu refleksiju.
+Clojure je dijalekt Lisp-a i deli Lisp filozofiju code-as-data i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Kada je potrebno promenjivo stanje, Clojure nudi softverski sistem za transakcionu memoriju i reaktivni agentski sistem koji obezbeđuju čiste, tačne, višenitne dizajne. Eliksir je nasledio neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka, opcionalno lenjo izračunavanje, protokole i zapise / strukture. Za razliku od Clojure, on takođe uživa u istinskoj optimizaciji poziva i pipe operatoru.
+
+\section{Erlang}
+Firma Erikson je 1981. godine oformila novu laboratoriju Erikson CSLab (eng. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme [6]. Jedan od projekata nove laboratorije  je bio eksperimentisanje sa dodavanjem konkurentnih procesa u programski jezik Prolog i on predstavlja začetak novog programskog jezika. Taj programski jezik je 1987. godine nazvan \textbf{Erlang} (fusnotu dodaj). Erlang se mogao posmatrati kao dijalekt Prologa sve do 1990. godine. Od tada, on ima svoju sintaksu i postoji kao potpuno samostalan programski
+jezik. Nakon mnogo godina rada nastajale su sve brže, bolje i stabilnije verzije jezika, kao i \textbf{standardna biblioteka OTP} (eng. \textit{The Open Telecom Platform}) [6]. Erlang i OTP su postali deo slobodnog softvera (eng. \textit{open source software}) u decembru 1998. godine i mogu se slobodno preuzeti sa zvaničnog sajta jezika Erlang[9]. Danas, veliki broj kompanija koristi Erlang u razvoju svojih softverskih rešenja. Neke od
+njih su: Erikson, Motorola, Votsap (eng. \textit{WhatsApp}), Jahu (eng. \textit{Yahoo!}),
+Fejsbuk (eng. \textit{Facebook}) [9].
+
+Erlang je funkcionalan, deklarativan i konkurentan programski jezik. Na planu konkurentnosti Erlang je
+svojevrstan primer. Programski jezik \textbf{Lisp} je prvi predstavio funkcionalnu paradigmu i kao takav je imao veliki uticaj na Erlang. Uticaj programskog jezika \textbf{Prolog} je takođe bio neminovan. Na početku je Erlang stvaran kao dodatak na Prolog, vremenom je prerastao
+u dijalekt Prologa, a kasnije je zbog svoje kompleksnosti i sveobuhvatnosti evoluirao u potpuno novi programski jezik. Sintaksa jezika Erlang u velikoj meri podseća na sintaksu jezika Prolog (na primer, promenljive moraju počinjati velikim slovom, svaka funkcionalna celina se završava tačkom). Oba jezika u velikoj meri koriste poklapanje obrazaca (eng. \textit{pattern matching}).
+
+Sa druge strane, Erlang je uticao na nastanak programskog jezika Eliksir (eng. \textit{Elixir}). Eliksir, uz izmenjenu Erlangovu sintaksu, dopunjenu Erlangovu
+standardnu biblioteku, uživa široku popularnost.
+     
+\textbf{Lisp} je drugi najstariji viši programski jezik koji se i danas veoma koristi. Jedino je Fortran stariji (godinu dana). Danas postoji veliki broj dijalekata Lisp-a, a najpoznatiji među njima su \textbf{Common Lisp} i \textbf{Scheme}. Čisti Lisp je primer funkcionalnog programskog jezika.
+\begin{comment} U funkcionalnom programiranju, funkcije se primenjuju na argumente i vrednosti. Vraćene vrednosti se koriste kao argumenti za druge funkcije. Funkcionalno programiranje je suprotno proceduralnom programiranju, gde se koriste naredbe koje menjaju okruženje programa na neki način, kao što je pripisivanje vrednosti promenljivim. U funkcionalnom programiranju, te promene okruženja se minimizuju korišćenjem vrednosti koje vraća pozvana funkcija kao direktan ulaz u drugu funkciju, bez upotrebe pripisivanja naredbi.\\
+
+\end{comment}
+Ime LISP je nastalo od \textit{"\textbf{LIS}t \textbf{P}rocessor"}. Povezane liste su jedan od glavnih tipova podataka. Lisp je projektovao \textbf{Džon Makarti} 1958. godine, a prvi put je implementiran od strane \textbf{Stiva Rasela} na IBM 704 računaru. Rasel je pročitao Makartijev rad i zaključio da izračunavanje u Lispu može da se implementira na mašinskom jeziku. Rezultat toga je interpretator koji je mogao da pokreće Lisp programe, ali i da računa vrednosti Lisp izraza.
+
+\textbf{Prolog} (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alain Kolmerauer} (engl. \textit{Alain Colmerauer}) i \textbf{Filipe Rousel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju (engl. \textit{University of Aix-Marseille}), zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Odeljka Veštačke Inteligencije (engl. \textit{Department of Artifical Intelligence}) na Univerzitetu u Edinburgu (engl. \textit{University of Edinburgh}), razvili su osnovni dizajn jezika Prolog.
+
+\section{Elixir}
+
+Tokom 2010. godine \textit{Jose Valim}, u to vreme zaposlen na poziciji programera u kompaniji \textit{Platformatec}, radio je na poboljšanju performansi
+\textit{Ruby on Rails} framework-a na višejezgarnim sistemima. [6] Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
+milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad 2 miliona \textit{WebSocket} konekcija [4], dok je u 2017. za skalirani Elixir zabeležena obrada 5 miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord} [1] i \textit{Pinterest}[5].\\
+
+Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće na vituelnoj mašini jezika Erlang, pa samim tim i nasleđuje pogodna svojstva koje dolaze sa ovim okruženjem kao što su \textbf{konkurentnost} i \textbf{tolerisanje grešaka}.[11] Iz tačke gledišta olakšavanja svakodnevnog razvoja sofvera, mnogi koncepti su falili ekosistemu jezika Erlang. Neki od njih su \textbf{metaprogramiranje} - tehnika kojom programi imaju mogućnost da druge programe posmatraju kao svoje podatke i na taj način čitaju, pa
+čak i modifikuju njihov, a samim tim i svoj kod u vreme izvršavanja, \textbf{polimorfizam}, \textbf{makroi}, \textbf{podrška za alate}. Upravo navedene koncepte je  Elixir nadomestio. Cilj ovog rada je da čitaoca bliže upozna sa osnovnim osobinama, funkcionalnostima i specifičnostima ovog jezika,  kao i da kroz primere pokuša da približi programerske prakse korišćene u ovom jeziku.\\
+
+\subsection{Osobine jezika Elixir}
+
+U ovom delu će biti opisane osobine jezika Eliksir, osnove njegove sintakse, semantike, kao i podrška za osnovne koncepte funkcionalnih jezika poput poklapanja obrazaca (eng. \textit{Pattern matching}) i imutabilnosti podataka.[11][10]\\
+
+Pre nego što započnemo priču o tipovima, treba pomenuti \textbf{Kernel}. To je podrazumevano okruženje koje se koristi u Eliksiru. Ono sadrži primitive jezika kao što su: aritmetičke operacije, rukovanje procesima i tipovima, makroe za definisanje novih funkcionalnosti (funkcija, modula...), provere guard-ova - predefinisanog skupa funkcija i makroa koji proširuju
+mogućnost pattern matching-a, itd.[7]
+
+\subsection{Osnovni tipovi}
+
+Elixir ima svoje ugrađene (primitivne) tipove. To su: 
+\begin{enumerate}
+    \item {Atomi}
+    \item {Celi brojevi}
+    \item {Brojevi u pokretnom zarezu}
+    \item {Portovi}
+    \item {Ugrađene torke}
+    \item {Liste}
+    \item {Mape}
+    \item {Funkcije}
+    \item {Niske bitova}
+    \item {Reference}
+\end{enumerate}
+
+Svaki od ovih tipova, osim poslednja dva, ima odgovarajuće module koji sadrže funkcije koje se koriste za operacije nad tim tipom. Oni predstavljaju omotač oko primitivnog tipa koji nam omogućava korišćenje dodatnih funkcionalnosti nad njim.\\
+
+\subsubsection{Atomi}
+Atomi su konstante ili simboli, pri čemu njihovo ime predstavlja njihovu vrednost. Počinju dvotačkom (:) i mogu sadržati slova, cifre, simbole \_, @. Mogu se završavati sa ! i ?. Atomi se mogu naći svuda u Eliksiru. Oni su ključevi za listu ključnih reči, koji se često koriste da označe uspeh ili grešku, npr. :ok i mnogi drugi.\\
+
+\subsubsection{Celi brojevi}
+Celi brojevi su slični kao i u većini ostalih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ se može koristiti za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u celosti.\\
+
+\newpage
+
+\subsubsection{Brojevi u pokretnom zarezu}
+Brojevi u pokretnom zarezu se u memoriji zapisuju po standardu \textit{IEEE 754}, a za zapisivanje konstanti ovog tipa koristi se tačka između najmanje 2 cifre. Takođe je moguće koristiti notaciju koja obuhvata navođenje eksponenata.\\
+
+\begin{comment}
+\subsubsection{Procesi}
+U Eliksiru se sav kod pokreće unutar procesa. Procesi su izolovani jedni od drugih, spajaju se jedan sa drugima i komuniciraju putem slanja poruka. Procesi nisu samo osnova za konkurentnost u Elixir-u, već i sredstva za izgradnju distribuiranih i tolerantnih programa.
+Procese Elixir-a ne treba mešati sa procesima operativnog sistema. Procesi Eliksira su izuzetno lagani u smislu memorije i CPU-a (čak i u poređenju sa nitima koji se koriste u mnogim drugim programskim jezicima). Zbog toga nije neuobičajeno da se istovremeno odvijaju desetine ili čak stotine hiljada procesa.\\
+\end{comment}
+
+\subsubsection{Portovi i reference}
+Portovi ukazuju na spoljne resurse koje omogućavaju interakciju sa spoljnim svetom.\\
+
+Reference su jedinstvene vrednosti u globalnom kontekstu izvršavanja programa koje se kreiraju pozivom \textit{make\_ref} funkcije.\\
+
+\subsubsection{Liste}
+Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u listi čuva svoju vrednost i ukazuje na sledeći element sve dok se ne dostigne kraj liste. To znači da je pristup proizvoljnom elementu liste kao i određivanje družine liste linearna operacija, jer je potrebno da prođemo celu listu da bismo odredili njenu dužinu. Slično, performanse spajanja dve liste zavise od dužine one koja se nalazi sa leve strane. 
+
+Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vredosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}:
+
+\lstinputlisting[language=Elixir,label={lst:prvi},caption=Primer liste,captionpos=b]{prvi.ex}
+
+Nadovezivanje ili oduzimanje 2 liste korišćenjem operatora $++/2$ i $--/2$ prikazano je na listingu \ref{lst:drugi}:
+
+\newpage
+
+\lstinputlisting[language=Elixir,label={lst:drugi},caption=Nadovezivanje i oduzimanje dve liste,captionpos=b]{drugi.ex}
+
+Operatori liste nikada ne menjaju postojeću listu. Rezultat povezivanja listi ili uklanjanja elemenata iz liste je uvek nova lista, jer su strukture podataka u Eliksiru nepromenljive. Jedna od prednosti nepromenljivosti je jasniji kod. Omogućeno je slobodno prosleđivanje podatka sa garancijom da neće biti izmenjeni u memoriji - samo transformisani.
+
+Lista može biti prazna ili se može sastojati od \textbf{glave} i \textbf{repa}. Glava je prvi element liste, a rep je ostatak liste. Oni se mogu izdvojiti pomoću funkcija \textit{hd/1} i \textit{tl/1}. Dodeljivanje liste promenljivoj, dohvatanje njene glave i repa prikazano je na listingu \ref{lst:treci}:
+
+\lstinputlisting[language=Elixir,label={lst:treci},caption=Izdvajanje glave i repa liste,captionpos=b]{treci.ex}
+
+Ako pokušamo da izdvojimo glavu ili rep prazne liste, dobićemo grešku.
+
+Prilikom kreiranja liste može se desiti da je rezultat lista vredosti pod jednostrukim navodnicima. Primer koda koji ilustruje ovo može se videti na listingu \ref{lst:cetvrti}:
+
+\lstinputlisting[language=Elixir,label={lst:cetvrti},caption=Lista vrednosti pod jednostrukim navodnicima,captionpos=b]{cetvrti.ex}
+
+Kada Elixir vidi listu \textit{ASCII} brojeva za štampanje, ispisaće je kao \textit{charlist}-u (doslovno listu znakova). Charlist-e su uobičajene kada se povezuju sa postojećim Erlang kodom. Preuzimanje informacija o vrednosti za koju nismo sigurni kog je tipa može se izvršiti pomoću funkcije \textit{i/1} i može se videti na listingu \ref{lst:peti}:
+
+\lstinputlisting[language=Elixir,label={lst:peti},caption=Preuzimanje informacija o tipu vrednosti,captionpos=b]{peti.ex}
+
+Treba imati na umu da reprezentacije sa jednostrukim i dvostrukim navodnicima u Eliksiru nisu ekvivalentne i da predstavljaju različite tipove. Primer možemo videti na listingu \ref{lst:sesti}:
+
+\lstinputlisting[language=Elixir,label={lst:sesti},caption=Dva različita tipa,captionpos=b]{sesti.ex}
+
+\subsection{Torke}
+
+Torke se u Elixir-u definišu pomoću vitičastih zagrada $\{\}$. Kao i liste, mogu sadržati vrednosti bilo kog tipa. Primer torke sa vrednostima različitih tipova i određivanjem njene dužine prikazan je na listingu \ref{lst:sedmi}:
+
+\lstinputlisting[language=Elixir,label={lst:sedmi},caption=Primer torke i određivanje njene dužine,captionpos=b]{sedmi.ex}
+
+Torke su strukture fiksne dužine koje bi trebalo da sadrže svega nekoliko elemenata koji su zapisani u memoriji jedan za drugim. To znači da se pristup elementu torke ili određivanje dužine torke izvršava u konstantnom vremenu. Razlika u odnosu na liste je u semantici upotrebe. Liste se koriste kada se manipuliše kolekcijom, dok se torke, zbog brzine pristupa njihovim elementima, uglavnom koriste za smeštanje povratne vrednosti funkcije. Indeksi torke počinju od nule, a primer se može videti na listingu \ref{lst:osmi}:
+
+\lstinputlisting[language=Elixir,label={lst:osmi},caption=Izdvajanje elementa torke sa indeksom 1,captionpos=b]{osmi.ex}
+
+Takođe je moguće umetnuti novi element na odredjeno mesto u torki pomoću funkcije $put\_elem/3$. Primer koda koji ilustruje upotrebu ove funkcije prikazan je na listingu \ref{lst:deveti}:
+
+\lstinputlisting[language=Elixir,label={lst:deveti},caption=Umetanje novog elementa u torku,captionpos=b]{deveti.ex}
+
+Treba obratiti pažnju da je funkcija $put\_elem/3$ vratila novu torku. Originalna torka smeštena u promenljivoj \textit{tuple} nije izmenjena. Kao i liste, torke su takođe nepromenljive. Svaka operacija nad torkom vraća novu torku i nikada ne menja postojeću. Ova operacija, kao i operacija ažuriranja torke je skupa, jer zahteva kreiranje nove torke u memoriji. Ovo se odnosi samo na samu torku, a ne na njen sadržaj. Na primer, prilikom ažuriranja torke, svi unosi se dele između stare i nove torke, osim unosa koji je zamenjen. Drugim rečima, torke i liste u Eliksiru mogu da dele svoj sadržaj. Ovo smanjuje količinu memorije koju jezik treba da zauzme i moguće je samo zahvaljujući nepromenljivoj semantici jezika.
+
+\newpage
+
+Ove karakteristike performansi diktiraju upotrebu struktura podataka. Kao što je već pomenuto, jedan od uobičajenih slučajeva korišćenja torki je prilikom vraćanja dodatnih vrednosti iz funkcije. \textit{File.read/1} je funkcija koja se može koristiti za čitanje sadržaja datoteke. Ona vraća torku, što se može videti na listingu \ref{lst:deseti}:
+
+\lstinputlisting[language=Elixir,label={lst:deseti},caption=Primer korišćenja funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
+
+Ako putanja do fajla postoji, povratna vrednost funkcije je torka sa prvim elementom koji je atom :ok i drugim elementom koji je sadržaj datog fajla. U suprotnom, povratna vrednost funkcije će biti torka gde je prvi element atom :error, a drugi element opis greške.
+
+\subsection{Liste ključnih reči i mape}
+Eliksir podržava asocijativne strukture podataka. Asocijativne strukture podataka su one koje su u stanju da pridruže određenu vrednost ili više vrednosti ključu. Dve glavne strukture među njima su \textbf{liste ključnih reči} i \textbf{mape}.
+
+\subsubsection{Liste ključnih reči}
+U mnogim funkcionalnim programskim jezicima, uobičajeno je da se koristi lista dvočlanih torki za predstavljanje strukture podataka ključ - vrednost. Lista torki gde je prvi element torke atom (tj. ključ) u Eliksiru se naziva \textbf{lista ključnih reči}. Elixir podržava posebnu sintaksu za definisanje takvih lista: $[key: value]$. Zapravo, liste ključnih reči mapiraju liste torki. Primer ovakvog mapiranja prikazan je na listingu \ref{lst:11}:
+
+\lstinputlisting[language=Elixir,label={lst:11},caption=Primer liste ključnih reči,captionpos=b]{11.ex}
+
+ Kako su liste ključnih reči liste, nad njima možemo primenjivati sve operacije dostupne nad listama. Na primer, korišćenjem operatora ++ može se izvršiti dodavanje nove vrednosti listi ključnih reči. Primer koda koji ilustruje ovo dodavanje dat je na listingu \ref{lst:12}:
+
+\lstinputlisting[language=Elixir,label={lst:12},caption=Dodavanje nove vrednosti listi ključnih reči,captionpos=b]{12.ex}
+
+Elementima liste ključnih reči se pristupa na način prikazan na listingu \ref{lst:13}:
+
+\lstinputlisting[language=Elixir,label={lst:13},caption=Pristup elementu liste ključnih reči,captionpos=b]{13.ex}
+
+Liste ključnih reči su važne, jer imaju tri posebne karakteristike:
+\begin{enumerate}
+\item{Ključevi moraju biti atomi.}
+\item{Ključevi su uredjeni, onako kako je navedeno od strane programera.}
+\item{Ključevi se mogu ponavljati.}
+\end{enumerate}
+
+ Eliksir obezbeđuje modul koji omogućava manipulisanje listama ključnih reči. Liste ključnih reči su jednostavno liste, i kao takve pružaju iste karakteristike linearnih performansi kao i liste. Što je lista duža, više vrmena će biti potrebno za pronalaženje ključa, prebrojavanje elemenata i tako dalje. Iz tog razloga, liste ključnih reči se u Eliksiru koriste uglavnom za prosleđivanje opcionih vrednosti. Za čuvanje mnogo elemenata ili garantovanje pojavljivanja jednog ključa sa maksimalno jednom vrednošću treba koristiti mape.
+ 
+\subsubsection{Mape}
+Mapa je kolekcija koja sadrži parove ključ : vrednost. Glavne razlike između liste parova ključ-vrednost i mape su u tome sto mape ne dozvoljavaju ponavljanje ključeva (jer su to asocijativne strukture podataka) i što ključevi mogu biti bilo kog tipa. Mapa je veoma efikasna struktura podataka, naročito kada količina podataka raste. Ukoliko želimo da podaci u kolekciji ostanu baš u onom redosledu u kom smo ih naveli inicijalno, onda je bolje koristiti liste parova ključ : vrednsot, jer mape ne prate nikakvo uređenje.
+
+\newpage
+Mapa se definiše pomoću sintakse \%\{\} na način prikazan na listingu \ref{lst:14}:
+
+\lstinputlisting[language=Elixir,label={lst:14},caption=Primer mape i pristupa njenim elementima,captionpos=b]{14.ex}
+
+Za razliku od liste ključnih reči, mape su vrlo korisne kod poklapanja obrazaca. Kada se koristi u poklapanju obrazaca, mapa će se uvek podudarati sa poskupom date vrednosti kao što se može videti na listingu \ref{lst:15}:
+ 
+\lstinputlisting[language=Elixir,label={lst:15},caption=Mape pri podudaranju obrazaca,captionpos=b]{15.ex}
+
+Mapa se podudara sve dok ključevi u obrascu postoje u datoj mapi. Tako, prazna mapa odgovara svim mapama.
+
+Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključeva mape, što je dato listingom \ref{lst:16}:
+
+\newpage
+
+\lstinputlisting[language=Elixir,label={lst:16},caption=Upotreba promenljivih u mapama,captionpos=b]{16.ex}
+
+Modul \textbf{Map} obezbeđuje razne funkcije za manipulaciju mapama, a neke od njih mogu se videti na listingu \ref{lst:17}:
+
+\lstinputlisting[language=Elixir,label={lst:17},caption=Neke od funkcija modula Map,captionpos=b]{17.ex}
+
+Mape imaju sintaksu za ažuriranje vrednosti ključa prikazanu na listingu \ref{lst:18}
+
+\lstinputlisting[language=Elixir,label={lst:18},caption=Ažuriranje vrednosti ključa,captionpos=b]{18.ex}
+
+Prethodno prikazana sintaksa zahteva da dati ključ postoji u mapi i ne može se koristiti za dodavanje novih ključeva. Na primer, korišćenje ove sintakse za ključ :c nije uspelo, jer ključ :c ne postoji u mapi.
+
+\newpage
+
+Ukoliko su svi ključevi u mapi atomi, onda se radi pogodnosti može koristiti sintaksa ključnih reči data listingom \ref{lst:19}:
+
+\lstinputlisting[language=Elixir,label={lst:19},caption=Sintaksa ključnih reči,captionpos=b]{19.ex}
+
+Još jedno zanimljivo svojstvo mapa je to što obezbeđuju sopstvenu sintaksu za pristup atomskim ključevima. Primer ove sintakse možemo videti na listingu \ref{lst:20}:
+
+\lstinputlisting[language=Elixir,label={lst:20},caption=Sintaksa za pristup atomskim ključevima,captionpos=b]{20.ex}
+
+Programeri koji programiraju u Eliksiru pri radu sa mapama češće koriste \textit{map.field} sintaksu i poklapanje obrazaca nego funkcije iz modula Map, jer dovode do asertivnog stila programiranja.
+
+Često se koriste mape unutar mapa ili čak liste ključnih reči unutar mapa. Eliksir obezbeđuje pogodnosti za manipulisanje ugnježdenim strukturama podataka poput $put\_in/2$, $update\_in/2$ i drugih naredbi koje daju iste pogodnosti koje se mogu pronaći u imperativnim jezicima, a da pritom zadrže nepromenljiva svojstva jezika.
+
+Neka je data struktura prikazana listingom \ref{lst:21}:
+
+\lstinputlisting[language=Elixir,label={lst:21},caption=Struktura koja predstavlja listu korisnika,captionpos=b]{21.ex}
+
+Prikazana je lista ključnih reči korisnika, gde je svaka vrednost mapa koja sadrži ime, starost i listu programskih jezika koje svaki korisnik voli. Pristup godinama od Džona mogao bi se izvršiti kao na listingu \ref{lst:22}:
+
+\lstinputlisting[language=Elixir,label={lst:22},caption=Pristup godinama od Džona,captionpos=b]{22.ex}
+
+Ista sintaksa se može koristiti i za ažuriranje vrednosti kao što je dato listingom \ref{lst:23}:
+
+\lstinputlisting[language=Elixir,label={lst:23},caption=Ažuriranje vrednosti,captionpos=b]{23.ex}
+
+Makro $update\_in/2$ je sličan, ali daje mogućnost prosleđivanja funkcije koja kontorliše kako se vrednost menja. Na primer, uklanjanje programskog jezika Clojure sa Marijinog spiska jezika može se uraditi na način prikazan listingom \ref{lst:24}:
+
+\lstinputlisting[language=Elixir,label={lst:24},caption=Brisanje jezika iz liste,captionpos=b]{24.ex}
+
+Postoji i funkcija $get\_and\_update\_in$ koja omogućava da izvlačenje vrednosti i ažuriranje strukture podataka odjednom. Takođe postoje i funkcije $put\_in/3$, $update\_in/3$ i $get\_and\_update\_in/3$ koje omogućavaju dinamički pristup strukturama podataka.
+
+\newpage
+
+\subsection{Osnovni operatori}
+
+Pored osnovnih artimetičkih operatora +, -, *, /, kao i funkcija div/2 i rem/2 za celobrojno deljenje i ostatak pri celobrojnom deljenju, Eliksir podržava i već pomenute operatore $++$ i $--$ za nadovezivanje i oduzimanje listi. kao i operator $<>$ koji se koristi za nadovezivanje stringova.
+
+Eliksir obezbeđuje 3 bool operatora: \textbf{and}, \textbf{or} i \textbf{not}. Oni su striktni u smislu da očekuju nesto što ima vrednost true ili false kao svoj prvi operand. Primer koda koji ilustruje ovu osobinu prikazan je na listingu \ref{lst:25}:
+
+\lstinputlisting[language=Elixir,label={lst:25},caption=Primer upotrebe bool operatora,captionpos=b]{25.ex}
+
+Ukoliko kao prvi operand prosledimo nesto čija vrednost nije tipa bool, dobićemo grešku kao na listingu \ref{lst:26}:
+
+\lstinputlisting[language=Elixir,label={lst:26},caption=Greška pri upotrebi bool operatora,captionpos=b]{26.ex}
+
+And i or su lenji operatori, jer desni operand izračunavaju samo u slučaju da levi nije dovoljan za određivanje rezultata.
+
+Pored ovih boolean operatora, Eliksir takođe obezbeđuje operatore $||$, $\&\&$ i $!$ koji prihvataju argumente bilo kog tipa. Sve vrednosti osim \textbf{false} i \textbf{nil} će biti procenjene na true, što se može videti na primeru prikazanom listingom \ref{lst:27}:
+
+\lstinputlisting[language=Elixir,label={lst:27},caption=Operatori koji prihvataju argumente bilo kog tipa,captionpos=b]{27.ex}
+
+Može se smatrati pravilom da kada se očekuju bool vrednosti, treba koristitioperatore and i or, a ako bilo koji od operanada ima vrednosti koji nisu tipa bool, onda treba koristi $||$, $\&\&$ i $!$.\\
+
+Eliksir takođe obezbeđuje $==,! =, ===,! ==, <=,> =, <$ i $ >$ kao operatore poređenja, pri čemu se operator $===$ od operatora $==$ razlikuje po tome što pored vrednosti poredi i tip.\\
+
+Moguće je i poređenje tipova među sobom. Razlog zbog kojeg se mogu uporediti različiti tipovi podataka je pragmatizam. Algoritmi sortiranja ne moraju da brinu o različitim tipovima podataka da bi sortirali. Ukupan redosled sortiranja je definisan na način prikazan na listingu \ref{lst:37}:
+
+\lstinputlisting[language=Elixir,label={lst:37},caption=Poređenje tipova,captionpos=b]{37.ex}
+
+\subsubsection{Poklapanje obrazaca}
+
+Poklapanje obrazaca je proveravanje da li se u datoj sekvenci tokena može prepoznati neki obrazac. Ovaj koncept će biti jasniji na praktičnom primeru operatora $=$. U većini programskih jezika, operator $=$ je operator dodele koji levoj strani dodeljuje vrednost izraza na desnoj. U Eliksiru se ovaj operator naziva \textbf{operator uparivanja} (eng. \textit{matching}). On se uspešno izvršava, ako pronađe način da izjednači levu stanu (svoj prvi operand) sa desnom (drugi operand).
+
+Na primer, izraz $2 + 2 = 5$ bi rezultirao greškom datom na listingu \ref{lst:28}:
+
+\lstinputlisting[language=Elixir,label={lst:28},caption=Operator uparivanja,captionpos=b]{28.ex}
+
+Na osnovu greške se može zaključiti da $2 + 2$ zaista nije 5. U Eliksiru leva strana mora da ima istu vrednost kao i desna strana. Vrednost izraza dat listingom \ref{lst:29} nije greška, već uspešno poklapanje obrazaca:
+
+\lstinputlisting[language=Elixir,label={lst:29},caption=Uspešno poklapanje obrazaca,captionpos=b]{29.ex}
+
+Slično, 2 identična stringa sa obe strane znaka jednakosti će dati rezultat prikazan listingom \ref{lst:30}:
+
+\lstinputlisting[language=Elixir,label={lst:30},caption=Uspešno poklapanje obrazaca sa stringovima,captionpos=b]{30.ex}
+
+Poklapanje obrazaca se može prikazati i na pimeru sa listama. Neka je data lista osoba koja je prikazana listingom \ref{lst:31}:
+
+\lstinputlisting[language=Elixir,label={lst:31},caption=Lista osoba,captionpos=b]{31.ex}
+
+Prve tri osobe treba da budu zapamćene, dok četvrta osoba nije bitna. U te svrhe se može iskoristiti poklapanje obrazaca dato na listingu \ref{lst:32}:
+
+\lstinputlisting[language=Elixir,label={lst:32},caption=Poklapanje obrazaca sa listama,captionpos=b]{32.ex}
+
+Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama prvi, drugi i treći. Ostatak liste je dodeljen pomenljivoj ostali pomoću \textbf{pipe operatora (|)}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}:
+
+\newpage
+
+\lstinputlisting[language=Elixir,label={lst:33},caption=Iščitavanje sadržaja promenljivih,captionpos=b]{33.ex}
+
+\subsubsection{Imutabilnost podataka}
+
+U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost da zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanje ove promene i obično se i ne vodi računa o tome pri pisanju programe. Ali šta se dešava kada se vrednost u memoriji promeni u trenutku kada je koristi više instanci programa? Neka se ne promeni samo vrednost, već i tip. Ovakvo ponasanje je poznato kao \textbf{mutabilnost (promenljivost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Mutabinost takođe vodi veoma komplikovanom kodu, pisanom ad-hoc kako bi se rešili problemi sinhronizacije. Ovo može smanjiti rizik da konkurentni procesi  pristupaju istim resursima, ali po veoma visokoj ceni.
+
+Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Eliksir imaju osobinu \textbf{imutabilnosti (nepromenljivosti)}. Oni jednostavno ne dozvoljavaju promenu vredosti na određenoj memorijskoj lokaciji. Na ovaj način, ako je promenljivoj \textit{a} dodeljena vrednost 1, onda se njena vrednost neće sigurno menjati tokom izvršavanja programa i da ne mora se voditi računa o problemima sinhronizacije u konkurentnom okruženju.
+
+\newpage
+
+\subsection{Odlučivanje}
+
+Strukture odlučivanja zahtevaju da programer odredi jedan ili više uslova koje će program proceniti ili testirati zajedno sa naredbom ili naredbama koje treba izvršiti, ako je uslov određen ili tačan, i opciono, druge naredbe koje treba izvršiti, ako je utvrđeno da je uslov netačan.
+
+Eliksir obezbedjuje \textbf{if/else} uslovne konstrukte kao i mnogi drugi programski jezici. On takođe poseduje naredbu \textbf{cond} koja poziva prvu tačnu vrednost koju pronađe. \textbf{Case} je još jedan kontrolni tok koji koristi poklapanje obrazaca za kontrolu toka programa.
+
+Eliksir ima sledeće vrste naredbi za odlučivanje:
+
+\begin{enumerate}
+    \item{if naredba - If naredba se satoji od bool izraza praćenog ključnom reči \textit{do}, jedne ili više izvršnih naredbi i na kraju ključne reči \textit{end}}
+    \item{if..else naredba - If naredba može biti praćena naredbom else (unutar do..end bloka), koja se izvršava, ako je bool izraz netačan.}
+    \item{unless naredba - Naredba unless ima isto telo kao i if naredba. Kod unutar unless naredbe se izvršava samo kada je navedeni uslov netačan.}
+    \item{unless..else - Naredba unless...else ima isto telo kao i naredba if..else. Kod unutar unless..else naredbe se izvršava samo kada je navedeni uslov netačan.}
+    \item{cond - Naredba cond se koristi ukoliko treba izvršiti neki kod na osnovu nekoliko uslova. Radi kao if..else if..else kod drugih programskih jezika.}
+    \item{case - Naredba case  se može smatrati zamenom za \textbf{switch} naredbu u imperativnim programskim jezicima. Naredba case uzima promenljivu ili literal i primenjuje odgovarajući obrazac poklapanja u različitim slučajevima. Ako se bilo koji slučaj poklapa, Eliksir izvršava kod povezan sa tim slučajem i izlazi iz case naredbe.}
+\end{enumerate}
+
+\newpage
+
+\subsection{Moduli}
+
+U Eliksiru možemo grupisati nekoliko funkcija u module. Već su pomenuti različiti module u prethodnim odeljcima (Map, Enum, List, String,...). Za kreiranje sopstvenih modula u Eliksiru, koristi se  makro \textbf{defmodule}, a za definisanje svojih funkcija, koristimo makro \textbf{def}. Primer koda koji ilustruje kreiranje modula i funkcija dat je listingom \ref{lst:34}:
+
+\lstinputlisting[language=Elixir,label={lst:34},caption=Kreiranje modula i funkcija,captionpos=b]{34.ex}
+
+Moduli mogu biti ugnježdeni u Eliksiru. Ova osobina jezika omogućava organizovanje koda na što bolji način. Za ugnježdavanje modula, koristi se sintaksa sa listinga \ref{lst:35}:
+
+\lstinputlisting[language=Elixir,label={lst:35},caption=Ugnježdavanje modula,captionpos=b]{35.ex}
+
+Gore navedeni primer definiše 2 modula: \textbf{Math} i \textbf{Math.Adding}. Drugom se može pristupati samo pomoću Adding unutar Math modula sve dok su u istom leksičkom opsegu. Ako se kasnije Adding modul premesti izvan definicije Math modula, onda se mora referencirati njegovim punim imenom Math.Adding ili pseudonim mora biti potavljen pomoću direktive aliasa.
+
+U Eliksiru nema potrebe za definisanjem modula Math, kako bi se definisao modul Math.Adding, pošto jezik prevodi sva imena modula u atome. Mogu se  definisati i proizvoljno ugnježdeni moduli bez definisanja bilo kog modula u lancu. Na primer, može se definisati modul Math.Adding.Sum, iako  prethodno nije definisan modul Math i Math.Adding.
+
+\subsection{Direktive}
+
+Kako bi se olakšala ponovna upotreba koda, Eliksir obezbeđuje tri direktive - \textbf{alias, require i import}, kao i makro \textbf{use}. Primer njihove upotrebe može se videti na listingu \ref{lst:36}:
+
+\lstinputlisting[language=Elixir,label={lst:36},caption=Primer upotrebe direktiva,captionpos=b]{36.ex}
+
+\subsubsection{Aliasi}
+Direktiva aliasa nam sluzi za podešavanje pseudonima za bilo koje ime modula. Aliasi moraju uvek počinjati velikim slovom. Validni su samo unutar leksičkog opsega u kome su pozvani.
+
+\subsubsection{Require}
+Eliksir obezbeđuje makroe kao mehanizam za meta-programiranje (pisanje koda koji generiše kod). Makroi su delovi koda koji se izvršavaju i proširuju tokom kompilacije. To znači da bi se mogao koristiti makro, mora se garantovati da su njegovi moduli i implementacija dostupni tokom kompilacije. Ovo se čini pomoću \textbf{require} direktive. Uopšteno, moduli nisu potrebni pre upotrebe, osim ako želimo da koristimo makroe koji su dostupni u njemu. Require direktiva je takođe leksički određena.
+
+\subsubsection{Import}
+Direktivu \textbf{import} se koristi kako bi se lakše pristupalo funkcijama i makroima iz drugih modula bez upotrebe potpuno kvalifikovanog imena. Import direktiva je takođe leksički određena. 
+
+\subsubsection{Use}
+Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji omogućava korišćenje modula u trenutnom kontekstu. Makro use se često koristi od strane progaramera za unos spoljne funkcionalnosti u trenutni leksički opseg, često modula.
+
+% ------------------------------------------------------------------------------
+\chapter{Razrada}
+\label{chp:razrada}
+
+\section{Elixir}
+
+Elixir je dinamičan, funkcionalni programski jezik koji se pokreće na Erlang vituelnoj mašini, pa samim tim i deli pogodna svojstva kao što su
+konkurentnost i tolerisanje grešaka, koje dolaze sa ovim okruženjem.\cite{DefinicijaElixira}
+% ------------------------------------------------------------------------------
+
+%\pangrami
+
+%\pangrami
+
+% ------------------------------------------------------------------------------
+\chapter{Zaključak}
+% ------------------------------------------------------------------------------
+%\pangrami
+
+%\pangrami
+
+% ------------------------------------------------------------------------------
+% Literatura
+% ------------------------------------------------------------------------------
+\literatura
+
+% ==============================================================================
+% Završni deo teze i prilozi
+\backmatter
+% ==============================================================================
+
+% ------------------------------------------------------------------------------
+% Biografija kandidata
+\begin{biografija}
+  \textbf{Vuk Stefanović Karadžić} (\emph{Tršić,
+    26. oktobar/6. novembar 1787. — Beč, 7. februar 1864.}) bio je
+  srpski filolog, reformator srpskog jezika, sakupljač narodnih
+  umotvorina i pisac prvog rečnika srpskog jezika.  Vuk je
+  najznačajnija ličnost srpske književnosti prve polovine XIX
+  veka. Stekao je i nekoliko počasnih mastera.  Učestvovao je u
+  Prvom srpskom ustanku kao pisar i činovnik u Negotinskoj krajini, a
+  nakon sloma ustanka preselio se u Beč, 1813. godine. Tu je upoznao
+  Jerneja Kopitara, cenzora slovenskih knjiga, na čiji je podsticaj
+  krenuo u prikupljanje srpskih narodnih pesama, reformu ćirilice i
+  borbu za uvođenje narodnog jezika u srpsku književnost. Vukovim
+  reformama u srpski jezik je uveden fonetski pravopis, a srpski jezik
+  je potisnuo slavenosrpski jezik koji je u to vreme bio jezik
+  obrazovanih ljudi. Tako se kao najvažnije godine Vukove reforme
+  ističu 1818., 1836., 1839., 1847. i 1852.
+\end{biografija}
+% ------------------------------------------------------------------------------
+
+\end{document}
