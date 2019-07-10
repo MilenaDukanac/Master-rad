@@ -97,14 +97,16 @@
 % ------------------------------------------------------------------------------
 %\pangrami
 
-Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se smatra Jose Valim. Na njegov nastanak je uticao programski jezik \textbf{Erlang} i Eliksir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. Pri kreiranju programskog jezika Eliksir veliki uticaj u smislu sintakse imao je jezik \textbf{Ruby}. U Eliksiru ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. Takođe, Eliksir preuzima mnoge koncepte iz programskih jezika kao što su \textbf{Clojure, Haskell, i Python}. Ovaj programski jezik dizajniran je za izgradnju skalabilnih i lako održivih aplikacija, jednostavne je i moderne sintakse. Mnogo zanimljivih projekata u vezi sa robotikom je rađeno u Eliksiru zbog njegove funkcionalne prirode, izuzetnog rada u distrubiranim sistemima i tolerancije na greške, koja je na jako visokom nivou. Takođe se uspešno koristi u razvoju veba i u domenu ugradnog softvera.  (Wikipedia)
+Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se smatra Jose Valim. Na njegov nastanak je uticao programski jezik \textbf{Erlang} i Eliksir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. Pri kreiranju programskog jezika Eliksir veliki uticaj u smislu sintakse imao je jezik \textbf{Ruby}. U Eliksiru ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. Takođe, Eliksir preuzima mnoge koncepte iz programskih jezika kao što su \textbf{Clojure, Haskell, i Python}. Ovaj programski jezik dizajniran je za izgradnju skalabilnih i lako održivih aplikacija, jednostavne je i moderne sintakse. Mnogo zanimljivih projekata u vezi sa robotikom je rađeno u Eliksiru zbog njegove funkcionalne prirode, izuzetnog rada u distrubiranim sistemima i tolerancije na greške, koja je na jako visokom nivou. Takođe se uspešno koristi u razvoju veba i u domenu ugradnog softvera.
 
+\begin{comment}
 Ruby je dinamičan programski jezik otvorenog koda nastao 1995. godine. Fokus kod ovog programskog jezika je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
 Ruby je takođe i interpretirani programski jezik, što znači da se izvorni kod prevodi u kod razumljiv kompjuteru prilikom svakog izvršavanja programa. Interpretirani programski jezici su sporiji od kompajliranih, ali su fleksibilniji i potrebno je kraće vreme za izradu programa.
 Međutim, sve više iskusnih Ruby programera se okreće Eliksiru. Zapravo, Eliksir je prvi jezik nakon Rubija koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem.
 
 Clojure je dinamičan programski jezik opšte namene nastao 2007. godine. On kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. Clojure je kompajlirani jezik, ali je i dalje potpuno dinamičan - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Clojure obezbeđuje lak pristup Java okvirima, sa opcionim tipovima saveta i zaključivanjem tipa, kako bi se osiguralo da pozivi u Javi mogu da izbegnu refleksiju.
 Clojure je dijalekt Lisp-a i deli Lisp filozofiju code-as-data i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Kada je potrebno promenjivo stanje, Clojure nudi softverski sistem za transakcionu memoriju i reaktivni agentski sistem koji obezbeđuju čiste, tačne, višenitne dizajne. Eliksir je nasledio neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka, opcionalno lenjo izračunavanje, protokole i zapise / strukture. Za razliku od Clojure, on takođe uživa u istinskoj optimizaciji poziva i pipe operatoru.
+\end{comment}
 
 \section{Erlang}
 Firma Erikson je 1981. godine oformila novu laboratoriju Erikson CSLab (eng. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme [6]. Jedan od projekata nove laboratorije  je bio eksperimentisanje sa dodavanjem konkurentnih procesa u programski jezik Prolog i on predstavlja začetak novog programskog jezika. Taj programski jezik je 1987. godine nazvan \textbf{Erlang} (fusnotu dodaj). Erlang se mogao posmatrati kao dijalekt Prologa sve do 1990. godine. Od tada, on ima svoju sintaksu i postoji kao potpuno samostalan programski
@@ -167,8 +169,6 @@ Atomi su konstante ili simboli, pri čemu njihovo ime predstavlja njihovu vredno
 \subsubsection{Celi brojevi}
 Celi brojevi su slični kao i u većini ostalih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ se može koristiti za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u celosti.\\
 
-\newpage
-
 \subsubsection{Brojevi u pokretnom zarezu}
 Brojevi u pokretnom zarezu se u memoriji zapisuju po standardu \textit{IEEE 754}, a za zapisivanje konstanti ovog tipa koristi se tačka između najmanje 2 cifre. Takođe je moguće koristiti notaciju koja obuhvata navođenje eksponenata.\\
 
@@ -188,11 +188,11 @@ Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u l
 
 Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vredosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}:
 
+\newpage
+
 \lstinputlisting[language=Elixir,label={lst:prvi},caption=Primer liste,captionpos=b]{prvi.ex}
 
 Nadovezivanje ili oduzimanje 2 liste korišćenjem operatora $++/2$ i $--/2$ prikazano je na listingu \ref{lst:drugi}:
-
-\newpage
 
 \lstinputlisting[language=Elixir,label={lst:drugi},caption=Nadovezivanje i oduzimanje dve liste,captionpos=b]{drugi.ex}
 
@@ -216,6 +216,8 @@ Treba imati na umu da reprezentacije sa jednostrukim i dvostrukim navodnicima u 
 
 \lstinputlisting[language=Elixir,label={lst:sesti},caption=Dva različita tipa,captionpos=b]{sesti.ex}
 
+\newpage
+
 \subsection{Torke}
 
 Torke se u Elixir-u definišu pomoću vitičastih zagrada $\{\}$. Kao i liste, mogu sadržati vrednosti bilo kog tipa. Primer torke sa vrednostima različitih tipova i određivanjem njene dužine prikazan je na listingu \ref{lst:sedmi}:
@@ -232,8 +234,6 @@ Takođe je moguće umetnuti novi element na odredjeno mesto u torki pomoću funk
 
 Treba obratiti pažnju da je funkcija $put\_elem/3$ vratila novu torku. Originalna torka smeštena u promenljivoj \textit{tuple} nije izmenjena. Kao i liste, torke su takođe nepromenljive. Svaka operacija nad torkom vraća novu torku i nikada ne menja postojeću. Ova operacija, kao i operacija ažuriranja torke je skupa, jer zahteva kreiranje nove torke u memoriji. Ovo se odnosi samo na samu torku, a ne na njen sadržaj. Na primer, prilikom ažuriranja torke, svi unosi se dele između stare i nove torke, osim unosa koji je zamenjen. Drugim rečima, torke i liste u Eliksiru mogu da dele svoj sadržaj. Ovo smanjuje količinu memorije koju jezik treba da zauzme i moguće je samo zahvaljujući nepromenljivoj semantici jezika.
 
-\newpage
-
 Ove karakteristike performansi diktiraju upotrebu struktura podataka. Kao što je već pomenuto, jedan od uobičajenih slučajeva korišćenja torki je prilikom vraćanja dodatnih vrednosti iz funkcije. \textit{File.read/1} je funkcija koja se može koristiti za čitanje sadržaja datoteke. Ona vraća torku, što se može videti na listingu \ref{lst:deseti}:
 
 \lstinputlisting[language=Elixir,label={lst:deseti},caption=Primer korišćenja funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
@@ -245,6 +245,8 @@ Eliksir podržava asocijativne strukture podataka. Asocijativne strukture podata
 
 \subsubsection{Liste ključnih reči}
 U mnogim funkcionalnim programskim jezicima, uobičajeno je da se koristi lista dvočlanih torki za predstavljanje strukture podataka ključ - vrednost. Lista torki gde je prvi element torke atom (tj. ključ) u Eliksiru se naziva \textbf{lista ključnih reči}. Elixir podržava posebnu sintaksu za definisanje takvih lista: $[key: value]$. Zapravo, liste ključnih reči mapiraju liste torki. Primer ovakvog mapiranja prikazan je na listingu \ref{lst:11}:
+
+\newpage
 
 \lstinputlisting[language=Elixir,label={lst:11},caption=Primer liste ključnih reči,captionpos=b]{11.ex}
 
@@ -268,7 +270,6 @@ Liste ključnih reči su važne, jer imaju tri posebne karakteristike:
 \subsubsection{Mape}
 Mapa je kolekcija koja sadrži parove ključ : vrednost. Glavne razlike između liste parova ključ-vrednost i mape su u tome sto mape ne dozvoljavaju ponavljanje ključeva (jer su to asocijativne strukture podataka) i što ključevi mogu biti bilo kog tipa. Mapa je veoma efikasna struktura podataka, naročito kada količina podataka raste. Ukoliko želimo da podaci u kolekciji ostanu baš u onom redosledu u kom smo ih naveli inicijalno, onda je bolje koristiti liste parova ključ : vrednsot, jer mape ne prate nikakvo uređenje.
 
-\newpage
 Mapa se definiše pomoću sintakse \%\{\} na način prikazan na listingu \ref{lst:14}:
 
 \lstinputlisting[language=Elixir,label={lst:14},caption=Primer mape i pristupa njenim elementima,captionpos=b]{14.ex}
@@ -281,8 +282,6 @@ Mapa se podudara sve dok ključevi u obrascu postoje u datoj mapi. Tako, prazna 
 
 Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključeva mape, što je dato listingom \ref{lst:16}:
 
-\newpage
-
 \lstinputlisting[language=Elixir,label={lst:16},caption=Upotreba promenljivih u mapama,captionpos=b]{16.ex}
 
 Modul \textbf{Map} obezbeđuje razne funkcije za manipulaciju mapama, a neke od njih mogu se videti na listingu \ref{lst:17}:
@@ -294,8 +293,6 @@ Mape imaju sintaksu za ažuriranje vrednosti ključa prikazanu na listingu \ref{
 \lstinputlisting[language=Elixir,label={lst:18},caption=Ažuriranje vrednosti ključa,captionpos=b]{18.ex}
 
 Prethodno prikazana sintaksa zahteva da dati ključ postoji u mapi i ne može se koristiti za dodavanje novih ključeva. Na primer, korišćenje ove sintakse za ključ :c nije uspelo, jer ključ :c ne postoji u mapi.
-
-\newpage
 
 Ukoliko su svi ključevi u mapi atomi, onda se radi pogodnosti može koristiti sintaksa ključnih reči data listingom \ref{lst:19}:
 
