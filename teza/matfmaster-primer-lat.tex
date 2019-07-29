@@ -65,7 +65,7 @@
     showtabs=false,                  
     tabsize=2
 }
- 
+
 \lstset{style=mystyle}
 
 % Datoteka sa literaturom u BibTex tj. BibLaTeX/Biber formatu
@@ -124,55 +124,79 @@
 % ------------------------------------------------------------------------------
 %\pangrami
 
-Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se smatra Jose Valim. Na njegov nastanak je uticao programski jezik \textbf{Erlang} i Elixir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. Pri kreiranju programskog jezika Elixir veliki uticaj u smislu sintakse imao je jezik \textbf{Ruby}. Takođe, Elixir preuzima mnoge koncepte iz programskih jezika kao što su \textbf{Clojure, Haskell, i Python}. U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. (izmeni) Ovaj programski jezik dizajniran je za izgradnju skalabilnih i lako održivih aplikacija, jednostavne je i moderne sintakse. Zbog svoje funkcionalne prirode, izuzetnog rada u distrubiranim sistemima i tolerancije na greške koja je na jako visokom nivou, u Elixir-u je rađeno mnogo zanimljivih projekata u vezi sa robotikom. Takođe se uspešno koristi u razvoju veba i u domenu ugradnog softvera.
+Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se smatra Hosé Valim (engl. \textit{José Valim}). Elixir je dizajniran za izgradnju skalabilnih i lako održivih aplikacija. Poseduje jednostavnu i modernu sintaksu. Zbog svoje funkcionalne prirode, izuzetnog rada u distrubiranim sistemima i tolerancije na greške koja je na jako visokom nivou, u Elixir-u je rađeno mnogo zanimljivih projekata u vezi sa robotikom. Takođe se uspešno koristi u razvoju veba i u domenu softvera za uređaje sa ugrađenim računarom (engl. \textit{embedded sotfware}).
 
 \section{Jezici sa najviše uticaja}
+Na nastanak Elixir-a je uticao programski jezik \textbf{Erlang}. 
+\begin{comment}Elixir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. 
+\end{comment}
+Pri njegovom kreiranju značajnu ulogu u smislu sintakse imao je programski jezik \textbf{Ruby}, a iz jezika kao što su \textbf{Clojure, Haskell} i \textbf{Python} je preuzeo mnoge koncepte. 
+\begin{comment}
+U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. (izmeni) 
+\end{comment}
+
+\subsection{Lisp}
+\textbf{Lisp} je drugi najstariji viši programski jezik koji se i danas veoma koristi. Imao je uticaj na programski jezik Erlang, pa je samim tim uticao i na Elixir. Lisp je projektovao \textbf{Džon Makarti} 1958. godine, a prvi put je implementiran od strane \textbf{Stiva Rasela} na IBM 704 računaru. Rasel je pročitao Makartijev rad i zaključio da izračunavanje u Lispu može da se implementira na mašinskom jeziku. Rezultat toga je bio  interpretator koji je mogao da pokreće Lisp programe, ali i da računa vrednosti Lisp izraza. Lisp je zasnovan na matematičkoj teoriji rekurzivnih funkcija (u kojoj se funkcija pojavljuje u sopstvenoj definiciji), a Lisp program je funkcija koja se primenjuje na podatke. On koristi vrlo jednostavnu notaciju u kojoj se operacije i njihovi operandi prikazuju u zagradi. Na primer, $(+ a ( * b c))$ predstavlja $a + b * c$. Iako se čini neugodna, ova notacija dobro funkcioniše na računarima. Ime LISP je nastalo od \textit{"\textbf{LIS}t \textbf{P}rocessor"}, a povezane liste su jedan od glavnih tipova podataka. Danas postoji veliki broj dijalekata Lisp-a, a najpoznatiji među njima su \textbf{Common Lisp} i \textbf{Scheme}. Osnova Lisp-a je funkcionalno programiranje, ali se Lisp zbog raznih drugih svojstava smatra multiparadigmatskim programskim jezikom.
+
+\subsection{Prolog}
+\textbf{Prolog} (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. On bio osnova za Erlang, te je imao indirektan uticaj i na Elixir. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alain Kolmerauer} (engl. \textit{Alain Colmerauer}) i \textbf{Filipe Rousel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju (engl. \textit{University of Aix-Marseille}), zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Departmana veštačke inteligencije (engl. \textit{Department of Artifical Intelligence}) na Univerzitetu u Edinburgu (engl. \textit{University of Edinburgh}), razvili su osnovni dizajn jezika Prolog.
 
 \subsection{Erlang}
-Firma Erikson je 1981. godine oformila novu laboratoriju Erikson CSLab (eng. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme. Jedan od projekata nove laboratorije  je bio eksperimentisanje sa dodavanjem konkurentnih procesa u programski jezik Prolog i on predstavlja začetak novog programskog jezika. Taj programski jezik je 1987. godine nazvan \textbf{Erlang}. Erlang se mogao posmatrati kao dijalekt Prologa sve do 1990. godine. Od tada, on ima svoju sintaksu i postoji kao potpuno samostalan programski
-jezik. Nakon mnogo godina rada nastajale su sve brže, bolje i stabilnije verzije jezika, kao i \textbf{standardna biblioteka OTP} (eng. \textit{The Open Telecom Platform}) (referenca). Erlang i OTP su postali deo slobodnog softvera (eng. \textit{open source software}) u decembru 1998. godine i mogu se slobodno preuzeti sa zvaničnog sajta jezika Erlang. Danas, veliki broj kompanija koristi Erlang u razvoju svojih softverskih rešenja. Neke od
-njih su: Erikson, Motorola, Votsap (eng. \textit{WhatsApp}), Jahu (eng. \textit{Yahoo!}),
+Firma Erikson je 1981. godine oformila novu laboratoriju \textbf{Erikson CSLab} (eng. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme. Jedan od projekata nove laboratorije  je bio eksperimentisanje sa dodavanjem konkurentnih procesa u programski jezik Prolog i on predstavlja začetak novog programskog jezika. Taj programski jezik je 1987. godine nazvan \textbf{Erlang}. Ime je nastalo zahvaljujući inicijativi zaposlenih koji su radili na telefonskim prekidačima, a  za koje je jezik dizajniran. Naime, oni su predložili da jezik nosi ime Erlang u čast danskom matematičaru i inženjeru Agneru Krarupu Erlangu (engl. \textit{Agner Krarup Erlang}), a što je ujedno odgovaralo i skraćenici od  "\textbf{Er}icsson \textbf{Lang}uage".  Erlang se mogao posmatrati kao dijalekt Prologa sve do 1990. godine. Od tada, on ima svoju sintaksu i postoji kao potpuno samostalan programski
+jezik. Nakon mnogo godina rada nastajale su sve brže, bolje i stabilnije verzije jezika, kao i \textbf{standardna biblioteka OTP} (eng. \textit{The Open Telecom Platform}) (referenca). Erlang i OTP su postali deo slobodnog softvera (eng. \textit{open source software}) u decembru 1998. godine i mogu se slobodno preuzeti sa zvaničnog sajta jezika Erlang. Veliki broj kompanija danas koristi Erlang u razvoju svojih softverskih rešenja. Neke od
+njih su: Erikson (engl. \textit{Ericsson}), Motorola, Votsap (eng. \textit{WhatsApp}), Jahu (eng. \textit{Yahoo!}),
 Fejsbuk (eng. \textit{Facebook}) (referenca).
-Na Erlang su najvise uticali programski jezici Lisp i Prolog.
 
-\textbf{Lisp} je drugi najstariji viši programski jezik koji se i danas veoma koristi. Jedino je Fortran stariji (godinu dana). Danas postoji veliki broj dijalekata Lisp-a, a najpoznatiji među njima su \textbf{Common Lisp} i \textbf{Scheme}. Čisti Lisp je primer funkcionalnog programskog jezika. Ime LISP je nastalo od \textit{"\textbf{LIS}t \textbf{P}rocessor"}. Povezane liste su jedan od glavnih tipova podataka. Lisp je projektovao \textbf{Džon Makarti} 1958. godine, a prvi put je implementiran od strane \textbf{Stiva Rasela} na IBM 704 računaru. Rasel je pročitao Makartijev rad i zaključio da izračunavanje u Lispu može da se implementira na mašinskom jeziku. Rezultat toga je interpretator koji je mogao da pokreće Lisp programe, ali i da računa vrednosti Lisp izraza.
-
-\textbf{Prolog} (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alain Kolmerauer} (engl. \textit{Alain Colmerauer}) i \textbf{Filipe Rousel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju (engl. \textit{University of Aix-Marseille}), zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Odeljka Veštačke Inteligencije (engl. \textit{Department of Artifical Intelligence}) na Univerzitetu u Edinburgu (engl. \textit{University of Edinburgh}), razvili su osnovni dizajn jezika Prolog.
-
-\textbf{Erlang} je funkcionalan, deklarativan i konkurentan programski jezik. Na planu konkurentnosti Erlang je
-svojevrstan primer. Programski jezik Lisp je prvi predstavio funkcionalnu paradigmu i kao takav je imao veliki uticaj na Erlang. Na početku je Erlang stvaran kao dodatak na Prolog, vremenom je prerastao
+\textbf{Erlang} je funkcionalan, deklarativan i konkurentan programski jezik. Na planu konkurentnosti je
+svojevrstan primer. Programski jezik Lisp je prvi predstavio funkcionalnu paradigmu i kao takav je imao veliki uticaj na Erlang. Neki od koncepata i osobina koje je nasledio od Lisp-a su koncept rekurzije, \textit{list comprehension} - sintaktička konstrukcija za kreiranje liste zasnovane na postojećim listama, koja sledi formu matematičke notacije \textit{set-builder} za razliku od upotrebe funkcija mapiranja i filtera. Na početku je Erlang stvaran kao dodatak na Prolog, vremenom je prerastao
 u dijalekt Prologa, a kasnije je zbog svoje kompleksnosti i sveobuhvatnosti evoluirao u potpuno novi programski jezik. Sintaksa jezika Erlang u velikoj meri podseća na sintaksu jezika Prolog (na primer, promenljive moraju počinjati velikim slovom, svaka funkcionalna celina se završava tačkom). Oba jezika u velikoj meri koriste poklapanje obrazaca (eng. \textit{pattern matching}).
 
-\newpage
-
-Sa druge strane, Erlang je uticao na nastanak programskog jezika Elixir (eng. \textit{Elixir}). Elixir, uz izmenjenu Erlangovu sintaksu i dopunjenu Erlangovu
-standardnu biblioteku, uživa široku popularnost.
+Sa druge strane, Erlang je uticao na nastanak programskog jezika Elixir. Uz izmenjenu Erlangovu sintaksu i dopunjenu Erlangovu standardnu biblioteku, Elixir uživa široku popularnost.
      
 \begin{comment} U funkcionalnom programiranju, funkcije se primenjuju na argumente i vrednosti. Vraćene vrednosti se koriste kao argumenti za druge funkcije. Funkcionalno programiranje je suprotno proceduralnom programiranju, gde se koriste naredbe koje menjaju okruženje programa na neki način, kao što je pripisivanje vrednosti promenljivim. U funkcionalnom programiranju, te promene okruženja se minimizuju korišćenjem vrednosti koje vraća pozvana funkcija kao direktan ulaz u drugu funkciju, bez upotrebe pripisivanja naredbi.\\
 \end{comment}
 
 \subsection{Ruby}
-\textbf{Ruby} je dinamičan programski jezik otvorenog koda nastao 1995. godine. Fokus kod ovog programskog jezika je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
+\textbf{Ruby} je dinamički tipiziran programski jezik otvorenog koda nastao 1995. godine. Fokus kod ovog programskog jezika je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
 Ruby je takođe i interpretirani programski jezik, što znači da se izvorni kod prevodi u kod razumljiv kompjuteru prilikom svakog izvršavanja programa. Interpretirani programski jezici su sporiji od kompajliranih, ali su fleksibilniji i potrebno je kraće vreme za izradu programa.
-Međutim, sve više iskusnih Ruby programera se okreće Elixir-u. Zapravo, Elixir je prvi jezik nakon Ruby-ja koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem.
-
-\subsection{Clojure}
-\textbf{Clojure} je dinamičan programski jezik opšte namene nastao 2007. godine. On kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. Clojure je kompajlirani jezik, ali je i dalje potpuno dinamičan - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Clojure obezbeđuje lak pristup Java okvirima, sa opcionim tipovima saveta i zaključivanjem tipa kako bi se osiguralo da pozivi u Javi mogu da izbegnu refleksiju.
-Clojure je dijalekt jezikaLisp i deli njegovu filozofiju \textit{code-as-data} i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Kada je potrebno promenjivo stanje, Clojure nudi softverski sistem za transakcionu memoriju i reaktivni agentski sistem koji obezbeđuju čiste, tačne, višenitne dizajne. Elixir je nasledio neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka, opcionalno lenjo izračunavanje, protokole i zapise / strukture. Za razliku od Clojure, on takođe uživa u istinskoj optimizaciji poziva i pipe operatoru. 
+Međutim, sve više iskusnih Ruby programera se okreće Elixir-u. Zapravo, Elixir je prvi jezik nakon Ruby-ja koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem. Na slici \ref{fig:0} su prikazane osobine Ruby-ja koje se direktno preslikavaju u osobine Elixir-a:
 
 \newpage
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{ruby.PNG}
+  \caption{Osobine nasleđene od jezika Ruby}
+  \label{fig:0}
+\end{figure}
+
+Takođe, na slici \ref{fig:01} se može videti i primer koda napisan u oba jezika:
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth,height=6.5cm]{rubyVSelixir.png}
+  \caption{Sintaksa jezika Ruby i Elixir}
+  \label{fig:01}
+\end{figure}
+
+\newpage
+
+\subsection{Clojure}
+\textbf{Clojure} je dinamički tipiziran programski jezik opšte namene nastao 2007. godine. Njegov tvorac je Rič Hiki (engl. \textit{Rich Hickey}). Clojure kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. On je kompajlirani jezik, ali je i dalje potpuno dinamički tipiziran - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Predstavlja dijalekt jezika Lisp i deli njegovu filozofiju \textit{code-as-data} (program je funkcija koja se izvršava nad podacima) i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Elixir je nasledio neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka (imutabilnost), opcionalno lenjo izračunavanje, protokole.
+
 \subsection{Python}
-\textbf{Python} je interpretirani jezik opšte namene čiji tvorac je \textit{Guido van Rossum}. Krajem 1980-ih je koncipiran kao naslednik jezika \textbf{ABC}, a prvi put je objavljen 1991. godine. Filozofija dizajna jezika Python naglašava čitljivost koda pridavajući veliki značaj razmaku. Njegove jezičke konstrukcije i objektno-orijentisani pristup imaju za cilj da pomognu programerima da napišu jasan i logičan kod za male i velike projekte. Python je takođe dinamički tipiziran jezik i poseduje sistem za prikupljanje smeća (\textit{garbage collector}). Podržava više paradigmi programiranja uključujući proceduralno, objektno-orijentisano i funkcionalno programiranje. Python interpreteri su dostupni za mnoge operativne sisteme. Globalana zajednica programera razvija i održava referentnu implementaciju otvorenog koda \textbf{CPython}. Neprofitna organizacija \textit{The Python Software Foundation} upravlja i usmerava resursima za razvoj jezika Python i CPython. Jedna od osobina koje je Elixir nasledio od Python-a je podrška za dokumentaciju u vidu dokumentacionih stringova (engl. \textit{docstrings}) koji omogućavaju povezivanje dokumentacije sa modulima, funkcijama, klasama, metodama.
+\textbf{Python} je interpretirani jezik opšte namene čiji tvorac je Gido van Rosum (engl. \textit{Guido van Rossum}). Krajem 1980-ih je koncipiran kao naslednik jezika \textbf{ABC}, a prvi put je objavljen 1991. godine. Filozofija dizajna jezika Python naglašava čitljivost koda pridavajući veliki značaj razmaku. Njegove jezičke konstrukcije i objektno-orijentisani pristup imaju za cilj da pomognu programerima da napišu jasan i logičan kod za male i velike projekte. Python je takođe dinamički tipiziran jezik i poseduje sistem za prikupljanje smeća (\textit{garbage collector}). Podržava više paradigmi programiranja uključujući proceduralno, objektno-orijentisano i funkcionalno programiranje. Python interpreteri su dostupni za mnoge operativne sisteme. Globalana zajednica programera razvija i održava referentnu implementaciju otvorenog koda \textbf{CPython}. Neprofitna organizacija \textit{The Python Software Foundation} upravlja i usmerava resursima za razvoj jezika Python i CPython. Jedna od osobina koje je Elixir nasledio od Python-a je podrška za dokumentaciju u vidu dokumentacionih stringova (engl. \textit{docstrings}) koji omogućavaju povezivanje dokumentacije sa modulima, funkcijama, klasama, metodama.
+
+\newpage
 
 \subsection{Haskell}
-\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran i prilično različit od većine ostalih programskih jezika. Nazvan je po \textit{Haskell Brooks Curry}-u, čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv kod, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
+\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran i prilično različit od većine ostalih programskih jezika. Nazvan je po Haskel Bruks Kariju(engl. \textit{Haskell Brooks Curry}), čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv kod, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
 
 \newpage
 
 \section{Osnovne karakteristike}
 
-Tokom 2010. godine \textit{Jose Valim}, u to vreme zaposlen na poziciji programera u kompaniji \textit{Platformatec}, radio je na poboljšanju performansi okruženja
+Tokom 2010. godine Hosé Valim, u to vreme zaposlen na poziciji programera u kompaniji \textit{Platformatec}, radio je na poboljšanju performansi okruženja
 \textit{Ruby on Rails} na višejezgarnim sistemima.(referenca) Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
 milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad 2 miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada 5 miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest}.\\
 
@@ -473,7 +497,7 @@ U Elixir-u nema potrebe za definisanjem modula Math, kako bi se definisao modul 
 
 Kako bi se olakšala ponovna upotreba koda, Elixir obezbeđuje tri direktive - \textbf{alias, require i import}, kao i makro \textbf{use}. Primer njihove upotrebe može se videti na listingu \ref{lst:36}:
 
-\lstinputlisting[language=erlang,label={lst:36},caption=Primer upotrebe direktiva,captionpos=b]{36.ex}
+\lstinputlisting[language=python,label={lst:36},caption=Primer upotrebe direktiva,captionpos=b]{36.ex}
 
 \subsection{Aliasi}
 Direktiva aliasa nam sluzi za podešavanje pseudonima za bilo koje ime modula. Aliasi moraju uvek počinjati velikim slovom. Validni su samo unutar leksičkog opsega u kome su pozvani.
@@ -491,64 +515,188 @@ Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji
 %\chapter{Razrada}
 %\label{chp:razrada}
 
-\chapter{Elixir u sekvencioniranju genoma}
+\chapter{Sekvencioniranje genoma}
 
-\begin{comment}
-Elixir je dinamičan, funkcionalni programski jezik koji se pokreće na Erlang vituelnoj mašini, pa samim tim i deli pogodna svojstva kao što su
-konkurentnost i tolerisanje grešaka, koje dolaze sa ovim okruženjem.\cite{DefinicijaElixira}
-\end{comment}
+Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomici. Ovaj problem izgleda jednostavno, ako se genom može čitati \textit{base-by-base} od 5' ka 3' kraju. Nažalost, postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, genom se rekonstruiše indirektno. Prvo, vrši se razbijanje genoma na DNA fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}). Zatim se pomoću mašine za sekvencioniranje na osnovu fragmenata vrši dekodiranje DNA sekvence. Ove DNA sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Usled slučajnog uzorkovanja , ekstahovana očitavanja pokrivaju ceo genom ravnomerno. Lepljenjem ovih očitavanja možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{\textit{de novo} genomsko sekvencioniranje}. 
 
-Rekonstrukcija genoma kroz sekvencioniranje DNK je važan problem u genomici. Ovaj problem izgleda jednostavno, ako se genom može čitati \textit{base-by-base} od 5' ka 3'. Nažalost, postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, rekonstruišemo genom indirektno. Prvo, genom se razija na fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}), a zatim mašina za sekvencioniranje dekodira DNA sekvence na osnovu ovih fragmenata. Ove DNA sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Zbog slučajnog uzorkovanja, ekstahovana čitanja pokrivaju ceo genom uniformno. Lepljenjem ovih očitavanja u jedno možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{\textit{de novo} genomsko asembliranje}. U njemu se koriste mnogi algoritmi, a neki od njih će biti opisani u ovom odeljku. 
+\newpage
+
+\section{Istorija sekvencioniranja genoma}
+
+\textbf{Sanger sekvenciranje} je bila najranija tehnika sekvencioniranja. Razvijena su dva asemblera za asembliranje očitavanja Sanger sekvencioniranja: \textit{OLC asembler \textbf{Celera}} i \textit{De Brujinov graf asembler \textbf{Ojler}}. Čovečiji referentni genom sastavljen je korišćenjem ova dva pristupa. Međutim, kako je Sanger sekvencioniranje niskopropusno i skupo, samo nekoliko genoma je sastavljeno Sanger sekvencioniranjem.
+
+Razvoj sekvencioniranja \textbf{druge generacije} promenio je igru. Bilo je moguće efikasno i isplativo sekvencioniraranje stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja  su kratka. Po narudžbini su pravljeni genomski asembleri za rekonstrukciju genoma na osnovu kratkih očitavanja. Njihov uspeh je doveo do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih projekata, uključujući rekonstrukciju genoma \textbf{Džejmsa Votsona}(engl. \textit{James Watson}) i \textbf{panda} genoma. Iako je ovaj pristup ekonomičan, rezultat su bili fragmentisani genomi, jer su očitavanja kratka i regioni koji se ponavljaju dugi.
+
+Nedavno je na raspolaganju sekvencioniranje \textbf{treće generacije}, čija su očitavanja duga (dužine od oko 10000 bp). Iako duga očitavanja mogu rešiti redosled ponovljenih regiona, ona imaju visoku stopu greške $(15\%-18\%)$. Razvijen je veliki broj računskih metoda za korekciju grešaka u očitavanjima treće generacije sekvencioniranja.
+
+\newpage
 
 \section{Čitanje celog sekvencioniranog genoma}
 
-Da bi se sastavio genom, prvi korak je sekvencioniranje skupa očitavanja na osnovu uzorka genoma. Za ovu svrhu postoje 2 protokola: (1) sekvencioniranje celog genoma i (2) sekvencioniranje matičnih parova.
+Prvi korak u procesu sekvencioniranja genoma je sekvencioniranje skupa očitavanja na osnovu uzorka genoma. Za ovu svrhu postoje 2 protokola: 
+\begin{itemize}
+    \item {sekvencioniranje celog genoma}
+    \item {sekvencioniranje matičnih parova}
+\end{itemize}
 
-\subsection{Ssekvencioniranje celog genoma}
+\subsection{Sekvencioniranje celog genoma}
 
-Sekvenciranje celog genoma ukljucuje 3 koraka koja su prikazana na slici 2.1.\\
+Sekvencioniranje celog genoma ukljucuje 3 koraka koja su prikazana na slici \ref{fig:1}:
 
-Prvo, uzorak genoma se na slučajan način razbija na DNA fragmente pomoću \textit{sonication} ili \textit{enzimskog} sečenja, zatim korak odabira veličine ekstrahuje DNA fragmente određene fiksirane dužine (veličina umetka). Na kraju se vrši \textit{single-end} ili \textit{paired-end} sekvenciranje DNA fragmenata. Za single-end sekvenciranje, sekvencer čita jedan kraj svakog DNA fragmenta. Za paired-end sekvenciranje, sekvencer čita oba kraja DNK fragmenta. (Sekvenceri treće generacije čitaju čitav DNA fragment. Mi to smatramo single-end čitanjem.) Slika 2.2 daje jedan primer. Za single-end sekvenciranje, dobijamo čitanje sa 5' kraja lanca DNA fragmenta, tj. ACTCAGCACCTTACGGCGTGCATCA. Za paired-end sekvenciranje, dobijamo 5' čitanja i forward i reverse templates DNA fragmenta (u unutrašnjoj orijentaciji, tj. čitanje šablona od 5' ka 3'), tj.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{prva.png}
+  \caption{Ilustracija protokola \textit{shotgun} za sekvencioniranje celog genoma.
+Uključuje 3 koraka: (1) korak razbijanja genoma (\textit{sonication}), (2)
+korak odabira veličine i izdvajanja fragmenata te veličine (\textit{size selection}), (3) korak čitanja kraj(ev)a svakog fragmenta (\textit{sequencing})}
+  \label{fig:1}
+\end{figure}
+
+Prvo, uzorak genoma se na slučajan način razbija na DNA fragmente pomoću \textit{sonication} ili \textit{enzimskog} sečenja. Zatim sledi korak odabira veličine u kom se vrši ekstrahovanje DNA fragmenata određene fiksirane dužine (\textbf{veličina umetka}). Na kraju se vrši \textit{single-end} ili \textit{paired-end} sekvencioniranje DNA fragmenata. Za single-end sekvencioniranje, sekvencer čita jedan kraj svakog DNA fragmenta, dok za paired-end sekvencioniranje, sekvencer čita oba kraja DNK fragmenta. (Sekvenceri treće generacije čitaju čitav DNA fragment. To se smatra single-end čitanjem.) Slika \ref{fig:2} daje jedan takav primer:
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth, height=2.4cm]{druga.PNG}
+  \caption{Razmatra se DNA fragment ekstrahovan iz uzorka genoma. Pair-end očitavanje se formira izdvajanjem dva DNA podstringa (koji se takođe nazivaju oznake (engl. \textit{tags})) sa dva kraja DNK fragmenta.}
+  \label{fig:2}
+\end{figure}
+
+Za single-end sekvencioniranje, dobija se očitavanje sa 5' kraja  \textit{forward} šablona DNA fragmenta, tj. ACTCAGCACCTTACGGCGTGCATCA. Za paired-end sekvencioniranje, dobijaju se 5' očitavanja i \textit{forward} i \textit{reverse} šablona DNA fragmenta (u unutrašnjoj orijentaciji, tj. očitavanje šablona od 5' ka 3'), tj:
 
 \begin{itemize}
     \item {ACTCAGCACCTTACGGCGTGCATCA}
     \item {AGTTTGTACTGCCGTTCAGAACGTA}
 \end{itemize}
 
-Drugo čitanje je inverzni komplement prvog, jer se ono dobija iz obrnutog šablona.\\
+Drugo očitavanje je inverzni komplement prvog, jer se ono dobija iz \textit{reverse} šablona.
 
-Za asembliranje genoma, \textbf{veličina umetka} (dužina DNK fragmenta) je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja za veličinu umetka. Na primer, \textit{Illumina Hi}-sekvencioniranje može izvršiti samo paired-end sekvenciranje za DNK fragmente veličine umetaka $<1000$ bp. Za treću generaciju sekvenciranja, granica veličine umetka može biti veća od 10000 bp.\\
+Za asembliranje genoma, \textbf{veličina umetka} (dužina fragmenta DNA) je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na veličinu umetka. Na primer, \textit{Illumina Hi-seq} sekvencioniranje može izvršiti samo paired-end sekvencioniranje za fragmente DNA veličine umetaka $<1000$ bp. Za treću generaciju sekvencioniranja, ograničenje veličine umetka može biti veće od 10000 bp.
 
-%Slika 2.1 i opis Figure 5.1 iz knjige
-%Slika 2.2 i opis Figure 5.2 iz knjige
+\newpage
+
+\subsection{Mate-pair sekvenciranje (sekvenciranje očitavanja matičnih parova)
+}
+
+Sekvenceri druge generacije mogu izdvojiti pair-end očitavanja sa oba kraja nekih kratkih fragmenata DNA (veličine umetka manje od 1000 bp). Za izdvajanje pair-end očitavanja dugih fragmenata DNA možemo koristiti \textbf{mate-pair sekvenciranje}. Slika \ref{fig:3} prikazuje mate-pair proces sekvencioniranja:
+
 %Slika 2.3 i opis Figure 5.3 iz knjige
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\textwidth, height=3cm]{treca.PNG}
+  \caption{Ilustracija protokola mate-pair sekvencioniranja očitavanja. (a) Izdvajanje
+svih fragmenata određene veličine, npr. 10000 bp, gelom za rezanje (cutting gel?).(b) Svaki
+fragment je cirkularizovan sa adapterom (predstavljen blokom sive boje)
+u sredini; zatim se vrši sečenje 2 područja oko adaptora. (c)
+Konačno, pair-end očitavanja se ekstrahuju pair-end sekvencioniranjem.}
+  \label{fig:3}
+\end{figure}
 
-\subsection{Mate-pair sekvencioniranje (sekvencioniranje matičnih parova)}
+ Prvo se dugi fragmenti DNA neke fiksirane veličine umetka (npr. 10000 bp)   biraju sečenjem gena. Zatim se dugi fragmenti cirkularizuju pomoću adaptora. Cirkularizovani DNA-ovi su fragmentisani i samo se zadržavaju fragmenti koji sadrže adaptore. Na kraju, pomoću pair-end sekvencioniranja, mate-pair očitavanja se sekvencioniraju na osnovu fragmenata DNA sa adaptorima.
 
-Sekvenceri druge generacije mogu izvući pair-end čitanja sa oba kraja kratkih DNA fragmenata (veličine umetka manje od 1000 bp). Za izvlačenje pair-end čitanja dugih DNA fragmenata možemo koristiti mate-pair proces sekvencioniranja. Slika 2.3 prikazuje mate-pair proces sekvencioniranja.  Prvo, dugi DNA fragmenti neke fiksirane veličine umetka (npr. 10000 bp) se biraju sečenjem gena. Zatim se dugi fragmenti cirkularizuju pomoću adaptora. Cirkularizovani DNA-ovi su fragmentisani i samo se zadržavaju fragmenti koji sadrže adaptore (say, by biotin pull-down). Na kraju, pomoću pair-end sekvencioniranja, mate-pair čitanja se sekvencioniraju na osnovu DNA fragmenata sa adaptorima.\\
-
-Orijentacija pair-end čitanja pročitanog od strane mate-pair sekvencera se razlikuje od onog koji je pročitan od strane pair-end sekvencera. Mate-pair sekvenceri daju dva čitanja sa oba kraja svakog DNA fragmenta u spoljašnjoj orijentaciji umesto u unutrašnjoj orijentaciji. Npr. za DNA fragment na slici 2.2 mate-pair sekvencioniranje će dati:
+Orijentacija pair-end očitavanja očitanog od strane mate-pair sekvencera 
+se razlikuje od onog koji je očitan od strane pair-end sekvencera. Mate-pair sekvenceri daju dva očitavanja sa oba kraja svakog fragmenta DNA u spoljašnjoj orijentaciji umesto u unutrašnjoj orijentaciji. Npr. za DNA fragment na slici \ref{fig:2} mate-pair sekvencioniranje će dati:
 \begin{itemize}
     \item {TGATGCACGCCGTAAGGTGCTGAGT}
     \item {TACGTTCTGAACGGCAGTACAAACT}
 \end{itemize}
 
-Iako protokol za mate-pair sekvencioniranje može izvući pair-end čitanja sa velikom veličinom umetka, on zahteva veći broj ulaznih DNK za pripremu sekvencerskih biblioteka i sklon je lažnim greškama.
+Iako protokol za mate-pair sekvencioniranje može izdvojiti pair-end očitavanja sa velikom veličinom umetka, on zahteva veći broj ulaznih DNA za pripremu sekvencerskih biblioteka i sklon je lažnim greškama.
 
+\section{De novo sekvencioniranje genoma za kratka očitavanja}
 
-\section{De novo sekvenciranje genoma za kratka čitanja}
+Druga generacija sekvencioniranja omogućava dobijanje skupa single-end ili paired-end kratkih očitavanja za ceo genom. De novo sekvencioniranje ima za cilj da izvrši preklapanje očitavanja ispravnom redosledu i rekonstruiše genom.
 
-Druga generacija sekvencioniranja nam omogućava da dobijemo skup single-end ili paired-end kratkih čitanja za ceo genom. De novo asembliranje ima za cilj da preklopi čitanja koja se dobijaju u ispravnom redosledu i da rekonstuiše genom.\\
+Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu suprstringa} za koji se zna da je NP-kompletan (problem superstringa - na osnovu skupa stringova S, teži se pronalaženju superstringa, najkraćeg stringa P takavog da je svaki string s iz skupa S podstring stringa P. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring ACATGCGTGTACGT).
+
+Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje 4 koraka prikazana na slici \ref{fig:4}:
 
 % Figure 5.4 i slika 2.4
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth,height=8cm]{cetvrta.PNG}
+  \caption{Četiri koraka u sekvencioniranju genoma. 1. Korekcija očitavanja:
+Ispravljanje greškaka sekvencioniranja u očitavanjima. 2. Izgradnja kontiga: Spajanje
+očitavanja radi formiranja kontigenata. 3. Formiranje skeleta: Korišćenjem paired-end očitavanja se vrši povezivanje kontigenata kako bi se formirali skeleti. 4. Popunjavanje praznina: Za susedne kontige u skeletima, vrši se popunjavanje praznina.}
+  \label{fig:4}
+\end{figure}
 
-Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvenciranja, ovaj problem je ekvivalentan suprstring problemu za koji se zna da je NP-kompletan. (Problem superstringa - na osnovu skupa stringova S, težimo da nadjemo superstring, najkraći string P takav da je svaki string s iz skupa S podstring stringa P. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring ACATGCGTGTACGT.) \\
+\newpage
 
-Mnogi de novo asembleri predlažu da se sastavljaju kratka očitavanja. Opšte rešenje uključuje 4 koraka kao što je prikazano na slici 2.4. U prvom koraku se ispravljaju greške sekvenciranja u očitavanju. Na osnovu korigovanih očitavanja, u drugom koraku se vrši lepljenje očitavanja preklapanjem. U idealnom slučaju, želimo da zalepimo sva očitavanja tako da formiraju kompletan genom. Zbog ponavljanja, postoje dvosmislenosti i ne uspevamo da zalepimo očitavanja tako da rekonstruišemo kompletan genom. Postojeći metodi daju skup kontigenata, pri čemu svaki kontigent predstavlja podregion uzorka genoma. Zatim, koristeći pair-end očitavanja, pokušavamo da rekonstruišemo redosled kontigenata tako da formiramo skelet.(Svaki skelet je niz kontigenata. Jos se naziva i superkontig ili metakontig.) Na kraju, očitavanja se preuređuju na skeletima, tako da se popune praznine između susednih kontigenata.\\
+U prvom koraku se ispravljaju greške sekvencioniranja u očitavanjima. Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, želimo da spojimo sva očitavanja tako da formiraju kompletan genom. Zbog ponavljanja se javljaju dvosmislenosti i nije moguće spajanje očitavanja tako da se rekonstruiše kompletan genom. Postojeće metode daju skup kontigenata, pri čemu svaki kontigent predstavlja podregion uzorka genoma. Zatim, koristeći pair-end očitavanja, pokušava se rekonstrukcija redosleda kontigenata tako da se formira skelet. (Svaki skelet je niz kontigenata, a jos se naziva i \textbf{superkontig} ili \textbf{metakontig}.) Na kraju se vrši preuređivanje očitavanja u skeletima kako bi se popunile praznine između susednih kontigenata.
 
 \section{k-mer counting}
 
-Jedan konceptualno jednostavan, ali osnovni problem je k-mer brojanje. Ovo je jedan potprogram koji se koristi u korekciji grešaka čitanja. Takođe može biti korišćen u koraku asembliranja (Section 5.3.3), ponavljanju detekcije i kompresije genomskih podataka (Section 10.4.1). Problem je definisan na sledeći način. Ulaz je skup čitanja R i parametar k. Neka je Z skup svih mogućih k-mera (podstringovi dužine k) koji se pojavljuju u R. Naš problem je da izračunamo frekvenciju pojavljivanja k-mera u Z. U nastavku ćemo razmotriti 4 rešenja: \textbf{(1) jednostavno heširanje, (2) JellyFish, (3) BFCounter i (4) DSK.}\\
+Jedan konceptualno jednostavan, ali osnovni problem je \textbf{k-mer brojanje} (k-mer - podstring dužine k). Predstavlja potprogram koji se koristi u korekciji grešaka u očitavanjima. Takođe može biti korišćen u koraku asembliranja, detekciji ponavljanja i kompresiji genomskih podataka. Ulaz je skup očitavanja R i parametar k. Neka je Z skup svih mogućih k-mera koji se pojavljuju u R. Problem je izračunavanje frekvencije pojavljivanja k-mera u Z. U nastavku će biti razmatrana 4 rešenja: \textbf{(1) jednostavno heširanje, (2) JellyFish, (3) BFCounter i (4) DSK.}
+
+\subsection{Jednostavno heširanje}
+Problem k-mer brojanja može biti rešen implementiranjem asocijativnog niza koristeći heširanje. Kada je k malo (npr. manje od 10), koristi se \textbf{savršeno heširanje}. Svaki k-mer z može biti kodiran kao 2k-bitni binarni ceo broj \textit{b(z)} zamenom A, C, G i T u z sa 00, 01, 10, 11, respektivno. Tako se izgrađuje tabela $Count[0..4^k - 1]$ veličine $4^k$ u kojoj svaki ulaz $Count[b(z)]$ čuva frekvenciju k-mera z u skupu Z. Preciznije, vrši se inicijalizacija svakog ulaza u $Count[0..4^k - 1]$ na 0. Zatim se iterativno skenira svaki k-mer z iz Z i uvećava $Count[b(z)]$ za 1. Na kraju, svi nenula ulazi u $Count[]$ predstavljaju k-mere koji se pojavljuju u Z kao i broj njihovih pojavljivanja. Slika \ref{fig:5}(a) predstavlja primer koji ilustruje ovaj jednostavni metod prebrojavanja:
+
+\newpage
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{58_3algoritma.PNG}
+  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za prebrojavanje k-mera koji koristi \textit{Count} tabelu veličine 4k. (b) Ilustruje \textit{JellyFish} metod prebrojavanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u četvrtom unosu, jer je $h(GT) = 4$. U ovom primeru se javlja jedna kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u petom unosu. (c) Ilustruje DSK metod prebrojavanja k-mera.
+Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK deli Z u
+4 ($= n_{list} * n_{sublist}$) podliste, a zatim pokreće \textit{JellyFish} algoritam za prebrojavanje k-mera u svakoj podlisti.}
+  \label{fig:5}
+\end{figure}
+
+Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvršavanja je $O(N + 4^k)$, a kako treba izgraditi tabelu veličine $4^k$, prostorna složenost je $O(4^k)$. Kada je k veliko, navedeni algoritam ne može da radi, jer zahteva previše prostora.
+
+\newpage
+
+\subsection{JellyFish algoritam}
+Moguće je smanjiti veličinu heš tabele koristeći \textbf{otvoreni mehanizam adresiranja}. Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera gde je $\alpha$ faktor opterećenja $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$ gde $Count[i]$ čuva broj za k-mer $H[i]$. Za svaki k-mer iz Z vrši se njegovo  heširanje u neki ulaz H[i] gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, ne možemo čuvati z u $H[i]$. Ova situacija se naziva \textbf{kolizija}. Kolizija može biti razrešena pomoću otvorenog mehanizma adresiranja. Na primer, kolizija se može razrešiti \textbf{linearnim pokušajem}. Ovom metodom pokušavamo da uvećamo indeks $i$ za 1 kada se kolizija dogodi sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan. Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog pokušaja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda z ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon sto su svi k-meri iz Z obrađeni, prikazujemo $(H[i], Count[i])$ za sve nenula ulaze $H[i]$.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.85\textwidth]{Jellyfish5_9.PNG}
+  \caption{Jellyfish algoritam i funkcija hashEntry}
+  \label{fig:6}
+\end{figure}
+
+JellyFish algoritam je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u JellyFish algoritmu.
+
+Iako $JellyFish$ algoritam koristi manje prostora od metode naivnog prebrojavanja, $JellyFish$ heš tabela mora biti veličine koja je jednaka bar broju jedinstvenih k-mera iz Z. $JellyFish$ i dalje zahteva mnogo memorije u slučaju da je broj jedinstvenih k-mera u Z veliki.
+
+\subsection{BFCounter algoritam}
+U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje q puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od q puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji prebrojava samo k-mere koji se pojavljuju najmanje q puta. On koristi \textit{counting Bloom} filter da odredi da li se k-mer pojavljuje najmanje q puta. To je prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje q puta. Iako on može dati pogrešno pozitivan rezultat (pogrešan izveštaj da k-mer postoji ili pogrešno proceniti broj k-mera), ne može dati pogrešno negativan rezultat. BFCounter održava \textit{counting Bloom} filter B i heš tabelu H. Sastoji se od 2 faze. Prva faza počinje sa praznim \textit{counting Bloom} filterom B i praznom heš tabelom H. U ovoj fazi se skeniraju k-meri iz Z jedan po jedan. Za svaki k-mer $z\inZ$ se proverava da li se z pojavljuje najmanje $q - 1$ puta u \textit{counting Bloom} filteru B utvrđivanjem da li je $countBloom(x, B) \geq q-1$. Ako nije, vrši se umetanje z u Z pomoću $insertBloom(z, B)$. U suprotnom, z se pojavljuje najmanje q puta. Zatim se vrši proveravanje da li je z u heš tabeli H. Ako nije, z se umeće u neki prazan ulaz $H[i]$ i postavlja se $count[i]$ na nulu.
+
+U drugoj fazi se obavlja stvarno brojanje. Vrši se skeniranje k-mera iz Z jedan po jedan. Za svaki k-mer z iz Z, ako se z pojavljuje u heširanom ulazu $H[i]$, onda se uvećava $count[i]$ za 1. Detaljan pseudokod je prikazan na slici \ref{fig:7}:
+
+\newpage
+
+%Figura 5.10
+\begin{figure}[h]
+\centering0
+\includegraphics[width=12cm]{BFCounter5_10.PNG}
+\caption{Prostorno efikasan algoritam za prebrojavanje k-mera koji broji samo k-mere koji se pojavljuju najmanje q puta.}
+\label{fig:7}
+\end{figure}
+
+Vreme izvršavanja BFCounter algoritma je $O(n)$. Što se tiče prostorne složenosti, \textit{counting Bloom} filter zahteva $O(N log(q))$. Prostor za $H[]$ i $Count[]$ je $\frac{N'}{\alpha}(2k + 32)$ bitova, gde je $N'$ broj k-mera koji se pojavljuju najmanje q puta. Primetimo da je $N' \leq \frac{N}{q}$.
+
+\newpage
+
+\subsection{DSK algoritam}
+Iako je BFCounter prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja N k-mera u Z. Neka je memorija fiksirana tako da bude M bitova i neka je memorija diska fiksirana tako da bude D bitova. Da li se može i dalje efikasno izračunati pojavljivanja k-mera? Gijom Rizk (engl. \textit{Guillaume Rizk}) nam daje pozitivan odgovor i predlaže metod koji se naziva \textbf{DSK}. Ideja ovog metoda je da se skup k-mera Z  podeli u različite liste tako da svaka lista bude smestena na disk koristeći D bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći M bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$ sa slike \ref{fig:6}.
+
+Preciznije, k-meri u Z su podeljeni u $n_{list}$ lista približno slične dužine. Kako disk ima D bitova i svaki k-mer može biti reprezentovan u 2k bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako imamo N k-mera u Z, postavlja se $n_{list} = \frac{N}{n_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h()$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer z iz Z, z se dodeljuje i-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. 
+
+Zatim, svaka lista se dalje deli u podliste, pri čemu je svaka dužine $l_sublist$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima M bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$.
+
+Broj podlista je jednak $n_{sublist} = \frac{n_{list}}{n_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. Slično, svaka lista je podeljena u podliste heš funkcijom $h()$. Preciznije, za svaki k-mer s u i-toj listi, s je dodeljeno j-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod}
+
+$n_{sublist} = j$.
+
+Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći M bitova,  brojimo broj pojavljivanja svakog k-mera u podlisti koristeći $JellyFish(d_j, 0.7, h)$ sa slike \ref{fig:6}.
+
+Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz Z i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći $JellyFish$ algoritam.
+
+\newpage
+
+Ovaj algoritam će zapisati samo jednom svaki k-mer iz Z, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u Z, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
