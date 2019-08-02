@@ -592,7 +592,7 @@ Prvo, uzorak genoma se na slučajan način razbija na DNK fragmente pomoću \tex
   \label{fig:2}
 \end{figure}
 
-Za sekvencioniranje jednostranih očitavanja, dobija se očitavanje sa 5' kraja \footnote{$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' -> 3'$. Na primer, DNK polimeraza deluje u pravcu $5' -> 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.} \textit{forward} šablona DNK fragmenta, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Za sekvencioniranje uparenih očitavanja, dobijaju se 5' očitavanja i \textit{forward} i \textit{reverse} šablona DNK fragmenta (u unutrašnjoj orijentaciji, tj. očitavanje šablona od 5' ka 3'), tj:
+Za sekvencioniranje jednostranih očitavanja, dobija se očitavanje sa 5' kraja \footnote{$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.} \textit{forward} šablona DNK fragmenta, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Za sekvencioniranje uparenih očitavanja, dobijaju se 5' očitavanja i \textit{forward} i \textit{reverse} šablona DNK fragmenta (u unutrašnjoj orijentaciji, tj. očitavanje šablona od 5' ka 3'), tj:
 
 \begin{itemize}
     \item {$ACTCAGCACCTTACGGCGTGCATCA$}
@@ -605,7 +605,7 @@ Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različit
 
 \newpage
 
-\subsection{Sekvenciranje partner-uparenih očitavanja}
+\subsection{Sekvencioniranje partner-uparenih očitavanja}
 
 Sekvenceri druge generacije mogu izdvojiti partner-uparena očitavanja sa oba kraja kratkih fragmenata DNK (dužine očitavanja manje od 1000 bp). Za izdvajanje ovakvih očitavanja možemo koristiti \textbf{sekvencioniranje partner-uparenih očitavanja} prikazano na slici \ref{fig:3} :
 
@@ -923,7 +923,7 @@ IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De N
 \label{fig:17}
 \end{figure}
 
-\chapter{Implementacija algoritama koji se koriste u sekvencioniranju genoma}
+\chapter{Opis implementacije algoritama i rezultati pokretanja}
 
 U prethodnom delu data je biološka osnova za algoritme koji se primenjuju u k-mer brojanju. U ovom delu će biti dati opisi implementacije tih algoritama, kao i delovi koda radi boljeg razumevanja rešenja implementiranog u programskom jeziku Elixir. Svaki algoritam je definisan u okviru modula koji nosi naziv tog algoritma i koji sadrži glavnu funkciju (koja takođe nosi naziv algoritma) i veliki broj pomoćnih.
 
@@ -977,7 +977,7 @@ Na listingu \ref{lst:105} se može videti konkretan primer pokretanja algoritma:
 
 \newpage
 
-Ovo je primer izvršavanja algoritma u komandnom prozoru. Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Elixir-a, navodi se komanda \textit{iex jellyfish.ex}. Nakon toga mogu se pozivati funkcije tako što se prvo navede ime modula u okviru koga su definisane, pa tačka, pa naziv funkcije i njeni argumenti. U ovom slučaju to su funkcija modul \textit{JellyFish}, funkcija \textit{jellyfish\_algorithm}, lista stringova $["AC", "CG", "AC", "GT", "CA","GG", "AC","GT"]$ koji predstavljaju k-mere i faktor opterećenja 0.7.
+Ovo je primer izvršavanja algoritma u komandnom promptu. Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Elixir-a, navodi se komanda \textit{iex jellyfish.ex}. Nakon toga mogu se pozivati funkcije tako što se prvo navede ime modula u okviru koga su definisane, pa tačka, pa naziv funkcije i njeni argumenti. U ovom slučaju to su funkcija modul \textit{JellyFish}, funkcija \textit{jellyfish\_algorithm}, lista stringova $["AC", "CG", "AC", "GT", "CA","GG", "AC","GT"]$ koji predstavljaju k-mere i faktor opterećenja 0.7.
 
 
 % ------------------------------------------------------------------------------
