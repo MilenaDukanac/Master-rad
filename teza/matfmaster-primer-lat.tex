@@ -68,6 +68,8 @@
 
 \lstset{style=mystyle}
 
+% \newcommand{\source}[1]{\caption*{\scriptsize{Izvor: {#1}}}} % Source for pictures
+
 % Datoteka sa literaturom u BibTex tj. BibLaTeX/Biber formatu
 \bib{matfmaster-primer}
 
@@ -558,6 +560,7 @@ zadate dužine koja se naziva \textbf{dužina očitavanja}. Kako bi se dobila po
   \includegraphics[width=0.8\textwidth]{vrste_ocitavanja.PNG}
   \caption{Vrste očitavanja}
   \label{fig:01}
+  \source{\cite{WingKinSung}}
 \end{figure}
 
 Za potrebe \textit{shotgun} sekvencioniranja celokupnog genoma postoje 2 protokola: 
@@ -579,6 +582,7 @@ Sekvencioniranje celokupnog genoma uključuje 3 koraka koja su prikazana na slic
 Uključuje 3 koraka: (1) korak razbijanja genoma (\textit{sonication}), (2)
 korak odabira dužine očitavanja i izdvajanja fragmenata te dužine (\textit{size selection}), (3) korak očitavanja kraj(ev)a svakog fragmenta (\textit{sequencing})}
 \label{fig:1}
+\source{\cite{WingKinSung} str. 122, slika 5.1}
 \end{figure}
 
 Prvo, uzorak genoma se na slučajan način razbija na DNK fragmente pomoću \textit{sonication} ili \textit{enzimskog} sečenja. Zatim sledi korak odabira dužine očitavanja u kom se vrši ekstrahovanje DNK fragmenata te dužine. Na kraju se vrši sekvencioniranje jednostranih očitavanja ili sekvencioniranje uparenih očitavanja. Pri sekvencioniranju jendostranih očitavanja, sekvencer čita DNK fragment u jednom smeru, dok pri sekvencioniranju uparenih očitavanja, sekvencer čita DNK fragment u oba smera. (Sekvenceri treće generacije čitaju čitav DNK fragment. To se smatra jednostranim očitavanjem.) Slika \ref{fig:2} daje jedan takav primer:
@@ -590,6 +594,7 @@ Prvo, uzorak genoma se na slučajan način razbija na DNK fragmente pomoću \tex
   \includegraphics[width=\textwidth, height=2.4cm]{druga.PNG}
   \caption{Razmatra se DNK fragment ekstrahovan iz uzorka genoma. Upareno očitavanje se formira izdvajanjem dve DNK podniske (koje se takođe nazivaju oznake (engl. \textit{tags})) sa oba kraja DNK fragmenta.}
   \label{fig:2}
+  \source{\cite{WingKinSung} str. 122, slika 5.2}
 \end{figure}
 
 Za sekvencioniranje jednostranih očitavanja, dobija se očitavanje sa 5' kraja \footnote{$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.} \textit{forward} šablona DNK fragmenta, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Za sekvencioniranje uparenih očitavanja, dobijaju se 5' očitavanja i \textit{forward} i \textit{reverse} šablona DNK fragmenta (u unutrašnjoj orijentaciji, tj. očitavanje šablona od 5' ka 3'), tj:
@@ -618,6 +623,7 @@ svih fragmenata određene dužine očitavanja, npr. 10000 bp, gelom za rezanje (
 fragment je cirkularizovan sa adapterom (predstavljen blokom sive boje)
 u sredini. Zatim se vrši sečenje 2 područja oko adaptera. (c)
 Konačno, uparena očitavanja se ekstrahuju sekvencioniranjem uparenih očitavanja.}
+\source{\cite{WingKinSung} str. 123, slika 5.3}
 \label{fig:3}
 \end{figure}
 
@@ -651,6 +657,7 @@ očitavanja u dužu sekvencu, bez korišćenja referentne sekvence} predlažu as
 Ispravljanje greškaka sekvencioniranja u očitavanjima. 2. Izgradnja kontiga: Spajanje
 očitavanja radi formiranja kontiga. 3. Formiranje skafolda: Korišćenjem uparenih očitavanja se vrši povezivanje kontiga kako bi se formirali skafoldi. 4. Popunjavanje praznina: Za susedne kontige u skafoldima, vrši se popunjavanje praznina.}
   \label{fig:4}
+  \source{\cite{WingKinSung} str. 124, slika 5.4}
 \end{figure}
 
 \newpage
@@ -673,12 +680,13 @@ postupku zove se heš tabela.}. Kada je $k$ malo (npr. manje od 10), koristi se 
 Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK deli Z u
 4 ($= n_{list} * n_{sublist}$) podliste, a zatim pokreće \textit{JellyFish} algoritam za brojanje k-mera u svakoj podlisti.}
   \label{fig:5}
+  \source{\cite{WingKinSung} str. 131, slika 5.8}
 \end{figure}
 
 Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvršavanja je $O(N + 4^k)$, a kako treba izgraditi tabelu veličine $4^k$, prostorna složenost je $O(4^k)$. Kada je k veliko, navedeni algoritam ne može da radi, jer zahteva previše prostora.
 
 \subsection{JellyFish algoritam}
-Moguće je smanjiti veličinu heš tabele koristeći mehanizma \textbf{otvorenog adresiranja} \footnote{Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje 3 metode otvorenog adresiranja: linearno popunjavanje, kvadratno popunjavanje i duplo heširanje.}. Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $\alpha$ faktor opterećenja $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$ gde $Count[i]$ čuva broj za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost H[i] gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, ne možemo čuvati $z>$ u $H[i]$, tj. došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti \textbf{linearnim popunjavanjem}. Ovom metodom pokušavamo da uvećamo indeks $i$ za 1 kada se kolizija dogodi sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan. Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon sto su svi k-meri iz $Z$ obrađeni, prikazujemo $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
+Moguće je smanjiti veličinu heš tabele koristeći mehanizma \textbf{otvorenog adresiranja} \footnote{Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje 3 metode otvorenog adresiranja: linearno popunjavanje, kvadratno popunjavanje i duplo heširanje.}. Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $\alpha$ \textbf{faktor opterećenja}  \footnote{Broj koji kontroliše veličinu heš tabele} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$ gde $Count[i]$ čuva broj za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost H[i] gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, ne možemo čuvati $z>$ u $H[i]$, tj. došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti \textbf{linearnim popunjavanjem}. Ovom metodom pokušavamo da uvećamo indeks $i$ za 1 kada se kolizija dogodi sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan. Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon sto su svi k-meri iz $Z$ obrađeni, prikazujemo $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
 
 JellyFish algoritam je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
 
@@ -687,6 +695,7 @@ JellyFish algoritam je detaljnije objašnjen na slici \ref{fig:6} (gorni deo sli
   \includegraphics[width=0.85\textwidth]{Jellyfish5_9.PNG}
   \caption{Jellyfish algoritam i funkcija hashEntry}
   \label{fig:6}
+  \source{\cite{WingKinSung} str. 132, slika 5.9}
 \end{figure}
 
 Iako $JellyFish$ algoritam koristi manje prostora od metode naivnog prebrojavanja, $JellyFish$ heš tabela mora biti veličine koja je jednaka bar broju jedinstvenih k-mera iz $Z$. $JellyFish$ i dalje zahteva mnogo memorije u slučaju da je broj jedinstvenih k-mera u $Z$ veliki.
@@ -704,6 +713,7 @@ U drugoj fazi se obavlja stvarno brojanje. Vrši se skeniranje k-mera iz $Z$ jed
 \includegraphics[width=12cm]{BFCounter5_10.PNG}
 \caption{Prostorno efikasan algoritam za prebrojavanje k-mera koji broji samo k-mere koji se pojavljuju najmanje q puta.}
 \label{fig:7}
+\source{\cite{WingKinSung} str. 134, slika 5.10}
 \end{figure}
 
 Vreme izvršavanja BFCounter algoritma je $O(n)$. Što se tiče prostorne složenosti, \textit{counting Bloom} filter zahteva $O(N log(q))$. Prostor za $H[]$ i $Count[]$ je $\frac{N'}{\alpha}(2k + 32)$ bitova, gde je $N'$ broj k-mera koji se pojavljuju najmanje $q$ puta. Primetimo da je $N' \leq \frac{N}{q}$.
@@ -719,6 +729,7 @@ Iako je BFCounter prostorno efikasan, njegova prostorna složenost i dalje zavis
 \includegraphics[width=12cm]{DSK5_11.PNG}
 \caption{DSK algoritam}
 \label{fig:66}
+\source{\cite{WingKinSung} str. 136, slika 5.11}
 \end{figure}
 
 Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da svaka lista bude smestena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$ sa slike \ref{fig:6}.
@@ -746,7 +757,7 @@ Nakon što su sva očitavanja korigovana, može se vršiti njihovo spajanje radi
     \item{De Brujinov grafovski pristup}
 \end{itemize}
 
-\subsection{\textit{Base-by-base} pristup proširenja}
+\subsection{Pristup baznog proširenja}
 
 \textbf{Pristup baznog proširenja} rekonstruiše svaku kontigu tako što je proširuje bazu po bazu (baze su $A, C, G, T$). Metod počinje tako što se nasumično bira očitavanje koje će služiti kao šablon. Očitavanja su poravnata na oba kraja šablona (3' kraj i 5' kraj). Na osnovu poravnanja se dobija \textbf{konsenzusna baza} \footnote{Baza koja se pojavljuje najveći broj puta na određenoj poziciji u poravnanju.} i šablon se njome proširuje. Slika \ref{fig:7} ilustruje  korak baznog proširenja:
 
@@ -756,6 +767,7 @@ Nakon što su sva očitavanja korigovana, može se vršiti njihovo spajanje radi
   \includegraphics[width=0.8\textwidth]{contig5_12.PNG}
 \caption{Gornja sekvenca predstavlja šablon. Postoji 7 očitavanja koja su poravnata na $3'$ kraju šablona. Pravougaonik pokazuje da su baze $C$ i $T$ izvodljivo proširenje šablona. Kako je $T$ konsenzusna baza, metoda baznog proširenja će proširiti kontigu bazom $T$.}
 \label{fig:7}
+\source{\cite{WingKinSung} str. 137, slika 5.12}
 \end{figure}
 
 Bazno proširenje se ponavlja sve dok ima konsenzusa. Zatim se prestaje sa proširenjem i dobija se kontiga. Proširenje se izvodi i na $3'$ kraju i na $5'$ kraju šablona. Slika \ref{fig:8} daje pseudokod ovog metoda:
@@ -767,6 +779,7 @@ Bazno proširenje se ponavlja sve dok ima konsenzusa. Zatim se prestaje sa proš
 \includegraphics[width=0.9\textwidth]{SimpleAsembler5_13.PNG}
 \caption{Jednostavan base-by-base asembler proširenja}
 \label{fig:8}
+\source{\cite{WingKinSung} str. 138, slika 5.13}
 \end{figure}
 
 Iako je bazno proširenje jednostavno, ono često daje kratke kontige zbog 2 problema. Prvi, početni šablon je nasumično izabrano očitavanje. Ako očitavanje sadrži greške sekvencioniranja ili se nalazi u ponovku, to će uticati na proširenje. Drugi problem je što se može desiti da se šablon proširi u neki od ponovaka. Ponovak stvara grane koje gore navedeni pristup ne može da razreši.
@@ -792,11 +805,14 @@ Na primer, neka je dat skup stringova $R = \{ACGC, CATC, GCA\}$ i neka je potreb
 \caption{(a) De Brujinov graf $H_3$ za $R = \{ACGC, CATC, GCA\}$. (b)
  Preklapanje 5 3-mera koji odgovaraju granama grafa $H_3$.}
  \label{fig:9}
+ \source{\cite{WingKinSung} str. 139, slika 5.15}
  \end{figure}
 
 Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} \footnote{Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom.} grafa $H_k$. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$.
 
 Medjutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$. Na primer, neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT, GATTT\}$ i neka je $k = 3$. De Brujinov graf $H_3$ je prikazan na slici  \ref{fig:10}: 
+
+\newpage
 
 %Figura 5.16
 \begin{figure}[!ht]
@@ -804,6 +820,7 @@ Medjutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$. Na primer, neka je 
 \includegraphics[width=0.7\textwidth]{Figura5_16.PNG}
 \caption{De Brujinov graf $H_3$ za $R = \{AAGATC, GATCGAT, CGATGA, ATGATT, GATTT\}$ }
 \label{fig:10}
+\source{\cite{WingKinSung} str. 140, slika 5.16}
 \end{figure}
 
 Kao što se može videti, postoje dve Ojlerove putanje u grafu $H_3$. Ukoliko se prvo obiđe gornji ciklus, dobija se $AAGATCGATGATTT$, a ukoliko se prvo obiđe donji ciklus, dobija se $AAGATGATCGATTT$. Ovaj primer ukazuje na to da Ojlerova putanja mozda neće uvek dati ispravnu sekvencu. Čak još gore, Ojlerova putanja možda neće postojati u nekom grafu $H_k$.
@@ -818,6 +835,8 @@ U daljem tekstu govoriće se o De Brujinovom grafovskom asembleru u slučaju kad
 
 Kako Ojlerova putanja nije jedinstvena i možda i ne postoji, ne teži se dobijanju kompletnog genoma. Umesto toga, teži se dobijanju skupa kontiga. Kontiga je maksimalna prosta putanja u $H_k$. Preciznije, svaka maksimalna prosta putanja je maksimalna putanja u $H_k$ tako da svaki čvor (osim početnog i krajnjeg) ima unutrašnji i spoljašnji stepen 1. Slika \ref{fig:11} daje pseudokod ovog jednostavnog metoda:
 
+\newpage
+
 %Algoritam De Brujinov asembler
 %Figura 5.17
 \begin{figure}[!ht]
@@ -825,11 +844,10 @@ Kako Ojlerova putanja nije jedinstvena i možda i ne postoji, ne teži se dobija
 \includegraphics[width=0.9\textwidth]{Figura5_17.PNG}
 \caption{Jednstavan De Brujinov grafovski asmbler}
 \label{fig:11}
+\source{\cite{WingKinSung} str. 141, slika 5.17}
 \end{figure}
 
 Za De Brujinov graf $H_3$ sa slike \ref{fig:10} mogu se konstruisati 4 kontige: $AAGAT, GATCGAT, GATGAT, GATTT$. Parametar $k$ je veoma važan. Za različito $k$, mogu se dobiti različiti skupovi kontiga. Slika \ref{fig:12} ilustruje ovaj problem na De Brujinovom grafu za $k = 4$ i $k = 5$:
-
-\newpage
 
 %Figura 5.18
 \begin{figure}[!ht]
@@ -837,6 +855,7 @@ Za De Brujinov graf $H_3$ sa slike \ref{fig:10} mogu se konstruisati 4 kontige: 
 \includegraphics[width=0.9\textwidth]{Figura5_18.PNG}
 \caption{De Brujinov graf $H_4$ i $H_5$ za $R = {AAGATC, GATCGAT, CGATGA, ATGATT, GATTT}$}
 \label{fig:12}
+\source{\cite{WingKinSung} str. 141, slika 5.18}
 \end{figure}
 
 Kada je $k = 4$, $H_4$ je prosta putanja i može se konstruisati jedna kontiga $AAGATCGATGATTT$. U slučaju da je $k = 5$, $H_5$ sadrži 5 povezanih komponenti, svaka je prosta putanja i može se konstruisati 5 kontiga: $AAGATC$, $GATCGAT$, $CGATGA$, $ATGATT$, $GATTT$.
@@ -847,8 +866,6 @@ Iz gore navedenih primera, može se primetiti da je De Brujinov graf dobar, ukol
 
 U prethodnom odeljku se pretpostavljalo da ne postoje greške sekvencioniranja u očitavanjima, što je nerealno. Kada postoje greške, pokušava se njihovo uklanjanje "čišćenjem" De Brujinovog grafa. Rešenje koje će se razmatrati su predložili Zerbino (engl. \textit{Zerbino}) i Birni (enlg. \textit{Birney}). Treba obratiti pažnju da kratka očitavanja imaju nisku stopu greške (1 greška na svakih 100 baza). Većina k-mera sadrži najviše 1 grešku. Ovi k-meri sa greškom mogu kreirati 2 moguća anomalna podgrafa u De Brujinovom grafu: \textbf{vrh (špic)} i \textbf{mehurić}.
 
-\newpage
-
 \textbf{Vrh} je putanja dužine najviše $k$ gde svi unutrašnji čvorovi imaju ulazni i izlazni stepen 1, dok jedan od njihovih krajeva ima ulazni ili izlazni stepen 0. To može proizvesti potencijalni kontigu dužine najviše $2k$. Slika \label{fig:13} ilustruje vrh kreiran na osnovu jednog nepoklapanja u jednom očitavanju: 
 
 %Figure 5.19
@@ -857,6 +874,7 @@ U prethodnom odeljku se pretpostavljalo da ne postoje greške sekvencioniranja u
 \includegraphics[width=\textwidth]{Figura5_19.PNG}
 \caption{(a) Višestruko poravnanje skupa od 5 očitavanja, gde treće očitavanje ima grešku sekvencioniranja (prikazana podebljanim fontom). (b) De Brujinov graf koji odgovara skupu očitavanja iz (a). Vrh je napravljen. Brojevi u zagradama označavaju mnogostrukost 4-mera.}
 \label{fig:13}
+\source{\cite{WingKinSung} str. 142, slika 5.19}
 \end{figure}
 
 Ako su svi čvorovi na vrhu niske mnogostrukosti (k-meri koji se mali broj puta pojavljuju u očitavanjima), takva kratka kontiga teško da može biti ispravna (preformulisati). Ovaj vrh se može ukloniti iz De Brujinovog grafa, ali treba primetiti da uklanjanje vrha iz De Brujinovog grafa može generisati nove vrhove. Tako da procedura uklanjanja mora uklanjati vrhove rekurzivno.
@@ -864,14 +882,13 @@ Ako su svi čvorovi na vrhu niske mnogostrukosti (k-meri koji se mali broj puta 
 \textbf{Mehurić} se sastoji od dve kratke različite putanje sa istim početnim i
 krajnim čvorovima u De Brujinovom grafu, pri čemu te 2 putanje zapravo kontige koje se razlikuju u samo jednom nukleotidu. Na primer, slika \ref{fig:133}(a) sadrži skup očitavanja gde treće očitavanje ima jedno nepoklapanje. Slika \ref{fig:133}(b) prikazuje odgovarajući De Brujinov graf i jedan mehurić koji se formira. Gornja putanja mehurića predstavlja $GACTCCGAG$. Donja putanja mehurića predstavlja $GACTTCGAG$. Kada su dve putanje u mehuriću veoma slične, putanja sa nižom mnogostukošću će verovatno biti lažno pozitivna. Može se pokušati sa spajanjem (otklanjanjem) mehurića. U ovom primeru, 2 putanje imaju samo jedno nepoklapanje. Budući da su čvorovi u donjoj putanji niže mnogostrukosti, vrši se spajanje (otklanjanje) mehurića i dobija se graf na slici \ref{fig:13}(c). Preciznije, može se definisati težina putanje $w_1 \rightarrow w_2 \rightarrow ... \rightarrow w_p$ kao $\sum_{i=1}^{p} f(w_i)$, gde je $f(w_i)$ mnogostrukost od $w_i$. Onda, kada se dve putanje spoje u mehuriću, zadržava se ona sa većom težinom.
 
-\newpage
-
 %Figure 5.20
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\textwidth]{Figura5_20.PNG}
 \caption{(a) Višestruko poravnanje skupa od 5 očitavanja, gde treće očitavanje ima grešku sekvencioniranja (prikazana podebljanim fontom). (b) De Brujinov graf koji odgovara skupu očitavanja iz (a). Mehurić je napravljen. (c) Putanja dobijena spajanjem mehurića iz (b).}
 \label{fig:133}
+\source{\cite{WingKinSung} str. 143, slika 5.20}
 \end{figure}
 
 Za spajanje (otklanjanje) mehurića, može se koristiti \textbf{algoritam turneje} (engl. \textit{tour bus algorithm}). Ovaj algoritam je nalik na Dijkstrinu pretragu u širinu baziranu na \textit{BFS metodu}. Algoritam počinje od proizvoljnog čvora $s$ i posećuje čvorove u rastućem poretku rastojanja od početnog čvora. Kada algoritam obrađuje neposećeni čvor $u$, on proverava svu njegovu decu $v$. Za svako dete $v$ se izvode 2 koraka. Prvo, dodeljuje se $u$ kao roditelj od $v$ u BFS stablu postavljanjem $\pi (v) = u$. Drugo, ako je dete $v$ od $u$ posećeno, mehurić je detektovan. Algoritam izračunava najnižeg zajedničkog pretka $c$ od $u$ i $v$ u BFS stablu definisanog sa $\pi ()$. Zatim se putanje $c \rightarrow u$ i $c \rightarrow v$ upoređuju. Ako su dovoljno slične, spajaju se. Zadržavamo putanju sa većom težinom. Algoritam je detaljnije prikazan na slici \ref{fig:14}:
@@ -884,6 +901,7 @@ Za spajanje (otklanjanje) mehurića, može se koristiti \textbf{algoritam turnej
 \includegraphics[width=0.8\textwidth]{Figura5_21.PNG}
 \caption{Algoritam turneje}
 \label{fig:14}
+\source{\cite{WingKinSung} str. 144, slika 5.21}
 \end{figure}
 
 
@@ -897,6 +915,7 @@ Slika \ref{fig:15} ilustruje korake algoritma turneje. Originalni De Brujinov gr
 \includegraphics[width=0.8\textwidth]{Figura5_22.PNG}
 \caption{Ovaj primer ilustruje kako algoritam turneje obilazi De Brujinov graf. Radi jasnoće, svaki čvor pokazuje poslednju bazu svojih k-mera i odgovarajući celobrojni stepen je njegova mnogostrukost. Algoritam izvodi pretragu u dobinu (BFS) i BFS stablo je prikazano podebljanim ivicama. Na slici (a) postoje 2 (ugnježdena) mehurića. Na slici (b) se izvodi BFS počevši od $r$. Kada se poseti $u$, dete $v$ od $u$ je posećeno. Identifikuje se mehurić i vrši se njegovo spajanje. Zatim, dobija se slika (c). Na slici (c) se nastavlja izvođenje BFS algoritma. Kada se posete $u'$, dete $v'$ od $u'$ je posećeno. Identifikuje se drugi mehurić i vrši se njegovo spajanje. Zatim se dobija slika (d). Na slici (d) se nastavlja izvođenje BFS algoritma. Kako se ne može identifikovati više nijedan mehurić, algoritam se završava.}
 \label{fig:15}
+\source{\cite{WingKinSung} str. 145, slika 5.22}
 \end{figure}
 
 Nakon što se uklone vrhovi i spoje (otklone) mehurići u De Brujinovom grafu, može se dalje filtrirati buka uklanjanjem k-mera sa mnogostrukošću manjom ili jednakom nekom pragu $m$ (npr. $m = 1$). Na primer na slici \ref{fig:15}(d), ako je $m = 1$, treba ukloniti 2 ivice težine 1. Ova tehnika se takođe koristi pri korigovanju grešaka u sekvencioniranju. Ukratko, predstavljena su 3 trika: (1) otklanjanje vrhova, (2) spajanje mehurića i (3) filtriranje k-mera sa niskom mnogostrukošću. Kombinovanjem ovih tehnika, dobija se algoritam koji može da obradi greške sekvencioniranja i prikazan je na slici \ref{fig:16}:
@@ -907,13 +926,14 @@ Nakon što se uklone vrhovi i spoje (otklone) mehurići u De Brujinovom grafu, m
 \includegraphics[width=0.9\textwidth]{Figura5_23.PNG}
 \caption{Algoritam za otklanjanje grešaka sekvencioniranja}
 \label{fig:16}
+\source{\cite{WingKinSung} str. 146, slika 5.23}
 \end{figure}
 
 \subsection{Kako izabrati k?}
 
-Kao što je već rečeno, odabir broja k može uticati na performanse De Brujinovog algoritma. Jednostavno rešenje je pokretanje algoritma sa slike \ref{fig:16} za različite $k$. Zatim se kontige grupišu i spajaju. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju drugačiji kvalitet. Kontige dobijene od $H_k$ gde je $k$ malo su veoma tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene od $H_k$ gde je $k$ veliko su duže. Međutim, one mogu sadržati mnogo grešaka.
+Kao što je već rečeno, odabir broja $k$ može uticati na performanse De Brujinovog algoritma. Jednostavno rešenje je pokretanje algoritma sa slike \ref{fig:16} za različite $k$. Zatim se kontige grupišu i spajaju. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju drugačiji kvalitet. Kontige dobijene od $H_k$ gde je $k$ malo su veoma tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene od $H_k$ gde je $k$ veliko su duže. Međutim, one mogu sadržati mnogo grešaka.
 
-IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}} počiva na ideji da ne traba graditi De Brujinov graf nezavisno za različite k. Umesto toga, IDBA gradi De Brujinov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brujinov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, buka u $H_k$ je redukovana. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta iz $H_k$. Slika \ref{fig:17} opisuje ideju IDBA asemblera:
+IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}} počiva na ideji da ne traba graditi De Brujinov graf nezavisno za različite $k$. Umesto toga, IDBA gradi De Brujinov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brujinov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, buka u $H_k$ je redukovana. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta iz $H_k$. Slika \ref{fig:17} opisuje ideju IDBA asemblera:
 
 %Figure 5.24
 \begin{figure}[!ht]
@@ -921,18 +941,19 @@ IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De N
 \includegraphics[width=0.9\textwidth]{Figura5_24.PNG}
 \caption{IDBA}
 \label{fig:17}
+\source{\cite{WingKinSung} str. 146, slika 5.24}
 \end{figure}
 
-\chapter{Opis implementacije algoritama i rezultati pokretanja}
+\chapter{Opis implementacije algoritama i rezultati njihovog izvršavanja}
 
-U prethodnom delu data je biološka osnova za algoritme koji se primenjuju u k-mer brojanju. U ovom delu će biti dati opisi implementacije tih algoritama, kao i delovi koda radi boljeg razumevanja rešenja implementiranog u programskom jeziku Elixir. Svaki algoritam je definisan u okviru modula koji nosi naziv tog algoritma i koji sadrži glavnu funkciju (koja takođe nosi naziv algoritma) i veliki broj pomoćnih.
+U prethodnom delu data je biološka osnova za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom delu će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir, kao i delovi koda radi boljeg razumevanja. Svaki algoritam je definisan u okviru modula koji nosi naziv tog algoritma i koji sadrži glavnu funkciju i veliki broj pomoćnih.
 
 \section{Opis JellyFish algoritma}
 
 Ulaz u glavnu funkciju:
 
 \begin{itemize}
-    \item {Z je skup od N k-mera, koji je u Elixir-u predstavljen listom stringova}
+    \item {$Z$ je skup od $N$ k-mera, koji je u Elixir-u predstavljen listom stringova}
     \item {$\alpha$ je faktor opterećenja koji kontroliše veličinu heš tabele i koji je broj tipa float između 0 i 1}
     \item {h je heš funkcija koja k-mere, tj. stringove mapira u brojeve}
 \end{itemize}
@@ -943,33 +964,33 @@ Heš funkcija koja nosi naziv \textit{pattern\_to\_number} prikazana je na listi
 
 \lstinputlisting[language=erlang,label={lst:100},caption=Heš funkcija \textit{pattern\_to\_number},captionpos=b]{101.ex}
 
-Argumenti funkcije su string koji predstavlja k-mer (\textit{pattern}), početni string koji je uvek prazan pri pozivu funkcije (\textit{begin\_string}), indeks  koji je uvek 0 pri pozivu funkcije (\textit{index}) i dužina k-mera (\textit{length\_of\_pattern}). Ova funkcija je rekurzivna i poziva se za svaki karakter stringa \textit{pattern}, počevši od nulte pozicije, sve dok se ne prođe kroz ceo string, tj. dok se \textit{index} ne izjeDNKči sa \textit{length\_of\_pattern}. Dakle, uzima se prvi karakter \textit{pattern}-a, kodira se pomoćnom funkcijom \textit{symbol\_to\_number}, prikazanom na listingu \ref{lst:101} i nadovezuje se na \textit{begin\_string} pomoću operatora za nadovezivanje stringova $<>$. Zatim se prelazi na sledeći karakter, ponavlja se postupak i sve tako dok se ne dođe do kraja \textit{pattern}-a. U tom trenutku, povratna vrednost funkcije je \textit{begin\_string} koji umesto A, C, G i T sadrži kodove 00, 01, 10, 11, respektivno i koji se pomoću funkcije \textit{to\_integer/2} iz modula \textbf{String} pretvara u ceo broj.
+Argumenti funkcije su string koji predstavlja k-mer (\textit{pattern}), početni string koji je uvek prazan pri pozivu funkcije (\textit{begin\_string}), indeks  koji je uvek 0 pri pozivu funkcije (\textit{index}) i dužina k-mera (\textit{length\_of\_pattern}). Ova funkcija je rekurzivna i poziva se za svaki karakter stringa \textit{pattern}, počevši od nulte pozicije, sve dok se ne prođe kroz ceo string, tj. dok se \textit{index} ne izjednači sa \textit{length\_of\_pattern}. Dakle, uzima se prvi karakter \textit{pattern}-a, kodira se pomoćnom funkcijom \textit{symbol\_to\_number}, prikazanom na listingu \ref{lst:101} i nadovezuje se na \textit{begin\_string} pomoću operatora za nadovezivanje stringova $<>$. Zatim se prelazi na sledeći karakter, ponavlja se postupak i sve tako dok se ne dođe do kraja \textit{pattern}-a. U tom trenutku, povratna vrednost funkcije je \textit{begin\_string} koji umesto $A$, $C$, $G$ i $T$ sadrži kodove $00$, $01$, $10$, $11$, respektivno i koji se pomoću funkcije \textit{to\_integer/2} iz modula \textbf{String} pretvara u ceo broj.
 
 \lstinputlisting[language=erlang,label={lst:101},caption=Pomoćna funkcija \textit{symbol\_to\_number},captionpos=b]{100.ex}
 
-Glavna funkcija pre poziva pomoćnih funkcija obavlja početnu inicijalizaciju objekata koji su joj potrebni, tj. izračunava veličinu heš table H i Count tabele, a zatim ih inicijalizuje praznim stringovima i nulama, respektivno. Izgled glavne funkcije može se videti na listingu \ref{lst:102}:
+Glavna funkcija pre poziva pomoćnih funkcija obavlja početnu inicijalizaciju objekata koji su joj potrebni, tj. izračunava veličinu heš table $H$ i $Count$ tabele, a zatim ih inicijalizuje praznim stringovima i nulama, respektivno. Izgled glavne funkcije može se videti na listingu \ref{lst:102}:
 
 \newpage
 
 \lstinputlisting[language=erlang,label={lst:102},caption=Glavna funkcija \textit{jellyfish\_algorithm},captionpos=b]{102.ex}
 
-Funkcije za inicijalizaciju H tabele (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti H tablele na početku prazni stringovi, a Count table nulame, što se može videti na listingu \ref{lst:103}:
+Funkcije za inicijalizaciju H tabele (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama $h\_table$ i $count\_table$, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti mape $h\_table$ na početku prazni stringovi, a mape $count\_table$ nule, što se može videti na listingu \ref{lst:103}:
 
 \lstinputlisting[language=erlang,label={lst:103},caption=Funkcije za inicijalizaciju H i Count tabela,captionpos=b]{103.ex}
 
-Pomoćna funkcija koja obavlja prebrojavanje k-mera je funkcija \textit{calculate} čiji su argumenti mape \textit{h\_table} i \textit{count\_table}, lista \textit{z\_table} i veličina pomenutih mapa \textit{size\_of\_H}. Kod ove funkcije prikazan je na listingu \ref{lst:104}: 
+Pomoćna funkcija koja obavlja brojanje k-mera je funkcija \textit{calculate} čiji su argumenti mape \textit{h\_table} i \textit{count\_table}, lista \textit{z\_table} i veličina pomenutih mapa \textit{size\_of\_H}. Kod ove funkcije prikazan je na listingu \ref{lst:104}: 
 
 \newpage
 
 \lstinputlisting[language=erlang,label={lst:104},caption=Pomoćna funkcija \textit{calculate},captionpos=b]{104.ex}
 
-Kao što se može videti, funkcija \textit{calculate} je rekurzivna. Poziva se za svaki element liste \textit{z\_table}, počevši od njene glave, sve dok lista ne postane prazna. Za svaki string iz \textit{z\_table} prvo se poziva funkcija \textit{hashEntry} koja izračunava indeks \textit{i}, tj. ključ za mape \textit{h\_table} i \textit{count\_table}. Kod ove funkcije dat je listingom \ref{lst:105}:
+Kao što se može videti, funkcija \textit{calculate} je rekurzivna. Poziva se za svaki element liste \textit{z\_table}, počevši od njene glave, sve dok lista ne postane prazna. Za svaki string iz \textit{z\_table} prvo se poziva funkcija \textit{hashEntry} koja vrši heširanje stringova u indeks \textit{i} koji ključ za mape \textit{h\_table} i \textit{count\_table}. Kod ove funkcije dat je listingom \ref{lst:105}:
 
 \lstinputlisting[language=erlang,label={lst:105},caption=Pomoćna funkcija \textit{hashEntry},captionpos=b]{105.ex}
 
-Zatim se proverava da li ključ \textit{i} u mapi \textit{h\_table} ima vrednost praznog stringa. Vrednosti ključa neke mape se u Elixir-u dohvata pomoću funkcije \textit{get/2} iz modula \textbf{Map} čiji su argumenti naziv mape i ključ. Ukoliko je vrednost prazan string, ključu se dodeljuje vrednost stringa koji se trenutno obrađuje i ključu u mapi \textit{count\_table} \textit{i} se dodeljuje vrednost 1. Ključu u mapi vrednost se dodeljuje pomoću funkcije \textit{put/3} pomenutog modula. Njeni argumenti su naziv mape, ključ i vrednost koja se dodeljuje. Ako je vrednost ključa \textit{i} u mapi \textit{h\_table} različita od praznog stringa, onda se samo vrednost ključa \textit{i} u mapi \textit{count\_table}  povećava za jedan i prelazi se na obradu sledećeg stringa iz liste \textit{z\_table}. 
+Zatim se proverava da li je vredost ključa \textit{i} u mapi \textit{h\_table} prazan string. Vrednost ključa neke mape se u Elixir-u dohvata pomoću funkcije \textit{get/2} iz modula \textbf{Map} čiji su argumenti naziv mape i ključ. Ukoliko je vrednost prazan string, ključu se dodeljuje vrednost stringa koji se trenutno obrađuje i ključu u mapi \textit{count\_table} \textit{i} se dodeljuje vrednost 1. Vrednost ključa nekoj mapi se dodeljuje pomoću funkcije \textit{put/3} pomenutog modula. Njeni argumenti su naziv mape, ključ i vrednost koja se dodeljuje. Ako je vrednost ključa \textit{i} u mapi \textit{h\_table} različita od praznog stringa, onda se samo vrednost ključa \textit{i} u mapi \textit{count\_table}  povećava za jedan i prelazi se na obradu sledećeg stringa iz liste \textit{z\_table}. 
 
-Na kraju, izlaz iz glavne funkcije je uređeni par $(\textit{h\_table}, \textit{count\_table})$. Kao što je već pomenuto, u Elixir-u su predstavljeni mapama veličine koja je količnik dužine liste \textit{z\_table} i faktora opterećenja \textit{alpha}. Obe mape imaju iste ključeve, dok su vrednosti za mapu \textit{h\_table} stringovi koji predstavljaju k-mere, a za mapu \textit{count\_table} brojevi koji predstavljaju broj pojavljivanja određenog stringa u listi \textit{z\_table}.
+Na kraju, izlaz iz glavne funkcije je uređeni par $(\textit{h\_table}, \textit{count\_table})$. Kao što je već pomenuto, u Elixir-u su predstavljeni mapama veličine koja je količnik dužine liste \textit{z\_table} i faktora opterećenja \textit{alpha}. Obe mape imaju iste ključeve, dok su im vrednosti stringovi koji predstavljaju k-mere i brojevi koji predstavljaju broj pojavljivanja određenog stringa u listi \textit{z\_table}.
 
 Na listingu \ref{lst:105} se može videti konkretan primer pokretanja algoritma:
 
@@ -977,7 +998,7 @@ Na listingu \ref{lst:105} se može videti konkretan primer pokretanja algoritma:
 
 \newpage
 
-Ovo je primer izvršavanja algoritma u komandnom promptu. Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Elixir-a, navodi se komanda \textit{iex jellyfish.ex}. Nakon toga mogu se pozivati funkcije tako što se prvo navede ime modula u okviru koga su definisane, pa tačka, pa naziv funkcije i njeni argumenti. U ovom slučaju to su funkcija modul \textit{JellyFish}, funkcija \textit{jellyfish\_algorithm}, lista stringova $["AC", "CG", "AC", "GT", "CA","GG", "AC","GT"]$ koji predstavljaju k-mere i faktor opterećenja 0.7.
+Ovo je primer izvršavanja algoritma u komandnom promptu. Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Elixir-a, navodi se komanda \textit{iex jellyfish.ex}. Nakon toga mogu se pozivati funkcije tako što se prvo navede ime modula u okviru koga su definisane, tačka, pa naziv funkcije i njeni argumenti. U ovom slučaju to su modul \textit{JellyFish}, funkcija \textit{jellyfish\_algorithm}, lista stringova $["AC", "CG", "AC", "GT", "CA","GG", "AC","GT"]$ koji predstavljaju k-mere i faktor opterećenja 0.7.
 
 
 % ------------------------------------------------------------------------------
