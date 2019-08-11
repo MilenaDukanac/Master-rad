@@ -128,6 +128,8 @@
 % Glavni deo teze
 \mainmatter
 % ==============================================================================
+\chapter{Uvod}
+
 
 % ------------------------------------------------------------------------------
 \chapter{Elixir} %A bio je Uvod
@@ -138,11 +140,12 @@ Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se
 
 \newpage
 
-\section{Jezici sa najviše uticaja}
+\section{Razvojno stablo}
+
 Na nastanak Elixir-a je uticao programski jezik \textbf{Erlang}. 
 \begin{comment}Elixir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. 
 \end{comment}
-Pri njegovom kreiranju značajnu ulogu u smislu sintakse imao je programski jezik \textbf{Ruby}, a iz jezika kao što su \textbf{Python, Haskell} i \textbf{Clojure} je preuzeo mnoge koncepte. Dijagram uticaja ovih jezika na Elixir, kao i vreme nastanka svakog od njih može se videti na slici \ref{fig:02}: 
+Pri njegovom kreiranju značajnu ulogu u smislu sintakse imao je programski jezik \textbf{Ruby}, a iz jezika kao što su \textbf{Python, Haskell} i \textbf{Clojure} je preuzeo mnoge koncepte. Razvojno stablo jezika Elixir može se videti na slici \ref{fig:razvojnoStablo}. 
 \begin{comment}
 U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. (izmeni) 
 \end{comment}
@@ -150,79 +153,60 @@ U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekur
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{dijagram_uticaja_jezika.PNG}
-  \caption{Dijagram uticaja ostalih jezika na Elixir}
-  \label{fig:02}
+  \caption{Razvojno stablo jezika Elixir}
+  \label{fig:razvojnoStablo}
 \end{figure}
-
-\newpage
-
-\subsection{Lisp}
-\textbf{Lisp} je drugi najstariji viši programski jezik koji se i danas veoma koristi. Imao je uticaj na programski jezik Erlang, pa je samim tim uticao i na Elixir. Lisp je projektovao \textbf{Džon Makarti} 1958. godine, a prvi put je implementiran od strane \textbf{Stiva Rasela} na IBM 704 računaru. Rasel je pročitao Makartijev rad i zaključio da izračunavanje u Lispu može da se implementira na mašinskom jeziku. Rezultat toga je bio  interpretator koji je mogao da pokreće Lisp programe, ali i da računa vrednosti Lisp izraza. Lisp je zasnovan na matematičkoj teoriji rekurzivnih funkcija (u kojoj se funkcija pojavljuje u sopstvenoj definiciji), a Lisp program je funkcija koja se primenjuje na podatke. On koristi vrlo jednostavnu notaciju u kojoj se operacije i njihovi operandi prikazuju u zagradi. Na primer, $(+ a ( * b c))$ predstavlja $a + b * c$. Iako se čini neugodna, ova notacija dobro funkcioniše na računarima. Ime LISP je nastalo od \textit{"\textbf{LIS}t \textbf{P}rocessor"}, a povezane liste su jedan od glavnih tipova podataka. Danas postoji veliki broj dijalekata Lisp-a, a najpoznatiji među njima su \textbf{Common Lisp} i \textbf{Scheme}. Osnova Lisp-a je funkcionalno programiranje, ali se Lisp zbog raznih drugih svojstava smatra multiparadigmatskim programskim jezikom.
-
-\subsection{Prolog}
-\textbf{Prolog} (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. On bio osnova za Erlang, te je imao indirektan uticaj i na Elixir. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alain Kolmerauer} (engl. \textit{Alain Colmerauer}) i \textbf{Filipe Rousel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju (engl. \textit{University of Aix-Marseille}), zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Departmana veštačke inteligencije (engl. \textit{Department of Artifical Intelligence}) na Univerzitetu u Edinburgu (engl. \textit{University of Edinburgh}), razvili su osnovni dizajn jezika Prolog.
 
 \newpage
 
 \subsection{Erlang}
-Firma Erikson je 1981. godine oformila novu laboratoriju \textbf{Erikson CSLab} (eng. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme. Jedan od projekata nove laboratorije  je bio eksperimentisanje sa dodavanjem konkurentnih procesa u programski jezik Prolog i on predstavlja začetak novog programskog jezika. Taj programski jezik je 1987. godine nazvan \textbf{Erlang}. Ime je nastalo zahvaljujući inicijativi zaposlenih koji su radili na telefonskim prekidačima, a  za koje je jezik dizajniran. Naime, oni su predložili da jezik nosi ime Erlang u čast danskom matematičaru i inženjeru Agneru Krarupu Erlangu (engl. \textit{Agner Krarup Erlang}), a što je ujedno odgovaralo i skraćenici od  "\textbf{Er}icsson \textbf{Lang}uage".  Erlang se mogao posmatrati kao dijalekt Prologa sve do 1990. godine. Od tada, on ima svoju sintaksu i postoji kao potpuno samostalan programski
-jezik. Nakon mnogo godina rada nastajale su sve brže, bolje i stabilnije verzije jezika, kao i \textbf{standardna biblioteka OTP} (eng. \textit{The Open Telecom Platform}) (referenca). Erlang i OTP su postali deo slobodnog softvera (eng. \textit{open source software}) u decembru 1998. godine i mogu se slobodno preuzeti sa zvaničnog sajta jezika Erlang. Veliki broj kompanija danas koristi Erlang u razvoju svojih softverskih rešenja. Neke od
-njih su: Erikson (engl. \textit{Ericsson}), Motorola, Votsap (eng. \textit{WhatsApp}), Jahu (eng. \textit{Yahoo!}),
-Fejsbuk (eng. \textit{Facebook}) (referenca).
+Firma Erikson je 1981. godine oformila novu laboratoriju \textbf{Erikson CSLab} (engl. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme \cite{ErlangBook2}. Jedan od zadataka novonastale laboratorije bio je dodavanje konkurentnih procesa u programski jezik \textbf{Prolog} \footnote{Prolog (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alen Kolmerur} (engl. \textit{Alain Colmerauer}) i \textbf{Filip Rusel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju, zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Departmana veštačke inteligencije na Univerzitetu u Edinburgu , razvili su osnovni dizajn jezika Prolog.} i njegovo unapređivanje. Prolog predstavlja začetak novog programskog jezika koji je 1987. godine nazvan \textbf{Erlang}. Ime je nastalo zahvaljujući inicijativi zaposlenih koji su radili na telefonskim prekidačima, a za koje je jezik dizajniran. Naime, oni su predložili da jezik nosi ime Erlang u čast danskom matematičaru i inženjeru Agneru Krarupu Erlangu (engl. \textit{Agner Krarup Erlang}), a što je ujedno odgovaralo i skraćenici od  "\textbf{Er}icsson \textbf{Lang}uage". Erlang se smatrao dijalektom Prologa sve do 1990. godine, kada je postao potpuno samostalan programski jezik sa sopstvenom sintaksom. Međutim, neke delove sintakse i koncepte iz Prologa je zadržao (promenljive počinju velikim slovom, svaka funkcionalna celina se završava tačkom, poklapanje obrazaca (engl. \textit{pattern matching})).
 
-\textbf{Erlang} je funkcionalan, deklarativan i konkurentan programski jezik. Na planu konkurentnosti je
-svojevrstan primer. Programski jezik Lisp je prvi predstavio funkcionalnu paradigmu i kao takav je imao veliki uticaj na Erlang. Neki od koncepata i osobina koje je nasledio od Lisp-a su koncept rekurzije, \textit{list comprehension} - sintaktička konstrukcija za kreiranje liste zasnovane na postojećim listama, koja sledi formu matematičke notacije \textit{set-builder} za razliku od upotrebe funkcija mapiranja i filtera. Na početku je Erlang stvaran kao dodatak na Prolog, vremenom je prerastao
-u dijalekt Prologa, a kasnije je zbog svoje kompleksnosti i sveobuhvatnosti evoluirao u potpuno novi programski jezik. Sintaksa jezika Erlang u velikoj meri podseća na sintaksu jezika Prolog (na primer, promenljive moraju počinjati velikim slovom, svaka funkcionalna celina se završava tačkom). Oba jezika u velikoj meri koriste poklapanje obrazaca (eng. \textit{pattern matching}).
+Nakon mnogo godina rada nastajale su sve brže, bolje i stabilnije verzije jezika, kao i \textbf{standardna biblioteka OTP} (engl. \textit{The Open Telecom Platform}) \cite{ErlangBook2}. Od decembra 1998. godine, kada su postali deo slobodnog softvera (engl. \textit{open source software}), Erlang i OTP se mogu slobodno preuzeti sa zvaničnog sajta jezika Erlang \cite{OTP}. Erlang dobija široko prihvatanje pojavom višejezgarnih procesora i njihovog novog skalabilnog pristupa konkurentnosti. Erlang je funkcionalan jezik idealan za svaku situaciju u kojoj su paralelnost, tolerancija na greške i brz odziv neophodni \cite{ErlangBook}, te se koristi u velikom broju kompanija za razvoj njihovih glavnih softverskih rešenja (npr. Erikson (engl. \textit{Ericsson}), Motorola, Votsap (engl. \textit{WhatsApp}), Jahu (engl. \textit{Yahoo!}),
+Fejsbuk (engl. \textit{Facebook})).
 
-Sa druge strane, Erlang je uticao na nastanak programskog jezika Elixir. Uz izmenjenu Erlangovu sintaksu i dopunjenu Erlangovu standardnu biblioteku, Elixir uživa široku popularnost.
-     
-\begin{comment} U funkcionalnom programiranju, funkcije se primenjuju na argumente i vrednosti. Vraćene vrednosti se koriste kao argumenti za druge funkcije. Funkcionalno programiranje je suprotno proceduralnom programiranju, gde se koriste naredbe koje menjaju okruženje programa na neki način, kao što je pripisivanje vrednosti promenljivim. U funkcionalnom programiranju, te promene okruženja se minimizuju korišćenjem vrednosti koje vraća pozvana funkcija kao direktan ulaz u drugu funkciju, bez upotrebe pripisivanja naredbi.\\
-\end{comment}
+Elixir je nasledio izmenjenu Erlangovu sintaksu i dopunjenu Erlangovu standardnu biblioteku. Pokreće se na vituelnoj mašini jezika Erlang, što znači da je nasledio i sve karakteristike Erlang platforme koja postoji već godinama i koja se pokazala pouzdanim rešenjem za skalabilne aplikacije.
 
 \subsection{Python}
-\textbf{Python} je interpretirani jezik opšte namene čiji tvorac je Gido van Rosum (engl. \textit{Guido van Rossum}). Krajem 1980-ih je koncipiran kao naslednik jezika \textbf{ABC}, a prvi put je objavljen 1991. godine. Filozofija dizajna jezika Python naglašava čitljivost koda pridavajući veliki značaj razmaku. Njegove jezičke konstrukcije i objektno-orijentisani pristup imaju za cilj da pomognu programerima da napišu jasan i logičan kod za male i velike projekte. Python je takođe dinamički tipiziran jezik i poseduje sistem za prikupljanje smeća (\textit{garbage collector}). Podržava više paradigmi programiranja uključujući proceduralno, objektno-orijentisano i funkcionalno programiranje. Python interpreteri su dostupni za mnoge operativne sisteme. Globalana zajednica programera razvija i održava referentnu implementaciju otvorenog koda \textbf{CPython}. Neprofitna organizacija \textit{The Python Software Foundation} upravlja i usmerava resursima za razvoj jezika Python i CPython. Jedna od osobina koje je Elixir nasledio od Python-a je podrška za dokumentaciju u vidu dokumentacionih stringova (engl. \textit{docstrings}) koji omogućavaju povezivanje dokumentacije sa modulima, funkcijama, klasama, metodama.
+\textbf{Python} je interpretirani jezik opšte namene čiji tvorac je Gido van Rosum (engl. \textit{Guido van Rossum}). Krajem 1980-ih je koncipiran kao naslednik jezika \textbf{ABC}, a prvi put je objavljen 1991. godine. Filozofija dizajna jezika Python naglašava čitljivost koda pridavajući veliki značaj razmaku. Njegove jezičke konstrukcije i objektno-orijentisani pristup imaju za cilj da pomognu programerima da napišu jasan i logičan kod za male i velike projekte. Python je dinamički tipiziran jezik i poseduje sistem za prikupljanje smeća (\textit{garbage collector}). Podržava više paradigmi programiranja uključujući proceduralno, objektno-orijentisano i funkcionalno programiranje. Python interpreteri su dostupni za mnoge operativne sisteme. Globalana zajednica programera razvija i održava referentnu implementaciju otvorenog koda \textbf{CPython}. Neprofitna organizacija \textit{The Python Software Foundation} upravlja i usmerava resursima za razvoj jezika Python i CPython. Jedna od osobina koje je Elixir nasledio od Python-a je podrška za dokumentaciju u vidu dokumentacionih stringova (engl. \textit{docstrings}) koji omogućavaju povezivanje dokumentacije sa modulima, funkcijama, klasama, metodama.
 
 \subsection{Haskell}
-\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran i prilično različit od većine ostalih programskih jezika. Nazvan je po Haskel Bruks Kariju(engl. \textit{Haskell Brooks Curry}), čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv kod, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
+\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran i prilično različit od većine ostalih programskih jezika. Nazvan je po Haskel Bruks Kariju (engl. \textit{Haskell Brooks Curry}), čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv kod, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
 
 \subsection{Ruby}
 \textbf{Ruby} je dinamički tipiziran programski jezik otvorenog koda nastao 1995. godine. Fokus kod ovog programskog jezika je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
-Ruby je takođe i interpretirani programski jezik, što znači da se izvorni kod prevodi u kod razumljiv kompjuteru prilikom svakog izvršavanja programa. Interpretirani programski jezici su sporiji od kompajliranih, ali su fleksibilniji i potrebno je kraće vreme za izradu programa.
-Međutim, sve više iskusnih Ruby programera se okreće Elixir-u. Zapravo, Elixir je prvi jezik nakon Ruby-ja koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem. Na slici \ref{fig:0} su prikazane osobine Ruby-ja koje se direktno preslikavaju u osobine Elixir-a:
+Ruby je interpretirani programski jezik, što znači da se izvorni k$\hat{o}$d prevodi u k$\hat{o}$d razumljiv kompjuteru prilikom svakog izvršavanja programa. Interpretirani programski jezici su sporiji od kompajliranih, ali su fleksibilniji i potrebno je kraće vreme za izradu programa.
+Međutim, sve više iskusnih Ruby programera se okreće Elixir-u. Zapravo, Elixir je prvi jezik nakon Ruby-ja koji zaista brine o lepoti koda i korisničkom iskustvu vezanom za jezik, biblioteke i ekosistem. 
 
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.8\textwidth]{ruby.PNG}
-  \caption{Osobine nasleđene od jezika Ruby}
-  \label{fig:0}
-\end{figure}
-
-Takođe, na slici \ref{fig:01} se može videti i primer koda napisan u oba jezika:
+Ruby je imao veliki uticaj na sintaksu programskog jezika Elixir. Na slici \ref{fig:RubyElixirCode} se nalaze delovi koda napisani u jeziku Ruby i jeziku Elixir, koji imaju dosta sličnosti, a čiji je rezultat izvršavanja isti - dva stringa su nadovezana. U jeziku Ruby se definiše klasa \textit{Concat} koja ima polje \textit{value}, funkciju \textit{initialize} koja se poziva pri kreiranju objekta klase radi inicijalizacije polja \textit{value} i funkciju \textit{join} koja vrši nadovezivanje dva stringa. U Elixir-u se umesto klase definiše modul \textit{Concat} koji sadrži samo funkciju \textit{join} koja vrši nadovezivanje dva stringa. Uočavaju se sličnosti u sintaksi koje su ilustrovane ovim primerom pri definisanju klasa/modula, funkcija (ključne reči \textit{def} i \textit{end}), zatim pri nadovezivanju stringova (operatori $+$ i $<>$) i pozivanju funkcija (ime klase/modula za kojim sledi tačka).
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth,height=6.5cm]{rubyVSelixir.png}
   \caption{Sintaksa jezika Ruby i Elixir}
-  \label{fig:01}
+  \label{fig:RubyElixirCode}
 \end{figure}
 
 \subsection{Clojure}
-\textbf{Clojure} je dinamički tipiziran programski jezik opšte namene nastao 2007. godine. Njegov tvorac je Rič Hiki (engl. \textit{Rich Hickey}). Clojure kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. On je kompajlirani jezik, ali je i dalje potpuno dinamički tipiziran - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Predstavlja dijalekt jezika Lisp i deli njegovu filozofiju \textit{code-as-data} (program je funkcija koja se izvršava nad podacima) i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Elixir je nasledio neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka (imutabilnost), opcionalno lenjo izračunavanje, protokole.
+\textbf{Clojure} je dinamički tipiziran programski jezik opšte namene nastao 2007. godine. Njegov tvorac je Rič Hiki (engl. \textit{Rich Hickey}). Clojure kombinuje pristupačnost i interaktivni razvoj skriptnog jezika sa efikasnom i robusnom infrastrukturom za višenitno programiranje. On je kompajlirani jezik, ali je i dalje potpuno dinamički tipiziran - svaka funkcija koju podržava Clojure je podržana u toku izvršavanja. Predstavlja dijalekt Lisp-a \footnote{Lisp je programski  zasnovan na matematičkoj teoriji rekurzivnih funkcija
+(u kojoj se funkcija pojavljuje u sopstvenoj definiciji), a Lisp program je funkcija
+koja se primenjuje na podatke. Ime
+LISP je nastalo od „LISt Processor”, a povezane liste su jedan od glavnih tipova
+podataka. Osnova Lisp-a je funkcionalno programiranje, ali se Lisp zbog raznih drugih svojstava smatra multiparadigmatskim programskim jezikom.} i deli njegovu filozofiju \textit{code-as-data} (program je funkcija koja se izvršava nad podacima) i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Elixir je preuzeo neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka (nepromenljivost podataka), opcionalno lenjo izračunavanje i protokole.
+
 \newpage
 
 \section{Osnovne karakteristike}
 
-Tokom 2010. godine Hosé Valim, u to vreme zaposlen na poziciji programera u kompaniji \textit{Platformatec}, radio je na poboljšanju performansi okruženja
-\textit{Ruby on Rails} na višejezgarnim sistemima.(referenca) Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
-milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad 2 miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada 5 miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest}.\\
+Hosé Valim je tokom 2010. godine bio zaposlen u kompaniji \textit{Platformatec} \cite{Platformatec} i radio na poboljšanju performansi okruženja
+\textit{Ruby on Rails} na višejezgarnim sistemima. Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
+milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad 2 miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada 5 miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest} \cite{HistoryOfElixir}.
 
-Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće na vituelnoj mašini jezika Erlang, pa samim tim i nasleđuje pogodna svojstva koje dolaze sa ovim okruženjem kao što su \textbf{konkurentnost} i \textbf{tolerisanje grešaka}. Iz tačke gledišta olakšavanja svakodnevnog razvoja sofvera, mnogi koncepti su falili ekosistemu jezika Erlang. Neki od njih su \textbf{metaprogramiranje} - tehnika kojom programi imaju mogućnost da druge programe posmatraju kao svoje podatke i na taj način čitaju, pa
-čak i modifikuju njihov, a samim tim i svoj kod u vreme izvršavanja, \textbf{polimorfizam}, \textbf{makroi}, \textbf{podrška za alate}. Upravo navedene koncepte je  Elixir nadomestio. Cilj ovog rada je da čitaoca bliže upozna sa osnovnim osobinama, funkcionalnostima i specifičnostima ovog jezika,  kao i da kroz primere pokuša da približi programerske prakse korišćene u ovom jeziku.
+Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće na vituelnoj mašini jezika Erlang, pa samim tim i nasleđuje pogodna svojstva koje dolaze sa ovim okruženjem kao što su \textbf{konkurentnost} i \textbf{tolerisanje grešaka} \cite{DefinicijaElixira}. Elixir je nadomestio mnoge koncepte koji su nedostajali jeziku Erlang. Neki od njih su  \textbf{metaprogramiranje} \footnote{Tehnika koja omogućava da programi posmatraju druge programe kao svoje podatke i na taj način čitaju i modifikuju i njihov i svoj k$\hat{o}$d u vreme izvršavanja.}, \textbf{polimorfizam}, \textbf{makroi} i \textbf{podrška za alate}. Elixir poseduje podrazumevano okruženje, takozvani \textbf{Kernel}, koji obezbeđuje podršku sa osnovne tipove i funkcionalnosti jezika. 
 
-U ovom delu će biti opisane osobine jezika Elixir, osnove njegove sintakse, semantike, kao i podrška za osnovne koncepte funkcionalnih jezika poput poklapanja obrazaca (eng. \textit{Pattern matching}) i imutabilnosti podataka.
+U ovom delu će biti opisani osnovni tipovi jezika Elixir, njegove osobine, osnove njegove sintakse, semantike, kao i podrška za osnovne koncepte funkcionalnih jezika poput poklapanja obrazaca i nepromenljivosti podataka. 
 
-Pre nego što započnemo priču o tipovima, treba pomenuti \textbf{Kernel}. To je podrazumevano okruženje koje se koristi u Elixir-u. Ono sadrži primitive jezika kao što su: aritmetičke operacije, rukovanje procesima i tipovima, makroe za definisanje novih funkcionalnosti (funkcija, modula...), provere guard-ova - predefinisanog skupa funkcija i makroa koji proširuju
-mogućnost pattern matching-a, itd.
+\newpage
 
 \section{Osnovni tipovi podataka}
 
@@ -240,99 +224,88 @@ Elixir ima svoje ugrađene (primitivne) tipove. To su:
     \item {Reference}
 \end{enumerate}
 
-Svaki od ovih tipova, osim poslednja dva, ima odgovarajuće module koji sadrže funkcije koje se koriste za operacije nad tim tipom. Oni predstavljaju omotač oko primitivnog tipa koji nam omogućava korišćenje dodatnih funkcionalnosti nad njim. U nastavku će biti opisani neki od osnovnih tipova.\\
+Svaki od ovih tipova, osim poslednja dva, ima odgovarajuće module koji sadrže funkcije koje se koriste za operacije nad tim tipom. Oni predstavljaju omotač oko primitivnog tipa koji nam omogućava korišćenje dodatnih funkcionalnosti nad njim. U nastavku će biti opisani neki od osnovnih tipova.
 
 \subsubsection{Atomi}
-Atomi su konstante ili simboli, pri čemu njihovo ime predstavlja njihovu vrednost. Počinju dvotačkom (:) i mogu sadržati slova, cifre, simbole \_, @. Mogu se završavati sa ! i ?. Atomi se mogu naći svuda u Elixir-u. Oni su ključevi za listu ključnih reči, koji se često koriste da označe uspeh ili grešku, npr. :ok i mnogi drugi.\\
+Atomi su konstante ili simboli, pri čemu njihovo ime predstavlja njihovu vrednost. Počinju dvotačkom (:) i mogu sadržati slova, cifre, simbole \_, @. Mogu se završavati sa ! i ?. Atomi se mogu naći svuda u Elixir-u. U \textit{listama ključnih reči} koje će biti opisane u odeljku \ref{odeljak:ključneReči}, predstavljaju prvu vrednost elementa liste i često se koriste da označe uspeh (\textit{:ok}) ili grešku (\textit{:error}).
+
+\newpage 
 
 \subsubsection{Celi brojevi}
-Celi brojevi su slični kao i u većini ostalih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ se može koristiti za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u celosti.\\
+Celi brojevi su slični kao i u većini programskih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ se može koristiti za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u potpunosti.
 
 \subsubsection{Brojevi u pokretnom zarezu}
-Brojevi u pokretnom zarezu se u memoriji zapisuju po standardu \textit{IEEE 754}, a za zapisivanje konstanti ovog tipa koristi se tačka između najmanje 2 cifre. Takođe je moguće koristiti notaciju koja obuhvata navođenje eksponenata.\\
-
-\begin{comment}
-\subsubsection{Procesi}
-U Elixir-u se sav kod pokreće unutar procesa. Procesi su izolovani jedni od drugih, spajaju se jedan sa drugima i komuniciraju putem slanja poruka. Procesi nisu samo osnova za konkurentnost u Elixir-u, već i sredstva za izgradnju distribuiranih i tolerantnih programa.
-Procese Elixir-a ne treba mešati sa procesima operativnog sistema. Procesi Elixira su izuzetno lagani u smislu memorije i CPU-a (čak i u poređenju sa nitima koji se koriste u mnogim drugim programskim jezicima). Zbog toga nije neuobičajeno da se istovremeno odvijaju desetine ili čak stotine hiljada procesa.\\
-\end{comment}
-
-\begin{comment}
-\subsubsection{Portovi i reference}
-Portovi ukazuju na spoljne resurse koje omogućavaju interakciju sa spoljnim svetom.\\
-
-Reference su jedinstvene vrednosti u globalnom kontekstu izvršavanja programa koje se kreiraju pozivom \textit{make\_ref} funkcije.\\
-\end{comment}
+Brojevi u pokretnom zarezu se zapisuju uz pomoć decimalne tačke po standardu \textit{IEEE 754}. Pre i posle decimalne tačke mora biti najmanje jedna cifra ($1.0$, $0.2456$). Može se koristiti i notacija koja obuhvata navođenje eksponenata ($0.314159e1$, $314159.0e-5$). 
 
 \subsubsection{Liste}
-Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u listi čuva svoju vrednost i ukazuje na sledeći element sve dok se ne dostigne kraj liste. To znači da je pristup proizvoljnom elementu liste kao i određivanje družine liste linearna operacija, jer je potrebno da prođemo celu listu da bismo odredili njenu dužinu. Slično, performanse spajanja dve liste zavise od dužine one koja se nalazi sa leve strane. 
+Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u listi čuva svoju vrednost i ukazuje na sledeći element sve dok se ne dostigne kraj liste. To znači da je pristup proizvoljnom elementu liste kao i određivanje dužine liste linearna operacija, jer je potrebno da prođemo celu listu da bismo odredili njenu dužinu. Slično, performanse spajanja dve liste zavise od dužine one koja se nalazi sa leve strane. 
 
-Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vredosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}:
+Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vredosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}.
 
 \lstinputlisting[language=erlang,label={lst:prvi},caption=Primer liste,captionpos=b]{prvi.ex}
 
 \newpage
 
-Nadovezivanje ili oduzimanje 2 liste korišćenjem operatora $++/2$ i $--/2$ prikazano je na listingu \ref{lst:drugi}:
+Nadovezivanje ili oduzimanje 2 liste korišćenjem operatora $++/2$ i $--/2$ prikazano je na listingu \ref{lst:drugi}.
 
 \lstinputlisting[language=erlang,label={lst:drugi},caption=Nadovezivanje i oduzimanje dve liste,captionpos=b]{drugi.ex}
 
-Operatori liste nikada ne menjaju postojeću listu. Rezultat povezivanja listi ili uklanjanja elemenata iz liste je uvek nova lista, jer su strukture podataka u Elixir-u nepromenljive. Jedna od prednosti nepromenljivosti je jasniji kod. Omogućeno je slobodno prosleđivanje podatka sa garancijom da neće biti izmenjeni u memoriji - samo transformisani.
+Operatori liste nikada ne menjaju postojeću listu. Rezultat povezivanja listi ili uklanjanja elemenata iz liste je uvek nova lista, jer su strukture podataka u Elixir-u nepromenljive. Jedna od prednosti nepromenljivosti je jasniji kod. Omogućeno je slobodno prosleđivanje podatka sa garancijom da neće biti izmenjeni u memoriji.
 
-Lista može biti prazna ili se može sastojati od \textbf{glave} i \textbf{repa}. Glava je prvi element liste, a rep je ostatak liste. Oni se mogu izdvojiti pomoću funkcija \textit{hd/1} i \textit{tl/1}. Dodeljivanje liste promenljivoj, dohvatanje njene glave i repa prikazano je na listingu \ref{lst:treci}:
+Lista može biti prazna ili se može sastojati od \textbf{glave} i \textbf{repa}. Glava je prvi element liste, a rep je ostatak liste. Oni se mogu izdvojiti pomoću funkcija \textit{hd/1} i \textit{tl/1}. Dodeljivanje liste promenljivoj, dohvatanje njene glave i repa prikazano je na listingu \ref{lst:treci}. Izdvajanje glave ili repa prazne liste rezultuje greškom.
 
 \lstinputlisting[language=erlang,label={lst:treci},caption=Izdvajanje glave i repa liste,captionpos=b]{treci.ex}
 
-Ako pokušamo da izdvojimo glavu ili rep prazne liste, dobićemo grešku.
-
-Prilikom kreiranja liste može se desiti da je rezultat lista vredosti pod jednostrukim navodnicima. Primer koda koji ilustruje ovo može se videti na listingu \ref{lst:cetvrti}:
+Prilikom kreiranja liste, ukoliko Elixir vidi listu \textit{ASCII} brojeva, ispisaće listu znakova. Liste znakova su uobičajene kada se povezuju sa postojećim Erlang kodom. Primer koda koji ilustruje ovo prikazan je na listingu \ref{lst:cetvrti}.
 
 \lstinputlisting[language=erlang,label={lst:cetvrti},caption=Lista vrednosti pod jednostrukim navodnicima,captionpos=b]{cetvrti.ex}
 
-Kada Elixir vidi listu \textit{ASCII} brojeva za štampanje, ispisaće je kao \textit{charlist}-u (doslovno listu znakova). Charlist-e su uobičajene kada se povezuju sa postojećim Erlang kodom. Preuzimanje informacija o vrednosti za koju nismo sigurni kog je tipa može se izvršiti pomoću funkcije \textit{i/1} i može se videti na listingu \ref{lst:peti}:
+\newpage 
+
+Preuzimanje informacija o tipu neke vrednosti može se izvršiti pomoću funkcije \textit{i/1} i može se videti na listingu \ref{lst:peti}.
 
 \lstinputlisting[language=erlang,label={lst:peti},caption=Preuzimanje informacija o tipu vrednosti,captionpos=b]{peti.ex}
 
-Treba imati na umu da reprezentacije sa jednostrukim i dvostrukim navodnicima u Elixir-u nisu ekvivalentne i da predstavljaju različite tipove. Primer možemo videti na listingu \ref{lst:sesti}:
+Reprezentacije sa jednostrukim i dvostrukim navodnicima u Elixir-u nisu ekvivalentne i predstavljaju različite tipove. Primer se može videti na listingu \ref{lst:sesti}.
 
 \lstinputlisting[language=erlang,label={lst:sesti},caption=Dva različita tipa,captionpos=b]{sesti.ex}
 
 \subsection{Torke}
 
-Torke se u Elixir-u definišu pomoću vitičastih zagrada $\{\}$. Kao i liste, mogu sadržati vrednosti bilo kog tipa. Primer torke sa vrednostima različitih tipova i određivanjem njene dužine prikazan je na listingu \ref{lst:sedmi}:
+Torke se u Elixir-u definišu pomoću vitičastih zagrada $\{\}$. Kao i liste, mogu sadržati vrednosti bilo kog tipa. Primer torke sa vrednostima različitih tipova i određivanjem njene dužine prikazan je na listingu \ref{lst:sedmi}.
 
 \lstinputlisting[language=erlang,label={lst:sedmi},caption=Primer torke i određivanje njene dužine,captionpos=b]{sedmi.ex}
 
-Torke su strukture fiksne dužine koje bi trebalo da sadrže svega nekoliko elemenata koji su zapisani u memoriji jedan za drugim. To znači da se pristup elementu torke ili određivanje dužine torke izvršava u konstantnom vremenu. Razlika u odnosu na liste je u semantici upotrebe. Liste se koriste kada se manipuliše kolekcijom, dok se torke, zbog brzine pristupa njihovim elementima, uglavnom koriste za smeštanje povratne vrednosti funkcije. Indeksi torke počinju od nule, a primer se može videti na listingu \ref{lst:osmi}:
+Torke su strukture fiksne dužine koje bi trebalo da sadrže svega nekoliko elemenata koji su zapisani u memoriji jedan za drugim. To znači da se pristup elementu torke ili određivanje dužine torke izvršava u konstantnom vremenu. Razlika u odnosu na liste je u semantici upotrebe. Liste se koriste kada se manipuliše kolekcijom, dok se torke, zbog brzine pristupa njihovim elementima, uglavnom koriste za smeštanje povratne vrednosti funkcije. \textit{File.read/1} je funkcija koja se može koristiti za čitanje sadržaja datoteke. Ako putanja do fajla postoji, povratna vrednost funkcije je torka sa prvim elementom koji je atom \textit{:ok} i drugim elementom koji je sadržaj datog fajla. U suprotnom, povratna vrednost funkcije će biti torka gde je prvi element atom \textit{:error}, a drugi element opis greške. Primer upotrebe ove funkcije može se videti na listingu \ref{lst:deseti}.
+
+\lstinputlisting[language=erlang,label={lst:deseti},caption=Primer upotrebe funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
+
+Indeksi torke počinju od nule, a primer izdvajanje elementa sa indeksom 1 može se videti na listingu \ref{lst:osmi}.
 
 \lstinputlisting[language=erlang,label={lst:osmi},caption=Izdvajanje elementa torke sa indeksom 1,captionpos=b]{osmi.ex}
 
-Takođe je moguće umetnuti novi element na odredjeno mesto u torki pomoću funkcije $put\_elem/3$. Primer koda koji ilustruje upotrebu ove funkcije prikazan je na listingu \ref{lst:deveti}:
+Umetanje novog elementa na odredjeno mesto u torki vrši se pomoću funkcije $put\_elem/3$. Ona vraća novu torku, dok originalna torka ostaje neizmenjena. Primer koda koji ilustruje upotrebu ove funkcije prikazan je na listingu \ref{lst:deveti}.
 
 \lstinputlisting[language=erlang,label={lst:deveti},caption=Umetanje novog elementa u torku,captionpos=b]{deveti.ex}
 
-Treba obratiti pažnju da je funkcija $put\_elem/3$ vratila novu torku. Originalna torka smeštena u promenljivoj \textit{tuple} nije izmenjena. Kao i liste, torke su takođe nepromenljive. Svaka operacija nad torkom vraća novu torku i nikada ne menja postojeću. Ova operacija, kao i operacija ažuriranja torke je skupa, jer zahteva kreiranje nove torke u memoriji. Ovo se odnosi samo na samu torku, a ne na njen sadržaj. Na primer, prilikom ažuriranja torke, svi unosi se dele između stare i nove torke, osim unosa koji je zamenjen. Drugim rečima, torke i liste u Elixir-u mogu da dele svoj sadržaj. Ovo smanjuje količinu memorije koju jezik treba da zauzme i moguće je samo zahvaljujući nepromenljivoj semantici jezika.
-
-Ove karakteristike performansi diktiraju upotrebu struktura podataka. Kao što je već pomenuto, jedan od uobičajenih slučajeva korišćenja torki je prilikom vraćanja dodatnih vrednosti iz funkcije. \textit{File.read/1} je funkcija koja se može koristiti za čitanje sadržaja datoteke. Ona vraća torku, što se može videti na listingu \ref{lst:deseti}:
-
-\lstinputlisting[language=erlang,label={lst:deseti},caption=Primer korišćenja funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
-
-Ako putanja do fajla postoji, povratna vrednost funkcije je torka sa prvim elementom koji je atom :ok i drugim elementom koji je sadržaj datog fajla. U suprotnom, povratna vrednost funkcije će biti torka gde je prvi element atom :error, a drugi element opis greške.
+Kao i liste, torke su takođe nepromenljive. Svaka operacija nad torkom vraća novu torku i nikada ne menja postojeću. Ova operacija, kao i operacija ažuriranja torke je skupa, jer zahteva kreiranje nove torke u memoriji. Ovo se odnosi samo na samu torku, a ne na njen sadržaj. Na primer, prilikom ažuriranja torke, svi unosi se dele između stare i nove torke, osim unosa koji je izmenjen. Drugim rečima, torke i liste u Elixir-u mogu da dele svoj sadržaj, što smanjuje količinu memorije koju jezik treba da zauzme. Ove karakteristike performansi diktiraju upotrebu struktura podataka. 
 
 \subsection{Liste ključnih reči i mape}
+\label{odeljak:ključneReči}
 Elixir podržava asocijativne strukture podataka. Asocijativne strukture podataka su one koje su u stanju da pridruže određenu vrednost ili više vrednosti ključu. Dve glavne strukture među njima su \textbf{liste ključnih reči} i \textbf{mape}.
 
 \subsubsection{Liste ključnih reči}
-U mnogim funkcionalnim programskim jezicima, uobičajeno je da se koristi lista dvočlanih torki za predstavljanje strukture podataka ključ - vrednost. Lista torki gde je prvi element torke atom (tj. ključ) u Elixir-u se naziva \textbf{lista ključnih reči}. Elixir podržava posebnu sintaksu za definisanje takvih lista: $[key: value]$. Zapravo, liste ključnih reči mapiraju liste torki. Primer ovakvog mapiranja prikazan je na listingu \ref{lst:11}:
-
+U mnogim funkcionalnim programskim jezicima, uobičajeno je da se koristi lista dvočlanih torki za predstavljanje strukture podataka ključ - vrednost. Lista torki gde je prvi element torke atom (tj. ključ) u Elixir-u se naziva \textbf{lista ključnih reči}. Elixir podržava posebnu sintaksu za definisanje takvih lista: $[key: value]$. Primer oba načina definisanja prikazan je na listingu \ref{lst:11}.
 
 \lstinputlisting[language=erlang,label={lst:11},caption=Primer liste ključnih reči,captionpos=b]{11.ex}
 
- Kako su liste ključnih reči liste, nad njima možemo primenjivati sve operacije dostupne nad listama. Na primer, korišćenjem operatora ++ može se izvršiti dodavanje nove vrednosti listi ključnih reči. Primer koda koji ilustruje ovo dodavanje dat je na listingu \ref{lst:12}:
+Kako su liste ključnih reči liste, nad njima možemo primenjivati sve operacije dostupne nad listama. Na primer, korišćenjem operatora ++ može se izvršiti dodavanje nove vrednosti listi ključnih reči. Primer koda koji ilustruje ovo dodavanje dat je na listingu \ref{lst:12}.
 
 \lstinputlisting[language=erlang,label={lst:12},caption=Dodavanje nove vrednosti listi ključnih reči,captionpos=b]{12.ex}
 
-Elementima liste ključnih reči se pristupa na način prikazan na listingu \ref{lst:13}:
+\newpage
+
+Elementima liste ključnih reči se pristupa na način prikazan na listingu \ref{lst:13}.
 
 \lstinputlisting[language=erlang,label={lst:13},caption=Pristup elementu liste ključnih reči,captionpos=b]{13.ex}
 
@@ -343,30 +316,18 @@ Liste ključnih reči su važne, jer imaju tri posebne karakteristike:
 \item{Ključevi se mogu ponavljati.}
 \end{enumerate}
 
- Elixir obezbeđuje modul koji omogućava manipulisanje listama ključnih reči. Liste ključnih reči su jednostavno liste, i kao takve pružaju iste karakteristike linearnih performansi kao i liste. Što je lista duža, više vrmena će biti potrebno za pronalaženje ključa, prebrojavanje elemenata i tako dalje. Iz tog razloga, liste ključnih reči se u Elixir-u koriste uglavnom za prosleđivanje opcionih vrednosti. Za čuvanje mnogo elemenata ili garantovanje pojavljivanja jednog ključa sa maksimalno jednom vrednošću treba koristiti mape.
+Elixir obezbeđuje modul koji omogućava manipulisanje listama ključnih reči. Liste ključnih reči su jednostavno liste, i kao takve pružaju iste karakteristike linearnih performansi kao i liste. Što je lista duža, više vrmena će biti potrebno za pronalaženje ključa, prebrojavanje elemenata i tako dalje. Iz tog razloga, liste ključnih reči se u Elixir-u koriste uglavnom za prosleđivanje opcionih vrednosti. Za čuvanje mnogo elemenata ili garantovanje pojavljivanja jednog ključa sa maksimalno jednom vrednošću treba koristiti mape.
  
 \subsubsection{Mape}
-Mapa je kolekcija koja sadrži parove ključ : vrednost. Glavne razlike između liste parova ključ-vrednost i mape su u tome sto mape ne dozvoljavaju ponavljanje ključeva (jer su to asocijativne strukture podataka) i što ključevi mogu biti bilo kog tipa. Mapa je veoma efikasna struktura podataka, naročito kada količina podataka raste. Ukoliko želimo da podaci u kolekciji ostanu baš u onom redosledu u kom smo ih naveli inicijalno, onda je bolje koristiti liste parova ključ : vrednsot, jer mape ne prate nikakvo uređenje.
+Mapa je kolekcija koja sadrži parove ključ : vrednost. Glavne razlike između liste parova ključ-vrednost i mape su u tome što mape ne dozvoljavaju ponavljanje ključeva (jer su to asocijativne strukture podataka) i što ključevi mogu biti bilo kog tipa. Mapa je veoma efikasna struktura podataka, naročito kada količina podataka raste. Ukoliko želimo da podaci u kolekciji ostanu baš u onom redosledu u kom smo ih naveli inicijalno, onda je bolje koristiti liste parova ključ : vrednost, jer mape ne prate nikakvo uređenje.
 
 \newpage
 
-Mapa se definiše pomoću sintakse \%\{\} na način prikazan na listingu \ref{lst:14}:
+Mapa se definiše pomoću sintakse \%\{\} na način prikazan na listingu \ref{lst:14}.
 
 \lstinputlisting[language=erlang,label={lst:14},caption=Primer mape i pristupa njenim elementima,captionpos=b]{14.ex}
 
-Za razliku od liste ključnih reči, mape su vrlo korisne kod poklapanja obrazaca. Kada se koristi u poklapanju obrazaca, mapa će se uvek podudarati sa poskupom date vrednosti kao što se može videti na listingu \ref{lst:15}:
- 
-\lstinputlisting[language=erlang,label={lst:15},caption=Mape pri podudaranju obrazaca,captionpos=b]{15.ex}
-
-Mapa se podudara sve dok ključevi u obrascu postoje u datoj mapi. Tako, prazna mapa odgovara svim mapama.
-
-Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključeva mape, što je dato listingom \ref{lst:16}:
-
-\newpage
-
-\lstinputlisting[language=erlang,label={lst:16},caption=Upotreba promenljivih u mapama,captionpos=b]{16.ex}
-
-Modul \textbf{Map} obezbeđuje razne funkcije za manipulaciju mapama, a neke od njih mogu se videti na listingu \ref{lst:17}:
+Modul \textbf{Map} obezbeđuje razne funkcije za manipulaciju mapama, a neke od njih mogu se videti na listingu \ref{lst:17}.
 
 \lstinputlisting[language=erlang,label={lst:17},caption=Neke od funkcija modula Map,captionpos=b]{17.ex}
 
@@ -374,65 +335,69 @@ Mape imaju sintaksu za ažuriranje vrednosti ključa prikazanu na listingu \ref{
 
 \lstinputlisting[language=erlang,label={lst:18},caption=Ažuriranje vrednosti ključa,captionpos=b]{18.ex}
 
-Prethodno prikazana sintaksa zahteva da dati ključ postoji u mapi i ne može se koristiti za dodavanje novih ključeva. Na primer, korišćenje ove sintakse za ključ :c nije uspelo, jer ključ :c ne postoji u mapi.
-
-Ukoliko su svi ključevi u mapi atomi, onda se radi pogodnosti može koristiti sintaksa ključnih reči data listingom \ref{lst:19}:
-
-\lstinputlisting[language=erlang,label={lst:19},caption=Sintaksa ključnih reči,captionpos=b]{19.ex}
-
-Još jedno zanimljivo svojstvo mapa je to što obezbeđuju sopstvenu sintaksu za pristup atomskim ključevima. Primer ove sintakse možemo videti na listingu \ref{lst:20}:
-
-\lstinputlisting[language=erlang,label={lst:20},caption=Sintaksa za pristup atomskim ključevima,captionpos=b]{20.ex}
-
-Programeri koji programiraju u Elixir-u pri radu sa mapama češće koriste \textit{map.field} sintaksu i poklapanje obrazaca nego funkcije iz modula Map, jer dovode do asertivnog stila programiranja.
-
-Često se koriste mape unutar mapa ili čak liste ključnih reči unutar mapa. Elixir obezbeđuje pogodnosti za manipulisanje ugnježdenim strukturama podataka poput $put\_in/2$, $update\_in/2$ i drugih naredbi koje daju iste pogodnosti koje se mogu pronaći u imperativnim jezicima, a da pritom zadrže nepromenljiva svojstva jezika.
-
-Neka je data struktura prikazana listingom \ref{lst:21}:
-
-\lstinputlisting[language=erlang,label={lst:21},caption=Struktura koja predstavlja listu korisnika,captionpos=b]{21.ex}
-
-Prikazana je lista ključnih reči korisnika, gde je svaka vrednost mapa koja sadrži ime, starost i listu programskih jezika koje svaki korisnik voli. Pristup godinama od Džona mogao bi se izvršiti kao na listingu \ref{lst:22}:
-
-\lstinputlisting[language=erlang,label={lst:22},caption=Pristup godinama od Džona,captionpos=b]{22.ex}
+\noindent Prethodno prikazana sintaksa zahteva da dati ključ postoji u mapi i ne može se koristiti za dodavanje novih ključeva. Na primer, korišćenje ove sintakse za ključ :c nije uspelo, jer ključ :c ne postoji u mapi.
 
 \newpage
 
-Ista sintaksa se može koristiti i za ažuriranje vrednosti kao što je dato listingom \ref{lst:23}:
+Ukoliko su svi ključevi u mapi atomi, onda se radi pogodnosti može koristiti sintaksa ključnih reči data listingom \ref{lst:19}.
+
+\lstinputlisting[language=erlang,label={lst:19},caption=Sintaksa ključnih reči,captionpos=b]{19.ex}
+
+Još jedno zanimljivo svojstvo mapa je to što obezbeđuju sopstvenu sintaksu za pristup atomskim ključevima. Primer ove sintakse možemo videti na listingu \ref{lst:20}.
+
+\lstinputlisting[language=erlang,label={lst:20},caption=Sintaksa za pristup atomskim ključevima,captionpos=b]{20.ex}
+
+\noindent Programeri koji programiraju u Elixir-u pri radu sa mapama češće koriste \textit{map.field} sintaksu i poklapanje obrazaca nego funkcije iz modula Map, jer dovode do asertivnog stila programiranja.
+
+Često se koriste mape unutar mapa ili čak liste ključnih reči unutar mapa. Elixir obezbeđuje pogodnosti za manipulisanje ugnježdenim strukturama podataka poput $put\_in/2$, $update\_in/2$ i drugih naredbi koje daju iste pogodnosti koje se mogu pronaći u imperativnim jezicima, a da pritom zadrže svojstvo nepromenljivosti podataka.
+
+Na listingu \ref{lst:21} je prikazana lista ključnih reči korisnika, gde je svaka vrednost mapa koja sadrži ime, starost i listu programskih jezika koje svaki korisnik voli.
+
+\lstinputlisting[language=erlang,label={lst:21},caption=Struktura koja predstavlja listu korisnika,captionpos=b]{21.ex}
+
+\newpage
+
+\noindent Pristup Džonovim godinama mogao bi se izvršiti na način prikazan na listingu \ref{lst:22}.
+
+\lstinputlisting[language=erlang,label={lst:22},caption=Pristup godinama od Džona,captionpos=b]{22.ex}
+
+\noindent Ista sintaksa se može koristiti i za ažuriranje vrednosti i prikazana je na listingu \ref{lst:23}.
 
 \lstinputlisting[language=erlang,label={lst:23},caption=Ažuriranje vrednosti,captionpos=b]{23.ex}
 
-Makro $update\_in/2$ je sličan, ali daje mogućnost prosleđivanja funkcije koja kontorliše kako se vrednost menja. Na primer, uklanjanje programskog jezika Clojure sa Marijinog spiska jezika može se uraditi na način prikazan listingom \ref{lst:24}:
+Makro $update\_in/2$ je sličan, ali daje mogućnost prosleđivanja funkcije koja kontorliše kako se vrednost menja. Na primer, uklanjanje programskog jezika Clojure sa Marijinog spiska jezika može se uraditi na način prikazan listingom \ref{lst:24}.
 
 \lstinputlisting[language=erlang,label={lst:24},caption=Brisanje jezika iz liste,captionpos=b]{24.ex}
 
-Postoji i funkcija $get\_and\_update\_in$ koja omogućava da izvlačenje vrednosti i ažuriranje strukture podataka odjednom. Takođe postoje i funkcije $put\_in/3$, $update\_in/3$ i $get\_and\_update\_in/3$ koje omogućavaju dinamički pristup strukturama podataka.
+Funkcija $get\_and\_update\_in$ omogućava izvlačenje vrednosti i ažuriranje strukture podataka odjednom, a funkcije $put\_in/3$, $update\_in/3$ i $get\_and\_update\_in/3$ omogućavaju dinamički pristup strukturama podataka.
 
 \newpage
 
 \section{Osnovni operatori}
 
-Pored osnovnih artimetičkih operatora +, -, *, /, kao i funkcija div/2 i rem/2 za celobrojno deljenje i ostatak pri celobrojnom deljenju, Elixir podržava i već pomenute operatore $++$ i $--$ za nadovezivanje i oduzimanje listi. kao i operator $<>$ koji se koristi za nadovezivanje stringova.
+Pored osnovnih artimetičkih operatora $+$, $-$, $*$, $/$, kao i funkcija \textit{div/2} i \textit{rem/2} za celobrojno deljenje i ostatak pri celobrojnom deljenju, Elixir podržava i već pomenute operatore $++$ i $--$ za nadovezivanje i oduzimanje listi, kao i operator $<>$ koji se koristi za nadovezivanje stringova.
 
-Elixir obezbeđuje 3 bool operatora: \textbf{and}, \textbf{or} i \textbf{not}. Oni su striktni u smislu da očekuju nesto što ima vrednost true ili false kao svoj prvi operand. Primer koda koji ilustruje ovu osobinu prikazan je na listingu \ref{lst:25}:
+Elixir obezbeđuje tri logička operatora: \textbf{and}, \textbf{or} i \textbf{not}. Oni su striktni u smislu da očekuju nesto što ima vrednost \textit{true} ili \textit{false} kao svoj prvi operand. Primer koda koji ilustruje ovu osobinu prikazan je na listingu \ref{lst:25}.
 
-\lstinputlisting[language=erlang,label={lst:25},caption=Primer upotrebe bool operatora,captionpos=b]{25.ex}
+\lstinputlisting[language=erlang,label={lst:25},caption=Primer upotrebe logičkih operatora,captionpos=b]{25.ex}
 
-Ukoliko kao prvi operand prosledimo nesto čija vrednost nije tipa bool, dobićemo grešku kao na listingu \ref{lst:26}:
+\noindent Ukoliko kao prvi operand prosledimo nesto čija vrednost nije logička, rezultat je greška kao na listingu \ref{lst:26}.
 
-\lstinputlisting[language=erlang,label={lst:26},caption=Greška pri upotrebi bool operatora,captionpos=b]{26.ex}
+\lstinputlisting[language=erlang,label={lst:26},caption=Greška pri upotrebi logičkog operatora,captionpos=b]{26.ex}
 
-And i or su lenji operatori, jer desni operand izračunavaju samo u slučaju da levi nije dovoljan za određivanje rezultata.
+\noindent \textit{And} i \textit{or} su lenji operatori, jer desni operand izračunavaju samo u slučaju da levi nije dovoljan za određivanje rezultata.
 
-Pored ovih boolean operatora, Elixir takođe obezbeđuje operatore $||$, $\&\&$ i $!$ koji prihvataju argumente bilo kog tipa. Sve vrednosti osim \textbf{false} i \textbf{nil} će biti procenjene na true, što se može videti na primeru prikazanom listingom \ref{lst:27}:
+Pored ovih logičkih operatora, Elixir takođe obezbeđuje operatore $||$, $\&\&$ i $!$ koji prihvataju argumente bilo kog tipa. Sve vrednosti osim \textbf{false} i \textbf{nil} će biti procenjene na \textit{true}, što se može videti na primeru prikazanom listingom \ref{lst:27}.
+
+\newpage
 
 \lstinputlisting[language=erlang,label={lst:27},caption=Operatori koji prihvataju argumente bilo kog tipa,captionpos=b]{27.ex}
 
-Može se smatrati pravilom da kada se očekuju bool vrednosti, treba koristitioperatore and i or, a ako bilo koji od operanada ima vrednosti koji nisu tipa bool, onda treba koristi $||$, $\&\&$ i $!$.\\
+Pravilo je da kada se očekuju logičke vrednosti, treba koristiti operatore \textit{and} i \textit{or}, a ako bilo koji od operanada ima vrednost koja nije logička, onda treba koristi $||$, $\&\&$ i $!$.
 
-Elixir takođe obezbeđuje $==,! =, ===,! ==, <=,> =, <$ i $ >$ kao operatore poređenja, pri čemu se operator $===$ od operatora $==$ razlikuje po tome što pored vrednosti poredi i tip.\\
+Elixir takođe obezbeđuje $==,! =, ===,! ==, <=,> =, <$ i $ >$ kao operatore poređenja, pri čemu se operator $===$ od operatora $==$ razlikuje po tome što pored vrednosti poredi i tip.
 
-Moguće je i poređenje tipova među sobom. Razlog zbog kojeg se mogu uporediti različiti tipovi podataka je pragmatizam. Algoritmi sortiranja ne moraju da brinu o različitim tipovima podataka da bi sortirali. Ukupan redosled sortiranja je definisan na način prikazan na listingu \ref{lst:37}:
+Moguće je i poređenje tipova među sobom. Razlog zbog kojeg se mogu uporediti različiti tipovi podataka je pragmatizam. Algoritmi sortiranja ne moraju da brinu o različitim tipovima podataka da bi sortirali. Ukupan redosled sortiranja je definisan na način prikazan na listingu \ref{lst:37}.
 
 \lstinputlisting[language=erlang,label={lst:37},caption=Poređenje tipova,captionpos=b]{37.ex}
 
@@ -440,9 +405,9 @@ Moguće je i poređenje tipova među sobom. Razlog zbog kojeg se mogu uporediti 
 
 \section{Poklapanje obrazaca}
 
-Poklapanje obrazaca je proveravanje da li se u datoj sekvenci tokena može prepoznati neki obrazac. Ovaj koncept će biti jasniji na praktičnom primeru operatora $=$. U većini programskih jezika, operator $=$ je operator dodele koji levoj strani dodeljuje vrednost izraza na desnoj. U Elixir-u se ovaj operator naziva \textbf{operator uparivanja} (eng. \textit{matching}). On se uspešno izvršava, ako pronađe način da izjednači levu stanu (svoj prvi operand) sa desnom (drugi operand).
+Poklapanje obrazaca je proveravanje da li se u datoj sekvenci tokena može prepoznati neki obrazac. Ovaj koncept će biti jasniji na praktičnom primeru operatora $=$. U većini programskih jezika, operator $=$ je operator dodele koji levoj strani dodeljuje vrednost izraza na desnoj. U Elixir-u se ovaj operator naziva \textbf{operator uparivanja} (engl. \textit{matching}). On se uspešno izvršava, ako pronađe način da izjednači levu stanu (svoj prvi operand) sa desnom (drugi operand).
 
-Na primer, izraz $2 + 2 = 5$ bi rezultirao greškom datom na listingu \ref{lst:28}:
+Na primer, izraz $2 + 2 = 5$ bi rezultirao greškom datom na listingu \ref{lst:28}.
 
 \lstinputlisting[language=erlang,label={lst:28},caption=Operator uparivanja,captionpos=b]{28.ex}
 
@@ -450,29 +415,39 @@ Na osnovu greške se može zaključiti da $2 + 2$ zaista nije 5. U Elixir-u leva
 
 \lstinputlisting[language=erlang,label={lst:29},caption=Uspešno poklapanje obrazaca,captionpos=b]{29.ex}
 
-Slično, 2 identična stringa sa obe strane znaka jednakosti će dati rezultat prikazan listingom \ref{lst:30}:
+Slično, dva identična stringa sa obe strane znaka jednakosti će dati rezultat prikazan listingom \ref{lst:30}.
 
 \lstinputlisting[language=erlang,label={lst:30},caption=Uspešno poklapanje obrazaca sa stringovima,captionpos=b]{30.ex}
 
-Poklapanje obrazaca se može prikazati i na pimeru sa listama. Neka je data lista osoba koja je prikazana listingom \ref{lst:31}:
+Poklapanje obrazaca se može prikazati i na pimeru sa listama. Neka je data lista osoba koja je prikazana listingom \ref{lst:31}.
 
 \lstinputlisting[language=erlang,label={lst:31},caption=Lista osoba,captionpos=b]{31.ex}
 
-Prve tri osobe treba da budu zapamćene, dok četvrta osoba nije bitna. U te svrhe se može iskoristiti poklapanje obrazaca dato na listingu \ref{lst:32}:
+\newpage
+
+Neka prve tri osobe treba da budu zapamćene, dok četvrta osoba nije bitna. U te svrhe se može iskoristiti poklapanje obrazaca dato na listingu \ref{lst:32}.
 
 \lstinputlisting[language=erlang,label={lst:32},caption=Poklapanje obrazaca sa listama,captionpos=b]{32.ex}
 
-Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama prvi, drugi i treći. Ostatak liste je dodeljen pomenljivoj ostali pomoću \textbf{pipe operatora (|)}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}:
+Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama prvi, drugi i treći. Ostatak liste je dodeljen pomenljivoj ostali pomoću \textbf{pipe operatora (|)}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}.
 
 \lstinputlisting[language=erlang,label={lst:33},caption=Iščitavanje sadržaja promenljivih,captionpos=b]{33.ex}
 
-\newpage
+Mape su vrlo korisne kod poklapanja obrazaca. Kada se koristi u poklapanju obrazaca, mapa će se uvek podudarati sa poskupom date vrednosti kao što se može videti na listingu \ref{lst:15}.
+ 
+\lstinputlisting[language=erlang,label={lst:15},caption=Mape pri poklapanju obrazaca,captionpos=b]{15.ex}
 
-\section{Imutabilnost podataka}
+\noindent Mapa se podudara sve dok ključevi u obrascu postoje u datoj mapi. Tako, prazna mapa odgovara svim mapama.
 
-U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost da zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanje ove promene i obično se i ne vodi računa o tome pri pisanju programe. Ali šta se dešava kada se vrednost u memoriji promeni u trenutku kada je koristi više instanci programa? Neka se ne promeni samo vrednost, već i tip. Ovakvo ponasanje je poznato kao \textbf{mutabilnost (promenljivost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Mutabinost takođe vodi veoma komplikovanom kodu, pisanom ad-hoc kako bi se rešili problemi sinhronizacije. Ovo može smanjiti rizik da konkurentni procesi  pristupaju istim resursima, ali po veoma visokoj ceni.
+Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključeva mape, što je dato listingom \ref{lst:16}.
 
-Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Elixir imaju osobinu \textbf{imutabilnosti (nepromenljivosti)}. Oni jednostavno ne dozvoljavaju promenu vredosti na određenoj memorijskoj lokaciji. Na ovaj način, ako je promenljivoj \textit{a} dodeljena vrednost 1, onda se njena vrednost neće sigurno menjati tokom izvršavanja programa i da ne mora se voditi računa o problemima sinhronizacije u konkurentnom okruženju.
+\lstinputlisting[language=erlang,label={lst:16},caption=Upotreba promenljivih u mapama,captionpos=b]{16.ex}
+
+\section{Nepromenljivost podataka}
+
+U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost da zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanje ove promene i obično se i ne vodi računa o tome pri pisanju programa. Ali šta se dešava kada se vrednost u memoriji, ili čak i tip vrednosti, promeni u trenutku kada je koristi više instanci programa?  Ovakvo ponašanje je poznato kao \textbf{promenljivost (mutabilnost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Promenljivost takođe vodi veoma komplikovanom kodu, koji se često piše ad-hoc kako bi se rešili problemi sinhronizacije.
+
+Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Elixir imaju osobinu \textbf{nepromenljivosti (imutabilnosti)}. Oni jednostavno ne dozvoljavaju promenu vredosti na određenoj memorijskoj lokaciji. Na ovaj način, ako se promenljiva \textit{a} poklopila sa vrednošću 1, onda se njena vrednost sigurno neće menjati tokom izvršavanja programa i ne mora se voditi računa o problemima sinhronizacije u konkurentnom okruženju.
 
 \newpage
 
@@ -485,8 +460,8 @@ Elixir obezbedjuje \textbf{if/else} uslovne konstrukte kao i mnogi drugi program
 Elixir ima sledeće vrste naredbi za odlučivanje:
 
 \begin{enumerate}
-    \item{\textit{if naredba} - If naredba se satoji od bool izraza praćenog ključnom reči \textit{do}, jedne ili više izvršnih naredbi i na kraju ključne reči \textit{end}}
-    \item{\textit{if..else naredba} - If naredba može biti praćena naredbom else (unutar do..end bloka), koja se izvršava, ako je bool izraz netačan.}
+    \item{\textit{if naredba} - If naredba se sastoji od logičkog izraza praćenog ključnom reči \textit{do}, jedne ili više izvršnih naredbi i na kraju ključne reči \textit{end}}
+    \item{\textit{if..else naredba} - If naredba može biti praćena naredbom else (unutar do..end bloka), koja se izvršava, ako je ločički izraz netačan.}
     \item{\textit{unless naredba} - Naredba unless ima isto telo kao i if naredba. Kod unutar unless naredbe se izvršava samo kada je navedeni uslov netačan.}
     \item{\textit{unless..else} - Naredba unless...else ima isto telo kao i naredba if..else. Kod unutar unless..else naredbe se izvršava samo kada je navedeni uslov netačan.}
     \item{\textit{cond} - Naredba cond se koristi ukoliko treba izvršiti neki kod na osnovu nekoliko uslova. Radi kao if..else if..else kod drugih programskih jezika.}
@@ -497,21 +472,19 @@ Elixir ima sledeće vrste naredbi za odlučivanje:
 
 \section{Moduli}
 
-U Elixir-u možemo grupisati nekoliko funkcija u module. Već su pomenuti različiti module u prethodnim odeljcima (Map, Enum, List, String,...). Za kreiranje sopstvenih modula u Elixir-u, koristi se  makro \textbf{defmodule}, a za definisanje svojih funkcija, koristimo makro \textbf{def}. Primer koda koji ilustruje kreiranje modula i funkcija dat je listingom \ref{lst:34}:
+U Elixir-u se može vršiti grupisanje nekoliko funkcija u module. Već su pomenuti različiti moduli u prethodnim odeljcima (\textit{Map}, \textit{Enum}, \textit{List}, \textit{String},...). Za kreiranje sopstvenih modula u Elixir-u, koristi se makro \textbf{defmodule}, a za definisanje svojih funkcija, koristimo makro \textbf{def}. Primer koda koji ilustruje kreiranje modula i funkcija dat je listingom \ref{lst:34}.
 
 \lstinputlisting[language=erlang,label={lst:34},caption=Kreiranje modula i funkcija,captionpos=b]{34.ex}
 
-Moduli mogu biti ugnježdeni u Elixir-u. Ova osobina jezika omogućava organizovanje koda na što bolji način. Za ugnježdavanje modula, koristi se sintaksa sa listinga \ref{lst:35}:
+Moduli mogu biti ugnježdeni u Elixir-u. Ova osobina jezika omogućava bolje organizovanje koda. Na listingu \ref{lst:35} se može videti definisanje dva modula: \textbf{Math} i \textbf{Math.Adding}, pri čemu je drugi ugnježden unutar prvog. Drugom se može pristupati samo pomoću \textit{Adding} unutar \textit{Math} modula sve dok su u istom leksičkom opsegu. Ako se kasnije \textit{Adding} modul premesti izvan definicije \textit{Math} modula, onda se mora referencirati njegovim punim imenom \textit{Math.Adding} ili pseudonim mora biti postavljen pomoću direktive aliasa.
 
 \lstinputlisting[language=erlang,label={lst:35},caption=Ugnježdavanje modula,captionpos=b]{35.ex}
 
-Gore navedeni primer definiše 2 modula: \textbf{Math} i \textbf{Math.Adding}. Drugom se može pristupati samo pomoću Adding unutar Math modula sve dok su u istom leksičkom opsegu. Ako se kasnije Adding modul premesti izvan definicije Math modula, onda se mora referencirati njegovim punim imenom Math.Adding ili pseudonim mora biti potavljen pomoću direktive aliasa.
-
-U Elixir-u nema potrebe za definisanjem modula Math, kako bi se definisao modul Math.Adding, pošto jezik prevodi sva imena modula u atome. Mogu se  definisati i proizvoljno ugnježdeni moduli bez definisanja bilo kog modula u lancu. Na primer, može se definisati modul Math.Adding.Sum, iako  prethodno nije definisan modul Math i Math.Adding.
+\noindent U Elixir-u nema potrebe za definisanjem modula \textit{Math}, kako bi se definisao modul \textit{Math.Adding}, pošto jezik prevodi sva imena modula u atome. Mogu se  definisati i proizvoljno ugnježdeni moduli bez definisanja bilo kog modula u lancu. Na primer, može se definisati modul \textit{Math.Adding.Sum}, iako  prethodno nije definisan modul \textit{Math} i \textit{Math.Adding}.
 
 \section{Direktive}
 
-Kako bi se olakšala ponovna upotreba koda, Elixir obezbeđuje tri direktive - \textbf{alias, require i import}, kao i makro \textbf{use}. Primer njihove upotrebe može se videti na listingu \ref{lst:36}:
+Kako bi se olakšala ponovna upotreba koda, Elixir obezbeđuje tri direktive - \textbf{alias, require i import}, kao i makro \textbf{use}. Primer njihove upotrebe može se videti na listingu \ref{lst:36}.
 
 \lstinputlisting[language=python,label={lst:36},caption=Primer upotrebe direktiva,captionpos=b]{36.ex}
 
@@ -525,7 +498,7 @@ Elixir obezbeđuje makroe kao mehanizam za meta-programiranje (pisanje koda koji
 Direktivu \textbf{import} se koristi kako bi se lakše pristupalo funkcijama i makroima iz drugih modula bez upotrebe potpuno kvalifikovanog imena. Import direktiva je takođe leksički određena. 
 
 \subsection{Use}
-Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji omogućava korišćenje modula u trenutnom kontekstu. Makro use se često koristi od strane progaramera za unos spoljne funkcionalnosti u trenutni leksički opseg, često modula.
+Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji omogućava korišćenje modula u trenutnom kontekstu. Makro use se često koristi za unos spoljne funkcionalnosti u trenutni leksički opseg, često modula.
 
 % ------------------------------------------------------------------------------
 %\chapter{Razrada}
@@ -533,16 +506,19 @@ Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji
 
 \chapter{Sekvencioniranje genoma}
 
-\textbf{DNK} (dezoksiribonukleinska kiselina) je nasledni materijal kod ljudi i gotovo svih drugih organizama. Skoro svaka ćelija u telu osobe ima isti DNK. Informacije u DNK se čuvaju kao kod koji čine \textbf{četiri hemijske baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, A sa T i C sa G, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koja čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}):
+\begin{comment}
+Posle prve re;enice da li ubaciti?
+Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK).\end{comment}
+
+\textbf{DNK} (dezoksiribonukleinska kiselina) je nukleinska kiselina koja sadrži uputstva za razvoj i pravilno funkcionisanje svih živih organizama. Informacije u DNK se čuvaju kao k$\hat{o}$d koji čine \textbf{četiri hemijske baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, adenin sa timinom i citozin sa guaninom, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koji imaju antiparalelnu\footnote{U biohemiji, dva molekula su antiparalelna ako su locirani jedan pored drugog i usmereni u suprotnim pravcima, ili ako su dva lanca međusobno komplementarna.} orijentaciju i koji čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}):
 
 \newpage
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\textwidth]{dnk.PNG}
-  \caption{Struktura DNK}
+  \caption{Struktura DNK \cite{DNA}}
   \label{fig:00}
-  \source{Izvor: \cite{DNA}}
 \end{figure}
 
 Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina orijentisane vertikalno, a bazni parovi se mogu čitati sa leva na desno (slika \ref{fig:odmotanDnk}):
@@ -550,18 +526,24 @@ Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina ori
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\textwidth]{odmotanDnk.PNG}
-  \caption{Struktura DNK}
+  \caption{Odmotan DNK \cite{DNA2}}
   \label{fig:odmotanDnk}
-  \source{Izvor: \cite{DNA2}}
 \end{figure}
 
-U stvari, krajevi šećer-fosfatnih lanaca se međusobno razlikuju po prirodi nevezanog atoma ugljenika - jedan kraj ima nevezani $5'$ atom ugljenika, dok drugi kraj ima nevezani $3'$ atom ugljenika. Kada predstavljamo molekul DNK pomoću dijagrama, kakav je prikazan na slici \ref{fig:00}, podrazumeva se da gornji lanac kreće od $5'$ kraja sa leve strane do $3'$ kraja sa desne strane. Donji lanac je obrnuto orijentisan, od $3'$ kraja sa leve strane do $5'$ kraja sa desne strane \cite{DNA2}. 
+\begin{comment}
+ Šećeri u DNK su međusobno povezani fosfatnim grupama koje stvaraju fosfodiestarsku vezu između trećeg i petog ugljenikovog atoma šećernog prstena. Fosfodiestarske veze su asimetrične, te DNK polinukleotidni lanci imaju smer. Kako ovi lanci idu u suprotnim smerovima, kaže se da je DNK antiparalelna. Asimetrični krajevi DNK baza se označavaju sa 5' (pet prim) i 3' (tri prim). Antiparalelnost znači da jedan lanac ide u smeru 5' \rightarrow 3', dok suprotni lanac ide u smeru 3' \rightarrow 5'. 
 
-\textbf{Geni} su delovi DNK sekvence koja je sa računarske strane niska nad azbukom $\{A, C, G, T\}$.  Svaki gen predstavlja pravilo za sintezu jednog proteina u ćeliji, koji je neophodan za njeno pravilno funkcionisanje. \textbf{Genom} je skup gena jednog organizma i sastoji od niza uparenih baza.
+$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.
+
+\end{comment}
+
+Krajevi šećer-fosfatnih lanaca se međusobno razlikuju po prirodi nevezanog atoma ugljenika - jedan kraj ima nevezani $5'$ (pet prim) atom ugljenika, dok drugi kraj ima nevezani $3'$ (tri prim) atom ugljenika. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Kada predstavljamo molekul DNK pomoću dijagrama, kakav je prikazan na slici \ref{fig:00}, podrazumeva se da gornji lanac kreće od $5'$ kraja sa leve strane do $3'$ kraja sa desne strane. Donji lanac je obrnuto orijentisan, od $3'$ kraja sa leve strane do $5'$ kraja sa desne strane \cite{DNA2}. 
+
+Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK). DNK ima veoma važnu ulogu ne samo u prenosu genetskih informacija sa jedne na drugu generaciju, već sadrži i uputstva za građenje neophodnih ćelijskih organela, proteina i RNK molekula. \textbf{Geni} su delovi DNK sekvence koja je sa računarske strane niska nad azbukom $\{A, C, G, T\}$.  Svaki gen predstavlja pravilo za sintezu jednog proteina u ćeliji, koji je neophodan za njeno pravilno funkcionisanje. \textbf{Genom} je skup gena jednog organizma i sastoji od niza uparenih baza.
 
 \textbf{Sekvenciranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je eksperimentalan
 proces – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
-odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz našeg genoma (A, C, G, T) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja (engl. \textit{reads})}, a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Genomi i očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
+odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz našeg genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Genomi i očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
 
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Što su delovi veći, slagalicu je lakše sastaviti.
 
@@ -575,59 +557,60 @@ Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomi
 
 \textbf{Sanger sekvencioniranje} predstavlja prvu tehniku sekvencioniranja. Nastala je 1977. godine, a njeni tvorci su Frederik Sanger (engl. \textit{Frederick Sanger}) i njegove kolege. Razvijena su dva asemblera za asembliranje očitavanja Sanger sekvencioniranja: \textit{OLC} \footnote{OLC je skraćenica od \textit{overlap layout consensus}, gde \textit{overlap} predstavlja izgradnju grafa preklapanja,
 \textit{layout} spajanje putanja u grafu u kontige, a \textit{concensus} određivanje najverovatnije sekvence
-nukleotida za svaku kontigu} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brujinovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom (poznat i kao referentni sklop) je digitalna baza podataka o nukleinskim kiselinama, koju su naučnici prikupili kao reprezentativni primer skupa gena čoveka. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \footnote{\textbf{GRCh37} - The Genome Reference Consortium human genome (build 37)} je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz Bafala (engl. \textit{Buffalo}) (Njujork). Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je Sanger sekvencioniranje niskopropusno (ima manju stopu greške) i ne tako ekonomično, samo nekoliko genoma je sastavljeno Sanger sekvencioniranjem.
+nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brujinovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom je digitalna baza podataka o nukleinskim kiselinama, koju su naučnici prikupili kao reprezentativni primer skupa gena čoveka. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \textit{(The Genome Reference Consortium human genome (build 37)}) je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz Bafala (engl. \textit{Buffalo}). Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je Sanger sekvencioniranje niskopropusno (ima malu stopu tolerancije na greške) i neekonomično, samo nekoliko genoma je sastavljeno pomoću njega.
 
-Razvoj tehnika za sekvencioniranje \textbf{druge generacije} značajno je doprineo efikasnijem i sekvencioniraranju stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja su kratka. Po narudžbini su pravljeni genomski asembleri za rekonstrukciju genoma na osnovu kratkih očitavanja. Njihova pojava je dovela do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih projekata, uključujući rekonstrukciju genoma \textbf{Džejmsa Votsona} (engl. \textit{James Watson}) i \textbf{panda} genoma. Iako je ovaj pristup ekonomičan, rezultat su bili fragmentisani genomi, jer su očitavanja kratka i ponavljajući regioni, takozvani \textbf{ponovci} \footnote{Ponovci su fenomen kada se šablon od nekoliko nukleotida pojavljuje više puta u nizu.}, dugi.
+Razvoj tehnika za sekvencioniranje \textbf{druge generacije} značajno je doprineo efikasnijem i ekonomičnijem sekvencioniraranju stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja su kratka. Po narudžbini su pravljeni genomski asembleri za rekonstrukciju genoma na osnovu kratkih očitavanja. Njihova pojava je dovela do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih \footnote{\textit{De novo} asembleri su programi
+koji vrše sklapanje tako što proširuju kratka očitavanja spajanjem susednih
+očitavanja u dužu sekvencu, bez korišćenja referentne sekvence.} projekata, uključujući rekonstrukciju genoma \textbf{Džejmsa Votsona} (engl. \textit{James Watson}) i \textbf{panda} genoma. Iako je ovaj pristup ekonomičan, rezultat su bili fragmentisani genomi, jer su očitavanja kratka i ponavljajući regioni, takozvani \textbf{ponovci}, dugi. Ponovci su fenomen kada se šablon od nekoliko nukleotida pojavljuje više puta u nizu.
 
-Od nedavno su na raspolaganju tehnike za sekvencioniranje \textbf{treće generacije}, koje proizvode duga očitavanja (dužine od oko 10000 bp). Duga očitavanja mogu obuhvatiti složene genomske karakteristike, omogućavajući ispravnije postavljanje ovih karakteristika u rekonstruisanom genomu, tj. mogu rešiti problem ponavljajućih regiona. Međutim, duga očitavanja imaju visoku stopu greške $(15\%-18\%)$. U cilju rešavanja ovog problema razvijen je veliki broj računskih metoda za korekciju grešaka u očitavanjima treće generacije sekvencioniranja.
+Od nedavno su na raspolaganju tehnike za sekvencioniranje \textbf{treće generacije}, koje proizvode duga očitavanja (dužine od oko 10000 bp). Duga očitavanja mogu obuhvatiti složene genomske karakteristike, omogućavajući njihovo ispravnije postavljanje u rekonstruisanom genomu, tj. mogu rešiti problem ponavljajućih regiona. Međutim, duga očitavanja imaju visoku stopu greške $(15\%-18\%)$. U cilju rešavanja ovog problema razvijen je veliki broj računskih metoda za korekciju grešaka u očitavanjima treće generacije sekvencioniranja.
 
 \newpage
 
 \section{\textit{Shotgun} sekvencioniranje celokupnog genoma}
 
-Prvi korak u procesu sekvencioniranja genoma je njegovo razbijanje na skup očitavanja, a na osnovu uzorka genoma. Postoji više vrsta očitavanja:
+Jedna od tehnika druge generacije sekvencioniranja je \textit{shotgun} sekvencioniranje celokupnog genoma. Prvi korak u ovom procesu je razbijanje genoma na skup očitavanja, a na osnovu njegovog uzorka. Postoje tri vrste očitavanja:
 \begin{itemize}
-    \item {jednostrana očitavanja (\textit{single-end reads})}
-    \item {uparena očitavanja (\textit{paired-end reads})}
+    \item {jednostrana očitavanja (engl. \textit{single-end reads})}
+    \item {uparena očitavanja (engl. \textit{paired-end reads})}
+    \item{partner-uparena očitavanja} (engl. \textit{mate-pair reads})
 \end{itemize}
 
-Posebna vrsta uparenih očitavanja su \textbf{partner-uparena očitavanja} (engl. \textit{mate-pair reads}). Prikaz svih vrsta očitavanja može se videti na slici \ref{fig:01}:
+Prikaz ovih vrsta očitavanja može se videti na slici \ref{fig:01}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{vrste_ocitavanja.PNG}
   \caption{Vrste očitavanja}
   \label{fig:01}
-  \source{Izvor: \cite{wholeGenomeSeq} str. 1030, slika 2}
+  \source{\cite{wholeGenomeSeq} str. 1030, slika 2}
 \end{figure}
 
 Sekvenceri čitaju deo DNK fragmenta neke unapred
-zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, mnoge pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme} \footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih SNP-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
+zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, mnoge pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme} \footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
 
-Za potrebe \textit{shotgun} sekvencioniranja celokupnog genoma postoje dva protokola: 
-\begin{itemize}
-    \item {sekvencioniranje celokupnog genoma}
-    \item {sekvencioniranje partner-uparenih očitavanja}
-\end{itemize}
-
-\newpage
+Za potrebe \textit{shotgun} sekvencioniranja celokupnog genoma postoje dva protokola -- \textbf{sekvencioniranje celokupnog genoma} i \textbf{sekvencioniranje partner-uparenih očitavanja}.
 
 \subsection{Sekvencioniranje celokupnog genoma}
 
-Sekvencioniranje celokupnog genoma uključuje tri koraka koja su prikazana na slici \ref{fig:1}:
+Sekvencioniranje celokupnog genoma uključuje tri koraka:
+\begin{itemize}
+    \item {razbijanje genoma}
+    \item {izbor dužine očitavanja i izdvajanja fragmenata te dužine}
+    \item {sekvencioniranje očitavanja}
+\end{itemize}
 
-% Uključuje 3 koraka: (1) korak razbijanja genoma (\textit{sonication}), (2)
-% korak odabira dužine očitavanja i izdvajanja fragmenata te dužine (\textit{size selection}), (3) korak očitavanja kraj(ev)a svakog fragmenta (\textit{sequencing})
+Prvo, uzorak genoma se na slučajan način razbija na DNK fragmente. Zatim sledi korak odabira dužine očitavanja u kom se vrši ekstrahovanje DNK fragmenata te dužine. Na kraju se vrši sekvencioniranje jednostranih očitavanja ili sekvencioniranje uparenih očitavanja. Pri sekvencioniranju jednostranih očitavanja, sekvencer čita DNK fragment u jednom smeru, dok u slučaju uparenih očitavanja, fragment biva pročitan u oba smera.
+
+Pomenuti koraci su prikazani na slici \ref{fig:1}.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.8\textwidth]{prva.png}
-  \caption{Ilustracija protokola \textit{shotgun} za sekvencioniranje celokupnog genoma.}
+  \includegraphics[width=0.7\textwidth]{prva.png}
+  \caption{\textit{Shotgun} sekvencioniranje celokupnog genoma}
 \label{fig:1}
-\source{Izvor: \cite{WingKinSung} str. 122, slika 5.1}
+\source{\cite{WingKinSung} str. 122, slika 5.1}
 \end{figure}
-
-Prvo, uzorak genoma se na slučajan način razbija na DNK fragmente. Zatim sledi korak odabira dužine očitavanja u kom se vrši ekstrahovanje DNK fragmenata te dužine. Na kraju se vrši sekvencioniranje jednostranih očitavanja ili sekvencioniranje uparenih očitavanja. Pri sekvencioniranju jednostranih očitavanja, sekvencer čita DNK fragment u jednom smeru, dok u slučaju uparenih očitavanja, fragment biva pročitan u oba smera.
 
 Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma:
 
@@ -636,35 +619,37 @@ Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz u
   \includegraphics[width=\textwidth, height=2.4cm]{druga.PNG}
   \caption{DNK fragment ekstrahovan iz uzorka genoma}
   \label{fig:2}
-  \source{Izvor: \cite{WingKinSung} str. 122, slika 5.2}
+  \source{\cite{WingKinSung} str. 122, slika 5.2}
 \end{figure}
 
- Za sekvencioniranje jednostranih očitavanja, dobija se očitavanje sa 5' kraja \footnote{$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.} gornjeg lanca, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Za sekvencioniranje uparenih očitavanja, dobijaju se $5'$ očitavanja i gornjeg i donjeg lanca, pri čemu je drugo očitavanje inverzni komplement prvog, tj:
+ Za sekvencioniranje jednostranih očitavanja, dobija se očitavanje sa $5'$ kraja gornjeg lanca, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Za sekvencioniranje uparenih očitavanja, dobijaju se $5'$ očitavanja i gornjeg i donjeg lanca, pri čemu je drugo očitavanje inverzni komplement prvog, tj:
 
 \begin{itemize}
     \item {$ACTCAGCACCTTACGGCGTGCATCA$}
     \item {$AGTTTGTACTGCCGTTCAGAACGTA$}
 \end{itemize}
 
-Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na dužinu očitavanja. Na primer, \textit{Illumina Hi-seq} \footnote{Illumina je američka kompanija koja je proizvodila sekvencere sa malom stopom greške (engl. \textit{high-throughput sequencers})} sekvencioniranje može izvršiti samo sekvencioniranje uparenih očitavanja dužine manje od 1000 bp. Za treću generaciju sekvencioniranja, ograničenje dužine očitavanja može biti veće od 10000 bp.
+Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na dužinu očitavanja. Na primer, \textit{Illumina Hi-seq} \footnote{Illumina je američka kompanija koja je proizvodila sekvencere sa malom stopom greške (engl. \textit{high-throughput sequencers}).} sekvencioniranje može izvršiti samo sekvencioniranje uparenih očitavanja dužine manje od 1000 bp. Za treću generaciju sekvencioniranja, ograničenje dužine očitavanja može biti veće od 10000 bp.
 
 \newpage
 
 \subsection{Sekvencioniranje partner-uparenih očitavanja}
 
-Sekvenceri druge generacije mogu izdvojiti partner-uparena očitavanja sa oba kraja kratkih fragmenata DNK (dužine očitavanja manje od 1000 bp). Za izdvajanje ovakvih očitavanja možemo koristiti \textbf{sekvencioniranje partner-uparenih očitavanja} prikazano na slici \ref{fig:3} :
+Sekvenceri druge generacije mogu izdvojiti partner-uparena očitavanja sa oba kraja kratkih fragmenata DNK (dužine očitavanja manje od 1000 bp). Za izdvajanje ovakvih očitavanja možemo koristiti \textbf{sekvencioniranje partner-uparenih očitavanja}.
+
+Sekvenceri prvo izdvajaju duge DNK fragmente neke fiksirane dužine očitavanja (npr. 10000 bp). Potom dodaju takozvane \textbf{adapter sekvence} \footnote{Adapter sekvence su kratke hemijski sintetizovane sekvence
+nukleotida koje se mogu vezati za krajeve nepoznatih DNK sekvenci i neophodne
+su u nekim koracima sekvenciranja.}
+na krajeve svakog fragmenta (slika \ref{fig:3}(a)). Zatim se vrši sečenje fragmenta levo i desno od adapter sekvence (slika \ref{fig:3}(b)). Na kraju se uparena očitavanja ekstrahuju sekvencioniranjem uparenih očitavanja (slika \ref{fig:3}(c)).
 
 %Slika 2.3 i opis Figure 5.3 iz knjige
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.8\textwidth, height=3cm]{treca.PNG}
-  \caption{Ilustracija protokola sekvencioniranja partner-uparenih očitavanja}
-\source{Izvor: \cite{WingKinSung} str. 123, slika 5.3}
+  \caption{Sekvencioniranje partner-uparenih očitavanja}
+\source{\cite{WingKinSung} str. 123, slika 5.3}
 \label{fig:3}
 \end{figure}
-
- Prvo se izdvajaju dugi DNK fragmenti neke fiksirane dužine očitavanja (npr. 10000 bp) (slika \ref{fig:3}(a)). Svaki DNK fragment se cirkularizuje pomoću adaptera \footnote{Adapter sekvence su kratke hemijski sintetizovane sekvence
-nukleotida koje se mogu vezati za krajeve nepoznatih DNK sekvenci i neophodne su u nekim koracima sekvencioniranja.} (blok sive boje) (slika \ref{fig:3}(b)). Zatim se vrši sečenje fragmenta levo i desno od adaptera. Na kraju se uparena očitavanja ekstrahuju sekvencioniranjem uparenih očitavanja (slika \ref{fig:3}(c)).
 
 Orijentacije uparenih očitavanja očitanih od strane sekvencera partner-uparenog i uparenog očitavanja se razlikuju. Sekvenceri partner-uparenih očitavanja daju dva očitavanja sa oba kraja svakog fragmenta DNK u spoljašnjoj orijentaciji umesto u unutrašnjoj. Npr. za DNK fragment na slici \ref{fig:2} sekvencioniranje partner-uparenih očitavanja će dati:
 \begin{itemize}
@@ -672,28 +657,29 @@ Orijentacije uparenih očitavanja očitanih od strane sekvencera partner-upareno
     \item {TACGTTCTGAACGGCAGTACAAACT}
 \end{itemize}
 
-Iako protokol za sekvencioniranje partner-uparenih očitavanja može izdvojiti uparena očitavanja velike dužine očitavanja, on zahteva veći broj ulaznih kopija genoma za pripremu sekvencerskih biblioteka i sklon je lažnim greškama.
+Iako protokol za sekvencioniranje partner-uparenih očitavanja može izdvojiti uparena očitavanja velike dužine očitavanja, on zahteva veći broj ulaznih kopija genoma za pripremu sekvencerskih biblioteka i sklon je greškama.
+\begin{comment}
+(ligation errors - greškama prilikom preklapanja očitavanja)
+\end{comment}
 
 \section{\textit{De novo} sekvencioniranje genoma za kratka očitavanja}
 
 Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. \textit{De novo} sekvencioniranje ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
 
-Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu suprstringa} za koji se zna da je NP-kompletan (problem superstringa - na osnovu skupa stringova $S$, teži se pronalaženju superstringa, najkraćeg stringa $P$ takavog da je svaki string $s$ iz skupa $S$ substring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring ACATGCGTGTACGT).
+Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring $ACATGCGTGTACGT$).
 
-Mnogi \textit{de novo} asembleri \footnote{De novo asembleri su programi
-koji vrše sklapanje tako što proširuju kratka očitavanja spajanjem susednih
-očitavanja u dužu sekvencu, bez korišćenja referentne sekvence} predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje 4 koraka prikazana na slici \ref{fig:4}:
+Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima. Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku} \footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Zatim, koristeći uparena očitavanja, pokušava se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
+
+\newpage
 
 % Figure 5.4 i slika 2.4
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth,height=8cm]{cetvrta.PNG}
-  \caption{Četiri koraka u \textit{de novo} sekvencioniranju genoma}
+  \includegraphics[width=0.9\textwidth]{cetvrta.PNG}
+  \caption{\textit{De novo} sekvencioniranje genoma za kratka očitavanja}
   \label{fig:4}
-  \source{Izvor: \cite{WingKinSung} str. 124, slika 5.4}
+  \source{\cite{WingKinSung} str. 124, slika 5.4}
 \end{figure}
-
-U prvom koraku se koriguju greške sekvencioniranja u očitavanjima. Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku} \footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci}. Zatim, koristeći uparena očitavanja, pokušava se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a jos se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga.
 
 \section{Korekcija grešaka}
 
@@ -702,7 +688,7 @@ Greške u sekvencioniranju očitavanja mogu zbuniti \textit{de novo} asemblere. 
 
 \subsection{Brojanje k-mera}
 
-Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera} \footnote{Podniska dužine k}. To je potprogram koji se koristi u korekciji grešaka u očitavanjima. Može biti korišćen i u koraku asembliranja, detekciji ponovaka i kompresiji genomskih podataka. Ima značajnu ulogu u utvrđivanju da li je došlo do grešaka u sekvencioniranju ili je u pitanju jednonukleotidni polimorfizam. Ulaz u ovaj potprogram je skup očitavanja $R$ i parametar $k$. Neka je $Z$ skup svih mogućih k-mera koji se pojavljuju u $R$. Problem je izračunavanje frekvencije pojavljivanja k-mera u $Z$. U nastavku će biti razmatrana 4 rešenja: \textbf{(1) jednostavno heširanje, (2) JellyFish, (3) BFCounter i (4) DSK.}
+Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera}. To je potprogram koji se koristi u korekciji grešaka u očitavanjima. Može biti korišćen i u koraku asembliranja, detekciji ponovaka i kompresiji genomskih podataka. Ima značajnu ulogu u utvrđivanju da li je došlo do grešaka u sekvencioniranju ili je u pitanju jednonukleotidni polimorfizam. Ulaz u ovaj potprogram je skup očitavanja $R$ i parametar $k$. Neka je $Z$ skup svih mogućih k-mera koji se pojavljuju u $R$. Problem je izračunavanje frekvencije pojavljivanja k-mera u $Z$. U nastavku će biti razmatrana 4 rešenja: \textbf{(1) jednostavno heširanje, (2) JellyFish, (3) BFCounter i (4) DSK.}
 
 \newpage
 
@@ -731,7 +717,7 @@ Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvrš
 \subsubsection{JellyFish algoritam}
 Moguće je smanjiti veličinu heš tabele koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje 3 metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}.
 
-U $JellyFish$ algoritmu je iskorišćen ovaj mehanizam. Uvodi heš funkcija $h()$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}  \footnote{Broj koji kontroliše veličinu heš tabele} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgradjuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h()$ dodje do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
+U $JellyFish$ algoritmu je iskorišćen ovaj mehanizam. Uvodi heš funkcija $h()$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}  \footnote{Faktor opterećenja - broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgradjuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h()$ dodje do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
 
 
 \begin{comment}
@@ -762,7 +748,7 @@ U drugoj fazi se obavlja stvarno brojanje. Vrši se skeniranje k-mera iz $Z$ jed
 
 \begin{comment}
 
-Detaljan pseudokod je prikazan na slici \ref{fig:7}:
+Detaljan pseudokod je prikazan na slici \ref{fig:7}.
 
 %Figura 5.10
 \begin{figure}[h]
@@ -784,7 +770,7 @@ Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zav
 
 \begin{comment}
 
-, a čiji pseudokod je prikazan na slici \ref{fig:63}:
+, a čiji pseudokod je prikazan na slici \ref{fig:63}.
 
 %Figura 5.11
 \begin{figure}[h]
@@ -882,7 +868,7 @@ Na primer, neka je dat skup stringova $R = \{ACGC, CATC, GCA\}$ i neka je potreb
 
 Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} \footnote{Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom.} grafa $H_k$. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$.
 
-Medjutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$. Na primer, neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT, GATTT\}$ i neka je $k = 3$. De Brujinov graf $H_3$ je prikazan na slici  \ref{fig:10}: 
+Medjutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$. Na primer, neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT, GATTT\}$ i neka je $k = 3$. De Brujinov graf $H_3$ je prikazan na slici  \ref{fig:10}. 
 
 %Figura 5.16
 \begin{figure}[!ht]
@@ -970,7 +956,7 @@ Za spajanje (otklanjanje) mehurića, može se koristiti \textbf{algoritam turnej
 
 \begin{comment}
 
-Algoritam je detaljnije prikazan na slici \ref{fig:14}:
+Algoritam je detaljnije prikazan na slici \ref{fig:14}.
 
 \newpage
 
@@ -999,7 +985,7 @@ Slika \ref{fig:15} ilustruje korake algoritma turneje. Originalni De Brujinov gr
 
 \end{comment}
 
-Nakon što se uklone vrhovi i spoje (otklone) mehurići u De Brujinovom grafu, može se dalje filtrirati buka uklanjanjem k-mera sa mnogostrukošću manjom ili jednakom nekom pragu. Na primer na slici \ref{fig:15}(d), ako je $m = 1$, treba ukloniti dve ivice težine 1. Ova tehnika se takođe koristi pri korigovanju grešaka u sekvencioniranju. Ukratko, predstavljena su 3 trika: (1) otklanjanje vrhova, (2) spajanje mehurića i (3) filtriranje k-mera sa niskom mnogostrukošću. Kombinovanjem ovih tehnika, dobija se algoritam koji može da obradi greške sekvencioniranja i prikazan je na slici \ref{fig:16}:
+Nakon što se uklone vrhovi i spoje (otklone) mehurići u De Brujinovom grafu, može se dalje filtrirati buka uklanjanjem k-mera sa mnogostrukošću manjom ili jednakom nekom pragu. Na primer na slici \ref{fig:15}(d), ako je $m = 1$, treba ukloniti dve ivice težine 1. Ova tehnika se takođe koristi pri korigovanju grešaka u sekvencioniranju. Ukratko, predstavljena su 3 trika: (1) otklanjanje vrhova, (2) spajanje mehurića i (3) filtriranje k-mera sa niskom mnogostrukošću. Kombinovanjem ovih tehnika, dobija se algoritam koji može da obradi greške sekvencioniranja i prikazan je na slici \ref{fig:16}.
 
 %Figure 5.23
 \begin{figure}[!ht]
@@ -1016,7 +1002,7 @@ Nakon što se uklone vrhovi i spoje (otklone) mehurići u De Brujinovom grafu, m
 
 Kao što je već rečeno, odabir broja $k$ može uticati na performanse De Brujinovog algoritma. Jednostavno rešenje je pokretanje algoritma sa slike \ref{fig:16} za različite $k$. Zatim se kontige grupišu i spajaju. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju različit kvalitet. Kontige dobijene od $H_k$ gde je $k$ malo su veoma tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene od $H_k$ gde je $k$ veliko su duže. Međutim, one mogu sadržati mnogo grešaka.
 
-IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}} počiva na ideji da ne traba graditi De Brujinov graf nezavisno za različite $k$. Umesto toga, IDBA gradi De Brujinov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brujinov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, buka u $H_k$ je redukovana. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta iz $H_k$.
+IDBA asembler\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}.} počiva na ideji da ne traba graditi De Brujinov graf nezavisno za različite $k$. Umesto toga, IDBA gradi De Brujinov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brujinov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, buka u $H_k$ je redukovana. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta iz $H_k$.
 
 \begin{comment}
 Slika \ref{fig:17} opisuje ideju IDBA asemblera:
@@ -1041,7 +1027,7 @@ U prethodnom delu data je biološka osnova za algoritme koji se primenjuju u sek
 \section{JellyFish algoritam}
 
 Kao što je već pomenuto u prethodnoj glavi, $JellyFish$ algoritam koristi se za brojanje k-mera, a kao potprogram programa za korigovanje grešaka u sekvencioniranju očitavanja.
-Pseudokod ovog algoritma dat je na slici \ref{fig:jellyfish}:
+Pseudokod ovog algoritma dat je na slici \ref{fig:jellyfish}.
 
 \begin{figure}[!ht]
   \centering
@@ -1108,7 +1094,7 @@ Ulaz u glavnu funkciju:
 
 \newpage
 
-Heš funkcija koja nosi naziv \textit{pattern\_to\_number} prikazana je na listingu \ref{lst:100}:
+Heš funkcija koja nosi naziv \textit{pattern\_to\_number} prikazana je na listingu \ref{lst:100}.
 
 \lstinputlisting[language=erlang,label={lst:100},caption=Heš funkcija \textit{pattern\_to\_number},captionpos=b]{101.ex}
 
@@ -1116,23 +1102,23 @@ Argumenti funkcije su string koji predstavlja k-mer (\textit{pattern}), početni
 
 \lstinputlisting[language=erlang,label={lst:101},caption=Pomoćna funkcija \textit{symbol\_to\_number},captionpos=b]{100.ex}
 
-Glavna funkcija pre poziva pomoćnih funkcija obavlja početnu inicijalizaciju objekata koji su joj potrebni, tj. izračunava veličinu heš table $H$ i $Count$ tabele, a zatim ih inicijalizuje praznim stringovima i nulama, respektivno. Izgled glavne funkcije može se videti na listingu \ref{lst:102}:
+Glavna funkcija pre poziva pomoćnih funkcija obavlja početnu inicijalizaciju objekata koji su joj potrebni, tj. izračunava veličinu heš table $H$ i $Count$ tabele, a zatim ih inicijalizuje praznim stringovima i nulama, respektivno. Izgled glavne funkcije može se videti na listingu \ref{lst:102}.
 
 \newpage
 
 \lstinputlisting[language=erlang,label={lst:102},caption=Glavna funkcija \textit{jellyfish\_algorithm},captionpos=b]{102.ex}
 
-Funkcije za inicijalizaciju H tabele (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama $h\_table$ i $count\_table$, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti mape $h\_table$ na početku prazni stringovi, a mape $count\_table$ nule, što se može videti na listingu \ref{lst:103}:
+Funkcije za inicijalizaciju H tabele (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama $h\_table$ i $count\_table$, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti mape $h\_table$ na početku prazni stringovi, a mape $count\_table$ nule, što se može videti na listingu \ref{lst:103}.
 
 \lstinputlisting[language=erlang,label={lst:103},caption=Funkcije za inicijalizaciju H i Count tabela,captionpos=b]{103.ex}
 
-Pomoćna funkcija koja obavlja brojanje k-mera je funkcija \textit{calculate} čiji su argumenti mape \textit{h\_table} i \textit{count\_table}, lista \textit{z\_table} i veličina pomenutih mapa \textit{size\_of\_H}. Kod ove funkcije prikazan je na listingu \ref{lst:104}: 
+Pomoćna funkcija koja obavlja brojanje k-mera je funkcija \textit{calculate} čiji su argumenti mape \textit{h\_table} i \textit{count\_table}, lista \textit{z\_table} i veličina pomenutih mapa \textit{size\_of\_H}. Kod ove funkcije prikazan je na listingu \ref{lst:104}. 
 
 \newpage
 
 \lstinputlisting[language=erlang,label={lst:104},caption=Pomoćna funkcija \textit{calculate},captionpos=b]{104.ex}
 
-Kao što se može videti, funkcija \textit{calculate} je rekurzivna. Poziva se za svaki element liste \textit{z\_table}, počevši od njene glave, sve dok lista ne postane prazna. Za svaki string iz \textit{z\_table} prvo se poziva funkcija \textit{hashEntry} koja vrši heširanje stringova u indeks \textit{i} koji ključ za mape \textit{h\_table} i \textit{count\_table}. Kod ove funkcije dat je listingom \ref{lst:105}:
+Kao što se može videti, funkcija \textit{calculate} je rekurzivna. Poziva se za svaki element liste \textit{z\_table}, počevši od njene glave, sve dok lista ne postane prazna. Za svaki string iz \textit{z\_table} prvo se poziva funkcija \textit{hashEntry} koja vrši heširanje stringova u indeks \textit{i} koji ključ za mape \textit{h\_table} i \textit{count\_table}. Kod ove funkcije dat je listingom \ref{lst:105}.
 
 \lstinputlisting[language=erlang,label={lst:105},caption=Pomoćna funkcija \textit{hashEntry},captionpos=b]{105.ex}
 
@@ -1153,7 +1139,7 @@ Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Eli
 \section{DSK algoritam}
 
 DSK je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od $Jellyfish$ algoritma.
-Njegov pseudokod dat je na slici \ref{fig:DSK}:
+Njegov pseudokod dat je na slici \ref{fig:DSK}.
 
 %Figura 5.11
 \begin{figure}[h]
@@ -1172,25 +1158,25 @@ Zatim, svaka lista se dalje deli u podliste, pri čemu je svaka dužine $l_subli
 Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći $JellyFish$ algoritam.
 \end{comment}
 
-\section{Sve Ojlerove putanje}
+% \section{Sve Ojlerove putanje}
 
-Uzorak genoma se može predvideti identifikovanjem Ojlerove putanje. Medjutim, Ojlerova putanja ne mora biti jedinstvena De Brujinovom grafu ili čak ne mora ni postojati. Zbog toga se prelazi na De Brujinov grafovski pristup. (dopuni)
+% Uzorak genoma se može predvideti identifikovanjem Ojlerove putanje. Medjutim, Ojlerova putanja ne mora biti jedinstvena u De Brujinovom grafu ili čak ne mora ni postojati. Zbog toga se prelazi na De Brujinov grafovski pristup. (dopuni)
 
 \section{De Brujinov asembler}
 
-De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće korist. Cilj ovog algoritma je da pronadje sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{fig:11} daje pseudokod ovog jednostavnog metoda:
+De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronadje sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{fig:11} daje pseudokod ovog jednostavnog metoda:
 
 %Algoritam De Brujinov asembler
 %Figura 5.17
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{Figura5_17.PNG}
-\caption{Jednstavan De Brujinov grafovski asmbler}
+\caption{Jednostavan De Brujinov grafovski asmbler}
 \label{fig:11}
 \source{\cite{WingKinSung} str. 141, slika 5.17}
 \end{figure}
 
-(dopuni)
+Neka je dat skup očitavanja $R$ i parametar $k$. Izgrađuje se De Brujinov graf $H_k$, a zatim se pronalaze sve maksimalne proste putanje i od njih se formiraju kontige.
 
 
 
