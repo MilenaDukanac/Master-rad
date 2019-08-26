@@ -1054,6 +1054,7 @@ Na slici \ref{fig:17} se nalazi pseudokod koji opisuje ideju IDBA asemblera.
 \end{comment}
 
 \chapter{Implementirani algoritmi i rezultati}
+\label{odeljak:algoritmiIRezultati}
 
 U poglavlju \ref{poglavlje:Bio} data je biološka osnova za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opisi aplikacije za izvršavanje algoritama i rezultati njihovog izvršavanja.
 
@@ -1377,7 +1378,7 @@ Pojedinačni izrazi, ali i Elixir programi, mogu se takođe izvršavati u komand
 
 \section{Opis aplikacije}
 
-Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u ovom poglavlju implementiran je upravo u ovom jeziku, a koristeći tekstualni editor \textbf{PyCharm} \cite{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
+Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći tekstualni editor \textbf{PyCharm} \cite{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
 
 Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}.
 
@@ -1397,7 +1398,7 @@ Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a po
 \label{fig:padajucaLista}
 \end{figure}
 
-Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...}, otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
+Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...} otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
 \begin{figure}[h]
 \centering
@@ -1406,7 +1407,7 @@ Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klik
 \label{fig:fileChooser}
 \end{figure}
 
-Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti ispisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršenju. Prikaz obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
+Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti ispisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
 
 % Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...}, otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
@@ -1444,11 +1445,17 @@ U ovom poglavlju će biti prikazani rezultati pokretanja algoritama, koji su nak
 
 \subsection{\textit{JellyFish} algoritam}
 
-Neka izabrani ulazni fajl za \textit{JellyFish algoritam} sadrži listu k-mera $["AC","CG","AC","GT",\\"CA","GG","AC","GT"]$ i parametar $\alpha = 0.7$. Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru dodeljenom nekom ključu u prvoj mapi odgovara broj dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
+Neka izabrani ulazni fajl za \textit{JellyFish algoritam} sadrži listu k-mera $["AC","CG","AC","GT",\\"CA","GG","AC","GT"]$ i parametar $\alpha = 0.7$. Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru, koji je dodeljen nekom ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
 
 \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
 
-Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasniji, ukoliko za parametar $\alpha$ važi $\alpha \leq 0.7$, tako da se brzina i efikasnost mogu uporediti pokretanjem algoritma za različito $\alpha$. Na malom skupu podataka, unapređenje u pogledu brzine i efikasnosti je zanemarljivo, ali prilikom izvršavanja na velikom skupu podataka je od velikog značaja.
+Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasniji, ukoliko za parametar $\alpha$ važi $\alpha \leq 0.7$, tako da se brzina i efikasnost mogu uporediti pokretanjem algoritma za različito $\alpha$. Na malom skupu podataka, unapređenje u pogledu brzine i efikasnosti je zanemarljivo, ali prilikom izvršavanja nad velikim skupom podataka je od velikog značaja.
+
+\subsection{\textit{DSK} algoritam}
+
+\textit{DSK} algoritam će biti pokrent nad istim skupom k-mera, kao i \textit{JellyFish} i za $M = 5$ i $D = 4$. Rezultati se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u skupu $Z$, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+
+\lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
 \subsection{\textit{De\_Brujin\_graph} algoritam}
 \label{odeljak:debrujinRezultati}
