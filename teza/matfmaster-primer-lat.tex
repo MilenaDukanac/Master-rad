@@ -132,7 +132,11 @@
 % ==============================================================================
 \chapter{Uvod}
 
-Elixir je funkcionalni programski jezik čiji će osnovni koncepti i osobine biti predstavljeni u okviru ovog rada, a kroz primenu u oblasti sekvencioniranja genoma. Poglavlje \ref{poglavlje:prvoPoglavlje} je posvećeno Elixir-u. Prvo je prikazano razvojno stablo na kome se može videti koji su jezici uticali na njegov nastanak i razvoj, kao i godine nastanka tih jezika. Zatim su predstavljeni osnovni tipovi podataka i osnovne osobine Elixir-a, zajedno sa primerima koda radi boljeg razumevanja. Poglavlje \ref{poglavlje:Bio} je posvećeno oblasti sekvencioniranja genoma. Uvodni deo služi upoznavanju osnovnih pojmova iz ove oblasti i njenom istorijskom razvoju i napredovanju. Nakon toga su obrađeni osnovni koraci koji se sporovode u toku sekvencioniranja genoma, kao i algoritmi koji pomažu u ovom procesu. Poglavlje \ref{odeljak:algoritmiIRezultati} je namenjeno opisu implementacije algoritama koji su obrađeni u okviru ovog rada. Dati su pseudokodovi zajedno sa razmatranjem njihove vremenske i prostorne složenosti. Potom sledi deo koji je posvećen interfejsu, njegovom izgledu i načinu pokretanja algoritama u okviru njega. 
+U oblasti razvoja programskih jezika se stalno se dešavaju promene. Velika pažnja i značaj se pridaje razvoju novih programskih jezika koji omogućavaju brže i lakše programiranje, bržu obradu velike količine podataka i podršku za konkurentne procese. Upravo sa tim ciljem, u toku prethodnih godina nastao je veliki broj novih programskih jezika i razvojnih okruženja za njih. Jedan od novih jezika koji je nastao 2011. godine je \textit{\textbf{Elixir}}. Za veoma kratko vreme postao je izuzetno popularan i danas ga veliki broj kompanija koristi za svoje projekte i softverska rešenja. Neki od razloga za popularnost Elixir-a su brza obrada velike količine podataka, skalabilnost, podrška za konkurentne procese i veoma visoka tolerancija na greške.
+
+Rekonstrukcija genoma pomoću sekvencioniranja genoma je važan problem. Sekvencioniranje genoma omogućava istraživačima da proučavaju ne samo gene koji kodiraju važne proteine u našem organizmu, već i čitave oblasti DNK koji imaju druge važne uloge. Naši genomi ostaju relativno konstantni tokom čitavog života, tako da je genom dovoljno sekvencionirati jedanput kako bi se mogao proučavati iznova i iznova. U medicini, jedna od oblasti gde je sekvencioniranje genoma od izuzetnog značaja je dijagnostikovanje rizika od naslednih bolesti. Na primer, otkrivanje rizika od razvoja određenog karcinoma će uticati na obavljanje češćih skrininga. Češći skrininzi će pomoći da se bolest na vreme otkrije, što je od presudnog značaja za proces lečenja.
+
+Cilj ovog rada je prikazivanje osnovnih koncepata i osobina programskog jezika Elixir kroz primenu u implementaciji algoritama koji se koriste u oblasti sekvencioniranju genoma. Takođe, cilj je i upoznavanje sa osnovnim pojmovima i problemima ove oblasti, kao i prikazivanje značaja njenog proučavanja i unapređivanja. Poglavlje \ref{poglavlje:prvoPoglavlje} je posvećeno Elixir-u. Prvo je prikazano razvojno stablo na kome se može videti koji su jezici uticali na njegov nastanak i razvoj, kao i godine nastanka tih jezika. Zatim su predstavljeni osnovni tipovi podataka i osnovne osobine Elixir-a, zajedno sa primerima koda radi boljeg razumevanja. Poglavlje \ref{poglavlje:Bio} je posvećeno oblasti sekvencioniranja genoma. Uvodni deo ovog poglavlja služi upoznavanju osnovnih pojmova iz ove oblasti i njenom istorijskom razvoju i napredovanju. Nakon toga su obrađeni osnovni koraci koji se sporovode u toku sekvencioniranja genoma, kao i algoritmi koji pomažu u ovom procesu. Poglavlje \ref{odeljak:algoritmiIRezultati} je namenjeno opisu implementacije algoritama koji su obrađeni u okviru ovog rada. Dati su pseudokodovi zajedno sa razmatranjem njihove vremenske i prostorne složenosti. Potom sledi deo koji je posvećen interfejsu, njegovom izgledu i načinu pokretanja algoritama u okviru njega. 
 
 % ------------------------------------------------------------------------------
 \chapter{Elixir} %A bio je Uvod
@@ -201,6 +205,24 @@ LISP je nastalo od „LISt Processor”, a povezane liste su jedan od glavnih ti
 podataka. Osnova Lisp-a je funkcionalno programiranje, ali se Lisp zbog raznih drugih svojstava smatra multiparadigmatskim programskim jezikom.} i deli njegovu filozofiju \textit{code-as-data} (program je funkcija koja se izvršava nad podacima) i moćan makro sistem. Clojure je pretežno funkcionalni programski jezik i sadrži bogat skup nepromenljivih i postojanih struktura podataka. Elixir je preuzeo neke od najboljih Clojure karakteristika - efikasne, nepromenljive strukture podataka, opcionalno lenjo izračunavanje i protokole.
 
 
+\section{Uputstvo za instalaciju i pokretanje Elixir-a}
+\label{odeljak:Instalacija}
+
+Za instaliranje Elixir-a je potrebno posetiti oficijalni sajt jezika Elixir \cite{Elixir} i pratiti uputstva za odgovarajući operativni sistem. Kada se instalacija završi, može se proveriti verzija Elixir-a pomoću komande \textit{elixir --version} izvršene u komandnoj liniji.
+
+Elixir programi imaju ekstenziju \textit{.ex} ili \textit{.exs} i mogu se pisati i izvršavati u okviru odgovarajućih integrisanih razvojnih okruženja. Neki od najpoznatijih su \textit{Spacemacs}, \textit{Visual Studio Code}, \textit{Emacs} i \textit{Atom}, a čitav spisak, kao i link ka njihovim zvaničnim stranicama, može se videti na adresi \cite{ElixirEditors}.
+
+Pojedinačni izrazi, ali i Elixir programi, mogu se takođe izvršavati u komandnoj liniji nakon izvršavanja komande \textit{iex} i pokretanja interaktivnog Elixir-a. Primer pokretanja interaktivnog Elixir-a i izvršavanja pojedinačnog izraza može se videti na listingu \ref{lst:interactiveElixir}.
+
+\lstinputlisting[language=erlang,label={lst:interactiveElixir},caption=Pokretanje interaktivnog Elixir-a,captionpos=b]{interactiveElixir.ex}
+
+\noindent U Elixir-u se sve funkcije definišu u okviru modula pomoću ključne reči \textit{defmodule}. Za kompajliranje Elixir fajla u kome je definisan modul sa funkcijama i pokretanje interaktivnog Elixir-a nakon toga, najpre se poziva komanda \textit{iex ime\_fajla.ex}. Potom se može pokrenuti bilo koja funkcija unutar definisanog modula tako što se prvo navede ime modula, zatim ime funkcije i argumenti u okviru zagrada (\textit{ime\_modula.\\ime\_programa(argument1, argument2)}). Primer definisanja modula i funkcije u okviru njega može se videti na listingu \ref{lst:printArgs}, a primer kompajliranja fajla i pokretanja funkcije dat je na listingu \ref{lst:primerPokretanjaHelloWorld}.
+
+\lstinputlisting[language=erlang,label={lst:printArgs},caption=Primer definisanja modula,captionpos=b]{print_args.ex}
+
+\lstinputlisting[language=erlang,label={lst:primerPokretanjaHelloWorld},caption=Primer kompajliranja fajla i pokretanja programa,captionpos=b]{primerPokretanjaHelloWorld.ex}
+
+Elixir programi koji imaju ekstenziju \textit{.exs} se mogu kompajlirati i izvršavati iz komandne linije pomoću komande \textit{elixir ime\_programa.exs}. Nakon ove komande neće biti pokrenut interaktivni Elixir, već će samo biti prikazani rezultati izvršavanja programa.
 
 \section{Osnovne karakteristike}
 
@@ -522,7 +544,7 @@ Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji
 Posle prve rečenice da li ubaciti?
 Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK).\end{comment}
 
-\textbf{DNK} (dezoksiribonukleinska kiselina) je nukleinska kiselina koja sadrži uputstva za razvoj i pravilno funkcionisanje svih živih organizama. Informacije u DNK se čuvaju kao k$\hat{o}$d koji čine \textbf{četiri hemijske baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, adenin sa timinom i citozin sa guaninom, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koji imaju antiparalelnu\footnote{U biohemiji, dva molekula su antiparalelna ako su locirani jedan pored drugog i usmereni u suprotnim pravcima, ili ako su dva lanca međusobno komplementarna.} orijentaciju i koji čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}).
+\textbf{DNK} (dezoksiribonukleinska kiselina) je nukleinska kiselina koja sadrži uputstva za razvoj i pravilno funkcionisanje svih živih organizama. Informacije u DNK se čuvaju kao k$\hat{o}$d koji čine \textbf{četiri hemijske baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, adenin sa timinom i citozin sa guaninom, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koji imaju antiparalelnu\footnote{U biohemiji, dva molekula su antiparalelna ako su locirani jedan pored drugog i usmereni u suprotnim pravcima, ili ako su dva lanca međusobno komplementarna.} orijentaciju i koji čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}). Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina orijentisane vertikalno, a bazni parovi se mogu čitati sa leva na desno (slika \ref{fig:odmotanDnk}).
 
 \begin{figure}[!ht]
   \centering
@@ -530,8 +552,6 @@ Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih 
   \caption{Struktura DNK \cite{DNA}}
   \label{fig:00}
 \end{figure}
-
-Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina orijentisane vertikalno, a bazni parovi se mogu čitati sa leva na desno (slika \ref{fig:odmotanDnk}).
 
 \begin{figure}[!ht]
   \centering
@@ -543,7 +563,7 @@ Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina ori
 \begin{comment}
  Šećeri u DNK su međusobno povezani fosfatnim grupama koje stvaraju fosfodiestarsku vezu između trećeg i petog ugljenikovog atoma šećernog prstena. Fosfodiestarske veze su asimetrične, te DNK polinukleotidni lanci imaju smer. Kako ovi lanci idu u suprotnim smerovima, kaže se da je DNK antiparalelna. Asimetrični krajevi DNK baza se označavaju sa 5' (pet prim) i 3' (tri prim). Antiparalelnost znači da jedan lanac ide u smeru 5' \rightarrow 3', dok suprotni lanac ide u smeru 3' \rightarrow 5'. 
 
-$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.
+$5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac koji se obeležava sa $5' \rightarrow 3'$. Na primer, DNK polimeraza deluje u pravcu $5' \rightarrow 3'$, tj. dodaje nukleotide na $3'$ kraj molekula napredujući u tom smeru.
 
 \end{comment}
 
@@ -553,21 +573,21 @@ Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih 
 
 \textbf{Sekvencioniranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je eksperimentalan
 proces – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
-odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz našeg genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Genomi i očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
+odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz ciljnog genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Genomi i očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
 
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Što su delovi veći, slagalicu je lakše sastaviti.
 
 \begin{comment}
-Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomici. Postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, genom se rekonstruiše indirektno. Prvo, vrši se razbijanje genoma na DNK fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}). Zatim se pomoću mašine za sekvencioniranje na osnovu fragmenata vrši dekodiranje DNK sekvence. Ove DNK sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Usled slučajnog uzorkovanja , ekstahovana očitavanja pokrivaju ceo genom ravnomerno. Lepljenjem ovih očitavanja možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{\textit{de novo} genomsko sekvencioniranje}.
+Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomici. Postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, genom se rekonstruiše indirektno. Prvo, vrši se razbijanje genoma na DNK fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}). Zatim se pomoću mašine za sekvencioniranje na osnovu fragmenata vrši dekodiranje DNK sekvence. Ove DNK sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Usled slučajnog uzorkovanja , ekstahovana očitavanja pokrivaju ceo genom ravnomerno. Lepljenjem ovih očitavanja možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{genomsko sekvencioniranje \textit{de novo}}.
 \end{comment}
 
 \newpage
 
 \section{Istorija sekvencioniranja genoma}
 
-\textbf{Sanger sekvencioniranje} predstavlja prvu tehniku sekvencioniranja. Nastala je 1977. godine, a njeni tvorci su Frederik Sanger (engl. \textit{Frederick Sanger}) i njegove kolege. Razvijena su dva asemblera za asembliranje očitavanja Sanger sekvencioniranja: \textit{OLC}\footnote{Skraćenica od \textit{overlap layout consensus} (\textit{overlap} - izgradnja grafa preklapanja,
+\textbf{Sekvencioniranje Sanger} predstavlja prvu tehniku sekvencioniranja. Nastala je 1977. godine, a njeni tvorci su Frederik Sanger (engl. \textit{Frederick Sanger}) i njegove kolege. Razvijena su dva asemblera za asembliranje očitavanja sekvencioniranja Sanger: \textit{OLC}\footnote{Skraćenica od \textit{overlap layout consensus} (\textit{overlap} - izgradnja grafa preklapanja,
 \textit{layout} - spajanje putanja u grafu u kontige, \textit{concensus} - određivanje najverovatnije sekvence
-nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brujinovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom je digitalna baza podataka o nukleinskim kiselinama, koju su naučnici prikupili kao reprezentativni primer skupa gena čoveka. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \textit{(The Genome Reference Consortium human genome (build 37)}) je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz Bafala (engl. \textit{Buffalo}). Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je Sanger sekvencioniranje niskopropusno (omogućava sekvencioniranje malog broja očitavanja odjednom) i neekonomično, samo nekoliko genoma je sastavljeno pomoću njega.
+nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brujinovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom je digitalna baza podataka o nukleinskim kiselinama, koju su naučnici prikupili kao reprezentativni primer skupa gena čoveka. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \textit{(The Genome Reference Consortium human genome (build 37)}) je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz Bafala (engl. \textit{Buffalo}). Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je sekvencioniranje Sanger niskopropusno (omogućava sekvencioniranje malog broja očitavanja odjednom) i neekonomično, samo nekoliko genoma je sastavljeno pomoću njega.
 
 Razvoj tehnika za sekvencioniranje \textbf{druge generacije} značajno je doprineo efikasnijem i ekonomičnijem sekvencioniraranju stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja su kratka. Njihova pojava je dovela do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih\footnote{\textit{De novo} asembleri su programi
 koji vrše sklapanje tako što proširuju kratka očitavanja spajanjem susednih
@@ -575,9 +595,9 @@ očitavanja u dužu sekvencu, bez korišćenja referentne sekvence.} projekata, 
 
 Od nedavno su na raspolaganju tehnike za sekvencioniranje \textbf{treće generacije}, koje proizvode duga očitavanja (dužine od oko 10000 bp). Duga očitavanja mogu obuhvatiti složene genomske karakteristike, omogućavajući njihovo ispravnije postavljanje u rekonstruisanom genomu, tj. mogu rešiti problem ponavljajućih regiona. Međutim, duga očitavanja imaju visoku stopu greške $(15\%-18\%)$. U cilju rešavanja ovog problema razvijen je veliki broj računskih metoda za korekciju grešaka u očitavanjima treće generacije sekvencioniranja.
 
-\section{\textit{Shotgun} sekvencioniranje celokupnog genoma}
+\section{Sekvencioniranje \textit{shotgun} celokupnog genoma}
 
-Jedna od tehnika druge generacije sekvencioniranja je \textit{shotgun} sekvencioniranje celokupnog genoma. Prvi korak u ovom procesu je razbijanje genoma na skup očitavanja, a na osnovu njegovog uzorka. Postoje tri vrste očitavanja:
+Jedna od tehnika druge generacije sekvencioniranja je  sekvencioniranje \textit{shotgun} celokupnog genoma. Prvi korak u ovom procesu je razbijanje genoma na skup očitavanja, a na osnovu njegovog uzorka. Postoje tri vrste očitavanja:
 
 \begin{itemize}
 \itemsep0em 
@@ -586,7 +606,7 @@ Jedna od tehnika druge generacije sekvencioniranja je \textit{shotgun} sekvencio
     \item{partner-uparena očitavanja} (engl. \textit{mate-pair reads})
 \end{itemize}
 
-Prikaz ovih vrsta očitavanja može se videti na slici \ref{fig:01}.
+Jednostrana očitavanja su očitavanja koja se generišu tako što sekvencer čita DNK fragment samo u jednom smeru, ili sa $5'$, ili sa $3'$ kraja. U slučaju uparenih očitavanja, sekvencer čita DNK fragment sa oba kraja. Partner-uparena očitavanja su $5'$ ili $3'$ očitavanja DNK fragmenta oba lanca. Prikaz ovih vrsta očitavanja može se videti na slici \ref{fig:01}. Strelice označavaju smer u kome je sekvencer vršio očitavanje DNK fragmenta.
 
 \begin{figure}[!ht]
   \centering
@@ -598,7 +618,7 @@ Prikaz ovih vrsta očitavanja može se videti na slici \ref{fig:01}.
 Sekvenceri čitaju deo DNK fragmenta neke unapred
 zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, mnoge pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
 
-Za potrebe \textit{shotgun} sekvencioniranja celokupnog genoma postoje dva protokola -- \textbf{sekvencioniranje celokupnog genoma} i \textbf{sekvencioniranje partner-uparenih očitavanja}.
+Za potrebe sekvencioniranja \textit{shotgun} celokupnog genoma postoje dva protokola -- \textbf{sekvencioniranje celokupnog genoma} i \textbf{sekvencioniranje partner-uparenih očitavanja}.
 
 \subsection{Sekvencioniranje celokupnog genoma}
 
@@ -615,13 +635,13 @@ Prvo se uzorak genoma na slučajan način razbija na DNK fragmente. Zatim sledi 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\textwidth]{prva.png}
-  \caption{\textit{Shotgun} sekvencioniranje celokupnog genoma \cite{WingKinSung}}
+  \caption{Sekvencioniranje \textit{shotgun} celokupnog genoma \cite{WingKinSung}}
 \label{fig:1}
 \end{figure}
 
 \newpage
 
-Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma.
+Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma. Sa $N$ su označeni delovi koji se nalaze na poziciji koja premašuje dužinu očitavanja, pa ne ulaze u sastav očitavanja.
 
 \begin{figure}[!ht]
   \centering
@@ -630,13 +650,15 @@ Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz u
   \label{fig:2}
 \end{figure}
 
- Prilikom sekvencioniranja jednostranih očitavanja, dobija se očitavanje sa $5'$ kraja gornjeg lanca, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Prilikom sekvencioniranja uparenih očitavanja, dobijaju se $5'$ očitavanja i gornjeg i donjeg lanca, pri čemu je drugo očitavanje inverzni komplement prvog, odnosno:
+ Prilikom sekvencioniranja jednostranih očitavanja, dobija se očitavanje sa $5'$ kraja gornjeg lanca, tj. $ACTCAGCACCTTACGGCGTGCATCA$. Prilikom sekvencioniranja uparenih očitavanja, dobijaju se $5'$ očitavanja i gornjeg i donjeg lanca:
 
 \begin{itemize}
 \itemsep0em 
     \item {$ACTCAGCACCTTACGGCGTGCATCA$}
     \item {$AGTTTGTACTGCCGTTCAGAACGTA$}
 \end{itemize}
+
+\noindent Drugo očitavanje $AGTTTGTACTGCCGTTCAGAACGTA$ je inverzni komplement očitavanja $TACGTTCTGAACGGCAGTACAAACT$, jer je drugo očitavanje dobijeno iz donjeg lanca koji je komplementaran sa gornjim.
 
 Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na dužinu očitavanja. Na primer, \textit{Illumina Hi-seq}\footnote{Illumina je američka kompanija koja je proizvodila visokopropusne sekvencere (omogućavaju sekvencioniranje velikog broja očitavanja odjednom  (engl. \textit{high-throughput sequencers}).} sekvencioniranje može izvršiti samo sekvencioniranje uparenih očitavanja dužine manje od 1000 bp. Za treću generaciju sekvencioniranja, ograničenje dužine očitavanja može biti veće od 10000 bp.
 
@@ -671,13 +693,13 @@ Iako protokol za sekvencioniranje partner-uparenih očitavanja može izdvojiti u
 (ligation errors - greškama prilikom preklapanja očitavanja)
 \end{comment}
 
-\section{\textit{De novo} sekvencioniranje genoma za kratka očitavanja}
+\section{Sekvencioniranje \textit{de novo} genoma za kratka očitavanja}
 
-Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. \textit{De novo} sekvencioniranje ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
+Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. Sekvencioniranje \textit{de novo} ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
 
-Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring $ACATGCGTGTACGT$).
+Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring $ACATGCGTGTACGT$.
 
-Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima. Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
+Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
 
 
 
@@ -685,20 +707,23 @@ Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Op�
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.9\textwidth]{cetvrta.PNG}
-  \caption{\textit{De novo} sekvencioniranje genoma za kratka očitavanja \cite{WingKinSung}}
+  \caption{Sekvencioniranje \textit{de novo} genoma za kratka očitavanja \cite{WingKinSung}}
   \label{fig:4}
 \end{figure}
 
 \newpage
 
 \section{Korekcija grešaka}
+\label{poglavlje:korekcijaGresaka}
 
-Ukoliko se neki k-mer pojavljuje u ulaznim očitavanjima jednom ili veoma mali broj puta, velika je verovatnoća da on je nastao kao posledica grešaka prilikom sekvencioniranja očitavanja i da se neće naći u rekonstruisanom genomu. Sa druge strane, za k-mer koji se pojavljuje veliki broj puta u ulaznim očitavanjima sa velikom sigurnošću se može tvrditi da nije posledica grešaka pri sekvencioniranju. Ove razlike se mogu iskoristiti za filtriranje grešaka u k-merima i selektivno uklanjanje očitavanja koja sadrže greške sekvencioniranja iz skupa podataka \cite{WingKinSung}. 
-Greške u sekvencioniranju očitavanja mogu zbuniti \textit{de novo} asemblere. Da bi se to izbeglo, vrši se korigovanje tih grešaka pre početka asembliranja genoma.
+Ukoliko se neki k-mer pojavljuje u ulaznim očitavanjima jednom ili veoma mali broj puta, velika je verovatnoća da on je nastao kao posledica grešaka prilikom sekvencioniranja očitavanja i da se neće naći u rekonstruisanom genomu. Sa druge strane, za k-mer koji se pojavljuje veliki broj puta u ulaznim očitavanjima sa velikom sigurnošću se može tvrditi da nije posledica grešaka pri očitavanju. Ove razlike se mogu iskoristiti za filtriranje grešaka u k-merima i selektivno uklanjanje iz skupa podataka očitavanja koja sadrže greške \cite{WingKinSung}. 
+Greške u očitavanjima mogu zbuniti \textit{de novo} asemblere. Da bi se to izbeglo, vrši se korigovanje tih grešaka pre početka asembliranja genoma.
 
 \subsection{Brojanje k-mera}
 
-Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera}. Brojanje k-mera se prvenstveno koristi u korekciji grešaka u očitavanjima, ali može biti korišćeno i u koraku asembliranja, detekciji ponovaka i kompresiji genomskih podataka. Ima značajnu ulogu u utvrđivanju da li je došlo do grešaka u sekvencioniranju ili je u pitanju jednonukleotidni polimorfizam. Ulaz u ovaj potprogram je skup očitavanja $R$ i parametar $k$. Neka je $Z$ skup svih mogućih k-mera koji se pojavljuju u $R$. Problem je izračunavanje frekvencije pojavljivanja k-mera u $Z$. U nastavku će biti razmatrana 4 rešenja:
+Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera}. Brojanje k-mera se prvenstveno koristi u korekciji grešaka u očitavanjima, ali može biti korišćeno i u koraku asembliranja, detekciji ponovaka i kompresiji genomskih podataka. Ima značajnu ulogu u utvrđivanju da li je došlo do grešaka u očitavanju ili je u pitanju jednonukleotidni polimorfizam. 
+
+Problem brojanja k-mera se definiše nad ulaznim skupom očitavanja i parametrom $k$. Iz ovog skupa, potrebno je izdvojiti podskup $Z$ svih mogućih k-mera i odrediti njihove frekvencije. Iako jednostavan problem, zbog velike količine podataka, on se ne može rešavati naivnim pristupima, već su potrebni napredni algoritmi i strukture podataka kako bi problem bio efikasno rešen. U nastavku će biti razmatrana četiri rešenja:
 \begin{itemize}
 \itemsep0em
     \item {jednostavno heširanje}
@@ -707,15 +732,15 @@ Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera}.
     \item {DSK}
 \end{itemize}
 
-\textbf{Jednostavno heširanje} - Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrsi preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
+\textbf{Jednostavno heširanje} - Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrši preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
 daje jedinstvenu poziciju. Ta funkcija naziva se \textbf{heš funkcija}, a tabela koja se koristi u tom
 postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva razlicita k-mera da istu vrednost, te kažemo da su ta 2 k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Ukoliko je $k$ veliko, algoritam jednostavnog heširanja će zahtevati previše prostora.
 
-\textbf{JellyFish algoritam} - Moguće je smanjiti prostornu složenost koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}. Ovaj mehanizam se koristi u \textit{JellyFish} algoritmu čija će implementacija detaljnije biti obajšnjena u poglavlju \ref{odeljak:JellyFish}.
+\textbf{Algoritam JellyFish} - Moguće je smanjiti prostornu složenost algoritma jednostavnog heširanja koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}. Mehanizam otvorenog adresiranja se koristi u algoritmu \textit{JellyFish} čija će implementacija detaljnije biti obajšnjena u poglavlju \ref{odeljak:JellyFish}.
 
-\textbf{BFCounter algoritam} - U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter\footnote{Prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta.}da odredi da li se k-mer pojavljuje najmanje $q$ puta.
+\textbf{Algoritam BFCounter} - U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter\footnote{Prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta.} da odredi da li se k-mer pojavljuje najmanje $q$ puta \cite{WingKinSung}.
 
-\textbf{DSK algoritam} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u $Z$. Gijom Rizk (engl. \textit{Guillaume Rizk}) predlaže metod koji se naziva \textbf{DSK}. Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da svaka lista bude smestena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$.
+\textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (engl. \textit{Guillaume Rizk}) predlaže metod koji se naziva \textbf{DSK}. Ideja ovog metoda je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
 
 \begin{comment}
 
@@ -725,7 +750,7 @@ postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u pr
 
 Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrsi preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
 daje jedinstvenu poziciju. Ta funkcija naziva se \textbf{heš funkcija}, a tabela koja se koristi u tom
-postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva razlicita k-mera da istu vrednost, te kažemo da su ta 2 k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Svaki k-mer $z$ može biti kodiran kao 2k-bitni binarni ceo broj \textit{b(z)} zamenom $A$, $C$, $G$ i $T$ u $z$ sa $00$, $01$, $10$, $11$, respektivno. Tako se izgrađuje tabela $Count[0..4^k - 1]$ veličine $4^k$ u kojoj svaka ulazna vrednost $Count[b(z)]$ čuva frekvenciju k-mera $z$ u skupu $Z$. Preciznije, prvo se vrši inicijalizacija svake ulazne vrednosti u $Count[0..4^k - 1]$ na 0. Zatim se iterativno skenira svaki k-mer $z$ iz $Z$ i uvećava $Count[b(z)]$ za 1. Na kraju, sve ulazne vrednosti različite od nule u $Count[]$ predstavljaju k-mere koji se pojavljuju u $Z$ kao i broj njihovih pojavljivanja.
+postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva razlicita k-mera da istu vrednost, te kažemo da su ta dva k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Svaki k-mer $z$ može biti kodiran kao 2k-bitni binarni ceo broj \textit{b(z)} zamenom $A$, $C$, $G$ i $T$ u $z$ sa $00$, $01$, $10$, $11$, respektivno. Tako se izgrađuje tabela $Count[0..4^k - 1]$ veličine $4^k$ u kojoj svaka ulazna vrednost $Count[b(z)]$ čuva frekvenciju k-mera $z$ u skupu $Z$. Preciznije, prvo se vrši inicijalizacija svake ulazne vrednosti u $Count[0..4^k - 1]$ na 0. Zatim se iterativno skenira svaki k-mer $z$ iz $Z$ i uvećava $Count[b(z)]$ za 1. Na kraju, sve ulazne vrednosti različite od nule u $Count[]$ predstavljaju k-mere koji se pojavljuju u $Z$ kao i broj njihovih pojavljivanja.
 
 \end{comment}
 
@@ -748,7 +773,7 @@ Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvrš
 
 \begin{comment}
 
-\subsubsection{JellyFish algoritam}
+\subsubsection{Algoritam JellyFish}
 Moguće je smanjiti veličinu heš tabele koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}.
 
 Ovaj mehanizam je iskorišćen u $JellyFish$ algoritmu. Uvodi se heš funkcija $h()$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Faktor opterećenja - broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgradjuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h()$ dodje do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
@@ -758,19 +783,19 @@ Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuv
 
 Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon sto su svi k-meri iz $Z$ obrađeni, prikazujemo $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
 
-JellyFish algoritam je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
+Algoritam \textit{JellyFish} je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.85\textwidth]{Jellyfish5_9.PNG}
-  \caption{Jellyfish algoritam i funkcija hashEntry \cite{WingKinSung}}
+  \caption{Algoritam Jellyfish i funkcija hashEntry \cite{WingKinSung}}
   \label{fig:6}
 \end{figure}
 
-Iako $JellyFish$ algoritam koristi manje prostora od metode naivnog prebrojavanja, $JellyFish$ heš tabela mora biti veličine koja je jednaka bar broju jedinstvenih k-mera iz $Z$. $JellyFish$ i dalje zahteva mnogo memorije u slučaju da je broj jedinstvenih k-mera u $Z$ veliki.
+Iako algoritam $JellyFish$ koristi manje prostora od metode naivnog prebrojavanja, $JellyFish$ heš tabela mora biti veličine koja je jednaka bar broju jedinstvenih k-mera iz $Z$. $JellyFish$ i dalje zahteva mnogo memorije u slučaju da je broj jedinstvenih k-mera u $Z$ veliki.
 
 
-\subsubsection{BFCounter algoritam}
+\subsubsection{Algoritam \textit{BFCounter}}
 U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter da odredi da li se k-mer pojavljuje najmanje $q$ puta. To je prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta. 
 
 Iako on može dati pogrešno pozitivan rezultat (pogrešan izveštaj da k-mer postoji ili pogrešno proceniti broj k-mera), ne može dati pogrešno negativan rezultat. \textit{BFCounter} održava \textit{counting Bloom} filter $B$ i heš tabelu $H$ i sastoji od 2 faze. 
@@ -797,7 +822,7 @@ Vreme izvršavanja \textit{BFCounter} algoritma je $O(n)$. Što se tiče prostor
 
 \begin{comment}
 
-\subsubsection{DSK algoritam}
+\subsubsection{Algoritam DSK}
 Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja $N$ k-mera u $Z$. Neka je memorija fiksirana tako da bude $M$ bitova i neka je memorija diska fiksirana tako da bude $D$ bitova. Da li se može i dalje efikasno izračunati pojavljivanja k-mera? Gijom Rizk (engl. \textit{Guillaume Rizk}) nam daje pozitivan odgovor i predlaže metod koji se naziva \textbf{DSK}.
 
 , a čiji pseudokod je prikazan na slici \ref{fig:63}.
@@ -806,12 +831,11 @@ Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zav
 \begin{figure}[h]
 \centering
 \includegraphics[width=12cm]{DSK5_11.PNG}
-\caption{DSK algoritam \cite{WingKinSung}}
+\caption{Algoritam DSK \cite{WingKinSung}}
 \label{fig:63}
 \end{figure}
 
-
-Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da svaka lista bude smestena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$.
+Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$.
 
 
 \end{comment}
@@ -826,7 +850,7 @@ $n_{sublist} = j$.
 
 Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  brojimo pojavljivanja svakog k-mera u podlisti koristeći $JellyFish(d_j, 0.7, h)$ sa slike \ref{fig:6}.
 
-Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći $JellyFish$ algoritam.
+Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći algoritam $JellyFish$.
 
 Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
@@ -1060,17 +1084,17 @@ Na slici \ref{fig:17} se nalazi pseudokod koji opisuje ideju IDBA asemblera.
 
 U poglavlju \ref{poglavlje:Bio} data je biološka osnova za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opisi aplikacije za izvršavanje algoritama i rezultati njihovog izvršavanja.
 
-\section{\textit{JellyFish} algoritam}
+\section{Algoritam \textit{JellyFish}}
 \label{odeljak:JellyFish}
 
-$JellyFish$ algoritam se koristi za brojanje k-mera, a kao potprogram programa za korigovanje grešaka u sekvencioniranju očitavanja. Pseudokod ovog algoritma dat je na slici \ref{box:jellyfish}.
+Algoritam $JellyFish$ se koristi za brojanje k-mera, a kao potprogram programa za korigovanje grešaka u sekvencioniranju očitavanja. Pseudokod ovog algoritma dat je na slici \ref{box:jellyfish}.
 
 \begin{comment}
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.9\textwidth]{Jellyfish.PNG}
-  \caption{Jellyfish algoritam \cite{WingKinSung}}
+  \caption{Algoritam Jellyfish \cite{WingKinSung}}
   \label{fig:jellyfish}
 \end{figure}
 
@@ -1155,10 +1179,10 @@ Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK del
   \source{\cite{WingKinSung}}
 \end{figure}
 
-Slika \ref{fig:5}(b) daje primer koji ilustruje $JellyFish$ algoritam. 
+Slika \ref{fig:5}(b) daje primer koji ilustruje algoritam $JellyFish$. 
 \end{comment}
 
-$JellyFish$ algoritam je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita.
+Algoritam $JellyFish$ je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita.
 
 Skup očitavanja $Z$ je prilikom implementacije algoritma predstavljen listom, dok su za predstavljanje heš tabele $H$ i \textit{Count} tabele korišćene mape. Pri početnoj inicijalizaciji, vrednosti $H$ tabele se postavljaju na 0, a vrednosti \textit{Count} tabele na prazan string, dok im je skup ključeva isti. Početna inicijalizacija se vrši rekurzivno za svaki ključ.
 
@@ -1169,7 +1193,7 @@ JellyFish algoritam je detaljnije objašnjen na slici \ref{fig:6} (gorni deo sli
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.85\textwidth]{Jellyfish5_9.PNG}
-  \caption{Jellyfish algoritam i funkcija hashEntry \cite{WingKinSung}}
+  \caption{Algoritam Jellyfish i funkcija hashEntry \cite{WingKinSung}}
   \label{fig:6}
 \end{figure}
 
@@ -1230,7 +1254,8 @@ Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Eli
 
 \newpage
 
-\section{\textit{DSK} algoritam}
+\section{Algoritam \textit{DSK}}
+\label{odeljak:DSK}
 
 \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od $JellyFish$ algoritma.
 Njegov pseudokod dat je na slici \ref{box:DSK}.
@@ -1360,29 +1385,21 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 
 U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. Rezultati pokretanja ovog algoritma će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 
-\section{Uputstvo za instalaciju i pokretanje}
+\section{Uputstvo za pokretanje aplikacije}
 
-Celokupna implementacija je dostupna i može se preuzeti sa adrese \cite{GIT}. Za instaliranje Elixir-a je potrebno posetiti oficijalni sajt jezika Elixir \cite{Elixir} i pratiti uputstva za odgovarajući operativni sistem. Kada se instalacija završi, može se proveriti verzija Elixir-a pomoću komande \textit{elixir --version} izvršene u komandnoj liniji.
+Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}}. Njegova instalacija se može preuzeti sa zvanične stranice \cite{PyCharm}. 
 
-Elixir programi imaju ekstenziju \textit{.ex} i mogu se pisati i izvršavati u okviru odgovarajućih tekstualnih editora. Neki od najpoznatijih su \textit{Spacemacs}, \textit{Visual Studio Code}, \textit{Emacs} i \textit{Atom}, a čitav spisak, kao i link ka njihovim zvaničnim stranicama, može se videti na adresi \cite{ElixirEditors}.
+Na osnovu preuzetog materijala sa \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog \textit{.py} fajla u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog \textit{.py} fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze \textit{.exs} fajlovi sa implementacijama algoritama (\textit{jellyfish.exs}, \textit{dsk.exs},...). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se mogu nalaziti na bilo kojoj lokaciji, jer se njihov izbor vrši preko posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv tog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
 
-Pojedinačni izrazi, ali i Elixir programi, mogu se takođe izvršavati u komandnoj liniji nakon izvršavanja komande \textit{iex} i pokretanja interaktivnog Elixir-a. Primer pokretanja interaktivnog Elixir-a i izvršavanja pojedinačnog izraza može se videti na listingu \ref{lst:interactiveElixir}.
+Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir ime\_algoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
 
-\lstinputlisting[language=erlang,label={lst:interactiveElixir},caption=Pokretanje interaktivnog Elixir-a,captionpos=b]{interactiveElixir.ex}
-
-\noindent U Elixir-u se sve funkcije definišu u okviru modula pomoću ključne reči \textit{defmodule}. Za kompajliranje Elixir fajla u kome je definisan modul sa funkcijama, najpre se poziva komanda \textit{iex ime\_fajla.ex}, a potom se može pokrenuti bilo koja funkcija unutar definisanog modula tako što se prvo navede ime modula, zatim ime funkcije i argumenti u okviru zagrada (\textit{ime\_modula.ime\_programa(argument1, argument2)}). Primer definisanja modula i funkcije u okviru njega može se videti na listingu \ref{lst:printArgs}, a primer kompajliranja fajla i pokretanja funkcije dat je na listingu \ref{lst:primerPokretanjaHelloWorld}.
-
-\lstinputlisting[language=erlang,label={lst:printArgs},caption=Primer definisanja modula,captionpos=b]{print_args.ex}
-
-\lstinputlisting[language=erlang,label={lst:primerPokretanjaHelloWorld},caption=Primer kompajliranja fajla i pokretanja programa,captionpos=b]{primerPokretanjaHelloWorld.ex}
-
-\nepage
+\newpage
 
 \section{Opis aplikacije}
 
-Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći tekstualni editor \textbf{PyCharm} \cite{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
+Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći integrisano razvojno okruženje \textit{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
 
-Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}.
+Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
 \begin{figure}[h]
 \centering
@@ -1391,7 +1408,7 @@ Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \r
 \label{fig:glavniProzor}
 \end{figure}
 
-Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
+% \noindent Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
 \begin{figure}[h]
 \centering
@@ -1400,7 +1417,7 @@ Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a po
 \label{fig:padajucaLista}
 \end{figure}
 
-Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...} otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
+\noindent Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...} otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
 \begin{figure}[h]
 \centering
@@ -1409,7 +1426,7 @@ Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klik
 \label{fig:fileChooser}
 \end{figure}
 
-Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti ispisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
+Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti upisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju i nazivu rezultujućeg fajla. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
 
 % Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...}, otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
@@ -1429,7 +1446,7 @@ Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algor
 \label{fig:uspesnoIzvrsavanje}
 \end{figure}
 
-Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom algoritmu i ulaznom fajlu, pojavljuje se upozorenje koje je prikazano na slici \ref{fig:neuspesnoIzvrsavanje} i potrebno je proveriti izabrane vrednosti i ponovo pokrenuti algoritam.
+\noindent Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom algoritmu i ulaznom fajlu, pojaviće se upozorenje koje je prikazano na slici \ref{fig:neuspesnoIzvrsavanje}. U tom slučaju je potrebno proveriti izabrane vrednosti i ponovo pokrenuti algoritam.
 
 \begin{figure}[h]
 \centering
@@ -1445,21 +1462,21 @@ Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom al
 
 U ovom poglavlju će biti prikazani rezultati pokretanja algoritama, koji su nakon izvršavanja smešteni u odgovarajućim tekstualnim fajlovima i mogu se upoređivati za različite ulazne vrednosti.
 
-\subsection{\textit{JellyFish} algoritam}
+\subsection{Algoritam \textit{JellyFish}}
 
-Neka izabrani ulazni fajl za \textit{JellyFish algoritam} sadrži listu k-mera $["AC","CG","AC","GT",\\"CA","GG","AC","GT"]$ i parametar $\alpha = 0.7$. Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru, koji je dodeljen nekom ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
+Neka izabrani ulazni fajl za algoritam \textit{JellyFish} sadrži listu k-mera $["AC","CG",\\"AC","GT","CA","GG","AC","GT"]$ i parametar $\alpha = 0.7$. Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru, koji je dodeljen nekom ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
 
 \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
 
 Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasniji, ukoliko za parametar $\alpha$ važi $\alpha \leq 0.7$, tako da se brzina i efikasnost mogu uporediti pokretanjem algoritma za različito $\alpha$. Na malom skupu podataka, unapređenje u pogledu brzine i efikasnosti je zanemarljivo, ali prilikom izvršavanja nad velikim skupom podataka je od velikog značaja.
 
-\subsection{\textit{DSK} algoritam}
+\subsection{Algoritam \textit{DSK}}
 
-\textit{DSK} algoritam će biti pokrent nad istim skupom k-mera, kao i \textit{JellyFish} i za $M = 5$ i $D = 4$. Rezultati se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u skupu $Z$, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+Algoritam \textit{DSK} će biti pokrent nad istim skupom k-mera, kao i algoritam \textit{JellyFish}, s tim što će umesto parametra $\alpha$ imati parametre $M = 6$ i $D = 5$. Rezultati izvršavanja algoritma se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
 
 \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
-\subsection{\textit{De\_Brujin\_graph} algoritam}
+\subsection{Algoritam \textit{De\_Brujin\_graph}}
 \label{odeljak:debrujinRezultati}
 
 Neka ulazni fajl \textit{DeBrujinData.txt} sadrži očitavanje $TAATGCCATGGGATGTT$ i parametar $k = 3$. Nakon pokretanja \textit{De\_Brujin\_graph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujin\_graph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
