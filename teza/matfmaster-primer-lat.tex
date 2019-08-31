@@ -1397,7 +1397,7 @@ Na osnovu preuzetog materijala sa \cite{GIT}, potrebno je napraviti projekat u \
 
 Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir ime\_algoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
 
-\newpage
+
 
 \section{Opis aplikacije}
 
@@ -1467,8 +1467,9 @@ Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algor
 U ovom poglavlju će biti prikazani rezultati pokretanja algoritama, koji su nakon izvršavanja smešteni u odgovarajućim tekstualnim fajlovima i mogu se upoređivati za različite ulazne vrednosti.
 
 \subsection{Algoritam \textit{JellyFish}}
+\label{pododeljak:jellyfish}
 
-Neka izabrani ulazni fajl za algoritam \textit{JellyFish} sadrži listu k-mera $["AC","CG",\\"AC","GT","CA","GG","AC","GT"]$ i parametar $\alpha = 0.7$. Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru, koji je dodeljen nekom ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
+Ulazni fajl \textit{JellyFishData.txt} za algoritam \textit{JellyFish} sadrži dve linije. U prvoj liniji se nalaze k-meri razdvojeni zarezom ($AC,CG,AC,GT,CA,GG,AC,GT$), dok se u drugoj liniji nalazi samo parametar alfa ($0.7$). Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}, čiji prikaz je dat na listingu \ref{lst:jellyfishRezultati}. Rezultati se očitavaju tako što k-meru, koji je dodeljen nekom ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi (npr. k-mer $"CG"$ se pojavljuje jednom u ulaznom skupu k-mera, dok se k-mer $"AC"$ pojavljuje tri puta).
 
 \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
 
@@ -1476,14 +1477,14 @@ Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasni
 
 \subsection{Algoritam \textit{DSK}}
 
-Algoritam \textit{DSK} će biti pokrent nad istim skupom k-mera, kao i algoritam \textit{JellyFish}, s tim što će umesto parametra $\alpha$ imati parametre $M = 6$ i $D = 5$. Rezultati izvršavanja algoritma se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži tri linije. Prva linija ima isti sadržaj kao i prva linija ulaznog fajla za algoritam \textit{JellyFish} \ref{pododeljak:jellyfish}. U drugoj liniji se nalazi parametar $M$ (6) i parametar $D$ (5). Rezultati izvršavanja algoritma se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
 
 \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
 \subsection{Algoritam \textit{De\_Brujin\_graph}}
 \label{odeljak:debrujinRezultati}
 
-Neka ulazni fajl \textit{DeBrujinData.txt} sadrži očitavanje $TAATGCCATGGGATGTT$ i parametar $k = 3$. Nakon pokretanja \textit{De\_Brujin\_graph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujin\_graph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
+Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj smešteno očitavanje ($TAATGCCATGGGATGTT$), a u drugoj parametar $k$ (3). Nakon pokretanja \textit{De\_Brujin\_graph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujin\_graph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
 
 \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{De\_Brujin\_graph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
@@ -1491,7 +1492,7 @@ Na osnovu dobijene mape se može konstruisati graf sa čvorovima koje predstavlj
 
 \subsection{\textit{All\_Eulerian\_cycles} algoritam}
 
-Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem \textit{De\_Brujin\_graph} algoritma i on će biti iskorišćen kao ulazni parametar za algoritam \textit{All\_Eulerian\_cycles}. Dakle, u ulaznom fajlu \textit{EulerData.txt} se nalazi pomenuti De Brujinov graf. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
+Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem \textit{De\_Brujin\_graph} algoritma i on će biti iskorišćen kao ulazni parametar za algoritam \textit{All\_Eulerian\_cycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i koji su razdvojeni zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
 \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{All\_Eulerian\_cycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
