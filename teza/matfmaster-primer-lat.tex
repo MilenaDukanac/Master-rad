@@ -1318,7 +1318,7 @@ Svaka lista je podeljena u podliste heš funkcijom $h()$. Preciznije, za svaki k
 
 \textit{DSK} algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
-Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, predstavljena je funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su A, T, C i G ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} rekurzivno kodira svako slovo niske \textit{pattern} koja predstavlja k-mer, počevši od nulte pozicije. Kodovi se nadovezuju na početnu praznu nisku $begin\_string$ pomoću operatora $<>$. Kad se obradi cela niska, izlazi se iz rekurzije i funkcija vraća nisku transformisanu u broj  koji predstavlja kodiran k-mer.
+Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, predstavljena je funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su A, T, C i G ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} rekurzivno kodira svako slovo niske \textit{pattern} koja predstavlja k-mer, počevši od nulte pozicije. Kodovi se nadovezuju na početnu praznu nisku $begin\_string$ pomoću operatora $<>$. Kada se obradi cela niska \textit{pattern}, izlazi se iz rekurzije i funkcija vraća nisku transformisanu u broj  koji predstavlja kodiran k-mer.
 
 \lstinputlisting[language=erlang,label={lst:106},caption=Funkcija \textit{pattern\_to\_number} i pomoćna funkcija \textit{symbol\_to\_number},captionpos=b]{106.ex}
 
@@ -1399,17 +1399,15 @@ Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \tex
 
 Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}}. Njegova instalacija se može preuzeti sa zvanične stranice \cite{PyCharm}. 
 
-Na osnovu preuzetog materijala sa \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog \textit{.py} fajla u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog \textit{.py} fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze \textit{.exs} fajlovi sa implementacijama algoritama (\textit{jellyfish.exs}, \textit{dsk.exs},...). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se mogu nalaziti na bilo kojoj lokaciji, jer se njihov izbor vrši preko posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv tog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
+Na osnovu preuzetog materijala sa \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog \textit{.py} fajla u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog \textit{.py} fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze izvršni fajlovi implementiranih algoritama (\textit{jellyfish}, \textit{dsk},\textit{debrujin\_graph}, \textit{all\_eulerian\_cycles}). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se biraju pomoć posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv tog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
 
 Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir ime\_algoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
-
-
 
 \section{Opis aplikacije}
 
 Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći integrisano razvojno okruženje \textit{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
 
-Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
+Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
 \begin{figure}[h]
 \centering
@@ -1417,8 +1415,6 @@ Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \r
 \caption{Glavni prozor programa}
 \label{fig:glavniProzor}
 \end{figure}
-
-% \noindent Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
 \begin{figure}[h]
 \centering
@@ -1436,7 +1432,9 @@ Pri pokretanju programa otvara se glavni prozor koji se može videti na slici \r
 \label{fig:fileChooser}
 \end{figure}
 
-Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti upisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju i nazivu rezultujućeg fajla. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
+Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. U pozadini se pokreće odgovarajići izvršni fajl algoritma sa argumentima koji su pročitani iz ulaznog fajla. Na ovaj način se izbegava ponovno kompajliranje fajla u kome se nalazi implementacija algoritma pri svakom kliku na dugme za pokretanje. Pritom se omogućava i izvršavanje algoritama na mašini na kojoj ne postoji instaliran Elixir. 
+
+Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti upisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju i nazivu rezultujućeg fajla. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
 
 % Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...}, otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
