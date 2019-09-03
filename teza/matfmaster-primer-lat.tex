@@ -1387,9 +1387,45 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 \label{box:Ojler}
 \end{figure}
 
-U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. Rezultati pokretanja ovog algoritma će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
+U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. Pseudokod algoritma za pronalaženje svih Ojlerovih putanja u grafu, a koji je implementiran u okviru ovog rada, može se videti na slici \ref{box:allEulerianCycles}. Rezultati pokretanja ovog algoritma će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 
-Algoritam \textit{All\_Eulerian\_cycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava \textbf{ulazni} i \textbf{izlazni stepen} za zadati graf \textit{g\_graph} i čvor \textit{v\_node}. Ulazni stepen zadatog čvora je broj čvorova od kojih postoji grana ka zadatom čvoru. Izlazni stepen zadatog čvora je broj čvorova ka kojima postoji grana od zadatog čvora. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
+Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak 1, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{All\_Eulerian\_cycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
+
+Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom granom $(u, v)$ i izlaznom granom $(v, w)$. Konstruiše se jednostavniji $(u, v, w)$-obilazni graf u kome se uklanjaju grane $(u, v)$ i $(v, w)$, a dodaje se novi čvor $x$ zajedno sa granama $(u, x)$ i $(v, x)$. Nove grane $(u, x)$ i $(v, x)$ u obilaznom grafu nasleđuju oznake uklonjenih grana $(u, v)$ i $(v, w)$, respektivno. S obzirom na ulaznu granu $(u, v)$ u čvor $v$, koji ima $k$ izlaznih grana $(v, w_1)$,..., $(v, w_k)$, može se konstruisati $k$ različitih obilaznih grafova. Nikoja dva obilazna grafa nemaju isti Ojlerov ciklus. Cilj je iterativno konstruisati svaki mogući obilazni graf za dati graf sve dok se ne dobije velika porodica prostih usmerenih grafova. Svaki od ovih grafova će odgovarati različitom Ojlerovom ciklusu datog grafa \cite{bioinformaticsAlg}.
+
+\begin{figure}[!ht]
+\begin{tcolorbox}
+\textbf{Algoritam All\_Eulerian\_cycles}(\textit{graph})
+
+\textbf{Ulaz}: \textit{graph} je De Brujinov graf.
+
+\textbf{Izlaz}: Sve Ojlerove putanje u De Brujinovom grafu \textit{graph}.
+
+1: \textit{AllGraphs} $\longleftarrow$ skup koji se sastoji samo od jednog grafa \textit{graph}
+
+2: while postoji složeni graf $G$ u skupu $AllGraphs$
+
+3:\hspace{1cm} v $\longleftarrow$ čvor sa ulaznim stepenom većim od 1 u grafu G
+
+4:\hspace{1cm} foreach ulazna grana $(u, v)$ u čvor $v$
+    
+5:\hspace{2cm} \textit{NewGraph} $\longleftarrow$ $(u, v, w)$-obilazni graf grafa $G$
+
+6:\hspace{2cm} if \textit{NewGraph} je povezan
+
+7:\hspace{3cm} Dodati \textit{NewGraph} u skup \textit{AllGraphs}
+
+8:\hspace{1cm} Ukloniti graf $G$ iz skupa \textit{AllGraphs}
+
+9: foreach graf $G$ iz skupa \textit{AllGraphs}
+
+10:\hspace{1cm} Output Ojlerov ciklus u $G$
+\end{tcolorbox}
+\caption{Algoritam \textit{All\_Eulerian\_cycles} \cite{bioinformaticsAlg}}
+\label{box:allEulerianCycles}
+\end{figure}
+
+Algoritam \textit{All\_Eulerian\_cycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati graf \textit{g\_graph} i čvor \textit{v\_node}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
 
 Izračuvanavanje izlaznog stepena \textit{out\_degree} za zadati čvor vrši se izračunavanjem dužine liste vrednosti u mapi za zadati čvor. Dohvatanje liste vrednosti za zadati čvor mape obavlja se funkcijom \textit{Map.get/2} iz modula \textit{Map}, a izračunavanje dužine liste funkcijom \textit{Kernel.length/1}.
 
