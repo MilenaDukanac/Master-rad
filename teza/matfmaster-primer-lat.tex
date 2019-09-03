@@ -1333,7 +1333,7 @@ Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algor
 \section{Algoritam \textit{De\_Brujin\_graph}}
 \label{odeljak:ImplementacijaDB}
 
-De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda.
+De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda koji na osnovu skupa očitavanja $R$ i parametra $k$ najpre izgrađuje De Brujinov graf $H_k$, a zatim pronalazi sve maksimalne proste putanje i od njih formira kontige.
 
 \begin{comment}
 
@@ -1365,9 +1365,9 @@ De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se d
 \label{box:DeBrujinAssembler}
 \end{figure}
 
-Neka je dat skup očitavanja $R$ i parametar $k$. Prvo se izgrađuje De Brujinov graf $H_k$, a zatim se pronalaze sve maksimalne proste putanje i od njih se formiraju kontige.
+U okviru ovog rada, implementiran je algoritam \textit{De\_Brujin\_graph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$ u kome se iz datog očitavanja izdvajaju sve moguće podniske dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera i koji predstavljaju čvorove budućeg De Brujinovog grafa. Zatim se za svaki k-mer iz početnog skupa k-mera vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način je kreiran De Brujinov graf. 
 
-U okviru ovog rada, implementiran je algoritam \textit{De\_Brujin\_graph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$. Zatim sledi korak formiranja De Brujinovog grafa na osnovu kreiranog skupa k-mera. Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji takodje predstavljaju čvorove grafa i sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
+Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji takodje predstavljaju čvorove grafa i sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
 
 \section{Algoritam \textit{All\_Eulerian\_cycles}}
 
