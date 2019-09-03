@@ -1496,7 +1496,7 @@ Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj s
 
 Na osnovu dobijene mape se može konstruisati graf sa čvorovima koje predstavljaju ključevi i granama ka čvorovima koji se nalaže unutar liste k-mera koje predstavljaju vrednosti mape.
 
-\subsection{\textit{All\_Eulerian\_cycles} algoritam}
+\subsection{Algoritam \textit{All\_Eulerian\_cycles}}
 
 Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{De\_Brujin\_graph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{All\_Eulerian\_cycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i koji su razdvojeni zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
