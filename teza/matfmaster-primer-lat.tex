@@ -132,13 +132,13 @@
 % ==============================================================================
 \chapter{Uvod}
 
-U oblasti razvoja programskih jezika se stalno se dešavaju promene. Velika pažnja i značaj se pridaje razvoju novih programskih jezika koji omogućavaju brže i lakše programiranje, bržu obradu velike količine podataka i podršku za konkurentne procese. Upravo sa tim ciljem, u toku prethodnih godina nastao je veliki broj novih programskih jezika i razvojnih okruženja za njih. Jedan od novih jezika koji je nastao 2011. godine je \textit{\textbf{Elixir}}. Za veoma kratko vreme postao je izuzetno popularan i danas ga veliki broj kompanija koristi za svoje projekte i softverska rešenja. Neki od razloga za popularnost Elixir-a su brza obrada velike količine podataka, skalabilnost, podrška za konkurentne procese i veoma visoka tolerancija na greške.
+U oblasti razvoja programskih jezika stalno se dešavaju promene. Velika pažnja i značaj se pridaje razvoju novih programskih jezika koji omogućavaju brže i lakše programiranje, bržu obradu velike količine podataka i podršku za konkurentne procese. Upravo sa tim ciljem, u toku prethodnih godina nastao je veliki broj novih programskih jezika i razvojnih okruženja za njih. Jedan od novih jezika koji je nastao 2011. godine je \textit{\textbf{Elixir}}. Za veoma kratko vreme postao je izuzetno popularan i danas ga veliki broj kompanija koristi za svoje projekte i softverska rešenja. Neki od razloga za popularnost Elixir-a su brza obrada velike količine podataka, skalabilnost, podrška za konkurentne procese i veoma visoka tolerancija na greške.
 
 Rekonstrukcija genoma pomoću sekvencioniranja genoma je važan problem. Sekvencioniranje genoma omogućava istraživačima da proučavaju ne samo gene koji kodiraju važne proteine u našem organizmu, već i čitave oblasti DNK koje imaju druge važne uloge. Naši genomi ostaju relativno konstantni tokom čitavog života, tako da je genom dovoljno sekvencionirati jedanput kako bi se mogao proučavati iznova i iznova. U medicini, jedna od oblasti gde je sekvencioniranje genoma od izuzetnog značaja je dijagnostikovanje rizika od naslednih bolesti. Na primer, otkrivanje rizika od razvoja određenog karcinoma će uticati na obavljanje češćih skrininga. Češći skrininzi će pomoći da se bolest na vreme otkrije, što je od presudnog značaja za proces lečenja.
 
 Cilj ovog rada je prikazivanje osnovnih koncepata i osobina programskog jezika Elixir kroz primenu u implementaciji algoritama koji se koriste u oblasti sekvencioniranja genoma. Takođe, cilj je i upoznavanje sa osnovnim pojmovima i problemima ove oblasti, kao i prikazivanje značaja njenog proučavanja i unapređivanja. 
 
-Poglavlje \ref{poglavlje:prvoPoglavlje} je posvećeno Elixir-u. Na početku je prikazano razvojno stablo na kome se može videti koji su jezici uticali na njegov nastanak i razvoj, kao i godine nastanka tih jezika. Zatim su predstavljeni osnovni tipovi podataka i osnovne osobine Elixir-a, zajedno sa primerima koda radi boljeg razumevanja. Poglavlje \ref{poglavlje:Bio} je posvećeno oblasti sekvencioniranja genoma. Uvodni deo ovog poglavlja služi upoznavanju osnovnih pojmova iz ove oblasti i njenom istorijskom razvoju i napredovanju. Nakon toga su obrađeni osnovni koraci koji se sporovode u toku sekvencioniranja genoma, kao i algoritmi koji pomažu u ovom procesu. Poglavlje \ref{odeljak:algoritmiIRezultati} je namenjeno opisu implementacije algoritama koji su obrađeni u okviru ovog rada. Dati su pseudokodovi zajedno sa razmatranjem njihove vremenske i prostorne složenosti. Potom sledi deo koji je posvećen interfejsu aplikacije, njegovom izgledu i načinu pokretanja algoritama u okviru aplikacije. 
+Poglavlje \ref{poglavlje:prvoPoglavlje} je posvećeno Elixir-u. Na početku je prikazano razvojno stablo na kome se može videti koji su jezici uticali na njegov nastanak i razvoj, kao i godine nastanka tih jezika. Zatim su predstavljeni osnovni tipovi podataka i osnovne osobine Elixir-a, zajedno sa primerima koda radi boljeg razumevanja. Poglavlje \ref{poglavlje:Bio} je posvećeno oblasti sekvencioniranja genoma. Uvodni deo ovog poglavlja služi upoznavanju osnovnih pojmova iz ove oblasti i njenom istorijskom razvoju i napredovanju. Nakon toga su obrađeni osnovni koraci koji se sporovode u toku sekvencioniranja genoma, kao i algoritmi koji pomažu u ovom procesu. Poglavlje \ref{odeljak:algoritmiIRezultati} je namenjeno opisu implementacije algoritama koji su obrađeni u okviru ovog rada. U prvom delu dati su pseudokodovi algoritama zajedno sa razmatranjem njihove vremenske i prostorne složenosti. Potom sledi deo koji je posvećen opisu aplikacije i načinu pokretanja algoritama. Na kraju poglavlja prikazani su rezultati izvršavanja algoritama. Poslednje poglavlje \ref{poglavlje:Zaključak} sumira rezultate i daje osnovne zaključke rada.
 
 % ------------------------------------------------------------------------------
 \chapter{Elixir} %A bio je Uvod
@@ -218,13 +218,13 @@ Pojedinačni izrazi, ali i Elixir programi, mogu se takođe izvršavati u komand
 
 \lstinputlisting[language=erlang,label={lst:interactiveElixir},caption=Pokretanje interaktivnog Elixir-a,captionpos=b]{interactiveElixir.ex}
 
-\noindent U Elixir-u se sve funkcije definišu u okviru modula pomoću ključne reči \textit{defmodule}. Za kompajliranje Elixir fajla u kome je definisan modul sa funkcijama i pokretanje interaktivnog Elixir-a nakon toga, najpre se poziva komanda \textit{iex ime\_fajla.ex}. Potom se može pokrenuti bilo koja funkcija unutar definisanog modula tako što se prvo navede ime modula, zatim ime funkcije i argumenti u okviru zagrada (\textit{ime\_modula.\\ime\_programa(argument1, argument2)}). Primer definisanja modula i funkcije u okviru njega može se videti na listingu \ref{lst:printArgs}, a primer kompajliranja fajla i pokretanja funkcije dat je na listingu \ref{lst:primerPokretanjaHelloWorld}.
+\noindent U Elixir-u se sve funkcije definišu u okviru modula pomoću ključne reči \textit{defmodule}. Za kompajliranje Elixir fajla u kome je definisan modul sa funkcijama i pokretanje interaktivnog Elixir-a nakon toga, najpre se poziva komanda \textit{iex imeFajla.ex}. Potom se može pokrenuti bilo koja funkcija unutar definisanog modula tako što se prvo navede ime modula, zatim ime funkcije i argumenti u okviru zagrada (\textit{imeModula.\\imePrograma(argument1, argument2)}). Primer definisanja modula i funkcije u okviru njega može se videti na listingu \ref{lst:printArgs}, a primer kompajliranja fajla i pokretanja funkcije dat je na listingu \ref{lst:primerPokretanjaHelloWorld}.
 
 \lstinputlisting[language=erlang,label={lst:printArgs},caption=Primer definisanja modula,captionpos=b]{print_args.ex}
 
 \lstinputlisting[language=erlang,label={lst:primerPokretanjaHelloWorld},caption=Primer kompajliranja fajla i pokretanja programa,captionpos=b]{primerPokretanjaHelloWorld.ex}
 
-Elixir programi koji imaju ekstenziju \textit{.exs} se mogu kompajlirati i izvršavati iz komandne linije pomoću komande \textit{elixir ime\_programa.exs}. Nakon ove komande neće biti pokrenut interaktivni Elixir, već će samo biti prikazani rezultati izvršavanja programa.
+Elixir programi koji imaju ekstenziju \textit{.exs} se mogu kompajlirati i izvršavati iz komandne linije pomoću komande \textit{elixir imePrograma.exs}. Nakon ove komande neće biti pokrenut interaktivni Elixir, već će samo biti prikazani rezultati izvršavanja programa.
 
 \section{Osnovne karakteristike}
 
@@ -236,7 +236,7 @@ Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće n
 
 U ovom delu će biti opisani osnovni tipovi jezika Elixir, njegove osobine, osnove njegove sintakse, semantike, kao i podrška za osnovne koncepte funkcionalnih jezika poput poklapanja obrazaca i nepromenljivosti podataka. 
 
-
+\newpage
 
 \section{Osnovni tipovi podataka}
 
@@ -272,8 +272,6 @@ Brojevi u pokretnom zarezu se zapisuju uz pomoć decimalne tačke po standardu \
 Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u listi čuva svoju vrednost i ukazuje na sledeći element sve dok se ne dostigne kraj liste. To znači da je pristup proizvoljnom elementu liste kao i određivanje dužine liste linearna operacija, jer je potrebno da prođemo celu listu da bismo odredili njenu dužinu. Slično, performanse spajanja dve liste zavise od dužine one koja se nalazi sa leve strane. 
 
 Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vredosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}.
-
-\newpage
 
 \lstinputlisting[language=erlang,label={lst:prvi},caption=Primer liste,captionpos=b]{prvi.ex}
 
@@ -336,8 +334,6 @@ Kako su liste ključnih reči liste, nad njima možemo primenjivati sve operacij
 
 \lstinputlisting[language=erlang,label={lst:12},caption=Dodavanje nove vrednosti listi ključnih reči,captionpos=b]{12.ex}
 
-\newpage
-
 Elementima liste ključnih reči se pristupa na način prikazan na listingu \ref{lst:13}.
 
 \lstinputlisting[language=erlang,label={lst:13},caption=Pristup elementu liste ključnih reči,captionpos=b]{13.ex}
@@ -354,8 +350,6 @@ Elixir obezbeđuje modul koji omogućava manipulisanje listama ključnih reči. 
  
 \subsubsection{Mape}
 Mapa je kolekcija koja sadrži parove ključ : vrednost. Glavne razlike između liste parova ključ-vrednost i mape su u tome što mape ne dozvoljavaju ponavljanje ključeva (jer su to asocijativne strukture podataka) i što ključevi mogu biti bilo kog tipa. Mapa je veoma efikasna struktura podataka, naročito kada količina podataka raste. Ukoliko želimo da podaci u kolekciji ostanu baš u onom redosledu u kom smo ih naveli inicijalno, onda je bolje koristiti liste parova ključ : vrednost, jer mape ne prate nikakvo uređenje.
-
-
 
 Mapa se definiše pomoću sintakse \%\{\} na način prikazan na listingu \ref{lst:14}.
 
@@ -378,8 +372,6 @@ Ukoliko su svi ključevi u mapi atomi, onda se radi pogodnosti može koristiti s
 \lstinputlisting[language=erlang,label={lst:19},caption=Sintaksa ključnih reči,captionpos=b]{19.ex}
 
 Još jedno zanimljivo svojstvo mapa je to što obezbeđuju sopstvenu sintaksu za pristup atomskim ključevima. Primer ove sintakse možemo videti na listingu \ref{lst:20}.
-
-\newpage
 
 \lstinputlisting[language=erlang,label={lst:20},caption=Sintaksa za pristup atomskim ključevima,captionpos=b]{20.ex}
 
@@ -575,15 +567,13 @@ Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih 
 
 \textbf{Sekvencioniranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je eksperimentalan
 proces – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
-odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz ciljnog genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Genomi i očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
+odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz ciljnog genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Dužina genoma i dužina očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
 
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Što su delovi veći, slagalicu je lakše sastaviti.
 
 \begin{comment}
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomici. Postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, genom se rekonstruiše indirektno. Prvo, vrši se razbijanje genoma na DNK fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}). Zatim se pomoću mašine za sekvencioniranje na osnovu fragmenata vrši dekodiranje DNK sekvence. Ove DNK sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Usled slučajnog uzorkovanja , ekstahovana očitavanja pokrivaju ceo genom ravnomerno. Lepljenjem ovih očitavanja možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{genomsko sekvencioniranje \textit{de novo}}.
 \end{comment}
-
-\newpage
 
 \section{Istorija sekvencioniranja genoma}
 
@@ -593,7 +583,7 @@ nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler}
 
 Razvoj tehnika za sekvencioniranje \textbf{druge generacije} značajno je doprineo efikasnijem i ekonomičnijem sekvencioniraranju stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja su kratka. Njihova pojava je dovela do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih\footnote{\textit{De novo} asembleri su programi
 koji vrše sklapanje tako što proširuju kratka očitavanja spajanjem susednih
-očitavanja u dužu sekvencu, bez korišćenja referentne sekvence.} projekata, uključujući rekonstrukciju genoma \textbf{Džejmsa Votsona} (engl. \textit{James Watson}) i \textbf{panda} genoma. Iako je ovaj pristup ekonomičan, rezultat su bili fragmentisani genomi, jer su očitavanja kratka i ponavljajući regioni, takozvani \textbf{ponovci}, dugi. Ponovci su fenomen kada se šablon od nekoliko nukleotida pojavljuje više puta u nizu.
+očitavanja u dužu sekvencu, bez korišćenja referentne sekvence.} projekata, uključujući rekonstrukciju genoma \textbf{Džejmsa Votsona} (engl. \textit{James Watson}) i genoma \textbf{panda}. Iako je ovaj pristup ekonomičan, rezultat su bili fragmentisani genomi, jer su očitavanja kratka i ponavljajući regioni, takozvani \textbf{ponovci}, dugi. Ponovci su fenomen kada se šablon od nekoliko nukleotida pojavljuje više puta u nizu.
 
 Od nedavno su na raspolaganju tehnike za sekvencioniranje \textbf{treće generacije}, koje proizvode duga očitavanja (dužine od oko 10000 bp). Duga očitavanja mogu obuhvatiti složene genomske karakteristike, omogućavajući njihovo ispravnije postavljanje u rekonstruisanom genomu, tj. mogu rešiti problem ponavljajućih regiona. Međutim, duga očitavanja imaju visoku stopu greške $(15\%-18\%)$. U cilju rešavanja ovog problema razvijen je veliki broj računskih metoda za korekciju grešaka u očitavanjima treće generacije sekvencioniranja.
 
@@ -618,7 +608,7 @@ Jednostrana očitavanja su očitavanja koja se generišu tako što sekvencer či
 \end{figure}
 
 Sekvenceri čitaju deo DNK fragmenta neke unapred
-zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, mnoge pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
+zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, neke pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
 
 Za potrebe sekvencioniranja \textit{shotgun} celokupnog genoma postoje dva protokola -- \textbf{sekvencioniranje celokupnog genoma} i \textbf{sekvencioniranje partner-uparenih očitavanja}.
 
@@ -699,9 +689,9 @@ Iako protokol za sekvencioniranje partner-uparenih očitavanja može izdvojiti u
 
 Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. Sekvencioniranje \textit{de novo} ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
 
-Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je superstring $ACATGCGTGTACGT$.
+Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je odgovarajući superstring $ACATGCGTGTACGT$.
 
-Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
+Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Algoritmi za konstrukciju kontiga biće obrađeni u poglavlju \ref{poglavlje:KonstrukcijaKontiga}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
 
 
 
@@ -859,6 +849,7 @@ Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer
 \end{comment}
 
 \section{Konstrukcija kontiga}
+\label{poglavlje:KonstrukcijaKontiga}
 
 Nakon što su sva očitavanja korigovana, može se vršiti njihovo spajanje radi formiranja kontiga. Postoje dva pristupa za konstrukciju kontiga:
 \begin{itemize}
@@ -1330,7 +1321,7 @@ Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algor
 
 % Uzorak genoma se može predvideti identifikovanjem Ojlerove putanje. Medjutim, Ojlerova putanja ne mora biti jedinstvena u De Brujinovom grafu ili čak ne mora ni postojati. Zbog toga se prelazi na De Brujinov grafovski pristup. (dopuni)
 
-\section{Algoritam \textit{De\_Brujin\_graph}}
+\section{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:ImplementacijaDB}
 
 De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda koji na osnovu skupa očitavanja $R$ i parametra $k$ najpre izgrađuje De Brujinov graf $H_k$, a zatim pronalazi sve maksimalne proste putanje i od njih formira kontige.
@@ -1350,7 +1341,7 @@ De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se d
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
-\textbf{Algoritam $De\_Brujin\_Assembler$}($R$, $k$)
+\textbf{Algoritam $DeBrujinAssembler$}($R$, $k$)
 
 \textbf{Ulaz}: $R$ je skup očitavanja i $k$ je parametar De Brujinovog grafa.
 
@@ -1365,11 +1356,11 @@ De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se d
 \label{box:DeBrujinAssembler}
 \end{figure}
 
-U okviru ovog rada, implementiran je algoritam \textit{De\_Brujin\_graph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$ u kome se iz datog očitavanja izdvajaju sve moguće podniske dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera i koji predstavljaju čvorove budućeg De Brujinovog grafa. Zatim se za svaki k-mer iz početnog skupa k-mera vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način je kreiran De Brujinov graf. 
+U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$ u kome se iz datog očitavanja izdvajaju sve moguće podniske dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera i koji predstavljaju čvorove budućeg De Brujinovog grafa. Zatim se za svaki k-mer iz početnog skupa k-mera vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način je kreiran De Brujinov graf. 
 
 Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji takodje predstavljaju čvorove grafa i sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
 
-\section{Algoritam \textit{All\_Eulerian\_cycles}}
+\section{Algoritam \textit{AllEulerianCycles}}
 
 U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje svih Ojlerovih putanja je neophodan. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. Algoritam za pronalaženje
 Ojlerove putanje u grafu nije NP-kompletan i može se efikasno pronaći \cite{skriptaBio}.
@@ -1389,13 +1380,13 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 
 U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. Pseudokod algoritma za pronalaženje svih Ojlerovih putanja u grafu, a koji je implementiran u okviru ovog rada, može se videti na slici \ref{box:allEulerianCycles}. Rezultati pokretanja ovog algoritma će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 
-Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak 1, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{All\_Eulerian\_cycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
+Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak 1, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{AllEulerianCycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
 
 Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom granom $(u, v)$ i izlaznom granom $(v, w)$. Konstruiše se jednostavniji $(u, v, w)$-obilazni graf u kome se uklanjaju grane $(u, v)$ i $(v, w)$, a dodaje se novi čvor $x$ zajedno sa granama $(u, x)$ i $(v, x)$. Nove grane $(u, x)$ i $(v, x)$ u obilaznom grafu nasleđuju oznake uklonjenih grana $(u, v)$ i $(v, w)$, respektivno. S obzirom na ulaznu granu $(u, v)$ u čvor $v$, koji ima $k$ izlaznih grana $(v, w_1)$,..., $(v, w_k)$, može se konstruisati $k$ različitih obilaznih grafova. Nikoja dva obilazna grafa nemaju isti Ojlerov ciklus. Cilj je iterativno konstruisati svaki mogući obilazni graf za dati graf sve dok se ne dobije velika porodica prostih usmerenih grafova. Svaki od ovih grafova će odgovarati različitom Ojlerovom ciklusu datog grafa \cite{bioinformaticsAlg}.
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
-\textbf{Algoritam All\_Eulerian\_cycles}(\textit{graph})
+\textbf{Algoritam AllEulerianCycles}(\textit{graph})
 
 \textbf{Ulaz}: \textit{graph} je De Brujinov graf.
 
@@ -1421,11 +1412,11 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 
 10:\hspace{1cm} Output Ojlerov ciklus u $G$
 \end{tcolorbox}
-\caption{Algoritam \textit{All\_Eulerian\_cycles} \cite{bioinformaticsAlg}}
+\caption{Algoritam \textit{AllEulerianCycles} \cite{bioinformaticsAlg}}
 \label{box:allEulerianCycles}
 \end{figure}
 
-Algoritam \textit{All\_Eulerian\_cycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati graf \textit{g\_graph} i čvor \textit{v\_node}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
+Algoritam \textit{AllEulerianCycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati graf \textit{g\_graph} i čvor \textit{v\_node}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
 
 Izračuvanavanje izlaznog stepena \textit{out\_degree} za zadati čvor vrši se izračunavanjem dužine liste vrednosti u mapi za zadati čvor. Dohvatanje liste vrednosti za zadati čvor mape obavlja se funkcijom \textit{Map.get/2} iz modula \textit{Map}, a izračunavanje dužine liste funkcijom \textit{Kernel.length/1}.
 
@@ -1437,9 +1428,11 @@ Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \tex
 
 Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}}. Njegova instalacija se može preuzeti sa zvanične stranice \cite{PyCharm}. 
 
-Na osnovu preuzetog materijala sa adrese \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog fajla sa ekstenzijom \textit{.py} u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze izvršni fajlovi implementiranih algoritama (\textit{jellyfish}, \textit{dsk},\textit{debrujin\_graph}, \textit{all\_eulerian\_cycles}). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se biraju pomoć posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv izvršenog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
+Na osnovu preuzetog materijala sa adrese \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog fajla sa ekstenzijom \textit{.py} u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze izvršni fajlovi implementiranih algoritama (\textit{jellyFish}, \textit{dsk},\textit{debrujinGraph}, \textit{allEulerianCycles}). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se biraju pomoć posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv izvršenog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
 
-Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir ime\_algoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
+Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir imeAlgoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
+
+\newpage
 
 \section{Opis aplikacije}
 
@@ -1523,23 +1516,24 @@ Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži tri linije. P
 
 \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
-\subsection{Algoritam \textit{De\_Brujin\_graph}}
+\subsection{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:debrujinRezultati}
 
-Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj smešteno očitavanje ($TAATGCCATGGGATGTT$), a u drugoj parametar $k$ (3). Nakon pokretanja \textit{De\_Brujin\_graph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujin\_graph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
+Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj smešteno očitavanje ($TAATGCCATGGGATGTT$), a u drugoj parametar $k$ (3). Nakon pokretanja \textit{DeBrujinGraph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
 
-\lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{De\_Brujin\_graph} algoritma,captionpos=b]{debrujinRezultati.ex}
+\lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
 Na osnovu dobijene mape se može konstruisati graf sa čvorovima koje predstavljaju ključevi i granama ka čvorovima koji se nalaže unutar liste k-mera koje predstavljaju vrednosti mape.
 
-\subsection{Algoritam \textit{All\_Eulerian\_cycles}}
+\subsection{Algoritam \textit{AllEulerianCycles}}
 
-Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{De\_Brujin\_graph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{All\_Eulerian\_cycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i koji su razdvojeni zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
+Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i koji su razdvojeni zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
-\lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{All\_Eulerian\_cycles} algoritma,captionpos=b]{eulerRezultati.ex}
+\lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
+\label{poglavlje:Zaključak}
 
 U ovom radu su prikazane osnove sintakse i semantike funkcionalnog programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma, pa je na taj način prikazana i njegova primena u rešavanju realnih problema. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Za potrebe ovog rada, algoritmi su testirani na veoma malom skupu podataka, te pun potencijal Elixir-a nije prikazan. Radi uvida u sposobnost brze obrade velike količine podataka, potrebno je implementirane algoritme pokretati za realne skupove podataka koji se inače u ovoj oblasti obrađuju. U pitanju su milijarde nukleotida od kojih se može sastojati jedan genom.
 
