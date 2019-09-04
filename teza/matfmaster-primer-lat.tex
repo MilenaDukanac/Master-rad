@@ -752,7 +752,7 @@ Slika \ref{fig:5}(a) predstavlja primer koji ilustruje ovaj jednostavni metod pr
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{58_3algoritma.PNG}
-  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za brojanje k-mera koji koristi \textit{Count} tabelu veličine 4k. (b) Ilustruje \textit{JellyFish} metod brojanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u tabeli $Count$ sa indeksom 4, jer je $h(GT) = 4$. U ovom primeru se javlja je DNK kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u tabeli $Count$ sa indeksom 5. (c) Ilustruje DSK metod brojanja k-mera.
+  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za brojanje k-mera koji koristi tabelu \textit{Count} veličine 4k. (b) Ilustruje \textit{JellyFish} metod brojanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u tabeli $Count$ sa indeksom 4, jer je $h(GT) = 4$. U ovom primeru se javlja je DNK kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u tabeli $Count$ sa indeksom 5. (c) Ilustruje DSK metod brojanja k-mera.
 Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK deli Z u
 4 ($= n_{list} * n_{sublist}$) podliste, a zatim pokreće \textit{JellyFish} algoritam za brojanje k-mera u svakoj podlisti.}
   \label{fig:5}
@@ -1078,7 +1078,7 @@ U poglavlju \ref{poglavlje:Bio} data je biološka osnova za algoritme koji se pr
 \section{Algoritam \textit{JellyFish}}
 \label{odeljak:JellyFish}
 
-Algoritam $JellyFish$ se koristi za brojanje k-mera, a kao potprogram programa za korigovanje grešaka u sekvencioniranju očitavanja. Pseudokod ovog algoritma dat je na slici \ref{box:jellyfish}.
+Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao potprogram programa za korigovanje grešaka u očitavanjima. Pseudokod ovog algoritma dat je na slici \ref{box:jellyfish}.
 
 \begin{comment}
 
@@ -1138,7 +1138,7 @@ Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuv
 
 \end{comment}
 
-Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećava se $Count[i]$ za jedan. Nakon sto su svi k-meri iz $Z$ obrađeni, prikazuje se $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od 0.
+Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavlja se $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećava se $Count[i]$ za 1. Nakon sto su svi k-meri iz $Z$ obrađeni, prikazuje se $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od 0.
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
@@ -1163,7 +1163,7 @@ Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog po
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\textwidth]{58_3algoritma.PNG}
-  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za brojanje k-mera koji koristi \textit{Count} tabelu veličine 4k. (b) Ilustruje \textit{JellyFish} metod brojanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u tabeli $Count$ sa indeksom 4, jer je $h(GT) = 4$. U ovom primeru se javlja jedna kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u tabeli $Count$ sa indeksom 5. (c) Ilustruje DSK metod brojanja k-mera.
+  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za brojanje k-mera koji koristi tabelu \textit{Count} veličine 4k. (b) Ilustruje \textit{JellyFish} metod brojanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u tabeli $Count$ sa indeksom 4, jer je $h(GT) = 4$. U ovom primeru se javlja jedna kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u tabeli $Count$ sa indeksom 5. (c) Ilustruje DSK metod brojanja k-mera.
 Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK deli Z u
 4 ($= n_{list} * n_{sublist}$) podliste, a zatim pokreće \textit{JellyFish} algoritam za brojanje k-mera u svakoj podlisti.}
   \label{fig:5}
@@ -1175,7 +1175,7 @@ Slika \ref{fig:5}(b) daje primer koji ilustruje algoritam $JellyFish$.
 
 Algoritam $JellyFish$ je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita.
 
-Skup očitavanja $Z$ je prilikom implementacije algoritma predstavljen listom, dok su za predstavljanje heš tabele $H$ i \textit{Count} tabele korišćene mape. Pri početnoj inicijalizaciji, vrednosti $H$ tabele se postavljaju na nulu, a vrednosti \textit{Count} tabele na prazan string, dok im je skup ključeva isti. Početna inicijalizacija se vrši rekurzivno za svaki ključ. Izgled funkcija koje inicijalizuju $H$ i $Count$ tabele, može se videti na listingu \ref{lst:103}. Argumenti pri pozivanju obe funkcije su prazna mapa ($\%\{\}$) i veličina mape koju treba kreirati. Pri svakom rekurzivnom pozivu, veličina mape se umanjuje za jedan, a u mapu se ubacuje novi element funkcijom \textit{Map.put/3} iz modula \textit{Map}. Kada veličina mape postane jednaka nuli, tada se izlazi iz rekurzije i funkcija vraća inicijalizovanu mapu. 
+Skup očitavanja $Z$ je prilikom implementacije algoritma u programskom jeziku Elixir predstavljen listom, dok su za predstavljanje heš tabele $H$ i tabele \textit{Count} korišćene mape. Pri početnoj inicijalizaciji, vrednosti tabele $H$ se postavljaju na 0, a vrednosti tabele \textit{Count} na prazan string, dok im je skup ključeva isti. Početna inicijalizacija se vrši rekurzivno za svaki ključ. Izgled funkcija koje inicijalizuju tabele $H$ i $Count$, može se videti na listingu \ref{lst:103}. Argumenti pri pozivanju obe funkcije su prazna mapa ($\%\{\}$) i veličina mape koju treba kreirati. Pri svakom rekurzivnom pozivu, veličina mape se umanjuje za 1, a u mapu se dodaje novi element funkcijom \textit{Map.put/3} iz modula \textit{Map}. Kada veličina mape postane jednaka nuli, tada se izlazi iz rekurzije i funkcija vraća inicijalizovanu mapu. 
 
 \lstinputlisting[language=erlang,label={lst:103},caption=Funkcije za inicijalizaciju $H$ i $Count$ tabele,captionpos=b]{103.ex}
 
@@ -1217,7 +1217,7 @@ Glavna funkcija pre poziva pomoćnih funkcija obavlja početnu inicijalizaciju o
 
 \lstinputlisting[language=erlang,label={lst:102},caption=Glavna funkcija \textit{jellyfish\_algorithm},captionpos=b]{102.ex}
 
-Funkcije za inicijalizaciju H tabele (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama $h\_table$ i $count\_table$, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti mape $h\_table$ na početku prazni stringovi, a mape $count\_table$ nule, što se može videti na listingu \ref{lst:103}.
+Funkcije za inicijalizaciju tabele H (\textit{build\_h\_table}) i Count tabele (\textit{build\_count\_table}), a koje su predstavljene mapama $h\_table$ i $count\_table$, identične su i imaju iste ulazne parametre. Jedina razlika je što su vredosti mape $h\_table$ na početku prazni stringovi, a mape $count\_table$ nule, što se može videti na listingu \ref{lst:103}.
 
 \lstinputlisting[language=erlang,label={lst:103},caption=Funkcije za inicijalizaciju H i Count tabela,captionpos=b]{103.ex}
 
@@ -1248,8 +1248,7 @@ Za kompajliranje fajla u kome se nalazi algoritam i pokretanje interaktivnog Eli
 \section{Algoritam \textit{DSK}}
 \label{odeljak:DSK}
 
-\textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od algoritma $JellyFish$.
-Njegov pseudokod dat je na slici \ref{box:DSK}.
+Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od algoritma $JellyFish$. Na slici \ref{box:DSK} se može videti pseudokod ovog algoritma.
 
 \begin{comment}
 
@@ -1309,9 +1308,9 @@ Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u 
 
 Svaka lista je podeljena u podliste heš funkcijom $h()$. Preciznije, za svaki k-mer $s$ u i-toj listi, $s$ je dodeljen j-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
 
-\textit{DSK} algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+\textit{DSK} algoritam će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
-Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, predstavljena je funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su A, T, C i G ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} rekurzivno kodira svako slovo niske \textit{pattern} koja predstavlja k-mer, počevši od nulte pozicije. Kodovi se nadovezuju na početnu praznu nisku $begin\_string$ pomoću operatora $<>$. Kada se obradi cela niska \textit{pattern}, izlazi se iz rekurzije i funkcija vraća nisku transformisanu u broj  koji predstavlja kodiran k-mer. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}.
+Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, u okviru ovog rada je predstavljena funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su $A$, $T$, $C$ i $G$ ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} koristeći ovu funkciju rekurzivno kodira svako slovo niske \textit{pattern} koja predstavlja k-mer, počevši od nulte pozicije. Kodovi se nadovezuju na početnu praznu nisku $begin\_string$ pomoću operatora $<>$. Kada se obradi cela niska \textit{pattern}, izlazi se iz rekurzije i funkcija vraća nisku transformisanu u broj  koji predstavlja kodiran k-mer. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}.
 
 \lstinputlisting[language=erlang,label={lst:106},caption=Funkcija \textit{pattern\_to\_number} i pomoćna funkcija \textit{symbol\_to\_number},captionpos=b]{106.ex}
 
@@ -1356,14 +1355,13 @@ De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se d
 \label{box:DeBrujinAssembler}
 \end{figure}
 
-U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$ u kome se iz datog očitavanja izdvajaju sve moguće podniske dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera i koji predstavljaju čvorove budućeg De Brujinovog grafa. Zatim se za svaki k-mer iz početnog skupa k-mera vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način je kreiran De Brujinov graf. 
+U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$. Iz datog stringa koji predstavlja očitavanje izdvajaju se svi mogući podstringovi dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera. Ovaj skup predstavlja skup čvorova budućeg De Brujinovog grafa. Zatim se za svaki k-mer vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način se kreiran De Brujinov graf.
 
-Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji takodje predstavljaju čvorove grafa i sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
+Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji predstavljaju čvorove sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
 
 \section{Algoritam \textit{AllEulerianCycles}}
 
-U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje svih Ojlerovih putanja je neophodan. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. Algoritam za pronalaženje
-Ojlerove putanje u grafu nije NP-kompletan i može se efikasno pronaći \cite{skriptaBio}.
+U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja može se efikasno pronaći \cite{skriptaBio}. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. Rezultati njegovog pokretanja će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 \vspace{0.2cm}
 
 \begin{figure}[!ht]
@@ -1378,7 +1376,7 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 \label{box:Ojler}
 \end{figure}
 
-U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. Pseudokod algoritma za pronalaženje svih Ojlerovih putanja u grafu, a koji je implementiran u okviru ovog rada, može se videti na slici \ref{box:allEulerianCycles}. Rezultati pokretanja ovog algoritma će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
+% U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. 
 
 Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak 1, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{AllEulerianCycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
 
@@ -1388,7 +1386,7 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 \begin{tcolorbox}
 \textbf{Algoritam AllEulerianCycles}(\textit{graph})
 
-\textbf{Ulaz}: \textit{graph} je De Brujinov graf.
+\textbf{Ulaz}:  De Brujinov graf \textit{graph}.
 
 \textbf{Izlaz}: Sve Ojlerove putanje u De Brujinovom grafu \textit{graph}.
 
@@ -1416,27 +1414,25 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 \label{box:allEulerianCycles}
 \end{figure}
 
-Algoritam \textit{AllEulerianCycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati graf \textit{g\_graph} i čvor \textit{v\_node}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
+Algoritam \textit{AllEulerianCycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati čvor \textit{v\_node} i graf \textit{g\_graph}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
 
 Izračuvanavanje izlaznog stepena \textit{out\_degree} za zadati čvor vrši se izračunavanjem dužine liste vrednosti u mapi za zadati čvor. Dohvatanje liste vrednosti za zadati čvor mape obavlja se funkcijom \textit{Map.get/2} iz modula \textit{Map}, a izračunavanje dužine liste funkcijom \textit{Kernel.length/1}.
 
-Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \textit{iterate\_values}. Ona rekurzivno za svaki ključ, odnosno čvor mape, proverava da li se zadati čvor nalazi u listi vrednosti trenutnog čvora mape. Ako se nalazi, ulazni stepen \textit{in\_degree} zadatog čvora se uvećava za jedan i prelazi se na obradu sledećeg čvora mape. U suprotnom, prelazi se na sledeći čvor mape bez uvećavanja ulaznog stepena. Provera da li se zadati čvor nalazi u listi vrednosti trenutnog čvora vrši se funkcijom \textit{Enum.member?/2} iz modula \textit{Enum}. Kada se obradi i poslednji čvor mape, izlazi se iz rekurzije i vraća ulazni stepen. Tako da je povratna vrednost funkcije \textit{degree} uređeni par $(\textit{in\_degree}, \textit{out\_degree})$.
+Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \textit{iterate\_values}. Ona rekurzivno za svaki ključ, odnosno čvor mape, proverava da li se zadati čvor nalazi u listi vrednosti tog čvora mape. Ako se nalazi, ulazni stepen \textit{in\_degree} zadatog čvora se uvećava za jedan i prelazi se na obradu sledećeg čvora mape. U suprotnom, prelazi se na sledeći čvor mape bez uvećavanja ulaznog stepena. Provera da li se zadati čvor nalazi u listi vrednosti trenutnog čvora vrši se funkcijom \textit{Enum.member?/2} iz modula \textit{Enum}. Kada se obradi i poslednji čvor mape, izlazi se iz rekurzije i vraća izračunati ulazni stepen čvora. Povratna vrednost funkcije \textit{degree} je uređeni par $(\textit{in\_degree}, \textit{out\_degree})$.
 
 \lstinputlisting[language=erlang,label={lst:107},caption=Funkcija \textit{degree(g\_graph, v\_node)},captionpos=b]{107.ex}
 
 \section{Uputstvo za pokretanje aplikacije}
 
-Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}}. Njegova instalacija se može preuzeti sa zvanične stranice \cite{PyCharm}. 
+Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}} i instalacija se može preuzeti sa njegove zvanične stranice \cite{PyCharm}. 
 
-Na osnovu preuzetog materijala sa adrese \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u. Projekat se sastoji od glavnog fajla sa ekstenzijom \textit{.py} u kome se nalazi implementacija čitavog interfejsa. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa, a za njegovo korišćenje je neophodno na početku glavnog fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze izvršni fajlovi implementiranih algoritama (\textit{jellyFish}, \textit{dsk},\textit{debrujinGraph}, \textit{allEulerianCycles}). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se biraju pomoć posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv izvršenog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \label{odeljak:Rezultati}.
+Na osnovu preuzetog materijala sa adrese \cite{GIT}, potrebno je napraviti projekat u \textit{PyCharm}-u i u okviru njega fajl sa ekstenzijom \textit{.py} koji je glavni za projekat. Paket \textit{\textbf{Tkinter}} je iskorišćen za implementaciju grafičkog korisničkog intefrejsa. Da bi korišćenje njegovih funkcionalnosti bilo moguće neophodno je na početku glavnog fajla navesti komandu \textit{from tkinter import *}. Zatim, u okviru projekta se nalaze izvršni fajlovi implementiranih algoritama (\textit{jellyFish}, \textit{dsk},\textit{debrujinGraph}, \textit{allEulerianCycles}). Tekstualni fajlovi iz kojih se čitaju ulazni parametri za algoritme se biraju pomoću posebnog dijaloga. Nakon izvršavanja svakog algoritma, kreira se novi tekstualni fajl unutar projekta, koji nosi naziv tog algoritma i u kome su smešteni rezultati njegovog izvršavanja. Izgled ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \ref{odeljak:Rezultati}.
 
 Implementirani algoritmi se mogu pokrenuti i iz komandne linije. Potrebno je izvršiti komandu \textit{elixir imeAlgoritma.exs} za kojom slede argumenti razdvojeni razmakom. Rezultati izvršavanja će biti prikazani unutar komandnog prozora.
 
-\newpage
-
 \section{Opis aplikacije}
 
-Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za pravljenje interfejsa i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći integrisano razvojno okruženje \textit{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
+Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za grafički korisnički interfejs i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći integrisano razvojno okruženje \textit{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
 
 Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
@@ -1463,9 +1459,9 @@ Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici 
 \label{fig:fileChooser}
 \end{figure}
 
-Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. U pozadini se pokreće odgovarajići izvršni fajl algoritma sa argumentima koji su pročitani iz ulaznog fajla. Na ovaj način se izbegava ponovno kompajliranje fajla u kome se nalazi implementacija algoritma pri svakom kliku na dugme za pokretanje. Pritom se omogućava i izvršavanje algoritama na mašini na kojoj ne postoji instaliran Elixir. 
+Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algoritam}. U pozadini se pokreće odgovarajići izvršni fajl algoritma sa argumentima koji su pročitani iz ulaznog fajla. Na ovaj način se izbegava kompajliranje fajla u kome se nalazi implementacija algoritma pri svakom kliku na dugme za pokretanje. Pritom se omogućava i izvršavanje algoritama na mašini na kojoj ne postoji instaliran Elixir.
 
-\noindent Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti upisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju i nazivu rezultujućeg fajla. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
+Ukoliko je algoritam uspešno izvršen, rezultati pokretanja će biti upisani u odgovarajući tekstualni fajl i pojaviće se obaveštenje o uspešnom izvršavanju i nazivu rezultujućeg fajla. Prikaz ovog obaveštenja dat je na slici \ref{fig:uspesnoIzvrsavanje}.
 
 % Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...}, otvara se prozor u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
@@ -1485,7 +1481,7 @@ Na kraju je potrebno pokrenuti algoritam klikom na dugme \textit{Pokrenite algor
 \label{fig:uspesnoIzvrsavanje}
 \end{figure}
 
-\noindent Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom algoritmu i ulaznom fajlu, pojaviće se upozorenje koje je prikazano na slici \ref{fig:neuspesnoIzvrsavanje}. U tom slučaju je potrebno proveriti izabrane vrednosti i ponovo pokrenuti algoritam.
+Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom algoritmu i ulaznom fajlu, pojaviće se upozorenje koje je prikazano na slici \ref{fig:neuspesnoIzvrsavanje}. U tom slučaju je potrebno proveriti izabrane vrednosti i ponovo pokrenuti algoritam.
 
 \begin{figure}[h]
 \centering
@@ -1512,22 +1508,24 @@ Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasni
 
 \subsection{Algoritam \textit{DSK}}
 
-Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži tri linije. Prva linija ima isti sadržaj kao i prva linija ulaznog fajla za algoritam \textit{JellyFish} sa listing \ref{lst:jellyfishRezultati}. U drugoj liniji se nalazi parametar $M$ (6), a u trećoj liniji parametar $D$ (5). Rezultati izvršavanja algoritma se mogu videti na listingu \ref{lst:dskRezultati}. Ušteda prostora se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži tri linije. Prva linija ima isti sadržaj kao i prva linija ulaznog fajla za algoritam \textit{JellyFish} sa listinga \ref{lst:jellyfishRezultati}. U drugoj liniji se nalazi parametar $M$ (6), a u trećoj liniji parametar $D$ (5). Rezultati izvršavanja algoritma su smešteni u fajlu \textit{dsk.txt} i mogu se videti na listingu \ref{lst:dskRezultati}. Izlazni fajl se sastoji od lista u kojima se nalaze podliste. Nakon svake liste sledi prikaz najpre heš tabele $H$, a potom i prikaz tabele \textit{Count} za svaku od podlista.
 
 \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
+
+Ušteda prostora u ovom algoritmu se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
 
 \subsection{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:debrujinRezultati}
 
-Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj smešteno očitavanje ($TAATGCCATGGGATGTT$), a u drugoj parametar $k$ (3). Nakon pokretanja \textit{DeBrujinGraph} algoritma, rezultat se može videti u tekstualnom fajlu \textit{debrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
+Ulazni fajl \textit{DeBrujinData.txt} sadrži dve linije, pri čemu je u prvoj smešteno očitavanje ($TAATGCCATGGGATGTT$), a u drugoj parametar $k$ (3). Nakon pokretanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
 
 \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
-Na osnovu dobijene mape se može konstruisati graf sa čvorovima koje predstavljaju ključevi i granama ka čvorovima koji se nalaže unutar liste k-mera koje predstavljaju vrednosti mape.
+Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
 
 \subsection{Algoritam \textit{AllEulerianCycles}}
 
-Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i koji su razdvojeni zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
+Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan u formatu $AT:TC;TC:CG;CG:GA,GG;GA:AT,AC;AC:CG;GG:GA$. Elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
 \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
