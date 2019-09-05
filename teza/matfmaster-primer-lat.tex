@@ -610,19 +610,18 @@ Jednostrana očitavanja su očitavanja koja se generišu tako što sekvencer či
 Sekvenceri čitaju deo DNK fragmenta neke unapred
 zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broj nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, neke pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
 
-Za potrebe sekvencioniranja \textit{shotgun} celokupnog genoma postoje dva protokola -- \textbf{sekvencioniranje celokupnog genoma} i \textbf{sekvencioniranje partner-uparenih očitavanja}.
+Za potrebe sekvencioniranja \textit{shotgun} celokupnog genoma postoje dva protokola:
+\begin{itemize}
+\itemsep0em 
+    \item {sekvencioniranje celokupnog genoma}
+    \item {sekvencioniranje partner-uparenih očitavanja}
+\end{itemize}
+
+\noindent U okviru oba protokola prvo se uzorak genoma na slučajan način razbija na DNK fragmente, a potom se vrši odabir dužine očitavanja i izdvajanje fragmenata te dužine.
 
 \subsection{Sekvencioniranje celokupnog genoma}
 
-Sekvencioniranje celokupnog genoma uključuje tri koraka:
-\begin{itemize}
-\itemsep0em 
-    \item {razbijanje genoma}
-    \item {izbor dužine očitavanja i izdvajanja fragmenata te dužine}
-    \item {sekvencioniranje očitavanja}
-\end{itemize}
-
-Prvo se uzorak genoma na slučajan način razbija na DNK fragmente. Zatim sledi korak odabira dužine očitavanja u kom se vrši ekstrahovanje DNK fragmenata te dužine. Na kraju se vrši sekvencioniranje jednostranih očitavanja ili sekvencioniranje uparenih očitavanja. Pri sekvencioniranju jednostranih očitavanja, sekvencer čita DNK fragment u jednom smeru, dok u slučaju uparenih očitavanja, fragment biva pročitan u oba smera. Pomenuti koraci su prikazani na slici \ref{fig:1}.
+Nakon izdvajanja fragmenata DNK određene dužine, vrši se sekvencioniranje jednostranih očitavanja ili sekvencioniranje uparenih očitavanja. Pri sekvencioniranju jednostranih očitavanja, sekvencer čita DNK fragment u jednom smeru, dok u slučaju uparenih očitavanja, fragment biva pročitan u oba smera. Pomenuti koraci su prikazani na slici \ref{fig:1}.
 
 \begin{figure}[!ht]
   \centering
@@ -631,9 +630,7 @@ Prvo se uzorak genoma na slučajan način razbija na DNK fragmente. Zatim sledi 
 \label{fig:1}
 \end{figure}
 
-\newpage
-
-Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma. Sa $N$ su označeni delovi koji se nalaze na poziciji koja premašuje dužinu očitavanja, pa ne ulaze u sastav očitavanja.
+Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma. Delovi koji se nalaze na poziciji koja premašuje dužinu očitavanja i ne ulaze u sastav očitavanja označeni su sa $N$. 
 
 \begin{figure}[!ht]
   \centering
@@ -655,10 +652,9 @@ Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz u
 Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na dužinu očitavanja. Na primer, \textit{Illumina Hi-seq}\footnote{Illumina je američka kompanija koja je proizvodila visokopropusne sekvencere (omogućavaju sekvencioniranje velikog broja očitavanja odjednom  (engl. \textit{high-throughput sequencers}).} sekvencioniranje može izvršiti samo sekvencioniranje uparenih očitavanja dužine manje od 1000 bp. Za treću generaciju sekvencioniranja, ograničenje dužine očitavanja može biti veće od 10000 bp.
 
 
-
 \subsection{Sekvencioniranje partner-uparenih očitavanja}
 
-Sekvenceri druge generacije mogu izdvojiti partner-uparena očitavanja sa oba kraja kratkih fragmenata DNK (dužine očitavanja manje od 1000 bp). Za izdvajanje ovakvih očitavanja možemo koristiti \textbf{sekvencioniranje partner-uparenih očitavanja}.
+Sekvenceri druge generacije mogu izdvojiti partner-uparena očitavanja sa oba kraja kratkih fragmenata DNK (dužine očitavanja manje od 1000 bp). Za izdvajanje ovakvih očitavanja može se koristiti \textbf{sekvencioniranje partner-uparenih očitavanja}.
 
 Sekvenceri prvo izdvajaju duge DNK fragmente neke fiksirane dužine očitavanja (npr. 10000 bp). Potom dodaju takozvane \textbf{adapter sekvence}\footnote{Adapter sekvence su kratke hemijski sintetizovane sekvence
 nukleotida koje se mogu vezati za krajeve nepoznatih DNK sekvenci i neophodne
@@ -685,13 +681,15 @@ Iako protokol za sekvencioniranje partner-uparenih očitavanja može izdvojiti u
 (ligation errors - greškama prilikom preklapanja očitavanja)
 \end{comment}
 
-\section{Sekvencioniranje \textit{de novo} genoma za kratka očitavanja}
+% \section{Sekvencioniranje \textit{de novo} genoma za kratka očitavanja}
 
-Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. Sekvencioniranje \textit{de novo} ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
+\section{Asembliranje \textit{de novo} genoma za kratka očitavanja}
+
+Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostranih ili uparenih kratkih očitavanja celokupnog genoma. Asembliranje \textit{de novo} ima za cilj da izvrši preklapanje očitavanja u ispravnom redosledu i rekonstruiše genom.
 
 Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je odgovarajući superstring $ACATGCGTGTACGT$.
 
-Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške sekvencioniranja u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem. U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Algoritmi za konstrukciju kontiga biće obrađeni u poglavlju \ref{poglavlje:KonstrukcijaKontiga}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
+Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem (opisano u poglavlju \ref{poglavlje:KonstrukcijaKontiga}). U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Algoritmi za konstrukciju kontiga biće obrađeni u poglavlju \ref{poglavlje:KonstrukcijaKontiga}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
 
 
 
@@ -702,8 +700,6 @@ Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Op�
   \caption{Sekvencioniranje \textit{de novo} genoma za kratka očitavanja \cite{WingKinSung}}
   \label{fig:4}
 \end{figure}
-
-\newpage
 
 \section{Korekcija grešaka}
 \label{poglavlje:korekcijaGresaka}
@@ -899,9 +895,9 @@ Za drugi problem, rešenje je korišćenje informacija o povezivanju paired-end 
 \subsection{De Brujinov grafovski pristup}
 \label{odeljak:DeBrujinovGraf}
 
-\textbf{De Brujinov grafovski pristup} je zasnovan na De Brujinovim grafovima. Ovaj pristup su uveli Induri (engl. \textit{Indury}) i Voterman (engl. \textit{Waterman}) u njihovoj knjizi \textit{"A new algorithm for DNK sequence assembly: Journal of Computational Biology"}. On je danas glavni pristup za asembliranje kratkih očitavanja.
+\textbf{De Brujinov grafovski pristup} je zasnovan na De Brujinovim grafovima. Ovaj pristup su uveli Ramana Idjuri (engl. \textit{Ramana Idury}) i Majkl Voterman (engl. \textit{Michael Waterman}) u njihovoj knjizi \cite{Voterman}. On je danas glavni pristup za asembliranje kratkih očitavanja.
 
-Neka je dat skup očitavanja $R$ i parametar $k$. De Brujinov graf je graf $H_k = (V, E)$, gde je $V$ skup svih k-mera skupa $R$, a $E$ skup svih grana u grafu. Ako su $u$ i $v$ prefiks dužine $k$ i sufiks dužine $k$ neke podniske dužine $k + 1$ iz $R$, respektivno, k-meri $u$ i $v$ formiraju granu $(u, v) \in E$. Pod pretpostavkom da je $N$ ukupna dužina svih očitavanja iz $R$, De Brujinov graf može biti konstruisan u $O(N)$ vremenu.
+Neka je dat skup očitavanja $R$ i parametar $k$. De Brujinov graf je graf $H_k = (V, E)$, gde je $V$ skup svih k-mera skupa $R$, a $E$ skup svih grana u grafu. Ako su $u$ i $v$ prefiks dužine $k$ i sufiks dužine $k$ neke podniske dužine $k + 1$ iz $R$, respektivno, k-meri $u$ i $v$ formiraju granu $(u, v) \in E$. Pod pretpostavkom da je $N$ ukupna dužina svih očitavanja iz $R$, De Brujinov graf može biti konstruisan u $O(N)$ vremenu \cite{WingKinSung}. Algorita za konstrukciju De Brujinovog grafa na osnovu očitavanja i parametra $k$ je implementiran u okviru ovog rada i biće detaljno opisan u poglavlju \ref{odeljak:ImplementacijaDB}.
 
 Na slici \ref{fig:9}(a) je prikazan De Brujinov graf $H_3$ izgrađen na osnovu skupa k-mera $R = \{ACGC, CATC, GCA\}$, pri čemu je $\{AC, AT, CA, CG, GC, TC\}$ skup čvorova. Preklapanje k-mera koji odgovaraju granama grafa $H_3$ je prikazano na slici \ref{fig:9}(b).
 
@@ -913,7 +909,7 @@ Na slici \ref{fig:9}(a) je prikazan De Brujinov graf $H_3$ izgrađen na osnovu s
  \label{fig:9}
  \end{figure}
 
-Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$. Medjutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
+Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$. Međutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
 
 Neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ i neka je $k = 3$. U De Brujinovom grafu $H_3$ za dati skup $R$ postoje dva ciklusa, te će postojati i dve Ojlerove putanje. Na slici \ref{fig:10} je prikazan graf $H_3$.
 
@@ -925,7 +921,7 @@ Neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ i ne
 \label{fig:10}
 \end{figure}
 
-\noindent Ukoliko se prvo obiđe gornji ciklus, dobija se $AAGATCGATGATTT$, a ukoliko se prvo obiđe donji ciklus, dobija se $AAGATGATCGATTT$. Primer sa slike \ref{fig:10} pokazuje da Ojlerova putanja mozda neće uvek dati ispravnu sekvencu. Čak još gore, Ojlerova putanja možda neće postojati u nekom grafu $H_k$.
+\noindent Ukoliko se prvo obiđe gornji ciklus, dobija se $AAGATCGATGATTT$, a ukoliko se prvo obiđe donji ciklus, dobija se $AAGATGATCGATTT$. Primer sa slike \ref{fig:10} pokazuje da Ojlerova putanja možda neće uvek dati ispravnu sekvencu ili možda neće uvek postojati u nekom grafu $H_k$.
 
 U nastavku će se govoriti o De Brujinovom grafovskom asembleru u slučaju kada:
 \begin{itemize}
@@ -965,7 +961,7 @@ Za De Brujinov graf $H_3$ sa slike \ref{fig:10} mogu se konstruisati četiri kon
 
 Kada je $k = 4$, $H_4$ je prosta putanja i može se konstruisati jedna kontiga $AAGATCGATGATTT$. U slučaju da je $k = 5$, $H_5$ sadrži pet povezanih komponenti, svaka je prosta putanja i može se konstruisati pet kontiga: $AAGATC$, $GATCGAT$, $CGATGA$, $ATGATT$, $GATTT$.
 
-De Brujinov graf je dobar, ukoliko se zna ispravno $k$. Kada je $k$ malo (pogledati $H_3$ na slici \ref{fig:10}), postoji veliki broj grana zbog ponovaka i rezultat je veliki broj kratkih kontiga. Kada je $k$ veliko (pogledati $H_5$ na slici \ref{fig:12}), neki k-meri nedostaju, što rezultuje nepovezanim komponentama, koje takođe generišu veliki broj kratkih kontiga. Tako da se mora identifikovati ispravno $k$ kako bi se pronašla ravnoteža između ova dva problema.
+De Brujinov graf je dobar, ukoliko se zna ispravno $k$. Kada je $k$ malo (pogledati $H_3$ na slici \ref{fig:10}), postoji veliki broj grana zbog ponovaka i rezultat je veliki broj kratkih kontiga. Kada je $k$ veliko (pogledati $H_5$ na slici \ref{fig:12}), neki k-meri nedostaju, što rezultuje nepovezanim komponentama, koje takođe generišu veliki broj kratkih kontiga. Zato je potrebno identifikovati ispravno $k$ kako bi se pronašla ravnoteža između ova dva problema. Identifikacija ispravnog $k$ biće opisana u nastavku teksta.
 
 \subsubsection{De Brujinov asembler sa greškama sekvencioniranja}
 
@@ -1050,7 +1046,10 @@ i njegov psoudokod je prikazan na slici \ref{fig:16}.
 
 \end{comment}
 
+\newpage
+
 \subsection{Kako izabrati k?}
+\label{poglavlje:IspravnoK}
 
 Odabir broja $k$ može uticati na performanse De Brujinovog algoritma. Jednostavno rešenje je pokretanje \textit{Velvet} algoritma za različite $k$. Zatim se vrši grupisanje i spajanje kontiga. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju različit kvalitet. Kontige dobijene na osnovu $H_k$, gde je $k$ malo, veoma su tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene na osnovu $H_k$ gde je $k$ veliko su duže, ali one mogu sadržati mnogo grešaka.
 
