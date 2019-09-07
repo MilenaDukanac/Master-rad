@@ -572,8 +572,7 @@ Krajevi šećer-fosfatnih lanaca se međusobno razlikuju po prirodi nevezanog at
 
 Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK). DNK ima veoma važnu ulogu ne samo u prenosu genetskih informacija sa jedne na drugu generaciju, već sadrži i uputstva za građenje neophodnih ćelijskih organela, proteina i RNK molekula. \textbf{Geni} su delovi DNK sekvence koja je sa računarske strane niska nad azbukom $\{A, C, G, T\}$.  Svaki gen predstavlja pravilo za sintezu jednog proteina u ćeliji, koji je neophodan za njeno pravilno funkcionisanje. \textbf{Genom} je skup gena jednog organizma i sastoji od niza uparenih baza.
 
-\textbf{Sekvencioniranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je eksperimentalan
-proces – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
+\textbf{Sekvencioniranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je veoma kompleksan proces koji uključuje i eksperimentalan deo – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
 odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz ciljnog genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Dužina genoma i dužina očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
 
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Što su delovi veći, slagalicu je lakše sastaviti.
@@ -637,7 +636,7 @@ Nakon izdvajanja fragmenata DNK određene dužine, vrši se sekvencioniranje jed
 \label{fig:1}
 \end{figure}
 
-Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment ekstrahovan iz uzorka genoma. Delovi koji se nalaze na poziciji koja premašuje dužinu očitavanja i ne ulaze u sastav očitavanja označeni su sa $N$. 
+Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment. Delovi koji se nalaze na poziciji koja premašuje dužinu očitavanja i ne ulaze u sastav očitavanja označeni su sa $N$. 
 
 \begin{figure}[!ht]
   \centering
@@ -711,7 +710,7 @@ Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Op�
 \section{Korekcija grešaka}
 \label{poglavlje:korekcijaGresaka}
 
-Ukoliko se neki k-mer pojavljuje u ulaznim očitavanjima jednom ili veoma mali broj puta, velika je verovatnoća da on je nastao kao posledica grešaka prilikom sekvencioniranja očitavanja i da se neće naći u rekonstruisanom genomu. Sa druge strane, za k-mer koji se pojavljuje veliki broj puta u ulaznim očitavanjima sa velikom sigurnošću se može tvrditi da nije posledica grešaka pri očitavanju. Ove razlike se mogu iskoristiti za filtriranje grešaka u k-merima i selektivno uklanjanje iz skupa podataka očitavanja koja sadrže greške \cite{WingKinSung}. 
+Ukoliko se neki k-mer pojavljuje u ulaznim očitavanjima jednom ili veoma mali broj puta, velika je verovatnoća da on je nastao kao posledica grešaka prilikom očitavanja i da ne treba da se nađe u rekonstruisanom genomu. Sa druge strane, za k-mer koji se pojavljuje veliki broj puta u ulaznim očitavanjima sa velikom sigurnošću se može tvrditi da nije posledica grešaka pri očitavanju. Ove razlike se mogu iskoristiti za filtriranje grešaka u k-merima i selektivno uklanjanje iz skupa podataka očitavanja koja sadrže greške \cite{WingKinSung}. 
 Greške u očitavanjima mogu zbuniti \textit{de novo} asemblere. Da bi se to izbeglo, vrši se korigovanje tih grešaka pre početka asembliranja genoma.
 
 \subsection{Brojanje k-mera}
@@ -721,10 +720,10 @@ Jedan konceptualno jednostavan, ali osnovni problem je \textbf{brojanje k-mera}.
 Problem brojanja k-mera se definiše nad ulaznim skupom očitavanja i parametrom $k$. Iz ovog skupa, potrebno je izdvojiti podskup $Z$ svih mogućih k-mera i odrediti njihove frekvencije. Iako jednostavan problem, zbog velike količine podataka, on se ne može rešavati naivnim pristupima, već su potrebni napredni algoritmi i strukture podataka kako bi problem bio efikasno rešen. U nastavku će biti razmatrana četiri rešenja:
 \begin{itemize}
 \itemsep0em
-    \item {jednostavno heširanje}
-    \item {JellyFish}
-    \item {BFCounter}
-    \item {DSK}
+    \item {Algoritam jednostavno heširanje}
+    \item {Algoritam JellyFish}
+    \item {Algoritam BFCounter}
+    \item {Algoritam DSK}
 \end{itemize}
 
 \textbf{Jednostavno heširanje} - Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrši preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
@@ -735,7 +734,7 @@ postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u pr
 
 \textbf{Algoritam BFCounter} - U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter\footnote{Prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta.} da odredi da li se k-mer pojavljuje najmanje $q$ puta \cite{WingKinSung}.
 
-\textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (engl. \textit{Guillaume Rizk}) predlaže metod koji se naziva \textbf{DSK}. Ideja ovog metoda je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
+\textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (engl. \textit{Guillaume Rizk}) predlaže algoritam koji se naziva \textbf{DSK}. Ideja ovog algoritma je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
 
 \begin{comment}
 
@@ -916,7 +915,7 @@ Na slici \ref{fig:9}(a) je prikazan De Brujinov graf $H_2$ izgrađen na osnovu s
  \label{fig:9}
  \end{figure}
 
-Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlero           ve putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$. Međutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
+Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$. Međutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
 
 Neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ i neka je $k = 3$. U De Brujinovom grafu $H_3$ za dati skup $R$ postoje dva ciklusa, te će postojati i dve Ojlerove putanje. Na slici \ref{fig:10} je prikazan graf $H_3$.
 
@@ -972,7 +971,7 @@ De Brujinov graf je dobar, ukoliko se zna ispravno $k$. Kada je $k$ malo (pogled
 
 \subsubsection{De Brujinov asembler sa greškama sekvencioniranja}
 
-Kod De Brujinovog asemblera bez grešaka sekvencioniranja pretpostavka je bila da ne postoje greške sekvencioniranja u očitavanjima, što je nerealno. Kada postoje greške, pokušava se njihovo uklanjanje redukovanjem šuma u De Brujinovom grafu. Rešenje koje će se razmatrati su predložili Zerbino (engl. \textit{Zerbino}) i Birni (enlg. \textit{Birney}). Kratka očitavanja imaju nisku stopu greške (sadrže jednu greška na svakih 100 baza), a većina k-mera sadrži najviše jednu grešku. Ovakvi k-meri sa greškom mogu kreirati dva moguća anomalna podgrafa u De Brujinovom grafu: \textbf{vrh (špic)} i \textbf{mehurić}.
+Kod De Brujinovog asemblera bez grešaka sekvencioniranja pretpostavka je bila da ne postoje greške sekvencioniranja u očitavanjima, što je nerealno. Kada postoje greške, pokušava se njihovo uklanjanje redukovanjem šuma u De Brujinovom grafu. Rešenje koje će se razmatrati su predložili Danijel Zerbino (engl. \textit{Daniel Zerbino}) i Ivan Birni (enlg. \textit{Ewan Birney}). Kratka očitavanja imaju nisku stopu greške (sadrže jednu greška na svakih 100 baza), a većina k-mera sadrži najviše jednu grešku. Ovakvi k-meri sa greškom mogu kreirati dva moguća anomalna podgrafa u De Brujinovom grafu: \textbf{vrh (špic)} i \textbf{mehurić}.
 
 \textbf{Vrh} je putanja dužine najviše $k$ gde svi unutrašnji čvorovi imaju ulazni i izlazni stepen 1, dok jedan od njihovih krajeva ima ulazni ili izlazni stepen 0. To može proizvesti potencijalnu kontigu dužine najviše $2k$.
 
@@ -1432,7 +1431,7 @@ Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \tex
 
 Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}} i instalacija se može preuzeti sa njegove zvanične stranice \cite{PyCharm}. 
 
-Projekat je organizovan tako da se sastoji od četiri foldera: \textit{data\_files}, \textit{result\_files}, \textit{source\_files} i \textit{executables}. U folderu \textit{data\_files} nalaze se tekstualni fajlovi koji sadrže ulazne podatke na kojima je moguće testirati implementirane algoritme (\textit{JellyFishData.txt}, \textit{DSKData.txt}, \textit{DeBrujinGraph.txt}, \textit{AllEulerianCycles.txt}). U folderu \textit{result\_files} se nalaze tekstualni fajlovi u kojima se nalaze rezultati izvršavanja algoritama (\textit{JellyFish.txt}, \textit{DSK.txt}, \textit{DeBrujinGraph.txt}, \textit{AllEulerianCycles.txt}). Format ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \ref{odeljak:Rezultati}. Folder \textit{source\_files} sadrži izvorne fajlove u programskom jeziku Elixir u kojima se nalazi implementacija algoritama (\textit{jellfish.exs}, \textit{dsk.exs}, \textit{debrujin\_graph.exs}, \textit{all\_eulerian\_cycles.exs}). Izvršne verzije izvornih fajlova nalaze se u folderu \textit{executables}. Pored ova četiri foldera, projekat sadrži i \textit{.py} fajl (\textit{interface.py}) u kome se nalazi interfejs koji sjedinjuje algoritme u jedinstvenu aplikaciju.
+Projekat je organizovan tako da se sastoji od četiri foldera: \textit{data\_files}, \textit{result\_files}, \textit{source\_files} i \textit{executables}. U folderu \textit{data\_files} nalaze se tekstualni fajlovi koji sadrže ulazne podatke na kojima je moguće testirati implementirane algoritme (\textit{JellyFishData.txt}, \textit{DSKData.txt}, \textit{DeBrujinGraphData.txt}, \textit{AllEulerianCyclesData.txt}). U folderu \textit{result\_files} nalaze se tekstualni fajlovi u kojima se nalaze rezultati izvršavanja algoritama (\textit{JellyFish.txt}, \textit{DSK.txt}, \textit{DeBrujinGraph.txt}, \textit{AllEulerianCycles.txt}). Format ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \ref{odeljak:Rezultati}. Folder \textit{source\_files} sadrži izvorne fajlove u programskom jeziku Elixir u kojima se nalazi implementacija algoritama (\textit{jellfish.exs}, \textit{dsk.exs}, \textit{debrujin\_graph.exs}, \textit{all\_eulerian\_cycles.exs}). Izvršne verzije izvornih fajlova nalaze se u folderu \textit{executables}. Pored ova četiri foldera, projekat sadrži i \textit{.py} fajl (\textit{interface.py}) u kome se nalazi interfejs koji sjedinjuje algoritme u jedinstvenu aplikaciju.
 
 %Preduslovi da bi se projekat koristio/prevodio potrebno je da...
 
@@ -1556,7 +1555,7 @@ Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokreta
 \chapter{Zaključak}
 \label{poglavlje:Zaključak}
 
-U ovom radu su prikazane osnove sintakse i semantike programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Na ovaj način je prikazana primena Elixir-a u rešavanju realnih problema, a naročito onih koji su bioinformatičke prirode.
+U ovom radu su prikazane osnove sintakse i semantike programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Na ovaj način je prikazana primena Elixir-a u rešavanju realnih problema bioinformatičke prirode.
 
 Kako je Elixir funkcionalni programski jezik, on omogućava da razmišljamo u terminima funkcija koje transformišu podatke. Pritom, ova transformacija nikada ne menja podatke, već svaka primena funkcije potencijalno stvara novu, svežiju verziju podataka. Ovo uveliko smanjuje potrebu za mehanizmima za sinhronizaciju podataka. Rekurzija može biti zastrašujuća za one koji se prvi put sreću sa funkcionalnim programskim jezikom, ali nakon razumevanja ovog mehanizma za obradu lista, postajete svesni da je to pravi mehanizam. Konkurentnost je jedna od glavnih karakteristika Elixir-a koja se razlikuje od starinskih mehanizama konkurentnosti i koja Elixir izdvaja od ostalih jezika. Elixir omogućava stvaranje velikog broja procesa koje ne podrazumeva smanjivanje performansi mašine i pisanje konkurentnog koda čini lakšim i zanimljivijim. Glavni fokus programskog jezika Elixir je produktivnost programera. Poseduje jednostavnu i modernu sintaksu koja je priodna za čitanje, laka za pisanje i brzo se savladjuje.
 
