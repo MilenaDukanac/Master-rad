@@ -451,8 +451,6 @@ Poklapanje obrazaca se može prikazati i na pimeru sa listama. Neka je data list
 
 Neka prve tri osobe treba da budu zapamćene. U te svrhe se može iskoristiti poklapanje obrazaca dato na listingu \ref{lst:32}.
 
-\newpage
-
 \lstinputlisting[language=erlang,label={lst:32},caption=Poklapanje obrazaca sa listama,captionpos=b]{32.ex}
 
 Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama \textit{prvi}, \textit{drugi} i \textit{treći}. Ostatak liste je dodeljen pomenljivoj \textit{ostali} pomoću \textbf{pipe operatora (|)}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}.
@@ -471,11 +469,22 @@ Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključe
 
 \section{Nepromenljivost podataka}
 \label{odeljak:nepromenljivostPodataka}
+
 U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost da zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanje ove promene i obično se i ne vodi računa o tome pri pisanju programa. Ali šta se dešava kada se vrednost u memoriji, ili čak i tip vrednosti, promeni u trenutku kada je koristi više instanci programa?  Ovakvo ponašanje je poznato kao \textbf{promenljivost (mutabilnost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Promenljivost takođe vodi veoma komplikovanom kodu, koji se često piše ad-hoc kako bi se rešili problemi sinhronizacije.
 
 Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Elixir imaju osobinu \textbf{nepromenljivosti (imutabilnosti)}. Oni jednostavno ne dozvoljavaju promenu vredosti na određenoj memorijskoj lokaciji. Na ovaj način, ako se promenljiva \textit{a} poklopila sa vrednošću 1, onda se njena vrednost sigurno neće menjati tokom izvršavanja programa i ne mora se voditi računa o problemima sinhronizacije u konkurentnom okruženju.
 
-\newpage
+\section{Konkurentnost}
+
+Jedna od glavnih karatkteristika Elixir-a je ideja o organizovanju koda u male komande koje se mogu izvršavati nezavisno i istovremeno. Zahvaljujući arhitekturi virtuelne mašine Erlang-a na kojoj se Elixir pokreće, stvaranje velikog broja procesa ne utiče na smanjivanje performansi. Elixir koristi model konkurentnosti \textit{\textbf{actor}}. \textit{Actor} je nezavisan proces koji ne deli ništa sa bilo kojim drugim procesom. Mogu se stvarati novi procesi, slati poruke procesima i primati poruke od njih. Procesi u Elixir-u nemaju nikakve veze sa izvornim procesima operatitvnog sistema koji su spori i glomazni. Elixir koristi podršku za procese iz Erlang-a. Ovi procesi se odvijaju širom svih centralnih procesorskih jedinica, baš kao i izvorni procesi operativnog sistema, ali koriste vrlo malo resursa. Moguće je stvoriti stotine hiljade procesa čak i na skromnom računaru. Na listingu \ref{lst:proces} se nalazi k$\hat{o}$d koji definiše modul \textit{SpawnProcess} i u okviru njega funkciju \textit{greet} koja ispisuje \textit{Hello}.
+
+\lstinputlisting[language=erlang,label={lst:proces},caption=Modul \textit{SpawnProcess},captionpos=b]{proces.ex}
+
+\noindent Nakon kompajliranja fajla u kome je definisan modul \textit{SpawnProcess} pomoću komande \textit{iex ime\_fajla.ex}, na listingu \ref{lst:pokretanjeProcesa} se može videti regularno poketanje funkcije \textit{greet} i pokretanje u okviru posebnog procesa. Pokretanje u okviru posebnog procesa se vrši pomoću funkcije \textit{spawn}.
+
+\lstinputlisting[language=erlang,label={lst:pokretanjeProcesa},caption=Pokretanje funkcije \textit{greet},captionpos=b]{pokretanje_procesa.ex}
+
+Funkcija \textit{spawn} kreira novi proces. Pojavljuje se u mnogim oblicima, ali dva najjednostavnjija su ona koji omogućavaju pokretanje anonimne funkcije i pokretanje imenovane funkcije u modulu, prosleđujući listu argumenata. Drugi oblik je iskorišćen u primeru sa listinga \ref{lst:pokretanjeProcesa}. Ova funkcija vraća identifikator proces koji se obično naziva \textit{\textbf{PID}} i koji jedinstveno identifikuje proces koji je kreiran. Kada se funkcija \textit{spawn} pozove, kreira se novi proces u okviru koga će se funkcija izvršiti. Ne zna se kada će tačno biti izvršena, ali se zna da je kvalifikovana za izvršavanje \cite{ProgrammingElixir}.
 
 \section{Odlučivanje}
 
@@ -494,8 +503,6 @@ Elixir ima sledeće vrste naredbi za odlučivanje:
     \item{\textit{cond} - Naredba cond se koristi ukoliko treba izvršiti neki kod na osnovu nekoliko uslova. Radi kao if..else if..else kod drugih programskih jezika.}
     \item{\textit{case} - Naredba case  se može smatrati zamenom za \textbf{switch} naredbu u imperativnim programskim jezicima. Naredba case uzima promenljivu ili literal i primenjuje odgovarajući obrazac poklapanja u različitim slučajevima. Ako se bilo koji slučaj poklapa, Elixir izvršava kod povezan sa tim slučajem i izlazi iz case naredbe.}
 \end{enumerate}
-
-\newpage
 
 \section{Moduli}
 
@@ -1549,7 +1556,14 @@ Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokreta
 \chapter{Zaključak}
 \label{poglavlje:Zaključak}
 
-U ovom radu su prikazane osnove sintakse i semantike funkcionalnog programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma, pa je na taj način prikazana i njegova primena u rešavanju realnih problema. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Za potrebe ovog rada, algoritmi su testirani na veoma malom skupu podataka, te pun potencijal Elixir-a nije prikazan. Radi uvida u sposobnost brze obrade velike količine podataka, potrebno je implementirane algoritme pokretati za realne skupove podataka koji se inače u ovoj oblasti obrađuju. U pitanju su milijarde nukleotida od kojih se može sastojati jedan genom.
+U ovom radu su prikazane osnove sintakse i semantike programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Na ovaj način je prikazana primena Elixir-a u rešavanju realnih problema, a naročito onih koji su bioinformatičke prirode.
+
+Kako je Elixir funkcionalni programski jezik, on omogućava da razmišljamo u terminima funkcija koje transformišu podatke. Pritom, ova transformacija nikada ne menja podatke, već svaka primena funkcije potencijalno stvara novu, svežiju verziju podataka. Ovo uveliko smanjuje potrebu za mehanizmima za sinhronizaciju podataka. Rekurzija može biti zastrašujuća za one koji se prvi put sreću sa funkcionalnim programskim jezikom, ali nakon razumevanja ovog mehanizma za obradu lista, postajete svesni da je to pravi mehanizam. Konkurentnost je jedna od glavnih karakteristika Elixir-a koja se razlikuje od starinskih mehanizama konkurentnosti i koja Elixir izdvaja od ostalih jezika. Elixir omogućava stvaranje velikog broja procesa koje ne podrazumeva smanjivanje performansi mašine i pisanje konkurentnog koda čini lakšim i zanimljivijim. Glavni fokus programskog jezika Elixir je produktivnost programera. Poseduje jednostavnu i modernu sintaksu koja je priodna za čitanje, laka za pisanje i brzo se savladjuje.
+
+Za potrebe ovog rada, algoritmi su testirani na manjem skupu podataka, te pun potencijal Elixir-a nije došao do izražaja. 
+Buduća unapređenja implementiranih algoritama i aplikacije mogla bi da obuhvate podršku za testiranje na realnim skupovima podataka, koji se inače u ovoj oblasti obrađuju. U pitanju su milijarde nukleotida od kojih se može sastojati jedan genom. U tom slučaju potrebno je izvršiti podelu posla i paralelizaciju izvršavanja. Polazni skup podataka bi se podelio na veliki broj manjih, a zatim bi se paralelno izvršili algoritmi na tim skupovima. Pojedinačni rezultati bi se sjedinili i na taj način formirali jedan krajnji rezultat. Na kraju bi se mogle uporedili brzine izvršavanja za ceo skup podataka i podeljene skupove. Tada bismo se još više uverili da je Elixir pravi izbor za ovu vrstu problema, kao i za sve ostale gde je potrebno obraditi ogromne količine podataka i gde su od presudnog značaja stabilnost, brzina i otpornost na greške prilikom obrade.
+ 
+
 
 % ------------------------------------------------------------------------------
 %\pangrami
