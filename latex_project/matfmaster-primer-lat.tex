@@ -1142,7 +1142,7 @@ Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog po
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
-\textbf{Algoritam hashEntry}(\textit{z}, $h$, \textit{size})
+\textbf{Algoritam hashEntry}($H$, \textit{z}, $h$, \textit{size})
 
 1: $i = h(z)$ mod \textit{size};
 
@@ -1361,7 +1361,7 @@ Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki klj
 
 \section{Algoritam \textit{AllEulerianCycles}}
 
-U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja može se efikasno pronaći \cite{skriptaBio}. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. Rezultati njegovog pokretanja će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
+U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja se može efikasno pronaći \cite{skriptaBio}. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. Rezultati njegovog pokretanja će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 \vspace{0.2cm}
 
 \begin{figure}[!ht]
@@ -1414,7 +1414,7 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 \label{box:allEulerianCycles}
 \end{figure}
 
-Algoritam \textit{AllEulerianCycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati čvor \textit{v\_node} i graf \textit{g\_graph}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
+Implementacija algoritma \textit{AllEulerianCycles} se sastoji od velikog broj funkcija. Na taj način je posao koji obavlja ovaj algoritam podeljen na smislene celine. Na primer, funkcija \textit{degree(g\_graph, v\_node)} izračunava ulazni i izlazni stepen za zadati čvor \textit{v\_node} i graf \textit{g\_graph}. Graf je predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima ključ gradi grane u grafu. Funkcija \textit{degree} koristi pomoćnu funkciju \textit{iterate\_values/3} koja  prima tri argumenta: listu čvorova koju čine svi ključevi grafa, čitav graf i trenutni čvor. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:107}.
 
 Izračuvanavanje izlaznog stepena \textit{out\_degree} za zadati čvor vrši se izračunavanjem dužine liste vrednosti u mapi za zadati čvor. Dohvatanje liste vrednosti za zadati čvor mape obavlja se funkcijom \textit{Map.get/2} iz modula \textit{Map}, a izračunavanje dužine liste funkcijom \textit{Kernel.length/1}.
 
@@ -1450,9 +1450,11 @@ Implementirani algoritmi se mogu pokretati direktno uz pomoć Elixir interpreter
 \lstinputlisting[language=erlang,label={lst:cli},caption=Sadržaj fajla \textit{cli.ex},captionpos=b]{cli.ex}
 
 
-\section{Opis aplikacije}
+\section{Opis aplikacije i primeri upotrebe}
 
-Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Kratak prikaz i opis  funkcionalnosti interfejsa implementiranog u programskom jeziku Python biće dat u nastavku.
+Svi algoritmi su implementirani u programskom jeziku Elixir. Elixir omogućava brzu obradu velike količine podataka veoma je tolerantan na greške, te ga to čini dobrim izborom za probleme bioinformatičke prirode. U nastavku će biti dat kratak prikaz i opis funkcionalnosti koje pruža implementirani interfejs, a potom i primeri pokretanja algoritama za izabrane ulazne fajlove.
+
+\subsection{Opis aplikacije}
 
 Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
@@ -1512,6 +1514,50 @@ Ukoliko je prilikom pokretanja algoritma detektovano nepoklapanje u izabranom al
 
 \newpage
 
+\subsection{Primeri upotrebe}
+
+\textbf{Algoritam \textit{JellyFish}} - Ulazni fajl \textit{JellyFishData.txt} sadrži k-mere razdvojene zarezom i u poslednjoj liniji parametar alfa. Nakon izbora ovog ulaznog fajla i pokretanja algoritma \textit{JellyFish}, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}. Implementirane su dve varijante izvršavanja algoritma \textit{JellyFish} -- \textbf{sekvencijalna} i \textbf{paralelna}. U obe varijante ulazni fajl ima isti format i primer fajla koji sadrži k-mere dužine 2 može se videti na listingu \ref{lst:jellyfishUlazniFajl}.
+
+\lstinputlisting[language=erlang,label={lst:jellyfishUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{JellyFish},captionpos=b]{jellyfish_ulazni_fajl.ex}
+
+U sekvencijaloj varijanti algoritam se izvršava na celom skupu k-mera i rezultat je torka $\{H, Count\}$ čiji su elementi mapa $H$ i mapa $Count$. Rezultati se očitavaju tako što k-meru, koji je dodeljen ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi. Na listingu \ref{lst:jellyfishRezultatiSekvencijalno} se može videti sadržaj izlaznog fajla \textit{jellyfish.txt}.
+
+\lstinputlisting[language=erlang,label={lst:jellyfishRezultatiSekvencijalno},caption=Rezultati sekvencijalnog izvršavanja algoritma \textit{JellyFish},captionpos=b]{jellyfishRezultati.ex}
+
+U paralelnoj varijanti je omogućeno da se algoritam izvršava paralalno u okviru više procesa. Zapravo, početni skup k-mera je podeljen u onoliko skupova koliko računar ima procesora, a zatim je kreirano isto toliko procesa u okviru kojih je na tim skupovima izvršen algoritam \textit{JellyFish}. Rezultat je mapa čiji su ključevi jedinstveni k-meri iz polaznog skupa, a vrednosti su brojevi njihovog pojavljivanja u tom skupu i može se videti na listingu \ref{lst:jellyfishRezultatiParalelno}.
+
+\lstinputlisting[language=erlang,label={lst:jellyfishRezultatiParalelno},caption=Rezultati paralelnog izvršavanja algoritma \textit{JellyFish},captionpos=b]{jellyfishRezultatiParalelno.ex}
+
+Na malom skupu podataka, kakav je dat na listingu \ref{lst:jellyfishUlazniFajl}, nema mnogo smisla vršiti paralelizaciju izvršavanja. Primer gde ima smisla vršiti podelu ulaznog skupa podataka i paralelizovati izvršavanje biće dat u poglavlju \ref{odeljak:Rezultati}.
+
+\textbf{Algoritam \textit{DSK}} - Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} ima isti format kao i ulazni fajl za algoritam \textit{JellyFish}, s tim što umesto parametra alfa u poslednje dve linije sadrži parametre $M$ i $D$. Primer ulaznog fajla može se videti na listingu \ref{lst:dskUlazniFajl}.
+
+\lstinputlisting[language=erlang,label={lst:dskUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{DSK},captionpos=b]{dskUlazniFajl.ex}
+
+Rezultati izvršavanja algoritma su smešteni u fajlu \textit{dsk.txt} i mogu se videti na listingu \ref{lst:dskRezultati}. Izlazni fajl se sastoji od lista u kojima se nalaze podliste. Nakon svake liste sledi prikaz najpre heš tabele $H$, a potom i prikaz tabele \textit{Count} za svaku od podlista.
+
+\lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
+
+% Ušteda prostora u ovom algoritmu se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+
+\textbf{Algoritam \textit{DeBrujinGraph}} - Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$. Primer ulaznog fajla sa očitavanjem dužine 17 i parametrom $k = 3$ može se videti na listingu \ref{lst:debrujinUlazniFajl}.
+
+\lstinputlisting[language=erlang,label={lst:debrujinUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{DeBrujinGraph},captionpos=b]{debrujinUlazniFajl.ex}
+
+Nakon izvršavanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}. Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
+
+\lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
+
+\textbf{Algoritam \textit{AllEulerianCycles}} - Ulazni fajl \textit{EulerData.txt} sadrži De Brujinov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Primer ulaznog fajla može se videti na listingu \ref{lst:eulerUlazniFajl}.
+
+\lstinputlisting[language=erlang,label={lst:eulerUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{AllEulerianCycles},captionpos=b]{allEulerianCyclesUlazniFajl.ex}
+
+Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{allEulerianCyceles.txt}. Izlazni fajl sadrži listu kontiga, koje predstavljaju cikluse u De Brujinovom grafu i prikazane su na listingu \ref{lst:eulerRezultati}.
+
+\lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
+
+\newpage
+
 \section{Rezultati}
 \label{odeljak:Rezultati}
 
@@ -1520,45 +1566,45 @@ U ovom poglavlju će biti prikazani rezultati izvršavanja algoritama, koji su n
 \subsection{Algoritam \textit{JellyFish}}
 \label{pododeljak:jellyfish}
 
-Ulazni fajl \textit{JellyFishData.txt} za algoritam \textit{JellyFish} sadrži k-mere razdvojene zarezom i u poslednjoj liniji parametar alfa ($0.7$). Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}. Implementirane su dve varijante izvršavanja algoritma \textit{JellyFish} -- \textbf{sekvencijalna} i \textbf{paralelna}. 
+% Ulazni fajl \textit{JellyFishData.txt} za algoritam \textit{JellyFish} sadrži k-mere razdvojene zarezom i u poslednjoj liniji parametar alfa ($0.7$). Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{jellyfish.txt}. Implementirane su dve varijante izvršavanja algoritma \textit{JellyFish} -- \textbf{sekvencijalna} i \textbf{paralelna}. 
 
-U sekvencijaloj varijanti algoritam se izvršava na celom skupu k-mera odjednom i rezultat je torka $\{H, Count\}$ čiji su elementi mapa $H$ i mapa $Count$. Rezultati se očitavaju tako što k-meru, koji je dodeljen ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi. Na listingu ... se može videti sadržaj izlaznog fajla \textit{jellyfish.txt}.
-
-% \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
-
-U paralelnoj varijanti je omogućeno da se algoritam izvršava paralalno u okviru više procesa. Zapravo, početni skup k-mera je podeljen u onoliko skupova koliko računar ima procesora, a zatim je kreirano isto toliko procesa u okviru kojih je na tim skupovima izvršen algoritam \textit{JellyFish}. Rezultat je mapa čiji su ključevi jedinstveni k-meri iz polaznog skupa, a vrednosti su brojevi njihovog pojavljivanja u tom skupu.
-Rezultati ovakvog izvršavanja u se videti na listingu ...
+% U sekvencijaloj varijanti algoritam se izvršava na celom skupu k-mera odjednom i rezultat je torka $\{H, Count\}$ čiji su elementi mapa $H$ i mapa $Count$. Rezultati se očitavaju tako što k-meru, koji je dodeljen ključu u prvoj mapi, odgovara broj pojavljivanja dodeljen istom ključu u drugoj mapi. Na listingu ... se može videti sadržaj izlaznog fajla \textit{jellyfish.txt}.
 
 % \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
 
-Na slici ... se može videti brzina izvršavanja algoritma \textit{JellyFish} u odnosu na broj k-mera u ulaznom fajlu i u odnosu na to da li se izvršava sekvencijalo ili paralelno.
+% U paralelnoj varijanti je omogućeno da se algoritam izvršava paralalno u okviru više procesa. Zapravo, početni skup k-mera je podeljen u onoliko skupova koliko računar ima procesora, a zatim je kreirano isto toliko procesa u okviru kojih je na tim skupovima izvršen algoritam \textit{JellyFish}. Rezultat je mapa čiji su ključevi jedinstveni k-meri iz polaznog skupa, a vrednosti su brojevi njihovog pojavljivanja u tom skupu.
+% Rezultati ovakvog izvršavanja u se videti na listingu ...
+
+% \lstinputlisting[language=erlang,label={lst:jellyfishRezultati},caption=Rezultati izvršavanja \textit{JellyFish} algoritma,captionpos=b]{jellyfishRezultati.ex}
+
+% Na slici ... se može videti brzina izvršavanja algoritma \textit{JellyFish} u odnosu na broj k-mera u ulaznom fajlu i u odnosu na to da li se izvršava sekvencijalo ili paralelno.
 
 %Sllika
 
-Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasniji, ukoliko za parametar $\alpha$ važi $\alpha \leq 0.7$, tako da se brzina i efikasnost mogu uporediti pokretanjem algoritma za različito $\alpha$. Na malom skupu podataka, unapređenje u pogledu brzine i efikasnosti je zanemarljivo, ali prilikom izvršavanja nad velikim skupom podataka je od velikog značaja.
+% Broj kolizija u toku heširanja k-mera je manji, a algoritam je brži i efikasniji, ukoliko za parametar $\alpha$ važi $\alpha \leq 0.7$, tako da se brzina i efikasnost mogu uporediti pokretanjem algoritma za različito $\alpha$. Na malom skupu podataka, unapređenje u pogledu brzine i efikasnosti je zanemarljivo, ali prilikom izvršavanja nad velikim skupom podataka je od velikog značaja.
 
 \subsection{Algoritam \textit{DSK}}
 
-Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži isti skup k-mera kao i ulazni fajl za algoritam \textit{JellyFish}. Poslednje dve linije sadrže parametre $M$ (6) i $D$ (5). Rezultati izvršavanja algoritma su smešteni u fajlu \textit{dsk.txt} i mogu se videti na listingu \ref{lst:dskRezultati}. Izlazni fajl se sastoji od lista u kojima se nalaze podliste. Nakon svake liste sledi prikaz najpre heš tabele $H$, a potom i prikaz tabele \textit{Count} za svaku od podlista.
+% Ulazni fajl \textit{DSKData.txt} za algoritam \textit{DSK} sadrži isti skup k-mera kao i ulazni fajl za algoritam \textit{JellyFish}. Poslednje dve linije sadrže parametre $M$ (6) i $D$ (5). Rezultati izvršavanja algoritma su smešteni u fajlu \textit{dsk.txt} i mogu se videti na listingu \ref{lst:dskRezultati}. Izlazni fajl se sastoji od lista u kojima se nalaze podliste. Nakon svake liste sledi prikaz najpre heš tabele $H$, a potom i prikaz tabele \textit{Count} za svaku od podlista.
 
-\lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
+% \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
-Ušteda prostora u ovom algoritmu se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
+% Ušteda prostora u ovom algoritmu se ogleda u ograničavanju memorije koja će biti iskorišćena za smeštanje k-mera u liste i podliste, a sve to zahvaljujući parametrima $M$ i $D$. Ukoliko je parametar $D$ približno jednak broju $N$ k-mera u datom skupu k-mera, algoritam će biti izuzetno brz i izvršiće se u $O(kN)$ očekivanom vremenu.
 
 \subsection{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:debrujinRezultati}
 
-Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$ (3). Nakon pokretanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
+% Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$ (3). Nakon pokretanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
 
-\lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
+% \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
-Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
+% Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
 
 \subsection{Algoritam \textit{AllEulerianCycles}}
 
-Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
+% Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
-\lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
+% \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
@@ -1566,10 +1612,10 @@ Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokreta
 
 U ovom radu su prikazane osnove sintakse i semantike programskog jezika Elixir. On je iskorišćen za implementaciju algoritama u oblasti sekvencioniranja genoma. Sekvencioniranje genoma je proces otkrivanja sastava genoma i od izuzetnog je značaja za modernu dijagnostiku, a posebno za dijegnostiku rizika od naslednih bolesti. Na ovaj način je prikazana primena Elixir-a u rešavanju realnih problema bioinformatičke prirode.
 
-Kako je Elixir funkcionalni programski jezik, on omogućava da razmišljamo u terminima funkcija koje transformišu podatke. To znači da sama transformacija nikada ne menja podatke, već svaka primena funkcije potencijalno stvara novu, svežiju verziju podataka. U okviru ovog rada ova osobina je iskorišćena u implementaciji svakog algoritma, jer se svaki algoritam sastoji od velikog broja funkcija koje obavljaju neki celovit posao.  Zahvaljujući tome dobijen je koncizan k$\hat{o}$d, povećana je njegova čitljivost i programiranje je bilo brže. Dodatno, ova karakteristika smanjuje potrebu za mehanizmima za sinhronizaciju podataka, pa je implementacija konkurentnosti algoritma \textit{JellyFish} bila jednostavna i pouzdana. Konkurentnost je jedna od glavnih karakteristika Elixir-a. Stvaranje velikog broja procesa koje ne podrazumeva smanjivanje performansi mašine je značajno smanjilo vreme izvršavanja algoritma \textit{JellyFish}. Zahvaljujući jednostavnoj i modernoj sintaksi, koja je prirodna za čitanje, ovaj programski jezik se veoma brzo savladava i uči. To je pomoglo da se veoma brzo nakon upoznavanja sa osnovama sintakse i semantike počne sa implementacijom algoritama i postigne veća produktivnost.
+Kako je Elixir funkcionalni programski jezik, on omogućava da razmišljamo u terminima funkcija koje transformišu podatke. To znači da sama transformacija nikada ne menja podatke, već svaka primena funkcije potencijalno stvara novu, svežiju verziju podataka. U okviru rada ova osobina je iskorišćena u implementaciji svakog algoritma, jer se svaka implementacija sastoji od velikog broja funkcija koje obavljaju neki celovit posao.  Zahvaljujući tome dobijen je koncizan k$\hat{o}$d, povećana je njegova čitljivost i programiranje je bilo brže. Dodatno, ova karakteristika smanjuje potrebu za mehanizmima za sinhronizaciju podataka, pa je implementacija konkurentnosti algoritma \textit{JellyFish} bila jednostavna i pouzdana. Konkurentnost je jedna od glavnih karakteristika Elixir-a. Stvaranje velikog broja procesa koje ne podrazumeva smanjivanje performansi mašine je značajno smanjilo vreme izvršavanja algoritma \textit{JellyFish}. Zahvaljujući jednostavnoj i modernoj sintaksi, koja je prirodna za čitanje, ovaj programski jezik se veoma brzo savladava i uči. To je pomoglo da se veoma brzo nakon upoznavanja sa osnovama sintakse i semantike počne sa implementacijom algoritama i postigne visoka produktivnost.
 
-Za potrebe ovog rada, algoritmi su testirani na manjem skupu podataka, te pun potencijal Elixir-a nije došao do izražaja. 
-Buduća unapređenja implementiranih algoritama i aplikacije mogla bi da obuhvate podršku za testiranje na realnim skupovima podataka, koji se inače u ovoj oblasti obrađuju. U pitanju su milijarde nukleotida od kojih se može sastojati jedan genom. U tom slučaju potrebno je izvršiti podelu posla i paralelizaciju izvršavanja. Polazni skup podataka bi se podelio na veliki broj manjih, a zatim bi se paralelno izvršili algoritmi na tim skupovima. Pojedinačni rezultati bi se sjedinili i na taj način formirali jedan krajnji rezultat. Na kraju bi se mogle uporedili brzine izvršavanja za ceo skup podataka i podeljene skupove. Tada bismo se još više uverili da je Elixir pravi izbor za ovu vrstu problema, kao i za sve ostale gde je potrebno obraditi ogromne količine podataka i gde su od presudnog značaja stabilnost, brzina i otpornost na greške prilikom obrade.
+% Za potrebe ovog rada, algoritmi su testirani na manjem skupu podataka, te pun potencijal Elixir-a nije došao do izražaja. 
+% Buduća unapređenja implementiranih algoritama i aplikacije mogla bi da obuhvate podršku za testiranje na realnim skupovima podataka, koji se inače u ovoj oblasti obrađuju. U pitanju su milijarde nukleotida od kojih se može sastojati jedan genom. U tom slučaju potrebno je izvršiti podelu posla i paralelizaciju izvršavanja. Polazni skup podataka bi se podelio na veliki broj manjih, a zatim bi se paralelno izvršili algoritmi na tim skupovima. Pojedinačni rezultati bi se sjedinili i na taj način formirali jedan krajnji rezultat. Na kraju bi se mogle uporedili brzine izvršavanja za ceo skup podataka i podeljene skupove. Tada bismo se još više uverili da je Elixir pravi izbor za ovu vrstu problema, kao i za sve ostale gde je potrebno obraditi ogromne količine podataka i gde su od presudnog značaja stabilnost, brzina i otpornost na greške prilikom obrade.
  
 
 
