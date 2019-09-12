@@ -220,7 +220,7 @@ Pojedinačni izrazi, ali i Elixir programi, mogu se takođe izvršavati u komand
 
 \noindent U Elixir-u se sve funkcije definišu u okviru modula pomoću ključne reči \textit{defmodule}. Za kompajliranje Elixir fajla u kome je definisan modul sa funkcijama i pokretanje interaktivnog Elixir-a nakon toga, najpre se poziva komanda \textit{iex imeFajla.ex}. Potom se može pokrenuti bilo koja funkcija unutar definisanog modula tako što se navede ime modula i ime funkcije razdvojeni tačkom, za kojima slede argumenti u okviru zagrada (\textit{imeModula.imePrograma(argument1, argument2)}). Primer definisanja modula i funkcije u okviru njega može se videti na listingu \ref{lst:printArgs}, a primer kompajliranja fajla i pokretanja funkcije dat je na listingu \ref{lst:primerPokretanjaHelloWorld}.
 
-\lstinputlisting[language=erlang,label={lst:printArgs},caption=Primer definisanja modula,captionpos=b]{print_args.ex}
+\lstinputlisting[language=erlang,label={lst:printArgs},caption=Primer definisanja modula,captionpos=b]{odstampaj_argumente.ex}
 
 \lstinputlisting[language=erlang,label={lst:primerPokretanjaHelloWorld},caption=Primer kompajliranja fajla i pokretanja programa,captionpos=b]{primerPokretanjaHelloWorld.ex}
 
@@ -230,7 +230,7 @@ Elixir programi koji imaju ekstenziju \textit{.exs} se mogu kompajlirati i izvr�
 
 Hosé Valim je tokom 2010. godine bio zaposlen u kompaniji \textit{Platformatec} \cite{Platformatec} i radio je na poboljšanju performansi okruženja
 \textit{Ruby on Rails} na višejezgarnim sistemima. Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
-milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad 2 miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada 5 miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest} \cite{HistoryOfElixir}.
+milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad dva miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada pet miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest} \cite{HistoryOfElixir}.
 
 Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće na vituelnoj mašini jezika Erlang, pa samim tim i nasleđuje pogodna svojstva koje dolaze sa ovim okruženjem kao što su \textbf{konkurentnost} i \textbf{tolerisanje grešaka} \cite{DefinicijaElixira}. Elixir je nadomestio mnoge koncepte koji su nedostajali jeziku Erlang. Neki od njih su  \textbf{metaprogramiranje}\footnote{Tehnika koja omogućava da programi posmatraju druge programe kao svoje podatke i na taj način čitaju i modifikuju i njihov i svoj k$\hat{o}$d u vreme izvršavanja.}, \textbf{polimorfizam}, \textbf{makroi} i \textbf{podrška za alate}. Elixir poseduje podrazumevano okruženje, takozvani \textbf{Kernel}, koji obezbeđuje podršku za osnovne tipove i funkcionalnosti jezika. 
 
@@ -380,11 +380,9 @@ Na listingu \ref{lst:21} je prikazana lista ključnih reči korisnika, gde je sv
 
 \lstinputlisting[language=erlang,label={lst:21},caption=Struktura koja predstavlja listu korisnika,captionpos=b]{21.ex}
 
+\noindent Pristup Džonijevim godinama mogao bi se izvršiti na način prikazan na listingu \ref{lst:22}.
 
-
-\noindent Pristup Džonovim godinama mogao bi se izvršiti na način prikazan na listingu \ref{lst:22}.
-
-\lstinputlisting[language=erlang,label={lst:22},caption=Pristup broju godina korisnika sa imenom Džon,captionpos=b]{22.ex}
+\lstinputlisting[language=erlang,label={lst:22},caption=Pristup broju godina korisnika sa imenom Dzoni,captionpos=b]{22.ex}
 
 \noindent Ista sintaksa se može koristiti i za ažuriranje vrednosti i prikazana je na listingu \ref{lst:23}.
 
@@ -471,11 +469,11 @@ Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Elixir imaju osobin
 
 \section{Konkurentnost}
 
-Jedna od glavnih karatkteristika Elixir-a je ideja o organizovanju koda u male komande koje se mogu izvršavati nezavisno i istovremeno. Zahvaljujući arhitekturi virtuelne mašine Erlang-a na kojoj se Elixir pokreće, stvaranje velikog broja procesa ne utiče na smanjivanje performansi. Elixir koristi model konkurentnosti \textit{\textbf{actor}}. \textit{Actor} je nezavisan proces koji ne deli ništa sa bilo kojim drugim procesom. Mogu se stvarati novi procesi, slati poruke procesima i primati poruke od njih. Procesi u Elixir-u nemaju nikakve veze sa izvornim procesima operativnog sistema koji su spori i glomazni. Elixir koristi podršku za procese iz Erlang-a. Ovi procesi se odvijaju širom svih centralnih procesorskih jedinica, baš kao i izvorni procesi operativnog sistema, ali koriste vrlo malo resursa. Moguće je stvoriti stotine hiljade procesa čak i na skromnom računaru. Na listingu \ref{lst:proces} se nalazi k$\hat{o}$d koji definiše modul \textit{SpawnProcess} i u okviru njega funkciju \textit{greet} koja ispisuje \textit{Hello}.
+Jedna od glavnih karatkteristika Elixir-a je ideja o organizovanju koda u male komande koje se mogu izvršavati nezavisno i istovremeno. Zahvaljujući arhitekturi virtuelne mašine Erlang-a na kojoj se Elixir pokreće, stvaranje velikog broja procesa ne utiče na smanjivanje performansi. Elixir koristi model konkurentnosti \textit{\textbf{actor}}. \textit{Actor} je nezavisan proces koji ne deli ništa sa bilo kojim drugim procesom. Mogu se stvarati novi procesi, slati poruke procesima i primati poruke od njih. Procesi u Elixir-u nemaju nikakve veze sa izvornim procesima operativnog sistema koji su spori i glomazni. Elixir koristi podršku za procese iz Erlang-a. Ovi procesi se odvijaju širom svih centralnih procesorskih jedinica, baš kao i izvorni procesi operativnog sistema, ali koriste vrlo malo resursa. Moguće je stvoriti stotine hiljade procesa čak i na skromnom računaru. Na listingu \ref{lst:proces} se nalazi k$\hat{o}$d koji definiše modul \textit{KreiranjeProcesa} i u okviru njega funkciju \textit{pozdrav} koja ispisuje \textit{Zdravo}.
 
-\lstinputlisting[language=erlang,label={lst:proces},caption=Modul \textit{SpawnProcess},captionpos=b]{proces.ex}
+\lstinputlisting[language=erlang,label={lst:proces},caption=Modul \textit{KreiranjeProcesa},captionpos=b]{proces.ex}
 
-\noindent Nakon kompajliranja fajla u kome je definisan modul \textit{SpawnProcess} pomoću komande \textit{iex ime\_fajla.ex}, na listingu \ref{lst:pokretanjeProcesa} se može videti regularno pokretanje funkcije \textit{greet} i pokretanje u okviru posebnog procesa. Pokretanje u okviru posebnog procesa se vrši pomoću funkcije \textit{spawn}.
+\noindent Nakon kompajliranja fajla u kome je definisan modul \textit{KreiranjeProcesa} pomoću komande \textit{iex ime\_fajla.ex}, na listingu \ref{lst:pokretanjeProcesa} se može videti regularno pokretanje funkcije \textit{pozdrav} i pokretanje u okviru posebnog procesa. Pokretanje u okviru posebnog procesa se vrši pomoću funkcije \textit{spawn}.
 
 \lstinputlisting[language=erlang,label={lst:pokretanjeProcesa},caption=Pokretanje funkcije \textit{greet},captionpos=b]{pokretanje_procesa.ex}
 
@@ -501,17 +499,17 @@ Elixir ima sledeće vrste naredbi za odlučivanje:
 
 \section{Moduli}
 
-U Elixir-u se može vršiti grupisanje nekoliko funkcija u module. Već su pomenuti različiti moduli u prethodnim odeljcima (\textit{Map}, \textit{Enum}, \textit{List}, \textit{String},...). Za kreiranje sopstvenih modula u Elixir-u, koristi se makro \textbf{defmodule}, a za definisanje svojih funkcija, koristimo makro \textbf{def}. Primer koda koji ilustruje kreiranje modula i funkcija dat je listingom \ref{lst:34}.
+U Elixir-u se može vršiti grupisanje nekoliko funkcija u module. Već su pomenuti različiti moduli u prethodnim odeljcima (\textit{Map}, \textit{Enum}, \textit{List}, \textit{String},...). Za kreiranje sopstvenih modula u Elixir-u, koristi se makro \textbf{\textit{defmodule}}, a za definisanje svojih funkcija, koristimo makro \textbf{\textit{def}}. Primer koda koji ilustruje kreiranje modula i funkcija dat je listingom \ref{lst:34}.
 
 \lstinputlisting[language=erlang,label={lst:34},caption=Kreiranje modula i funkcija,captionpos=b]{34.ex}
 
-Moduli mogu biti ugnježdeni u Elixir-u. Ova osobina jezika omogućava bolje organizovanje koda. Na listingu \ref{lst:35} se može videti definisanje dva modula: \textbf{Math} i \textbf{Math.Adding}, pri čemu je drugi ugnježden unutar prvog. Drugom se može pristupati samo pomoću \textit{Adding} unutar \textit{Math} modula sve dok su u istom leksičkom opsegu. Ako se kasnije \textit{Adding} modul premesti izvan definicije \textit{Math} modula, onda se mora referencirati njegovim punim imenom \textit{Math.Adding} ili pseudonim mora biti postavljen pomoću direktive aliasa.
+Moduli mogu biti ugnježdeni u Elixir-u. Ova osobina jezika omogućava bolje organizovanje koda. Na listingu \ref{lst:35} se može videti definisanje dva modula: \textbf{Matematika} i \textbf{Matematika.Sabiranje}, pri čemu je drugi ugnježden unutar prvog. Drugom se može pristupati samo pomoću \textit{Sabiranje} unutar modula \textit{Matematika} sve dok su u istom leksičkom opsegu. Ako se kasnije modul \textit{Sabiranje} premesti izvan definicije modula \textit{Matematika}, onda se mora referencirati njegovim punim imenom \textit{Matematika.Sabiranje} ili pseudonim mora biti postavljen pomoću direktive aliasa.
 
 \newpage
 
 \lstinputlisting[language=erlang,label={lst:35},caption=Ugnježdavanje modula,captionpos=b]{35.ex}
 
-\noindent U Elixir-u nema potrebe za definisanjem modula \textit{Math}, kako bi se definisao modul \textit{Math.Adding}, pošto jezik prevodi sva imena modula u atome. Mogu se  definisati i proizvoljno ugnježdeni moduli bez definisanja bilo kog modula u lancu. Na primer, može se definisati modul \textit{Math.Adding.Sum}, iako  prethodno nije definisan modul \textit{Math} i \textit{Math.Adding}.
+\noindent U Elixir-u nema potrebe za definisanjem modula \textit{Matematika}, kako bi se definisao modul \textit{Matematika.Sabiranje}, pošto jezik prevodi sva imena modula u atome. Mogu se  definisati i proizvoljno ugnježdeni moduli bez definisanja bilo kog modula u lancu. Na primer, može se definisati modul \textit{Matematika.Sabiranje.Saberi}, iako  prethodno nije definisan modul \textit{Matematika} i \textit{Matematika.Sabiranje}.
 
 \section{Direktive}
 
@@ -1075,7 +1073,7 @@ Na slici \ref{fig:17} se nalazi pseudokod koji opisuje ideju IDBA asemblera.
 \chapter{Implementirani algoritmi i rezultati}
 \label{odeljak:algoritmiIRezultati}
 
-U poglavlju \ref{poglavlje:Bio} data je biološka osnova i motivacija za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opisi aplikacije i rezultati izvršavanja algoritama u okviru nje.
+U glavi \ref{poglavlje:Bio} data je biološka osnova i motivacija za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opisi aplikacije i rezultati izvršavanja algoritama u okviru nje.
 
 \section{Algoritam \textit{JellyFish}}
 \label{odeljak:JellyFish}
@@ -1127,7 +1125,7 @@ Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao pot
 \label{box:jellyfish}
 \end{figure}
 
-Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $N = |Z|$ i $\alpha$ faktor opterećenja $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost $H[i]$, gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Ovom metodom se indeks $i$ uvećava za 1, kada se kolizija dogodi, sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan.
+Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $N = |Z|$ i $\alpha$ faktor opterećenja $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost $H[i]$, gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Kada se kolizija dogodi, indeks $i$ se uvećava za 1 sve dok se ne pronađe prvo prazno mesto $H[i]$ ili mesto gde je $H[i] = z$.
 
 \begin{comment}
 
@@ -1175,7 +1173,7 @@ Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK del
 Slika \ref{fig:5}(b) daje primer koji ilustruje algoritam $JellyFish$. 
 \end{comment}
 
-Algoritam $JellyFish$ je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita.
+Algoritam $JellyFish$ je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita \cite{WingKinSung}.
 
 Skup očitavanja $Z$ je prilikom implementacije algoritma u programskom jeziku Elixir predstavljen listom, dok su za predstavljanje heš tabele $H$ i tabele \textit{Count} korišćene mape. Pri početnoj inicijalizaciji, vrednosti tabele $H$ se postavljaju na 0, a vrednosti tabele \textit{Count} na prazan string, dok im je skup ključeva isti. Početna inicijalizacija se vrši rekurzivno za svaki ključ. Izgled funkcija koje inicijalizuju tabele $H$ i $Count$, može se videti na listingu \ref{lst:103}. Argumenti pri pozivanju obe funkcije su prazna mapa ($\%\{\}$) i veličina mape koju treba kreirati. Pri svakom rekurzivnom pozivu, veličina mape se umanjuje za 1, a u mapu se dodaje novi element funkcijom \textit{Map.put/3} iz modula \textit{Map}. Kada veličina mape postane jednaka nuli, tada se izlazi iz rekurzije i funkcija vraća inicijalizovanu mapu. 
 
@@ -1284,7 +1282,7 @@ Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski
 
 4:\hspace{2cm} if $h(z)$ mod $n_{list} = i$ then
 
-5:\hspace{3cm} $j = (h(z) div n_{list})$ mod $n_{sublist}$;
+5:\hspace{3cm} $j = (h(z)$ div $n_{list})$ mod $n_{sublist}$;
 
 6:\hspace{3cm} Upisati $z$ na disk u podlistu $d_j$
 
@@ -1310,7 +1308,7 @@ Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u 
 
 Svaka lista je podeljena u podliste heš funkcijom $h()$. Preciznije, za svaki k-mer $s$ u i-toj listi, $s$ je dodeljen j-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
 
-\textit{DSK} algoritam će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+\textit{DSK} algoritam će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, u okviru ovog rada je predstavljena funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su $A$, $T$, $C$ i $G$ ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} koristeći ovu funkciju rekurzivno kodira svako slovo niske \textit{pattern} koja predstavlja k-mer, počevši od nulte pozicije. Kodovi se nadovezuju na početnu praznu nisku $begin\_string$ pomoću operatora $<>$. Kada se obradi cela niska \textit{pattern}, izlazi se iz rekurzije i funkcija vraća nisku transformisanu u broj  koji predstavlja kodiran k-mer. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}.
 
@@ -1426,7 +1424,10 @@ Izračunavanje ulaznog stepena za zadati čvor vrši se pomoćnom funkcijom \tex
 
 \section{Uputstvo za pokretanje aplikacije}
 
-Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}. Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}} i instalacija se može preuzeti sa njegove zvanične stranice \cite{PyCharm}. 
+Celokupna implementacija grafičkog korisničkog interfejsa i algoritama je dostupna i može se preuzeti sa adrese \cite{GIT}.
+Kako Elixir nema naprednu podršku za grafički korisnički interfejs i to nije njegova osnovna namena, za potrebe ovog rada iskorišćena je i podrška programskog jezika Python i integrisanog razvojnog okruženja \textbf{\textit{PyCharm}} \cite{PyCharm}.
+
+% Nakon preuzimanja implementacije i izvršenih koraka iz poglavlja \ref{odeljak:Instalacija}, potrebno je preuzeti i instalaciju za neko od integrisanih razvojnih okruženja za programski jezik Python. Za potrebe ovog rada izabran je \textit{\textbf{PyCharm}} i instalacija se može preuzeti sa njegove zvanične stranice \cite{PyCharm}. 
 
 Projekat je organizovan tako da se sastoji od četiri foldera: \textit{data\_files}, \textit{result\_files}, \textit{source\_files} i \textit{executables}. U folderu \textit{data\_files} nalaze se tekstualni fajlovi koji sadrže ulazne podatke na kojima je moguće testirati implementirane algoritme (\textit{JellyFishData.txt}, \textit{DSKData.txt}, \textit{DeBrujinGraphData.txt}, \textit{AllEulerianCyclesData.txt}). U folderu \textit{result\_files} nalaze se tekstualni fajlovi u kojima se nalaze rezultati izvršavanja algoritama (\textit{JellyFish.txt}, \textit{DSK.txt}, \textit{DeBrujinGraph.txt}, \textit{AllEulerianCycles.txt}). Format ulaznih i izlaznih fajlova za svaki pojedinačni algoritam biće opisan u poglavlju \ref{odeljak:Rezultati}. Folder \textit{source\_files} sadrži izvorne fajlove u programskom jeziku Elixir u kojima se nalazi implementacija algoritama (\textit{jellyfish.exs}, \textit{dsk.exs}, \textit{debrujin\_graph.exs}, \textit{all\_eulerian\_cycles.exs}). Izvršne verzije izvornih fajlova nalaze se u folderu \textit{executables}. Pored ova četiri foldera, projekat sadrži i \textit{.py} fajl (\textit{interface.py}) u kome se nalazi interfejs koji sjedinjuje algoritme u jedinstvenu aplikaciju.
 
@@ -1439,7 +1440,7 @@ Implementirani algoritmi se mogu pokretati direktno uz pomoć Elixir interpreter
     \item {pozicionirati se na lokaciju gde zelite da kreirate projekat}
      \item {izvršiti komandu \textit{mix new ime\_projekta}}
      \item {kompajlirati projekat pomoću komande \textit{mix} ili \textit{mix compile} u roditeljskom direktorijumu}
-     \item {u \textit{lib} folderu projketa kreirati novi folder koji nosi naziv željenog algoritma i u njemu fajl \textit{cli.ex} koji ima sadržaj kao na listingu \ref{lst:cli}
+     \item {u \textit{lib} folderu projekta kreirati novi folder koji nosi naziv željenog algoritma i u njemu fajl \textit{cli.ex} koji ima sadržaj kao na listingu \ref{lst:cli}
      \item {u \textit{lib} folder prekopirati izvorni fajl algoritma}
      \item {izvršiti komandu \textit{mix escript.build} u roditeljskom direktorijumu}
 \end{itemize}
@@ -1451,7 +1452,7 @@ Implementirani algoritmi se mogu pokretati direktno uz pomoć Elixir interpreter
 
 \section{Opis aplikacije}
 
-Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka odjednom i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Međutim, Elixir nema naprednu podršku za grafički korisnički interfejs i to nije njegova osnovna namena. Zbog toga je za potrebe ovog rada iskorišćena i podrška programskog jezika Python. Interfejs koji omogućava pokretanje algoritama opisanih u poglavlju \ref{odeljak:algoritmiIRezultati} implementiran je upravo u ovom jeziku, a koristeći integrisano razvojno okruženje \textit{PyCharm}. Kratak prikaz i opis izgleda i funkcionalnosti interfejsa biće dat u nastavku.
+Svi algoritmi su implementirani u programskom jeziku Elixir. Prilikom sekvencioniranja genoma potrebno je obraditi veliki broj ulaznih očitavanja. Elixir omogućava brzu obradu velike količine podataka i pritom je veoma tolerantan na greške, te ga to čini dobrim izborom. Kratak prikaz i opis  funkcionalnosti interfejsa implementiranog u programskom jeziku Python biće dat u nastavku.
 
 Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici \ref{fig:glavniProzor}. Klikom na padajuću listu mogu se videti dostupni algortmi za izvršavanje, a potom i izabrati neki od njih. Prikaz padajuće liste i izbor jednog od algoritama može se videti na slici \ref{fig:padajucaLista}. 
 
@@ -1469,7 +1470,7 @@ Pri pokretanju aplikacije otvara se glavni prozor koji se može videti na slici 
 \label{fig:padajucaLista}
 \end{figure}
 
-\noindent Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...} otvara se novi dijalog u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
+Nakon toga je potrebno izabrati fajl iz kojeg će se čitati ulazni podaci. Klikom na dugme \textit{Izaberite fajl...} otvara se novi dijalog u okviru kojeg se može izabrati ulazni tekstualni fajl, što se može videti na slici \ref{fig:fileChooser}.
 
 \begin{figure}[h]
 \centering
