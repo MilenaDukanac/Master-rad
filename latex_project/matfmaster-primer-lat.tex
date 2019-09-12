@@ -183,7 +183,7 @@ Elixir je preuzeo izmenjenu Erlangovu sintaksu i dopunjenu Erlangovu standardnu 
 \newpage
 
 \subsection{Haskell}
-\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran \cite{Haskell}. Nazvan je po Haskel Bruks Kariju (engl. \textit{Haskell Brooks Curry}), čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv k$\hat{o}$d, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
+\textbf{Haskell} je čisto funkcionalni jezik koji je statički tipiziran \cite{Haskell}. Nazvan je po Haskelu Bruks Kariju (engl. \textit{Haskell Brooks Curry}), čiji rad u oblasti matematičke logike služi kao osnova za sve funkcionalne jezike. Haskell je zasnovan na lambda računu, pa se stoga lambda koristi kao logo jezika. Nudi kratak, jasan i održiv k$\hat{o}$d, mali procenat grešaka i veliku pouzdanost. Stoga je pogodan za pisanje velikih softverskih sistema, jer njihovo održavanje čini lakšim i jeftinijim. Jedna od karakteristika koje je Elixir preuzeo od ovog jezika je lenjo izračunavanje.
 
 \subsection{Ruby}
 \textbf{Ruby} je dinamički tipiziran programski jezik otvorenog koda nastao 1995. godine. Kod ovog programskog jezika fokus je na jednostavnosti i produktivnosti. Ruby ima elegantnu sintaksu koja je prirodna za čitanje i lako pisanje.
@@ -269,10 +269,9 @@ Brojevi u pokretnom zarezu se zapisuju uz pomoć decimalne tačke po standardu \
 \subsubsection{Liste}
 Liste se čuvaju u memoriji kao povezane liste, što znači da svaki element u listi čuva svoju vrednost i ukazuje na sledeći element sve dok se ne dostigne kraj liste. To znači da je pristup proizvoljnom elementu liste kao i određivanje dužine liste linearna operacija, jer je potrebno da prođemo celu listu da bismo odredili njenu dužinu. Slično, performanse spajanja dve liste zavise od dužine one koja se nalazi sa leve strane, jer se spajanje vrši nadovezivanjem liste sa desne strane na kraj liste koja se nalazi sa leve strane. Da bi se izvršilo nadovezivanje, mora se odrediti dužina liste sa leve strane.
 
-Elixir koristi uglaste zagrade $([])$ da označi listu vrednosti. Vrednosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}.
+Elixir koristi uglaste zagrade $([\,\,])$ da označi listu vrednosti. Vrednosti mogu biti bilo kog tipa, a primer liste sa vrednostima različitih tipova prikazan je na listingu \ref{lst:prvi}.
 
 \lstinputlisting[language=erlang,label={lst:prvi},caption=Primer liste,captionpos=b]{prvi.ex}
-
 
 Nadovezivanje ili oduzimanje dve liste korišćenjem operatora $++/2$ i $--/2$ prikazano je na listingu \ref{lst:drugi}. Rezultat oduzimanja dve liste je nova lista koja nastaje tako što se iz liste sa leve strane operatora $--$ eliminišu elementi koji se nalaze u listi sa desne strane.
 
@@ -308,7 +307,7 @@ Torke su strukture fiksne dužine koje bi trebalo da sadrže svega nekoliko elem
 
 \lstinputlisting[language=erlang,label={lst:deseti},caption=Primer upotrebe funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
 
-Indeksi torke počinju od nule, a primer izdvajanje elementa sa indeksom 1 može se videti na listingu \ref{lst:osmi}.
+Indeksi torke počinju od nule, a primer izdvajanja elementa sa indeksom 1 može se videti na listingu \ref{lst:osmi}.
 
 \lstinputlisting[language=erlang,label={lst:osmi},caption=Izdvajanje elementa torke sa indeksom 1,captionpos=b]{osmi.ex}
 
@@ -400,7 +399,7 @@ Funkcija $get\_and\_update\_in$ omogućava pristup vrednosti i ažuriranje struk
 
 Pored osnovnih artimetičkih operatora $+$, $-$, $*$, $/$, kao i funkcija \textit{div/2} i \textit{rem/2} za celobrojno deljenje i ostatak pri celobrojnom deljenju, Elixir podržava i već pomenute operatore $++$ i $--$ za nadovezivanje i oduzimanje listi, kao i operator $<>$ koji se koristi za nadovezivanje stringova.
 
-Elixir obezbeđuje tri logička operatora: \textbf{and}, \textbf{or} i \textbf{not}. Oni su striktni u smislu da očekuju nesto što ima vrednost \textit{true} ili \textit{false} kao svoj prvi operand. Primer koda koji ilustruje ovu osobinu prikazan je na listingu \ref{lst:25}.
+Elixir obezbeđuje tri logička operatora: \textbf{and}, \textbf{or} i \textbf{not}. Oni su striktni u smislu da očekuju nešto što ima vrednost \textit{true} ili \textit{false} kao svoj prvi operand. Primer koda koji ilustruje ovu osobinu prikazan je na listingu \ref{lst:25}.
 
 \lstinputlisting[language=erlang,label={lst:25},caption=Primer upotrebe logičkih operatora,captionpos=b]{25.ex}
 
@@ -463,13 +462,13 @@ Promenljive se mogu koristiti prilikom pristupa, podudaranja i dodavanja ključe
 \section{Nepromenljivost podataka}
 \label{odeljak:nepromenljivostPodataka}
 
-U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanje ove promene i obično se i ne vodi računa o tome pri pisanju programa. Ali šta se dešava kada se vrednost u memoriji, ili čak i tip vrednosti, promeni u trenutku kada je koristi više instanci programa?  Ovakvo ponašanje je poznato kao \textbf{promenljivost (mutabilnost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Promenljivost takođe vodi veoma komplikovanom kodu, koji se često piše ad-hoc kako bi se rešili problemi sinhronizacije.
+U mnogim programskim jezicima je dozvoljeno dodeljivanje vrednosti promenljivoj, a zatim njeno menjanje tokom izvršavanja programa. Mogućnost zamene vrednost na određenoj memorijskoj lokaciji drugom vredošću čini se legitimna i čini se da povećava čitljivost našeg programa. Tokom izvršavanja programa obično se ne zna tačno vreme izvršavanja ove promene i obično se i ne vodi računa o tome pri pisanju programa. Ali šta se dešava kada se vrednost u memoriji, ili čak i tip vrednosti, promeni u trenutku kada je koristi više instanci programa?  Ovakvo ponašanje je poznato kao \textbf{promenljivost (mutabilnost)}. U konkurentnim okruženjima je izvor grešaka koje je veoma teško pratiti i reprodukovati. Promenljivost takođe vodi veoma komplikovanom kodu, koji se često piše ad-hoc kako bi se rešili problemi sinhronizacije.
 
 Umesto toga, drugi jezici, kao što je Erlang, a samim tim i Elixir imaju osobinu \textbf{nepromenljivosti (imutabilnosti)}. Oni jednostavno ne dozvoljavaju promenu vrednosti na određenoj memorijskoj lokaciji. Na ovaj način, ako se promenljiva \textit{a} poklopila sa vrednošću 1, onda se njena vrednost sigurno neće menjati tokom izvršavanja programa i ne mora se voditi računa o problemima sinhronizacije u konkurentnom okruženju.
 
 \section{Konkurentnost}
 
-Jedna od glavnih karatkteristika Elixir-a je ideja o organizovanju koda u male komande koje se mogu izvršavati nezavisno i istovremeno. Zahvaljujući arhitekturi virtuelne mašine Erlang-a na kojoj se Elixir pokreće, stvaranje velikog broja procesa ne utiče na smanjivanje performansi. Elixir koristi model konkurentnosti \textit{\textbf{actor}}. \textit{Actor} je nezavisan proces koji ne deli ništa sa bilo kojim drugim procesom. Mogu se stvarati novi procesi, slati poruke procesima i primati poruke od njih. Procesi u Elixir-u nemaju nikakve veze sa izvornim procesima operativnog sistema koji su spori i glomazni. Elixir koristi podršku za procese iz Erlang-a. Ovi procesi se odvijaju širom svih centralnih procesorskih jedinica, baš kao i izvorni procesi operativnog sistema, ali koriste vrlo malo resursa. Moguće je stvoriti stotine hiljade procesa čak i na skromnom računaru. Na listingu \ref{lst:proces} se nalazi k$\hat{o}$d koji definiše modul \textit{KreiranjeProcesa} i u okviru njega funkciju \textit{pozdrav} koja ispisuje \textit{Zdravo}.
+Jedna od glavnih karakteristika Elixir-a je ideja o organizovanju koda u male komande koje se mogu izvršavati nezavisno i istovremeno. Zahvaljujući arhitekturi virtuelne mašine Erlang-a na kojoj se Elixir pokreće, stvaranje velikog broja procesa ne utiče na smanjivanje performansi. Elixir koristi model konkurentnosti \textit{\textbf{actor}}. \textit{Actor} je nezavisan proces koji ne deli ništa sa bilo kojim drugim procesom. Mogu se stvarati novi procesi, slati poruke procesima i primati poruke od njih. Procesi u Elixir-u nemaju nikakve veze sa izvornim procesima operativnog sistema koji su spori i glomazni. Elixir koristi podršku za procese iz Erlang-a. Ovi procesi se odvijaju širom svih centralnih procesorskih jedinica, baš kao i izvorni procesi operativnog sistema, ali koriste vrlo malo resursa. Moguće je stvoriti stotine hiljade procesa čak i na skromnom računaru. Na listingu \ref{lst:proces} se nalazi k$\hat{o}$d koji definiše modul \textit{KreiranjeProcesa} i u okviru njega funkciju \textit{pozdrav} koja ispisuje \textit{Zdravo}.
 
 \lstinputlisting[language=erlang,label={lst:proces},caption=Modul \textit{KreiranjeProcesa},captionpos=b]{proces.ex}
 
@@ -483,7 +482,7 @@ Funkcija \textit{spawn} kreira novi proces. Pojavljuje se u mnogim oblicima, ali
 
 Strukture odlučivanja zahtevaju da programer odredi jedan ili više uslova koje će program proceniti ili testirati zajedno sa naredbom ili naredbama koje treba izvršiti, ako je uslov određen ili tačan, i opciono, druge naredbe koje treba izvršiti, ako je utvrđeno da je uslov netačan.
 
-Elixir obezbedjuje \textbf{\textit{if/else}} uslovne konstrukte kao i mnogi drugi programski jezici. On takođe poseduje naredbu \textbf{\textit{cond}} koja poziva prvu tačnu vrednost koju pronađe. \textbf{\textit{Case}} je još jedan kontrolni tok koji koristi poklapanje obrazaca za kontrolu toka programa.
+Elixir obezbeđuje \textbf{\textit{if/else}} uslovne konstrukte kao i mnogi drugi programski jezici. On takođe poseduje naredbu \textbf{\textit{cond}} koja poziva prvu tačnu vrednost koju pronađe. \textbf{\textit{Case}} je još jedan kontrolni tok koji koristi poklapanje obrazaca za kontrolu toka programa.
 
 Elixir ima sledeće vrste naredbi za odlučivanje:
 
@@ -540,7 +539,7 @@ Iako nije direktiva, \textbf{use} je makro koji je usko povezan sa zahtevom koji
 Posle prve rečenice da li ubaciti?
 Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK).\end{comment}
 
-\textbf{DNK} (dezoksiribonukleinska kiselina) je nukleinska kiselina koja sadrži uputstva za razvoj i pravilno funkcionisanje svih živih organizama. Informacije u DNK se čuvaju kao k$\hat{o}$d koji čine \textbf{četiri hemijske baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, adenin sa timinom i citozin sa guaninom, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koji imaju antiparalelnu\footnote{U biohemiji, dva molekula su antiparalelna ako su locirani jedan pored drugog i usmereni u suprotnim smerovima, ili ako su dva lanca međusobno komplementarna.} orijentaciju i koji čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}). Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina orijentisane vertikalno, a bazni parovi se mogu čitati sa leva na desno (slika \ref{fig:odmotanDnk}).
+\textbf{DNK} (dezoksiribonukleinska kiselina) je nukleinska kiselina koja sadrži uputstva za razvoj i pravilno funkcionisanje svih živih organizama. Informacije u DNK se čuvaju kao k$\hat{o}$d koji čine \textbf{četiri azotne baze}: \textbf{adenin} (A), \textbf{guanin} (G), \textbf{citozin} (C) i \textbf{timin} (T). Ljudski DNK se sastoji od oko tri milijarde baza, a više od 99 procenata tih baza je isto kod svih ljudi. Redosled ili sekvenca ovih baza određuje informacije dostupne za izgradnju i održavanje organizma, slično načinu na koji se slova abecede pojavljuju određenim redosledom kako bi se formirale reči i rečenice. DNK baze se spajaju jedna sa drugom, adenin sa timinom i citozin sa guaninom, da bi formirale jedinice koje se nazivaju \textbf{bazni parovi}. Svaka baza je takođe vezana za molekul šećera dezoksiriboze i molekul fosfata. Zajedno, baza, šećer i fosfat nazivaju se \textbf{nukleotidima}. Nukleotidi su raspoređeni u dva dugačka lanca koji koja čine spiralu koja se naziva \textbf{dvostruka spirala} \cite{DNA}. Struktura dvostruke spirale pomalo je nalik na merdevine, pri čemu bazni parovi formiraju lestvičaste trake, a molekuli šećera i fosfata formiraju vertikalne bočne delove merdevina (slika \ref{fig:00}). Molekul DNK se može zamisliti odmotan i rotiran, tako da su trake merdevina orijentisane vertikalno, a bazni parovi se mogu čitati sa leva na desno (slika \ref{fig:odmotanDnk}).
 
 \begin{figure}[!ht]
   \centering
@@ -565,12 +564,12 @@ $5'$ i $3'$ označavaju brojeve ugljenika koji se nalaze u osnovi DNK šećera. 
 
 Krajevi šećer-fosfatnih lanaca se međusobno razlikuju po prirodi nevezanog atoma ugljenika - jedan kraj ima nevezani $5'$ (pet prim) atom ugljenika, dok drugi kraj ima nevezani $3'$ (tri prim) atom ugljenika. $5'$ ugljenik ima fosfatnu grupu koja je vezana za njega, a $3'$ ugljenik-hidroksilnu (-OH) grupu. Ova asimetrija daje DNK pravac $5' \rightarrow 3'$. Kada predstavljamo molekul DNK pomoću dijagrama, kakav je prikazan na slici \ref{fig:00}, podrazumeva se da gornji lanac kreće od $5'$ kraja sa leve strane do $3'$ kraja sa desne strane. Donji lanac je obrnuto orijentisan, od $3'$ kraja sa leve strane do $5'$ kraja sa desne strane \cite{DNA2}. 
 
-Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK). DNK ima veoma važnu ulogu ne samo u prenosu genetskih informacija sa jedne na drugu generaciju, već sadrži i uputstva za građenje neophodnih ćelijskih organela, proteina i RNK molekula. \textbf{Geni} su delovi DNK sekvence koja je sa računarske strane niska nad azbukom $\{A, C, G, T\}$.  Svaki gen predstavlja pravilo za sintezu jednog proteina u ćeliji, koji je neophodan za njeno pravilno funkcionisanje. \textbf{Genom} je skup gena jednog organizma i sastoji od niza uparenih baza.
+Sva živa bića svoj genetički materijal nose u obliku DNK, sa izuzetkom nekih virusa koji imaju ribonukleinsku kiselinu (RNK). DNK ima veoma važnu ulogu ne samo u prenosu genetskih informacija sa jedne na drugu generaciju, već sadrži i uputstva za građenje neophodnih ćelijskih organela, proteina i RNK molekula. \textbf{Geni} su delovi DNK sekvence unutar kojih je kodirano pravilo za sintezu jednog proteina u ćeliji, koji je neophodan za njeno pravilno funkcionisanje. \textbf{Genom} je skup gena jednog organizma i sastoji od niza uparenih baza. Sa računarske strane genom predstavlja nisku nad azbukom $\{A, C, G, T\}$. Nukleotidi su raspoređeni u dva dugačka lanca koji imaju antiparalelnu\footnote{U biohemiji, dva molekula su antiparalelna, ako se prostiru paralelno, ali u suprotnim smerovima.} orijentaciju.
 
 \textbf{Sekvencioniranje genoma} podrazumeva otkrivanje sastava genoma. U pitanju je veoma kompleksan proces koji uključuje i eksperimentalan deo – da bi se saznalo šta se nalazi u sastavu jednog genoma, potreban je uzorak tkiva
-odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine koje određuju redosled nukleotida nazivaju se \textbf{sekvenceri}. Sekvencioniranje DNK uključuje bilo koji metod ili tehnologiju koja se koristi za određivanje redosleda četiri baze iz ciljnog genoma ($A$, $C$, $G$, $T$) \cite{DataAlgorithms}. Savremene laboratorijske metode za dati uzorak krvi pacijenta mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Dužina genoma i dužina očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
+odgovarajuće vrste \cite{skriptaBio}. \textbf{Sekvencioniranje DNK} je proces određivanja preciznog redosleda nukleotida unutar molekula DNK, a mašine u kojima taj proces započinje se nazivaju \textbf{sekvenceri}. Sekvenceri za dati uzorak bilo kog tkiva bilo kog organizma (npr. krvi kod čoveka, dlake kod miša,...) mogu da očitaju podsekvence DNK koje se nazivaju \textbf{očitavanja} (engl. \textit{reads}), a koje je nakon toga neophodno sastaviti u polaznu DNK sekvencu pomoću posebnih alata za sklapanje, takozvanih \textbf{asemblera}. Podniske očitavanja dužine $k$ nazivaju se \textbf{k-meri}. Dužina genoma i dužina očitavanja DNK se mere u \textbf{baznim parovima (bp)}. Očitavanja mogu biti  \textbf{kratka} i \textbf{duga}. Kratka očitavanja imaju dužinu od 50 bp do 400 bp, a duga očitavanja dužinu veću od 400 bp.
 
-Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Što su delovi veći, slagalicu je lakše sastaviti.
+Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem. Ona se može uporediti sa kompletiranjem slagalice, gde su očitavanja delovi slagalice. Za razliku od kompletiranja slagalice, gde je poznata slika koju treba na kraju dobiti, pri rekonstrukciji genoma nije pozanto kako treba da izgleda krajnji rezultat. Što su delovi veći, slagalicu je lakše sastaviti. Zadatak asemblera je da na osnovu očitavanja, za koje ne postoji informacija sa kog dela genoma potiču, složi genomsku slagalicu.
 
 \begin{comment}
 Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomici. Postojeće biotehnologije ne mogu proći kroz ceo hromozom, jer je predugačak. Umesto toga, genom se rekonstruiše indirektno. Prvo, vrši se razbijanje genoma na DNK fragmente koristeći pristup očitavanja celog sekvencioniranog genoma (engl. \textit{whole genome shotgun approach}). Zatim se pomoću mašine za sekvencioniranje na osnovu fragmenata vrši dekodiranje DNK sekvence. Ove DNK sekvence se nazivaju \textbf{očitavanja (engl. \textit{reads})}. Usled slučajnog uzorkovanja , ekstahovana očitavanja pokrivaju ceo genom ravnomerno. Lepljenjem ovih očitavanja možemo računski rekonstruisati genom. Ovaj proces je poznat kao \textbf{genomsko sekvencioniranje \textit{de novo}}.
@@ -579,8 +578,8 @@ Rekonstrukcija genoma kroz sekvencioniranje DNK je veoma važan problem u genomi
 \section{Istorija sekvencioniranja genoma}
 
 \textbf{Sekvencioniranje Sanger} predstavlja prvu tehniku sekvencioniranja. Nastala je 1977. godine, a njeni tvorci su Frederik Sanger (engl. \textit{Frederick Sanger}) i njegove kolege. Razvijena su dva asemblera za asembliranje očitavanja sekvencioniranja Sanger: \textit{OLC}\footnote{Skraćenica od \textit{overlap layout consensus} (\textit{overlap} - izgradnja grafa preklapanja,
-\textit{layout} - spajanje putanja u grafu u kontige, \textit{concensus} - određivanje najverovatnije sekvence
-nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brujinovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom je digitalna baza podataka o nukleinskim kiselinama, koju su naučnici prikupili kao reprezentativni primer skupa gena čoveka. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \textit{(The Genome Reference Consortium human genome (build 37)}) je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz Bafala (engl. \textit{Buffalo}). Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je sekvencioniranje Sanger niskopropusno (omogućava sekvencioniranje malog broja očitavanja odjednom) i neekonomično, samo nekoliko genoma je sastavljeno pomoću njega.
+\textit{layout} - spajanje putanja u grafu u kontige, \textit{consensus} - određivanje najverovatnije sekvence
+nukleotida za svaku kontigu.} asembler \textbf{Celera} i asembler \textbf{Ojler} zasnovan na De Brojnovim grafovima. \textbf{Humani referentni genom} sastavljen je korišćenjem ova dva pristupa. Humani referentni genom predstavlja reprezentativni primer skupa gena čoveka koje su prikupili naučnici. Kako su često sastavljeni sekvencioniranjem DNK većeg broja davalaca, referentni genomi ne predstavljaju skup gena nijedne pojedinačne osobe. Humani referentni genom \textit{\textbf{GRCh37}} \textit{(The Genome Reference Consortium human genome (build 37)}) je izveden 2009. godine iz DNK trinaest anonimnih dobrovoljaca iz države Bafalo u SAD. Referentni genomi se obično koriste kao uputstvo na osnovu koga se grade novi genomi, što im omogućava da se sastave mnogo brže i ekonomičnije. Međutim, kako je sekvencioniranje Sanger niskopropusno (omogućava sekvencioniranje malog broja očitavanja odjednom) i neekonomično, samo nekoliko genoma je sastavljeno pomoću njega.
 
 Razvoj tehnika za sekvencioniranje \textbf{druge generacije} značajno je doprineo efikasnijem i ekonomičnijem sekvencioniraranju stotine miliona očitavanja. Međutim, očitavanja druge generacije sekvencioniranja su kratka. Njihova pojava je dovela do većeg broja uspešnih \textbf{\textit{de novo}} asemblerskih\footnote{\textit{De novo} asembleri su programi
 koji vrše sklapanje tako što proširuju kratka očitavanja spajanjem susednih
@@ -609,7 +608,7 @@ Jednostrana očitavanja su očitavanja koja se generišu tako što sekvencer či
 \end{figure}
 
 Sekvenceri čitaju deo DNK fragmenta neke unapred
-zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broja nukleotida u genomu, doći ć́e do značajnog broja grešaka u sekvencioniranju. Pored toga, neke pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
+zadate dužine koja se naziva \textbf{dužina očitavanja}. \textbf{Dubina pokrivanja} neke pozicije u DNK sekvenci je velika, ako je nukleotid na toj poziciji pročitan veliki broj puta u jedinstvenim očitavanjima. Tačnost sekvencioniranja za svaki pojedinačni nukleotid je veoma visoka, ali ukoliko se pojedinačni genom sekvencira samo jednom, zbog veoma velikog broja nukleotida u genomu, doći ́će do značajnog broja grešaka u sekvencioniranju. Pored toga, neke pozicije u genomu sadrže retke \textbf{jednonukleotidne polimorfizme}\footnote{Pojava zamene mesta jednog nukleotida nekim drugim nukleotidom.} (engl. \textit{single-nucleotide polymorphisms - SNPs}). Stoga, kako bi se napravila razlika između grešaka u sekvencioniranju i pravih \textit{SNP}-ova, potrebno je još više poveć́ati tačnost sekvencioniranjem pojedinačnih genoma veći broj puta \cite{SequencingCoverage}.
 
 Za potrebe sekvencioniranja \textit{shotgun} celokupnog genoma postoje dva protokola:
 \begin{itemize}
@@ -648,7 +647,7 @@ Na slici \ref{fig:2} prikazan je odmotan i rotiran DNK fragment. Delovi koji se 
     \item {$AGTTTGTACTGCCGTTCAGAACGTA$}
 \end{itemize}
 
-\noindent Drugo očitavanje $AGTTTGTACTGCCGTTCAGAACGTA$ je inverzni komplement očitavanja $TACGTTCTGAACGGCAGTACAAACT$, jer je drugo očitavanje dobijeno iz donjeg lanca koji je komplementaran sa gornjim.
+\noindent Drugo očitavanje $AGTTTGTACTGCCGTTCAGAACGTA$ je obrnuti komplement očitavanja $TACGTTCTGAACGGCAGTACAAACT$, jer je drugo očitavanje dobijeno iz donjeg lanca koji je komplementaran sa gornjim.
 
 Za asembliranje genoma, dužina očitavanja je veoma važan parametar. Različite tehnologije sekvencioniranja imaju različita ograničenja na dužinu očitavanja. Na primer, \textit{Illumina Hi-seq}\footnote{Illumina je američka kompanija koja je proizvodila visokopropusne sekvencere (omogućavaju sekvencioniranje velikog broja očitavanja odjednom  (engl. \textit{high-throughput sequencers})).} sekvencioniranje može izvršiti samo sekvencioniranje uparenih očitavanja dužine manje od 1000 bp. Za treću generaciju sekvencioniranja, ograničenje dužine očitavanja može biti veće od 10000 bp.
 
@@ -690,7 +689,7 @@ Druga generacija tehnika sekvencioniranja omogućava dobijanje skupa jednostrani
 
 Problem asembliranja genoma je računski težak. Čak i kada ne postoji greška sekvencioniranja, ovaj problem je ekvivalentan \textbf{problemu superstringa} za koji se zna da je NP-kompletan \cite{NPcomplexity}. Problem superstringa predstavlja problem pronalaženja superstringa na osnovu skupa stringova $S$, gde je superstring najkraći string $P$ takav da je svaki string $s$ iz skupa $S$ podstring stringa $P$. Na primer, ako je $S = \{ACATGC, ATGCGTGT, GTGTACGT\}$, onda je odgovarajući superstring $ACATGCGTGTACGT$.
 
-Mnogi \textit{de novo} asembleri predlažu asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem (opisano u poglavlju \ref{poglavlje:KonstrukcijaKontiga}). U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Algoritmi za konstrukciju kontiga biće obrađeni u poglavlju \ref{poglavlje:KonstrukcijaKontiga}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
+Postoji veliki broj \textit{de novo} asemblera za asembliranje kratkih očitavanja. Opšte rešenje uključuje četiri koraka. U prvom koraku se koriguju greške u očitavanjima (opisano u poglavlju \ref{poglavlje:korekcijaGresaka}). Na osnovu korigovanih očitavanja, u drugom koraku se vrši spajanje očitavanja preklapanjem (opisano u poglavlju \ref{poglavlje:KonstrukcijaKontiga}). U idealnom slučaju, teži se spajanju svih očitavanja tako da se formira kompletan genom, ali kako se zbog ponovaka javljaju dvosmislenosti, to nije moguće. Postojeće metode preklapanjem očitavanja grade kontinuiranu sekvencu, takozvanu \textbf{kontigu} (engl. \textit{contig}). Kontige obično predstavljaju jednu \textbf{konsenzus nisku}\footnote{Niska sastavljena od najfrekventnijih nukleotida na pozicijama poravnatih sekvenci.}. Algoritmi za konstrukciju kontiga biće obrađeni u poglavlju \ref{poglavlje:KonstrukcijaKontiga}. Zatim, koristeći uparena očitavanja, vrši se rekonstrukcija redosleda kontiga tako da se formiraju \textbf{skafoldi} (engl. \textit{scaffolds}). Svaki skafold je niz kontiga, a još se naziva i \textbf{superkontig} ili \textbf{metakontig}. Na kraju se vrši preuređivanje očitavanja u skafoldima kako bi se popunile praznine između susednih kontiga. Opisani koraci su prikazani na slici \ref{fig:4}.
 
 
 
@@ -723,13 +722,13 @@ Problem brojanja k-mera se definiše nad ulaznim skupom očitavanja i parametrom
 
 \textbf{Jednostavno heširanje} - Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrši preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
 daje jedinstvenu poziciju. Ta funkcija naziva se \textbf{heš funkcija}, a tabela koja se koristi u tom
-postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva razlicita k-mera da istu vrednost, te kažemo da su ta dva k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Ukoliko je $k$ veliko, algoritam jednostavnog heširanja će zahtevati previše prostora.
+postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva različita k-mera da istu vrednost, te kažemo da su ta dva k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Ukoliko je $k$ veliko, algoritam jednostavnog heširanja će zahtevati previše prostora.
 
 \textbf{Algoritam JellyFish} - Moguće je smanjiti prostornu složenost algoritma jednostavnog heširanja koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}. Mehanizam otvorenog adresiranja se koristi u algoritmu \textit{JellyFish} čija će implementacija detaljnije biti objašnjena u poglavlju \ref{odeljak:JellyFish}.
 
 \textbf{Algoritam BFCounter} - U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter\footnote{Prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta.} da odredi da li se k-mer pojavljuje najmanje $q$ puta \cite{WingKinSung}.
 
-\textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (engl. \textit{Guillaume Rizk}) predlaže algoritam koji se naziva \textbf{DSK}. Ideja ovog algoritma je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
+\textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (u originalu \textit{Guillaume Rizk}) predlaže algoritam koji se naziva \textbf{DSK}. Ideja ovog algoritma je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
 
 \begin{comment}
 
@@ -765,7 +764,7 @@ Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvrš
 \subsubsection{Algoritam JellyFish}
 Moguće je smanjiti veličinu heš tabele koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}.
 
-Ovaj mehanizam je iskorišćen u $JellyFish$ algoritmu. Uvodi se heš funkcija $h()$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Faktor opterećenja - broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgradjuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h()$ dodje do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
+Ovaj mehanizam je iskorišćen u $JellyFish$ algoritmu. Uvodi se heš funkcija $h()$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Faktor opterećenja - broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgrađuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h()$ dođe do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
 
 
 Neka je $h()$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Broj koji kontroliše veličinu heš tabele} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$ gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost $H[i]$ gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, ne možemo čuvati $z$ u $H[i]$, tj. došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti \textbf{linearnim popunjavanjem}. Ovom metodom pokušavamo da uvećamo indeks $i$ za jedan kada se kolizija dogodi sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan. Nakon sto su svi k-meri iz $Z$ obrađeni i sve kolizije razrešene, prikazuje se $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
@@ -852,12 +851,12 @@ Nakon što su sva očitavanja korigovana, može se vršiti njihovo spajanje radi
 \begin{itemize}
 \itemsep0em 
     \item{pristup baznog proširenja (\textit{base-by-base} pristup)}
-    \item{De Brujinov grafovski pristup}
+    \item{De Brojnov grafovski pristup}
 \end{itemize}
 
 \subsection{Pristup baznog proširenja}
 
-Pristup baznog proširenja rekonstruiše svaku kontigu tako što je proširuje bazu po bazu. Metod počinje tako što se nasumično bira očitavanje koje će služiti kao šablon. Zatim se očitavanja poravnavaju na oba kraja šablona ($5'$ kraj i $3'$ kraj). Na osnovu poravnanja se dobija \textbf{konsenzusna baza}\footnote{Baza koja se pojavljuje najveći broj puta na određenoj poziciji u poravnanju.} i šablon se njome proširuje.
+Pristup baznog proširenja rekonstruiše svaku kontigu tako što je proširuje bazu po bazu. Metod počinje tako što se nasumično bira očitavanje koje će služiti kao šablon. Zatim se očitavanja poravnavaju na oba kraja šablona ($5'$ kraj i $3'$ kraj). Na osnovu poravnanja se dobija \textbf{nukleotidna baza}\footnote{Baza koja se pojavljuje najveći broj puta na određenoj poziciji u poravnanju.} i šablon se njome proširuje.
 
 Na slici \ref{fig:7} je prikazan jedan korak baznog proširenja.
 Na vrhu je data sekvenca koja predstavlja šablon, a ispod nje sedam očitavanja poravnatih na $3'$ kraju šablona.
@@ -893,84 +892,84 @@ Da bismo rešili prvi problem, biramo očitavanje za šablon, ako je malo verova
 Za drugi problem, rešenje je korišćenje informacija o povezivanju paired-end očitavanja za rešavanje nasumičnosti. Ovaj pristup je korišćen od strane $PE-asemblera [9]$. Figura 5.14 ilustruje tu ideju. Pretpostavimo da možemo proširiti šablon koristeći 2 različita očitavanja (crno i sivo). Ne možemo odlučiti koje je ispravo (pogledati Figuru 5.14(a)). Kako svako očitavanje ima svog para, možemo biti u stanju da donesemo odluku. Postoje 2 slučaja. U prvom slučaju, ako parnjak crnom očitavanju može biti poravnat sa šablonom, možemo verovati crnom očitavanju (Figura 5.14(b)). U drugom slučaju, pretpostavimo  da postoji nekoliko očitavanja R koja su poravnata sa šablonom i parnjaci od R mogu biti poravnati sa panjakom crnog očitavanja (pogledati Figuru 5.14(c)). Onda možemo verovati i crnom očitavanju. Drugim rečima, informacije o povezanosti paired-end očitavanja mogu pomoći u  filtriranju onih lažno pozitivnih poravnanja.
 \end{comment}
 
-\subsection{De Brujinov grafovski pristup}
-\label{odeljak:DeBrujinovGraf}
+\subsection{De Brojnov grafovski pristup}
+\label{odeljak:DeBrojnovGraf}
 
-\textbf{De Brujinov grafovski pristup} je zasnovan na De Brujinovim grafovima. Ovaj pristup su uveli Ramana Idjuri (engl. \textit{Ramana Idury}) i Majkl Voterman (engl. \textit{Michael Waterman}) u njihovoj knjizi \cite{Voterman}. On je danas glavni pristup za asembliranje kratkih očitavanja.
+\textbf{De Brojnov grafovski pristup} je zasnovan na De Brojnovim grafovima. Ovaj pristup su uveli Ramana Idjuri (engl. \textit{Ramana Idury}) i Majkl Voterman (engl. \textit{Michael Waterman}) u njihovoj knjizi \cite{Voterman}. Ovaj pristum je danas glavni za asembliranje kratkih očitavanja.
 
-Neka je dat skup očitavanja $R$ i parametar $k$. De Brujinov graf je graf $H_k = (V, E)$, gde je $V$ skup svih k-mera skupa $R$, a $E$ skup svih grana u grafu. Ako su $u$ i $v$ prefiks dužine $k$ i sufiks dužine $k$ neke podniske dužine $k + 1$ iz $R$, respektivno, k-meri $u$ i $v$ formiraju granu $(u, v) \in E$. Pod pretpostavkom da je $N$ ukupna dužina svih očitavanja iz $R$, De Brujinov graf može biti konstruisan u $O(N)$ vremenu \cite{WingKinSung}. Algoritam za konstrukciju De Brujinovog grafa na osnovu očitavanja i parametra $k$ je implementiran u okviru ovog rada i biće detaljno opisan u poglavlju \ref{odeljak:ImplementacijaDB}.
+Neka je dat skup očitavanja $R$ i parametar $k$. De Brojnov graf je graf $H_k = (V, E)$, gde je $V$ skup svih k-mera skupa $R$, a $E$ skup svih grana u grafu. Ako su $u$ i $v$ prefiks dužine $k$ i sufiks dužine $k$ neke podniske dužine $k + 1$ iz $R$, respektivno, k-meri $u$ i $v$ formiraju granu $(u, v) \in E$. Pod pretpostavkom da je $N$ ukupna dužina svih očitavanja iz $R$, De Brojnov graf može biti konstruisan u $O(N)$ vremenu \cite{WingKinSung}. Algoritam za konstrukciju De Brojnovog grafa na osnovu očitavanja i parametra $k$ je implementiran u okviru ovog rada i biće detaljno opisan u poglavlju \ref{odeljak:ImplementacijaDB}.
 
-Na slici \ref{fig:9}(a) je prikazan De Brujinov graf $H_2$ izgrađen na osnovu skupa k-mera $R = \{ACGC, CATC, GCA\}$, pri čemu je $\{AC, AT, CA, CG, GC, TC\}$ skup čvorova. Preklapanje k-mera koji odgovaraju granama grafa $H_2$ je prikazano na slici \ref{fig:9}(b).
+Na slici \ref{fig:9}(a) je prikazan De Brojnov graf $H_2$ izgrađen na osnovu skupa k-mera $R = \{ACGC, CATC, GCA\}$, pri čemu je $\{AC, AT, CA, CG, GC, TC\}$ skup čvorova. Preklapanje k-mera koji odgovaraju granama grafa $H_2$ je prikazano na slici \ref{fig:9}(b).
 
 %Figura 5.15
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{Figura5_15.PNG}
-\caption{Konstrukcija De Brujinovog grafa \cite{WingKinSung}}
+\caption{Konstrukcija De Brojnovog grafa \cite{WingKinSung}}
  \label{fig:9}
  \end{figure}
 
-Uzorak genoma se može predvideti identifikovanjem \textbf{Ojlerove putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brujinovog grafa za skup $R$. Međutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
+Genomska sekvenca se može rekonstruisati identifikovanjem \textbf{Ojlerove putanje} grafa $H_k$. Ojlerova putanja je putanja koja obilazi svaku granu grafa $H_k$ tačno jednom. Ojlerova putanja grafa $H_k$ može biti izračunata u $O(n)$ vremenu, ako $H_k$ ima $n$ grana. Na primer, na slici \ref{fig:9}(a) postoji jedinstvena putanja od čvora $AC$ do čvora $TC$. Preklapanjem svih ivica 3-mera u redosledu putanje (slika \ref{fig:9}(b)) dobija se sekvenca $ACGCATC$. Sekvenca $ACGCATC$ je zapravo superstring formiran preklapanjem očitavanja i dobijen na osnovu De Brojnovog grafa za skup $R$. Međutim, Ojlerova putanja ne mora biti jedinstvena u $H_k$.
 
-Neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ i neka je $k = 3$. U De Brujinovom grafu $H_3$ za dati skup $R$ postoje dva ciklusa, te će postojati i dve Ojlerove putanje. Na slici \ref{fig:10} je prikazan graf $H_3$.
+Neka je skup očitavanja $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ i neka je $k = 3$. U De Brojnovom grafu $H_3$ za dati skup $R$ postoje dva ciklusa, te će postojati i dve Ojlerove putanje. Na slici \ref{fig:10} je prikazan graf $H_3$.
 
 %Figura 5.16
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.7\textwidth]{Figura5_16.PNG}
-\caption{De Brujinov graf sa dva ciklusa \cite{WingKinSung}}
+\caption{De Brojnov graf sa dva ciklusa \cite{WingKinSung}}
 \label{fig:10}
 \end{figure}
 
 \noindent Ukoliko se prvo obiđe gornji ciklus, dobija se $AAGATCGATGATTT$, a ukoliko se prvo obiđe donji ciklus, dobija se $AAGATGATCGATTT$. Primer sa slike \ref{fig:10} pokazuje da Ojlerova putanja možda neće uvek dati ispravnu sekvencu ili možda neće uvek postojati u nekom grafu $H_k$.
 
-U nastavku će se govoriti o De Brujinovom grafovskom asembleru u slučaju kada:
+U nastavku će se govoriti o De Brojnovom grafovskom asembleru u slučaju kada:
 \begin{itemize}
 \itemsep0em 
     \item{ne postoji greška sekvencioniranja}
     \item{postoji greška sekvencioniranja}
 \end{itemize}
 
-\subsubsection{De Brujinov asembler bez greške sekvencioniranja}
+\subsubsection{De Brojnov asembler bez greške sekvencioniranja}
 
-Kako Ojlerova putanja nije jedinstvena i možda i ne postoji, ne teži se dobijanju kompletnog genoma. Umesto toga, teži se dobijanju skupa kontiga. Kontiga je maksimalna prosta putanja u $H_k$. Preciznije, svaka maksimalna prosta putanja je maksimalna putanja u $H_k$ tako da svaki čvor (osim početnog i krajnjeg) ima unutrašnji i spoljašnji stepen 1. 
+Kako Ojlerova putanja nije jedinstvena i možda i ne postoji, ne teži se dobijanju kompletnog genoma. Umesto toga, teži se dobijanju skupa kontiga. U grafu $H_k$, kontiga predstavlja najdužu putanju čiji su svi čvorovi (osim početnog i krajnjeg) unutrašnjeg i spoljašnjeg stepena 1. Takva putanja se naziva maksimalnom prostom putanjom. 
 
 \begin{comment}
 Slika \ref{fig:11} daje pseudokod ovog jednostavnog metoda.
 
 
-%Algoritam De Brujinov asembler
+%Algoritam De Brojnov asembler
 %Figura 5.17
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{Figura5_17.PNG}
-\caption{Jednstavan De Brujinov grafovski asmbler \cite{WingKinSung}}
+\caption{Jednstavan De Brojnov grafovski asmbler \cite{WingKinSung}}
 \label{fig:11}
 \end{figure}
 
 \end{comment}
 
-Za De Brujinov graf $H_3$ sa slike \ref{fig:10} mogu se konstruisati četiri kontige: $AAGAT$, $GATCGAT$, $GATGAT$, $GATTT$. Parametar $k$ je veoma važan. Za različito $k$, mogu se dobiti različiti skupovi kontiga. Slika \ref{fig:12} ilustruje ovaj problem na De Brujinovom grafu za skup $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ u slučajevima kada je $k = 4$ i $k = 5$.
+Za De Brojnov graf $H_3$ sa slike \ref{fig:10} mogu se konstruisati četiri kontige: $AAGAT$, $GATCGAT$, $GATGAT$, $GATTT$. Parametar $k$ je veoma važan. Za različito $k$, mogu se dobiti različiti skupovi kontiga. Slika \ref{fig:12} ilustruje ovaj problem na De Brojnovom grafu za skup $R = \{AAGATC, GATCGAT, CGATGA, ATGATT,\\ GATTT\}$ u slučajevima kada je $k = 4$ i $k = 5$.
 
 %Figura 5.18
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{Figura5_18.PNG}
-\caption{De Brujinovi grafovi za $k = 4$ i $k = 5$ \cite{WingKinSung}}
+\caption{De Brojnovi grafovi za $k = 4$ i $k = 5$ \cite{WingKinSung}}
 \label{fig:12}
 \end{figure}
 
-Kada je $k = 4$, $H_4$ je prosta putanja i može se konstruisati jedna kontiga $AAGATCGATGATTT$. U slučaju da je $k = 5$, $H_5$ sadrži pet povezanih komponenti, svaka je prosta putanja i može se konstruisati pet kontiga: $AAGATC$, $GATCGAT$, $CGATGA$, $ATGATT$, $GATTT$.
+Kada je $k = 4$, $H_4$ je prosta putanja i može se konstruisati jedna kontiga $AAGATCGATGATTT$. U slučaju da je $k = 5$, $H_5$ sadrži pet povezanih komponenti, svaka predstavlja prostu putanju i na osnovu toga može se konstruisati pet kontiga: $AAGATC$, $GATCGAT$, $CGATGA$, $ATGATT$, $GATTT$.
 
-De Brujinov graf je dobar, ukoliko se zna ispravno $k$. Kada je $k$ malo (pogledati $H_3$ na slici \ref{fig:10}), postoji veliki broj grana zbog ponovaka i rezultat je veliki broj kratkih kontiga. Kada je $k$ veliko (pogledati $H_5$ na slici \ref{fig:12}), neki k-meri nedostaju, što rezultuje nepovezanim komponentama, koje takođe generišu veliki broj kratkih kontiga. Zato je potrebno identifikovati pogodno $k$ kako bi se pronašla ravnoteža između ova dva problema. Identifikacija ispravnog $k$ biće opisana u nastavku teksta.
+Prethodna razmatranja pokazuju da je izbor parametra $k$ veoma vazan. Kada je $k$ malo (pogledati $H_3$ na slici \ref{fig:10}), postoji veliki broj grana zbog ponovaka i rezultat je veliki broj kratkih kontiga. Kada je $k$ veliko (pogledati $H_5$ na slici \ref{fig:12}), neki k-meri nedostaju, što rezultuje nepovezanim komponentama, koje takođe generišu veliki broj kratkih kontiga. Zato je potrebno identifikovati adekvatno $k$ kako bi se pronašla ravnoteža između ova dva problema. Identifikacija ispravnog $k$ biće opisana u nastavku teksta.
 
-\subsubsection{De Brujinov asembler sa greškama sekvencioniranja}
+\subsubsection{De Brojnov asembler sa greškama sekvencioniranja}
 
-Kod De Brujinovog asemblera bez grešaka sekvencioniranja pretpostavka je bila da ne postoje greške sekvencioniranja u očitavanjima, što je nerealno. Kada postoje greške, pokušava se njihovo uklanjanje redukovanjem šuma u De Brujinovom grafu. Rešenje koje će se razmatrati su predložili Danijel Zerbino (engl. \textit{Daniel Zerbino}) i Ivan Birni (enlg. \textit{Ewan Birney}). Kratka očitavanja imaju nisku stopu greške (sadrže jednu grešku na svakih 100 baza), a većina k-mera sadrži najviše jednu grešku. Ovakvi k-meri sa greškom mogu kreirati dva moguća anomalna podgrafa u De Brujinovom grafu: \textbf{vrh (špic)} i \textbf{mehurić}.
+Kod De Brojnovog asemblera bez grešaka sekvencioniranja pretpostavka je bila da ne postoje greške sekvencioniranja u očitavanjima, što je nerealno. Kada postoje greške, pokušava se njihovo uklanjanje redukovanjem šuma u De Brojnovom grafu. Rešenje koje će se razmatrati su predložili Danijel Zerbino (engl. \textit{Daniel Zerbino}) i Ivan Birni (enlg. \textit{Ewan Birney}). Kratka očitavanja imaju nisku stopu greške (sadrže jednu grešku na svakih 100 baza), a većina k-mera sadrži najviše jednu grešku. Ovakvi k-meri sa greškom mogu kreirati dve vrste anomalija u De Brojnovom grafu: \textbf{vrh (špic)} i \textbf{mehurić}.
 
 \textbf{Vrh} je putanja dužine najviše $k$ gde svi unutrašnji čvorovi imaju ulazni i izlazni stepen 1, dok jedan od njihovih krajeva ima ulazni ili izlazni stepen 0. To može proizvesti potencijalnu kontigu dužine najviše $2k$.
 
-Slika \ref{fig:13}(a) predstavlja višestruko poravnanje skupa od pet očitavanja, gde treće očitavanje ima grešku sekvencioniranja (prikazana podebljanim fontom). Slika \ref{fig:13}(b) predstavlja De Brujinov graf koji odgovara skupu očitavanja sa prvog dela slike i vrh koji je formiran usled jednog nepoklapanja u jednom očitavanju, tj. usled pomenute greške. Brojevi u zagradama označavaju mnogostrukost 4-mera (broj pojavljivanja 4-mera u očitavanjima). Ovaj vrh se može ukloniti iz De Brujinovog grafa, ali uklanjanje jednog vrha može generisati nove vrhove. Tako da procedura uklanjanja mora uklanjati vrhove rekurzivno.
+Slika \ref{fig:13}(a) predstavlja višestruko poravnanje skupa od pet očitavanja, gde treće očitavanje ima grešku sekvencioniranja (prikazana podebljanim fontom). Slika \ref{fig:13}(b) predstavlja De Brojnov graf koji odgovara skupu očitavanja sa prvog dela slike i vrh koji je formiran usled jednog nepoklapanja u jednom očitavanju, tj. usled pomenute greške. Brojevi u zagradama označavaju mnogostrukost 4-mera (broj pojavljivanja 4-mera u očitavanjima). Ovaj vrh se može ukloniti iz De Brojnovog grafa, ali uklanjanje jednog vrha može generisati nove vrhove. Zbog toga, procedura uklanjanja mora uklanjati vrhove rekurzivno.
 
 %Figure 5.19
 \begin{figure}[!ht]
@@ -983,7 +982,7 @@ Slika \ref{fig:13}(a) predstavlja višestruko poravnanje skupa od pet očitavanj
 % Ide pre ovaj vrh se može ukloniti Ako su svi čvorovi na vrhu %niske mnogostrukosti (k-meri koji se mali broj puta %pojavljuju u očitavanjima), takva kratka kontiga teško da %može biti ispravna (preformulisati).
 
 \textbf{Mehurić} se sastoji od dve različite kratke putanje sa istim početnim i
-krajnim čvorovima u De Brujinovom grafu, pri čemu su te dve putanje zapravo kontige koje se razlikuju u samo jednom nukleotidu. Na primer, slika \ref{fig:133}(a) sadrži skup očitavanja gde treće očitavanje ima jedno nepoklapanje. Slika \ref{fig:133}(b) prikazuje odgovarajući De Brujinov graf i jedan mehurić koji se formira.
+krajnim čvorovima u De Brojnovom grafu, pri čemu su te dve putanje zapravo kontige koje se razlikuju u samo jednom nukleotidu. Na primer, slika \ref{fig:133}(a) sadrži skup očitavanja gde treće očitavanje ima jedno nepoklapanje. Slika \ref{fig:133}(b) prikazuje odgovarajući De Brojnov graf i jedan mehurić koji se formira.
 
 %Figure 5.20
 \begin{figure}[!ht]
@@ -993,7 +992,7 @@ krajnim čvorovima u De Brujinovom grafu, pri čemu su te dve putanje zapravo ko
 \label{fig:133}
 \end{figure}
 
-\noindent Gornja putanja mehurića predstavlja $GACTCCGAG$, dok donja putanja predstavlja $GACTTCGAG$. Kada su dve putanje u mehuriću veoma slične, putanja sa nižom mnogostukošću će verovatno biti ona koja će biti odbačena. Može se pokušati sa spajanjem mehurića. U ovom primeru, dve putanje imaju samo jedno nepoklapanje. Budući da su čvorovi u donjoj putanji niže mnogostrukosti, vrši se spajanje mehurića i dobija se graf na slici \ref{fig:13}(c). Preciznije, može se definisati \textbf{težina putanje} $w_1 \rightarrow w_2 \rightarrow ... \rightarrow w_p$ kao $\sum_{i=1}^{p} f(w_i)$, gde je $f(w_i)$ mnogostrukost od $w_i$. Onda, kada se dve putanje spoje u mehuriću, zadržava se ona sa većom težinom.
+\noindent Gornja putanja mehurića predstavlja $GACTCCGAG$, dok donja putanja predstavlja $GACTTCGAG$. Kada su dve putanje u mehuriću veoma slične, putanja sa nižom mnogostukošću će verovatno biti ona koja će biti odbačena. Može se pokušati sa spajanjem mehurića. U ovom primeru, dve putanje imaju samo jedno nepoklapanje. Budući da su čvorovi u donjoj putanji niže mnogostrukosti, vrši se spajanje mehurića i dobija se graf na slici \ref{fig:13}(c). Preciznije, može se definisati \textbf{težina putanje} $w_1 \rightarrow w_2 \rightarrow ... \rightarrow w_p$ kao $\sum_{i=1}^{p} f(w_i)$, gde je $f(w_i)$ mnogostrukost od $w_i$. Prilikom spajanja dve putanje koje pripadaju istom mehuriću, zadržava se ona sa većom težinom.
 \begin{comment}
 Za spajanje mehurića, može se koristiti \textbf{algoritam turneje} (engl. \textit{tourbus algorithm}) koji će biti detaljno objašnjen u poglavlju \ref{odeljak:Tourbus}.
 \end{comment}
@@ -1014,7 +1013,7 @@ Algoritam je detaljnije prikazan na slici \ref{fig:14}.
 \end{figure}
 
 
-Slika \ref{fig:15} ilustruje korake algoritma turneje. Originalni De Brujinov graf je prikazan na slici \ref{fig:15}(a). Počevši od čvora $r$, \textit{BFS traversal} se izvodi kako bi se posetili svi potomci od $r$ u rastućem poretku rastojanja od $r$. \textit{BFS traversal} se zaustavlja kada dođe do posećivanja već posećenog čvora. Slika \ref{fig:15}(b) prikazuje BFS stablo (podebljano) kada je čvor $v$ ponovo posećen od strane čvora $u$. Identifikovanjem najnižeg zajedničkog pretka $c$ u BFS stablu, pronalaze se 2 putanje $c \rightarrow u$ i $c \rightarrow v$ koje formiraju mehurić. Vrši se spajanje 2 putanje i zadržava se putanja sa većom težinom. Nakon formiranja mehurića, dobija se slika \ref{fig:15}(c). Zatim se BFS nastavlja. Nakon što BFS poseti $u'$, ponovo posećuje $v'$. $c'$ je najniži zajednički predak od $u'$ i $v'$. Pronalaze se 2 putanje $c' \rightarrow u'$ i $c' \rightarrow v'$ koje formiraju mehurić. Nakon otklanjanja mehurića, dobija se slika \ref{fig:15}(d). Zatim, ne može se pronaći više nijedan mehurić i algoritam turneje se završava.
+Slika \ref{fig:15} ilustruje korake algoritma turneje. Originalni De Brojnov graf je prikazan na slici \ref{fig:15}(a). Počevši od čvora $r$, \textit{BFS traversal} se izvodi kako bi se posetili svi potomci od $r$ u rastućem poretku rastojanja od $r$. \textit{BFS traversal} se zaustavlja kada dođe do posećivanja već posećenog čvora. Slika \ref{fig:15}(b) prikazuje BFS stablo (podebljano) kada je čvor $v$ ponovo posećen od strane čvora $u$. Identifikovanjem najnižeg zajedničkog pretka $c$ u BFS stablu, pronalaze se 2 putanje $c \rightarrow u$ i $c \rightarrow v$ koje formiraju mehurić. Vrši se spajanje 2 putanje i zadržava se putanja sa većom težinom. Nakon formiranja mehurića, dobija se slika \ref{fig:15}(c). Zatim se BFS nastavlja. Nakon što BFS poseti $u'$, ponovo posećuje $v'$. $c'$ je najniži zajednički predak od $u'$ i $v'$. Pronalaze se 2 putanje $c' \rightarrow u'$ i $c' \rightarrow v'$ koje formiraju mehurić. Nakon otklanjanja mehurića, dobija se slika \ref{fig:15}(d). Zatim, ne može se pronaći više nijedan mehurić i algoritam turneje se završava.
 
 
 
@@ -1022,16 +1021,16 @@ Slika \ref{fig:15} ilustruje korake algoritma turneje. Originalni De Brujinov gr
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.8\textwidth]{Figura5_22.PNG}
-\caption{Ovaj primer ilustruje kako algoritam turneje obilazi De Brujinov graf. Radi jasnoće, svaki čvor pokazuje poslednju bazu svojih k-mera i odgovarajući celobrojni stepen je njegova mnogostrukost. Algoritam izvodi pretragu u dobinu (BFS) i BFS stablo je prikazano podebljanim ivicama. Na slici (a) postoje 2 (ugnježdena) mehurića. Na slici (b) se izvodi BFS počevši od $r$. Kada se poseti $u$, dete $v$ od $u$ je posećeno. Identifikuje se mehurić i vrši se njegovo spajanje. Zatim, dobija se slika (c). Na slici (c) se nastavlja izvođenje BFS algoritma. Kada se posete $u'$, dete $v'$ od $u'$ je posećeno. Identifikuje se drugi mehurić i vrši se njegovo spajanje. Zatim se dobija slika (d). Na slici (d) se nastavlja izvođenje BFS algoritma. Kako se ne može identifikovati više nijedan mehurić, algoritam se završava.}
+\caption{Ovaj primer ilustruje kako algoritam turneje obilazi De Brojnov graf. Radi jasnoće, svaki čvor pokazuje poslednju bazu svojih k-mera i odgovarajući celobrojni stepen je njegova mnogostrukost. Algoritam izvodi pretragu u dobinu (BFS) i BFS stablo je prikazano podebljanim ivicama. Na slici (a) postoje 2 (ugnježdena) mehurića. Na slici (b) se izvodi BFS počevši od $r$. Kada se poseti $u$, dete $v$ od $u$ je posećeno. Identifikuje se mehurić i vrši se njegovo spajanje. Zatim, dobija se slika (c). Na slici (c) se nastavlja izvođenje BFS algoritma. Kada se posete $u'$, dete $v'$ od $u'$ je posećeno. Identifikuje se drugi mehurić i vrši se njegovo spajanje. Zatim se dobija slika (d). Na slici (d) se nastavlja izvođenje BFS algoritma. Kako se ne može identifikovati više nijedan mehurić, algoritam se završava.}
 \label{fig:15}
 \source{\cite{WingKinSung}}
 \end{figure}
 
 \end{comment}
 
-Nakon što se uklone vrhovi i spoje mehurići u De Brujinovom grafu, može se dalje redukovati šum u grafu uklanjanjem k-mera sa mnogostrukošću manjom ili jednakom nekom pragu. 
+Nakon što se uklone vrhovi i spoje mehurići u De Brojnovom grafu, može se dalje redukovati šum u grafu uklanjanjem k-mera sa mnogostrukošću manjom ili jednakom nekom pragu. 
 
-Kombinovanjem ove tri tehnike: (1) otklanjanje vrhova, (2) spajanje mehurića i (3) filtriranje k-mera sa niskom mnogostrukošću dobija se algoritam \textit{Velvet} \cite{Velvet} za manipulaciju De Brujinovim grafovima i sastavljanje genomske sekvence.
+Kombinovanjem ove tri tehnike: (1) otklanjanje vrhova, (2) spajanje mehurića i (3) filtriranje k-mera sa niskom mnogostrukošću dobija se algoritam \textit{Velvet} \cite{Velvet} za manipulaciju De Brojnovim grafovima i sastavljanje genomske sekvence.
 
 \begin{comment}
 
@@ -1052,9 +1051,9 @@ i njegov psoudokod je prikazan na slici \ref{fig:16}.
 \subsection{Kako izabrati k?}
 \label{poglavlje:IspravnoK}
 
-Odabir broja $k$ može uticati na performanse De Brujinovog algoritma. Jednostavno rešenje je pokretanje \textit{Velvet} algoritma za različite $k$. Zatim se vrši grupisanje i spajanje kontiga. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju različit kvalitet. Kontige dobijene na osnovu $H_k$, gde je $k$ malo, veoma su tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene na osnovu $H_k$ gde je $k$ veliko su duže, ali one mogu sadržati mnogo grešaka.
+Odabir broja $k$ može uticati na performanse De Brojnovog algoritma. Jednostavno rešenje je pokretanje \textit{Velvet} algoritma za različite $k$. Zatim se vrši grupisanje i spajanje kontiga. Jedan od problema sa ovim jednostavnim rešenjem je što kontige dobijene za različito $k$ imaju različit kvalitet. Kontige dobijene na osnovu $H_k$, gde je $k$ malo, veoma su tačne. Međutim, takve kontige su kratke, jer postoji veliki broj grana zbog ponovaka. Kontige dobijene na osnovu $H_k$ gde je $k$ veliko su duže, ali one mogu sadržati mnogo grešaka.
 
-\textbf{IDBA asembler}\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}.} počiva na ideji da ne treba graditi De Brujinov graf nezavisno za različite $k$. Umesto toga, \textit{IDBA} gradi De Brujinov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brujinov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, to je šum u grafu $H_k$ redukovan. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta. 
+\textbf{IDBA asembler}\footnote{IDBA - \textit{A Practical Iterative de Bruijn Graph De Novo Assembler}.} počiva na ideji da ne treba graditi De Brojnov graf nezavisno za različite $k$. Umesto toga, \textit{IDBA} gradi De Brojnov graf $H_k$ postepeno krećući od malih $k$ i idući ka većim. Kada je $k$ malo, mogu se dobiti visokokvalitetne kontige, iako su kratke. Zatim se ove kontige koriste za ispravljanje grešaka u očitavanjima. Postepeno se izgrađuje De Brojnov graf $H_k$ za sve veće $k$. Kako su očitavanja u $R$ korigovana, to je šum u grafu $H_k$ redukovan. Na ovaj način se za veliko $k$ omogućava dobijanje dugih kontiga visokog kvaliteta. 
 
 \begin{comment}
 
@@ -1318,21 +1317,21 @@ Heš funkcija $h()$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFis
 Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći $JellyFish$ algoritam.
 \end{comment}
 
-% Uzorak genoma se može predvideti identifikovanjem Ojlerove putanje. Medjutim, Ojlerova putanja ne mora biti jedinstvena u De Brujinovom grafu ili čak ne mora ni postojati. Zbog toga se prelazi na De Brujinov grafovski pristup. (dopuni)
+% Uzorak genoma se može predvideti identifikovanjem Ojlerove putanje. Međutim, Ojlerova putanja ne mora biti jedinstvena u De Brojnovom grafu ili čak ne mora ni postojati. Zbog toga se prelazi na De Brojnov grafovski pristup. (dopuni)
 
 \section{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:ImplementacijaDB}
 
-De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brujinovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda koji na osnovu skupa očitavanja $R$ i parametra $k$ najpre izgrađuje De Brujinov graf $H_k$, a zatim pronalazi sve maksimalne proste putanje i od njih formira kontige.
+De Brojnov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brojnovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda koji na osnovu skupa očitavanja $R$ i parametra $k$ najpre izgrađuje De Brojnov graf $H_k$, a zatim pronalazi sve maksimalne proste putanje i od njih formira kontige.
 
 \begin{comment}
 
-%Algoritam De Brujinov asembler
+%Algoritam De Brojnov asembler
 %Figura 5.17
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.9\textwidth]{Figura5_17.PNG}
-\caption{Jednostavan De Brujinov grafovski asembler \cite{WingKinSung}}
+\caption{Jednostavan De Brojnov grafovski asembler \cite{WingKinSung}}
 \label{fig:11}
 \end{figure}
 
@@ -1342,26 +1341,26 @@ De Brujinov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se d
 \begin{tcolorbox}
 \textbf{Algoritam $DeBrujinAssembler$}($R$, $k$)
 
-\textbf{Ulaz}: $R$ je skup očitavanja i $k$ je parametar De Brujinovog grafa.
+\textbf{Ulaz}: $R$ je skup očitavanja i $k$ je parametar De Brojnovog grafa.
 
 \textbf{Izlaz}: Skup kontiga $A$.
 
-1: Generisati De Brujinov graf $H_k$ za skup $R$;
+1: Generisati De Brojnov graf $H_k$ za skup $R$;
 
 2: Izdvojiti sve maksimalne proste putanje u $H_k$ kao kontige;
 
 \end{tcolorbox}
-\caption{De Brujinov grafovski asembler \cite{WingKinSung}}
+\caption{De Brojnov grafovski asembler \cite{WingKinSung}}
 \label{box:DeBrujinAssembler}
 \end{figure}
 
-U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brujinovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$. Iz datog stringa koji predstavlja očitavanje izdvajaju se svi mogući podstringovi dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera. Ovaj skup predstavlja skup čvorova budućeg De Brujinovog grafa. Zatim se za svaki k-mer vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način se kreiran De Brujinov graf.
+U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brojnovog grafovskog asemblera. Argumenti ovog alogoritma su string koji predstavlja jedno očitavanje iz skupa $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$. Iz datog stringa koji predstavlja očitavanje izdvajaju se svi mogući podstringovi dužine $k$. Potom se formira skup jedinstvenih (k-1)-mera koji se pojavljuju kao prefiks ili sufiks nekog k-mera. Ovaj skup predstavlja skup čvorova budućeg De Brojnovog grafa. Zatim se za svaki k-mer vrši direktno povezivanje čvora koji predstavlja njegov prefiks sa čvorom koji predstavlja njegov sufiks. Na taj način se kreiran De Brojnov graf.
 
-Povratna vrednost algoritma je mapa koja predstavlja De Brujinov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji predstavljaju čvorove sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
+Povratna vrednost algoritma je mapa koja predstavlja De Brojnov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista stringova koji predstavljaju čvorove sa kojima pomenuti čvor formira granu. Primer pokretanja ovog algoritma biće dat u poglavlju \ref{odeljak:Rezultati}
 
 \section{Algoritam \textit{AllEulerianCycles}}
 
-U poglavlju \ref{odeljak:DeBrujinovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja se može efikasno pronaći \cite{skriptaBio}. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brujinovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. Rezultati njegovog pokretanja će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
+U poglavlju \ref{odeljak:DeBrojnovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja se može efikasno pronaći \cite{skriptaBio}. Pseudokod pronalaženja Ojlerove putanje na osnovu De Brojnovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. Rezultati njegovog pokretanja će detaljno biti prikazani u poglavlju \ref{odeljak:Rezultati}.
 \vspace{0.2cm}
 
 \begin{figure}[!ht]
@@ -1376,7 +1375,7 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 \label{box:Ojler}
 \end{figure}
 
-% U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brujinov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. 
+% U odeljku \ref{odeljak:ImplementacijaDB} je prikazano kako se na osnovu očitavanja i parametra $k$ može konstruisati De Brojnov graf. Konstruisani graf se može iskoristiti kao primer grafa u kome se pronalaze sve Ojlerove putanje. 
 
 Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak 1, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{AllEulerianCycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
 
@@ -1386,19 +1385,19 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 \begin{tcolorbox}
 \textbf{Algoritam AllEulerianCycles}(\textit{graph})
 
-\textbf{Ulaz}:  De Brujinov graf \textit{graph}.
+\textbf{Ulaz}:  De Brojnov graf \textit{graph}.
 
-\textbf{Izlaz}: Sve Ojlerove putanje u De Brujinovom grafu \textit{graph}.
+\textbf{Izlaz}: Sve Ojlerove putanje u De Brojnovom grafu \textit{graph}.
 
-1: \textit{AllGraphs} $\longleftarrow$ skup koji se sastoji samo od jednog grafa \textit{graph}
+1: \textit{AllGraphs} $=$ skup koji se sastoji samo od jednog grafa \textit{graph}
 
 2: while postoji složeni graf $G$ u skupu $AllGraphs$
 
-3:\hspace{1cm} v $\longleftarrow$ čvor sa ulaznim stepenom većim od 1 u grafu G
+3:\hspace{1cm} v $=$ čvor sa ulaznim stepenom većim od 1 u grafu G
 
 4:\hspace{1cm} foreach ulazna grana $(u, v)$ u čvor $v$
     
-5:\hspace{2cm} \textit{NewGraph} $\longleftarrow$ $(u, v, w)$-obilazni graf grafa $G$
+5:\hspace{2cm} \textit{NewGraph} $=$ $(u, v, w)$-obilazni graf grafa $G$
 
 6:\hspace{2cm} if \textit{NewGraph} je povezan
 
@@ -1544,15 +1543,15 @@ Rezultati izvršavanja algoritma su smešteni u fajlu \textit{dsk.txt} i mogu se
 
 \lstinputlisting[language=erlang,label={lst:debrujinUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{DeBrujinGraph},captionpos=b]{debrujinUlazniFajl.ex}
 
-Nakon izvršavanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}. Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
+Nakon izvršavanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}. Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brojnov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
 
 \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
-\textbf{Algoritam \textit{AllEulerianCycles}} - Ulazni fajl \textit{EulerData.txt} sadrži De Brujinov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Primer ulaznog fajla može se videti na listingu \ref{lst:eulerUlazniFajl}.
+\textbf{Algoritam \textit{AllEulerianCycles}} - Ulazni fajl \textit{EulerData.txt} sadrži De Brojnov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Primer ulaznog fajla može se videti na listingu \ref{lst:eulerUlazniFajl}.
 
 \lstinputlisting[language=erlang,label={lst:eulerUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{AllEulerianCycles},captionpos=b]{allEulerianCyclesUlazniFajl.ex}
 
-Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{allEulerianCyceles.txt}. Izlazni fajl sadrži listu kontiga, koje predstavljaju cikluse u De Brujinovom grafu i prikazane su na listingu \ref{lst:eulerRezultati}.
+Nakon izvršavanja algoritma, rezultat je smešten u tekstualnom fajlu \textit{allEulerianCyceles.txt}. Izlazni fajl sadrži listu kontiga, koje predstavljaju cikluse u De Brojnovom grafu i prikazane su na listingu \ref{lst:eulerRezultati}.
 
 \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
@@ -1598,11 +1597,11 @@ U ovom poglavlju će biti prikazani rezultati izvršavanja algoritama, koji su n
 
 % \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
-% Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brujinov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
+% Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brojnov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
 
 \subsection{Algoritam \textit{AllEulerianCycles}}
 
-% Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brujinov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
+% Na listingu \ref{lst:debrujinRezultati} je prikazan graf koji je dobijen pokretanjem algoritma \textit{DeBrujinGraph} i on će biti iskorišćen kao ulazni parametar za algoritam \textit{AllEulerianCycles}. Dakle, ulazni fajl \textit{EulerData.txt} sadrži pomenuti De Brojnov graf, koji je zapisan tako da elementi odvojeni sa $;$ predstavljaju jedan element mape, čiji je ključ k-mer sa leve strane znaka $:$, a vrednost lista k-mera koji se nalaze sa desne strane znaka $:$ i razdvojeni su zarezom. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
 
 % \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
