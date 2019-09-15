@@ -1492,7 +1492,7 @@ Kako bismo ocenili performanse algoritma \textit{DSK}, izvršavali smo ga sekven
 \subsection{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:debrujinRezultati}
 
-Performanse algoritma \textit{DeBrujinGraph} su merene na manjim podskupovima skupa svih očitavanja bakterije \textit{Staphylococcus aureus}. Dobijeni rezultati su prikazani dijagramom na slici \ref{fig:dijagramIzvrsavanjaDebrujin}. Na dijagramu se može videti i zavisnost brzine izvršavanja algoritma od vrednosti parametra $k$. 
+Performanse algoritma \textit{DeBrujinGraph} su merene na manjim podskupovima skupa svih očitavanja bakterije \textit{Staphylococcus aureus}. Dobijeni rezultati su prikazani dijagramom na slici \ref{fig:dijagramIzvrsavanjaDebrujin}. Na dijagramu se može videti i zavisnost brzine izvršavanja algoritma od vrednosti parametra $k$. Za $k = 5$ algoritam se izvršava 43$\%$ brže nego u slučaju kada je $k = 10$. U oba slučaja se obrađuje ista količina podataka, odnosno isti broj očitavanja, ali je razlika u broju k-mera koji bivaju kreirani na osnovu očitavanja i obrađeni. Izršavanjem algoritma za 1000 očitavanja, kreira se i obrađuje 177634 k-mera dužine 5, a 172634 k-mera dužine 10.
 
 \newpage
 
@@ -1503,13 +1503,7 @@ Performanse algoritma \textit{DeBrujinGraph} su merene na manjim podskupovima sk
   \label{fig:dijagramIzvrsavanjaDebrujin}
 \end{figure}
 
-
-
 \subsection{Algoritam \textit{AllEulerianCycles}}
-
-% Algoritam \textit{AllEulerianCycles} je testiran nad rezultatom izvršavanja algoritma \textit{DeBrujinGraph} prikazanom na listingu \ref{lst:deBrujinOčitavanje}, pri čemu je format ulaznog fajla prilagođen. Nakon izvršavanja algoritma, dobija se lista kontiga koja je prikazana na listingu \ref{lst:eulerRezultati}.
-
-% \lstinputlisting[language=erlang,label={lst:eulerRezultati},caption=Rezultati izvršavanja \textit{AllEulerianCycles} algoritma,captionpos=b]{eulerRezultati.ex}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
