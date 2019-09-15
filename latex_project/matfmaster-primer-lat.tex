@@ -1343,7 +1343,7 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od 1 sa ulaznom 
 \end{figure}
 
 Funkcija \textit{calculate\_in\_degree}, čija je implementacija prikazana na listingu \ref{lst:110}, računa ulazne stepene za sve čvorove datog grafa \textit{graph}. Graf je u implementaciji predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima dati čvor gradi grane u grafu, odnosno njegovi izlazni čvorovi. Ulazni stepen čvora je broj grana koje ulaze u taj čvor, odnosno broj ključeva mape u čijem skupu vrednosti se nalazi taj čvor. Funkcija \textit{calculate\_in\_degree} koristi tri pomoćne funkcije: \textit{initialize}, \textit{iterate\_keys} i \textit{iterate\_values}. Pomoćna funkcija \textit{initialize} inicijalizuje mapu \textit{all\_degrees} tako da joj ključevi budu čvorovi grafa i da svaki ima vrednost 0. Pomoćne funkcije \textit{iterate\_keys} i \textit{iterate\_values} omogućavaju da se u jednom prolazu kroz graf izračuna izlazni stepen svakog čvora. Za svaki cvor grafa se prolazi kroz listu njegovih izlaznih čvorova i svakom od izlaznih čvrova ulazni stepen se uvećava za 1, odnosno njegova vrednost u mapi \textit{all\_degrees} se uvećava za 1. Funkcija \textit{iterate\_keys} služi za obilazak svih čvorova grafa, a funkcija \textit{iterate\_values} za obilazak svih izlaznih čvorova za dati čvor i uvećavanje njihovih ulaznih stepena.
-Izračuvanavanje izlaznog stepena za zadati čvor vrši se izračunavanjem dužine liste njegovih izlaznih čvorova, pomoću funkcije \textit{Kernel.length/1}.
+% Izračuvanavanje izlaznog stepena za zadati čvor vrši se izračunavanjem dužine liste njegovih izlaznih čvorova, pomoću funkcije \textit{Kernel.length/1}.
 
 \newpage
 
@@ -1444,7 +1444,7 @@ Rezultati izvršavanja algoritma su smešteni u fajlu \textit{DSKOutput.txt} i m
 
 \lstinputlisting[language=erlang,label={lst:dskRezultati},caption=Rezultati izvršavanja \textit{DSK} algoritma,captionpos=b]{dskRezultati.ex}
 
-\textbf{Algoritam \textit{DeBrujinGraph}} - Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$. Primer ulaznog fajla sa očitavanjem dužine 17 i parametrom $k = 3$ može se videti na listingu \ref{lst:debrujinUlazniFajl}.
+\textbf{Algoritam \textit{DeBrujinGraph}} - Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$. Primer ulaznog fajla sa očitavanjem dužine 17 i parametrom $k = 2$ može se videti na listingu \ref{lst:debrujinUlazniFajl}.
 
 \lstinputlisting[language=erlang,label={lst:debrujinUlazniFajl},caption=Primer ulaznog fajla za algoritam \textit{DeBrujinGraph},captionpos=b]{debrujinUlazniFajl.ex}
 
@@ -1476,23 +1476,34 @@ Prikazani algoritmi su pokretani nad k-merima ekstrahovanim iz očitavanja bakte
 
 Izvršeno je eksperimentalno merenje i utvđena je granica veličine podataka, odnosno broj k-mera koji mogu biti obrađeni algoritmom \textit{JellyFish} na datoj mašini. Ta granica iznosi 120KB, odnosno oko 11300000 k-mera (u našem slučaju k-meri su dužine 10), a vreme za koje ovaj broj k-mera biva obrađen je u proseku oko 12 sekundi. Početni skup k-mera je najpre podeljen na podskupove koji se mogu obraditi sa dostupnom memorijom. Potom je svaki podskup obrađen paralelno, odnosno izvršeno je dalje deljenje podskupa na četiri dela (jer računar poseduje četiri procesora) i na svakom je paralelno pokrenut algoritam \textit{JellyFish}. Na ovaj način je obrađeno svih 90403620 k-mera dužine 10 ekstarhovanih iz 462036 očitavanja bakterije \textit{Staphylococcus aureus} različite dužine. Ukupno vreme obrade svih k-mera bakterije trajalo je 93 sekunde. Rezultati svih izvršavanja iz svih izlaznih fajlova su potom sabrani i smešteni u jedan izlazni fajl.
 
+\newpage
+
 \subsection{Algoritam \textit{DSK}}
 
-Kako bismo ocenili performanse algoritma \textit{DSK}, izvršavali smo ga sekvencijalno postepeno povećavajući veličinu ulaznog fajla. Utvrđeno je da je gornja granica ... Rezultati merenja se mogu videti na dijagramu.
+Kako bismo ocenili performanse algoritma \textit{DSK}, izvršavali smo ga sekvencijalno postepeno povećavajući veličinu ulaznog fajla. Dobijeni rezultati se mogu videti na dijagramu sa slike \ref{fig:dijagramIzvrsavanjaDSK}.
 
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{dijagram_izvrsavanja_dsk.PNG}
+  \caption{Dijagram sekvencijalnog izvršavanja algoritma \textit{DSK}}
+  \label{fig:dijagramIzvrsavanjaDSK}
+\end{figure}
 
 \subsection{Algoritam \textit{DeBrujinGraph}}
 \label{odeljak:debrujinRezultati}
 
-% Algoritam \textit{DeBrujinGraph} je testiran nad jednim očitavanjem skupa očitavanja bakterije \textit{Staphylococcus aureus}. Očitavanje je dužine ... i može se videti na listingu ..., a parametar $k$ je 10. Rezultati se mogu videti na listingu...
+Performanse algoritma \textit{DeBrujinGraph} su merene na manjim podskupovima skupa svih očitavanja bakterije \textit{Staphylococcus aureus}. Dobijeni rezultati su prikazani dijagramom na slici \ref{fig:dijagramIzvrsavanjaDebrujin}. Na dijagramu se može videti i zavisnost brzine izvršavanja algoritma od vrednosti parametra $k$. 
 
-% \lstinputlisting[language=erlang,label={lst:deBrujinOčitavanje},caption=Jedno očitavanje iz skupa očitavanja bakterije \textit{Staphylococcus aureus},captionpos=b]{eulerRezultati.ex}
+\newpage
 
-% Ulazni fajl \textit{DeBrujinData.txt} sadrži jedno očitavanje i u poslednjoj liniji parametar $k$ (3). Nakon pokretanja algoritma \textit{DeBrujinGraph}, rezultat se može videti u tekstualnom fajlu \textit{deBrujinGraph.txt}, čiji prikaz se nalazi na listingu \ref{lst:debrujinRezultati}.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{dijagram_izvrsavanja_debrujin.PNG}
+  \caption{Dijagram sekvencijalnog izvršavanja algoritma \textit{DeBrujinGraph}}
+  \label{fig:dijagramIzvrsavanjaDebrujin}
+\end{figure}
 
-% \lstinputlisting[language=erlang,label={lst:debrujinRezultati},caption=Rezultati izvršavanja \textit{DeBrujinGraph} algoritma,captionpos=b]{debrujinRezultati.ex}
 
-% Izlazni fajl sadrži mapu na osnovu koje se može konstruisati De Brojnov graf. Svaki ključ mape predstavlja čvor grafa, a lista njegovih vrednosti predstavlja čvorove sa kojima gradi granu.
 
 \subsection{Algoritam \textit{AllEulerianCycles}}
 
