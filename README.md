@@ -1,5 +1,6 @@
 # Master-rad
--Struktura projekta-
+
+#Struktura projekta
 Projkat se sastoji od četiri foldera:
   -data_files
   -result_files
