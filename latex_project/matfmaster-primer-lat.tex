@@ -762,7 +762,7 @@ Neka je $h$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva 
 
 Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon što su svi k-meri iz $Z$ obrađeni, prikazujemo $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
 
-Algoritam \textit{JellyFish} je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
+Algoritam \textit{JellyFish} je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija mali, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
 
 \begin{figure}[!ht]
   \centering
@@ -819,18 +819,18 @@ Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da sva
 \end{comment}
 
 \begin{comment}
-Preciznije, k-meri u $Z$ su podeljeni u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u 2k bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako imamo $N$ k-mera u $Z$, postavlja se $n_{list} = \frac{N}{n_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz $Z$, $z$ se dodeljuje i-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. 
+Preciznije, k-meri u $Z$ su podeljeni u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u 2k bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako imamo $N$ k-mera u $Z$, postavlja se $n_{list} = \frac{N}{n_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz $Z$, $z$ se dodeljuje $i$-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. 
 
 Zatim, svaka lista se dalje deli u podliste, pri čemu je svaka dužine $l_sublist$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$.
 
-Broj podlista je jednak $n_{sublist} = \frac{n_{list}}{n_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. Slično, svaka lista je podeljena u podliste heš funkcijom $h$. Preciznije, za svaki k-mer $s$ u i-toj listi, $s$ je dodeljeno j-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod}
+Broj podlista je jednak $n_{sublist} = \frac{n_{list}}{n_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. Slično, svaka lista je podeljena u podliste heš funkcijom $h$. Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljeno $j$-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod}
 $n_{sublist} = j$.
 
 Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  brojimo pojavljivanja svakog k-mera u podlisti koristeći $JellyFish(d_j, 0.7, h)$ sa slike \ref{fig:6}.
 
 Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći algoritam $JellyFish$.
 
-Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 \end{comment}
 
@@ -1062,7 +1062,7 @@ Na slici \ref{fig:17} se nalazi pseudokod koji opisuje ideju IDBA asemblera.
 \chapter{Implementirani algoritmi i rezultati}
 \label{odeljak:algoritmiIRezultati}
 
-U glavi \ref{poglavlje:Bio} data je biološka osnova i motivacija za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opisi aplikacije i rezultati izvršavanja algoritama u okviru nje.
+U glavi \ref{poglavlje:Bio} data je biološka osnova i motivacija za algoritme koji se primenjuju u sekvencioniranju genoma. U ovom poglavlju će biti dati opisi implementacije tih algoritama u programskom jeziku Elixir sa osvrtom na njihovu prostornu i vremensku složenost, kao i opis aplikacije i rezultati izvršavanja algoritama u okviru nje.
 
 \section{Algoritam \textit{JellyFish}}
 \label{odeljak:JellyFish}
@@ -1084,17 +1084,17 @@ Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao pot
 \begin{tcolorbox}
 \textbf{Algoritam JellyFish}(\textit{Z}, $\alpha$, \textit{h})
 
-\textbf{Ulaz}: $Z$ je skup od $N$ k-mera, $\alpha$ je faktor opterećenja koji kontroliše veličinu heš tabele i $h$ je heš funkcija.
+\textbf{Ulaz}: $Z$ je skup od $N$ k-mera, $\alpha$ je faktor opterećenja i $h$ je heš funkcija.
 
 \textbf{Izlaz}: Broj pojavljivanja svakog k-mera u skupu \textit{Z}.
 
-1: Kreirati praznu heš tabelu $H[1..\frac{N}{\alpha}]$ tako da svaki ulaz zahteva 2k bitova
+1: Kreirati praznu heš tabelu $H[0..\frac{N}{\alpha} - 1]$ tako da svaki ulaz zahteva 2k bitova
 
-2: Kreirati praznu tabelu $Count[1..\frac{N}{\alpha}]$ tako da svaki ulaz zahteva 32 bita 
+2: Kreirati praznu tabelu $Count[0..\frac{N}{\alpha} - 1]$ tako da svaki ulaz zahteva 32 bita 
 
 3: foreach k-mer $z \in Z$ do:
 
-4:\hspace{1cm} i = $hashEntry(z, h, \frac{N}{\alpha})$;
+4:\hspace{1cm} $i$ = $hashEntry(z, h, \frac{N}{\alpha})$;
     
 5:\hspace{1cm} if $H[i]$ is empty then
 
@@ -1108,13 +1108,13 @@ Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao pot
 
 10: end for
 
-11: Output $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od 0.
+11: Output $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nula.
 \end{tcolorbox}
 \caption{\textit{JellyFish} algoritam \cite{WingKinSung}}
 \label{box:jellyfish}
 \end{figure}
 
-Neka je $h$ heš funkcija, $Z$ niz k-mera i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz $Z$, gde je $N = |Z|$ i $\alpha$ faktor opterećenja $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer $z$ iz $Z$ vrši se njegovo heširanje u neku vrednost $H[i]$, gde se vrednost indeksa $i$ izračunava pomoću heš funkcije $h$ sa parametrom $z$. Ako je vrednost $H[i]$ postavljena i različita od $z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Kada se kolizija dogodi, indeks $i$ se uvećava za jedan sve dok se ne pronađe prvo prazno mesto $H[i]$ ili mesto gde $H[i]$ ima željenu vrednost $z$.
+Neka je $h$ heš funkcija, $Z$ niz k-mera i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz $Z$, gde je $N = |Z|$ i $\alpha$ faktor opterećenja\footnote{Broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer $z$ iz $Z$ vrši se njegovo heširanje u neku vrednost $H[i]$, gde se vrednost indeksa $i$ izračunava pomoću heš funkcije $h$ sa parametrom $z$. Ako je vrednost $H[i]$ postavljena i različita od $z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Kada se kolizija dogodi, indeks $i$ se uvećava za jedan sve dok se ne pronađe prvo prazno mesto $H[i]$ ili mesto gde $H[i]$ ima željenu vrednost $z$.
 
 \begin{comment}
 
@@ -1135,7 +1135,7 @@ Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog po
 
 1: $i = h(z)$ mod \textit{size};
 
-2: while $H[i] \neq z$ do
+2: while $H[i]$ is not empty and $H[i] \neq z$ do
 
 3:\hspace{1cm} $i = i + 1$ mod \textit{size}; $/$* linearno popunjavanje *$/$
 
@@ -1162,7 +1162,7 @@ Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK del
 Slika \ref{fig:5}(b) daje primer koji ilustruje algoritam $JellyFish$. 
 \end{comment}
 
-Algoritam $JellyFish$ je efikasan, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija manji, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita \cite{WingKinSung}.
+Algoritam $JellyFish$ je efikasan, ukoliko ne dolazi do kolizija. U praksi je očekivani broj kolizija mali, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Amortizovana složenost uzastopnog dodavanja većeg broja elemenata je $O(1)$. Očekivano vreme izvršavanja algoritma \textit{JellyFish}, odnosno vreme potrebno za umetanje $N$ k-mera u heš tabelu, je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova. Pretpostavlja se da broj zauzima 32 bita, a k-mer 2k bitova. Kako k-mer predstavlja nisku dužine $k$ izgrađenu na osnovu četiri različita karaktera (A, C, G i T) koji se mogu predstaviti pomoću dva bita (00, 01, 10, 11), to je za čuvanje k-mera potrebno 2k bitova \cite{WingKinSung}.
 
 Urađene su  dve implementacije ovog algoritma. Prva implementacija simulira prikazani pseudokod, dok druga implementacija koristi mapu iz Elixir-a i njen mehanizam razrešavanja kolizija. Kako je druga implementacija efikasnija, ona se koristi u aplikaciji i eksperimentalni rezultati za nju su prikazani u poglavlju \ref{odeljak:Rezultati}. 
 
@@ -1170,12 +1170,12 @@ Na listingu \ref{lst:108} može se videti implementacija funkcije \textit{calcul
 
 \lstinputlisting[language=erlang,label={lst:108},caption=Pomoćna funkcija \textit{calculate},captionpos=b]{108.ex}
 
-Moguće je paralelizovati izvršavanje algoritma \textit{JellyFish}, jer se pojedinačni rezultati izvršavanja mogu objediniti i od njih se može dobiti jedan krajnji rezultat. Paralalizacija je u Elixir-u implementirana pomoću modula \textit{\textbf{Task}}. Najpre se ulazni skup podataka deli na onoliko podskupova koliko računar ima procesora. Zatim se za svaki podskup kreira \textit{task} pomoću funkcije \textit{Task.async/1}. Task predstavlja proces unutar koga se pokreće algoritam \textit{JellyFish}. Funkcija \textit{Task.await/1} kao argument prima kreirani proces i čeka da proces završi izvršavanje i pošalje poruku sa rezultatima izvršavanja. Rezultati se na kraju sabiraju i dobija se konačan rezultat za čitav polazni skup podataka. Na ovaj način izvršavanje je paralelizovano, a ostvareno ubrzanje će biti i eksperimentalno pokazano u poglavlju \ref{odeljak:Rezultati}.
+Moguće je paralelizovati izvršavanje algoritma \textit{JellyFish}, jer se pojedinačni rezultati izvršavanja mogu objediniti i od njih se može dobiti jedan krajnji rezultat. Paralelizacija je u Elixir-u implementirana pomoću modula \textit{\textbf{Task}}. Najpre se ulazni skup podataka deli na onoliko podskupova koliko računar ima procesora. Zatim se za svaki podskup kreira \textit{task} pomoću funkcije \textit{Task.async/1}. Task predstavlja proces unutar koga se pokreće algoritam \textit{JellyFish}. Funkcija \textit{Task.await/1} kao argument prima kreirani proces i čeka da proces završi izvršavanje i pošalje poruku sa rezultatima izvršavanja. Rezultati se na kraju sabiraju i dobija se konačan rezultat za čitav polazni skup podataka. Na ovaj način izvršavanje je paralelizovano, a ostvareno ubrzanje će biti i eksperimentalno pokazano u poglavlju \ref{odeljak:Rezultati}.
 
 \section{Algoritam \textit{DSK}}
 \label{odeljak:DSK}
 
-Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od algoritma $JellyFish$. Na slici \ref{box:DSK} se može videti pseudokod ovog algoritma.
+Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski i prostorno efikasniji od algoritma $JellyFish$. Osnovna ideja je da se ulazna lista k-mera podeli na više manjih podlista nad kojima će se pokrenuti algoritam \textit{JellyFish} i da se rezultati pojedinačnih pokretanja objedine i prikažu kao krajnji rezultat. Ovakva podela je izuzetno važna u situacijama kada se zbog nedovoljne količine memorije kompletni podaci ne mogu istovremeno obrađivati. Na slici \ref{box:DSK} se može videti pseudokod ovog algoritma.
 
 \begin{comment}
 
@@ -1231,19 +1231,21 @@ Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski
 \label{box:DSK}
 \end{figure}
 
-Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u koju se smeštaju k-meri, broj bitova $M$ u memoriji za čuvanje svake podliste k-mera i heš funkcija $h$. Prvo se k-meri iz skupa $Z$ dele u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u $2k$ bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako je $N$ broj k-mera u $Z$, to je $n_{list} = \frac{N}{n_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz skupa $Z$, $z$ se dodeljuje i-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. Zatim, svaka lista se dalje deli u podliste, pri čemu je svaka dužine $l_{sublist}$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$. Broj podlista je  $n_{sublist} = \frac{n_{list}}{n_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. 
+\newpage
 
-Svaka lista je podeljena u podliste heš funkcijom $h$. Preciznije, za svaki k-mer $s$ u i-toj listi, $s$ je dodeljen j-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
+Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u koju se smeštaju k-meri, broj bitova $M$ u memoriji za čuvanje svake podliste k-mera i heš funkcija $h$. Prvo se k-meri iz skupa $Z$ dele u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u $2k$ bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako je $N$ broj k-mera u $Z$, to je $n_{list} = \frac{N}{l_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz skupa $Z$, $z$ se dodeljuje $i$-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. Zatim, svaka lista se istom heš funkcijom $h$ dalje deli u podliste ${d_0,..., d_{n_{sublist} - 1}}$, pri čemu je svaka dužine $l_{sublist}$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$. Broj podlista je  $n_{sublist} = \frac{n_{list}}{l_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. 
 
-Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju algoritam numeriše sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju i-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kada je $D = \theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljen $j$-toj podlisti $d_j$, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova, vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
 
-Minimizacija broja pristupa disku u implementaciji ovog algoritma nije ostvarena, jer u Elixir-u ne postoji kontrola za to, već je algoritam implementiran samo prateći osnovnu ideju. Osnovna ideja je da se ulazna lista k-mera podeli na više manjih podlista nad kojima će se pokrenuti algoritam \textit{JellyFish} i da se rezultati pojedinačnih pokretanja objedine i prikažu kao krajnji rezultat. Ovakva podela je izuzetno važna u situacijama kada se zbog nedovoljne količine memorije kompletni podaci ne mogu istovremeno obrađivati.
+Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju algoritam mapira sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(\frac{kN^2}{D})$ očekivanom vremenu. Kada je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+
+Minimizacija broja pristupa disku u implementaciji ovog algoritma nije ostvarena, jer u Elixir-u ne postoji kontrola za to, već je algoritam implementiran samo prateći osnovnu ideju.
+
+% Osnovna ideja je da se ulazna lista k-mera podeli na više manjih podlista nad kojima će se pokrenuti algoritam \textit{JellyFish} i da se rezultati pojedinačnih pokretanja objedine i prikažu kao krajnji rezultat. Ovakva podela je izuzetno važna u situacijama kada se zbog nedovoljne količine memorije kompletni podaci ne mogu istovremeno obrađivati.
 
 % Urađene su dve implementacije ovog algoritma. Prva prati osnovnu ideju koja je u ovom poglavlju predstavljena, a druga koristi implementaciju algoritma \textit{JellyFish} sa mapom i njenim mehanizmom za razrešavanje kolizija. U aplikaciji se koristi druga implementacija, jer je neuporedivo efikasnija.
 
 Heš funkcija $h$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, u okviru ovog rada je predstavljena funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su $A$, $T$, $C$ i $G$ ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} prvo na osnovu stringa \textit{pattern} formira listu karaktera \textit{chars} pomoću funkcije \textit{String.graphemes/1}. Zatim se funkcijom \textit{Enum.map/2} kreira nova lista \textit{mapped\_chars} transformacijom svakog karaktera liste \textit{chars} pomoću funkcije \textit{symbol\_to\_number}. Nova lista karaktera se spaja u string \textit{new\_pattern} pomoću funkcije \textit{Enum.join/2}. Na kraju se string \textit{new\_pattern} pretvara u ceo broj funkcijom \textit{String.to\_integer/2} i vraća kao povratna vrednost funkcije \textit{pattern\_to\_number}. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}.
-
-\newpage
 
 \lstinputlisting[language=erlang,label={lst:106},caption=Funkcija \textit{pattern\_to\_number} i pomoćna funkcija \textit{symbol\_to\_number},captionpos=b]{106.ex}
 
@@ -1284,11 +1286,11 @@ De Brojnov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se da
 
 U okviru ovog rada, implementiran je algoritam \textit{DeBrujinGraph} koji se koristi u prvom koraku De Brojnovog grafovskog asemblera. Argumenti ovog algoritma su string koji predstavlja jedno očitavanje iz skupa očitavanja $R$ i parametar $k$. Prvi korak je kreiranje skupa k-mera na osnovu očitavanja i parametra $k$. Iz datog stringa se izdvaja skup svih mogućih podstringova dužine $k$. Ovaj skup predstavlja čvorove budućeg De Brojnovog grafa. Na kraju se vrši povezivanje svaka dva k-mera tako da je prefiks prvog jednak sufiksu drugog i na taj način se kreira De Brojnov graf.
 
-Povratna vrednost algoritma je mapa koja predstavlja De Brojnov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista k-mera koji predstavljaju čvorove sa kojima pomenuti čvor formira granu.
+Povratna vrednost algoritma je mapa koja predstavlja De Brojnov graf. Svaki ključ mape predstavlja jedan čvor grafa, a njegova vrednost je lista k-mera koji predstavljaju čvorove ka kojima postoji grana iz datog čvora.
 
 \section{Algoritam \textit{AllEulerianCycles}}
 
-U poglavlju \ref{odeljak:DeBrojnovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja se može efikasno pronaći \cite{skriptaBio}. Opis problema pronalaženja Ojlerove putanje na osnovu De Brojnovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. 
+U poglavlju \ref{odeljak:DeBrojnovGraf} je objašnjen pojam  Ojlerove putanje i značaj u procesu rekonstrukcije genoma. U tom procesu, algoritam za pronalaženje Ojlerove putanje je neophodan. Ovaj algoritam nije NP-kompletan i putanja se može efikasno pronaći \cite{skriptaBio}. Opis problema pronalaženja Ojlerove putanje na osnovu De Brojnovog grafa može se videti na slici \ref{box:Ojler}. U okviru ovog rada implementiran je algoritam koji pronalazi sve Ojlerove putanje u De Brojnovom grafu i njegov pseudokod se može videti na slici \ref{box:allEulerianCycles}. 
 \vspace{0.2cm}
 
 \begin{figure}[!ht]
@@ -1339,7 +1341,8 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od jedan sa ulaz
 \label{box:allEulerianCycles}
 \end{figure}
 
-Funkcija \textit{calculate\_in\_degree}, čija je implementacija prikazana na listingu \ref{lst:110}, računa ulazne stepene za sve čvorove datog grafa \textit{graph}. Graf je u implementaciji predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi sa kojima dati čvor gradi grane u grafu, odnosno njegovi izlazni čvorovi. Ulazni stepen čvora je broj grana koje ulaze u taj čvor, odnosno broj ključeva mape u čijem skupu vrednosti se nalazi taj čvor. Funkcija \textit{calculate\_in\_degree} koristi tri pomoćne funkcije: \textit{initialize}, \textit{iterate\_keys} i \textit{iterate\_values}. Pomoćna funkcija \textit{initialize} inicijalizuje mapu \textit{all\_degrees} tako da joj ključevi budu čvorovi grafa i da svaki ima vrednost nula. Pomoćne funkcije \textit{iterate\_keys} i \textit{iterate\_values} omogućavaju da se u jednom prolazu kroz graf izračuna ulazni stepen svakog čvora. Za svaki čvor grafa se prolazi kroz listu njegovih izlaznih čvorova i svakom od izlaznih čvrova ulazni stepen se uvećava za jedan, odnosno njegova vrednost u mapi \textit{all\_degrees} se uvećava za jedan. Funkcija \textit{iterate\_keys} služi za obilazak svih čvorova grafa, a funkcija \textit{iterate\_values} za obilazak svih izlaznih čvorova za dati čvor i uvećavanje njihovih ulaznih stepena. U ovoj implementaciji je iskorišćena funkcija \textit{Map.keys/1} koja vraća sve ključeve date mape.
+Funkcija \textit{calculate\_in\_degree}, čija je implementacija prikazana na listingu \ref{lst:110}, računa ulazne stepene za sve čvorove datog grafa \textit{graph}. Graf je u implementaciji predstavljen mapom. Ključ mape je čvor grafa, a lista vrednosti ključa čvorovi ka kojima iz datog
+čvora postoji grana u grafu, odnosno njegovi izlazni čvorovi. Ulazni stepen čvora je broj grana koje ulaze u taj čvor, odnosno broj ključeva mape u čijem skupu vrednosti se nalazi taj čvor. Funkcija \textit{calculate\_in\_degree} koristi tri pomoćne funkcije: \textit{initialize}, \textit{iterate\_keys} i \textit{iterate\_values}. Pomoćna funkcija \textit{initialize} inicijalizuje mapu \textit{all\_degrees} tako da joj ključevi budu čvorovi grafa i da svaki ima vrednost nula. Pomoćne funkcije \textit{iterate\_keys} i \textit{iterate\_values} omogućavaju da se u jednom prolazu kroz graf izračuna ulazni stepen svakog čvora. Za svaki čvor grafa se prolazi kroz listu njegovih izlaznih čvorova i svakom od izlaznih čvorova ulazni stepen se uvećava za jedan, odnosno njegova vrednost u mapi \textit{all\_degrees} se uvećava za jedan. Funkcija \textit{iterate\_keys} služi za obilazak svih čvorova grafa, a funkcija \textit{iterate\_values} za obilazak svih izlaznih čvorova za dati čvor i uvećavanje njihovih ulaznih stepena. U ovoj implementaciji je iskorišćena funkcija \textit{Map.keys/1} koja vraća sve ključeve date mape.
 % Izračuvanavanje izlaznog stepena za zadati čvor vrši se izračunavanjem dužine liste njegovih izlaznih čvorova, pomoću funkcije \textit{Kernel.length/1}.
 
 \lstinputlisting[language=erlang,label={lst:110},caption=Funkcija \textit{calculate\_in\_degree},captionpos=b]{110.ex}
@@ -1532,7 +1535,7 @@ U ovom radu su prikazane osnove sintakse i semantike programskog jezika Elixir. 
 
 Kako je Elixir funkcionalni programski jezik, on omogućava da razmišljamo u terminima funkcija koje transformišu podatke. To znači da sama transformacija nikada ne menja podatke, već svaka primena funkcije potencijalno stvara novu, svežiju verziju podataka. U okviru rada ova osobina je iskorišćena u implementaciji svakog algoritma, jer se svaka implementacija sastoji od velikog broja funkcija koje obavljaju neki celovit posao.  Zahvaljujući tome dobijen je koncizan k$\hat{o}$d, povećana je njegova čitljivost i programiranje je bilo brže. Dodatno, ova karakteristika smanjuje potrebu za mehanizmima za sinhronizaciju podataka, pa je implementacija konkurentnosti algoritma \textit{JellyFish} bila jednostavna i pouzdana. Konkurentnost je jedna od glavnih karakteristika Elixir-a. Stvaranje već samo četiri procesa je značajno smanjilo vreme izvršavanja algoritama \textit{JellyFish} i \textit{DSK}, a na mašini sa većim brojem dostupnih procesora moglo bi se očekivati i veće poboljšanje. Zahvaljujući jednostavnoj i modernoj sintaksi, koja je prirodna za čitanje, ovaj programski jezik se veoma brzo savladava i uči. To je pomoglo da se veoma brzo nakon upoznavanja sa osnovama sintakse i semantike počne sa implementacijom algoritama i postigne visoka produktivnost.
 
-Algoritam \textit{JellyFish} i algoritam \textit{DSK} su testirani na realnim podacima. Algoritam \textit{JellyFish} je pokazao izuzetnu brzinu i tačnost i prilikom sekvencijalne i prilikom paralelne obrade. Implementacijom konkurentnosti dobijeno je skoro dva puta veće ubrzanje izvršavanja (na računaru sa svega četiri procesora) u odnosu na sekvencijalno izvršavanje. Na taj način je ubrzana i olakšana obrada celokupnog skupa podataka. Ostali algoritmi su testirani takođe na realnim podacima, ali na manjim skupovima podataka. Za njih nije implementirana konkurentnost, jer je to, zbog kompleksnosti algoritama, prilično izazovan zadatak. Rezultati eksperimentalnih merenja su zadovoljavajući, iako su merenja izvršena na kućnom računaru skromnog kapaciteta. Za realne slučajeve upotrebe, potrebno je koristiti računar značajno većeg kapaciteta. Na taj način bi i implementirana konkurentnost došla do većeg izražaja.
+Algoritam \textit{JellyFish} i algoritam \textit{DSK} su testirani na realnim podacima. Algoritam \textit{JellyFish} je pokazao izuzetnu brzinu i tačnost i prilikom sekvencijalne i prilikom paralelne obrade. Implementacijom konkurentnosti dobijeno je skoro dvostruko ubrzanje izvršavanja (na računaru sa svega četiri procesora) u odnosu na sekvencijalno izvršavanje. Na taj način je ubrzana i olakšana obrada celokupnog skupa podataka. Ostali algoritmi su testirani takođe na realnim podacima, ali na manjim skupovima podataka. Za njih nije implementirana konkurentnost, jer je to, zbog kompleksnosti algoritama, prilično izazovan zadatak. Rezultati eksperimentalnih merenja su zadovoljavajući, iako su merenja izvršena na kućnom računaru skromnog kapaciteta. Za realne slučajeve upotrebe, potrebno je koristiti računar značajno većeg kapaciteta. Na taj način bi i implementirana konkurentnost došla do većeg izražaja.
 
 % ------------------------------------------------------------------------------
 %\pangrami
