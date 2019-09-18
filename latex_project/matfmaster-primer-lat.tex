@@ -830,7 +830,7 @@ Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova
 
 Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći algoritam $JellyFish$.
 
-Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za $i$-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 \end{comment}
 
@@ -1219,7 +1219,7 @@ Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski
 
 11:\hspace{1cm} for $j = 0$ to $n_{sublist} - 1$ do
 
-12:\hspace{2cm} Učitati j-tu podlistu $d_j$;
+12:\hspace{2cm} Učitati $j$-tu podlistu $d_j$;
 
 13:\hspace{2cm} Pokrenuti $JellyFish(d_j, 0.7, h)$ za ispisivanje broja pojavljivanja svakog k-mera u podlisti $d_j$
 
@@ -1237,7 +1237,7 @@ Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u 
 
 Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljen $j$-toj podlisti $d_j$, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova, vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
 
-Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za i-tu iteraciju algoritam mapira sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(\frac{kN^2}{D})$ očekivanom vremenu. Kada je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za $i$-tu iteraciju algoritam mapira sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(\frac{kN^2}{D})$ očekivanom vremenu. Kada je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 Minimizacija broja pristupa disku u implementaciji ovog algoritma nije ostvarena, jer u Elixir-u ne postoji kontrola za to, već je algoritam implementiran samo prateći osnovnu ideju.
 
