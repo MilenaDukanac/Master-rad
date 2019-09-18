@@ -1,3 +1,2 @@
+3
 AC,CG,AC,GT,CA,GG,AC,GT
-6
-5
