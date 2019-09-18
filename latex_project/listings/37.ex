@@ -1,2 +1,2 @@
-number < atom < reference < function < port < pid < tuple
-< map < list < bitstring
+number < atom < reference < function < port < pid < tuple < map
+< list < bitstring

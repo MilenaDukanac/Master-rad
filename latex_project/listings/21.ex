@@ -1,7 +1,7 @@
-iex(1)>users = [john: %{name: "John", age: 27, languages:
-["Erlang", "Ruby", "Elixir"]}, mary: %{name: "Mary", age: 29,
-languages: ["Elixir", "F#", "Clojure"]}]
+iex(1)>korisnici = [dzoni: %{ime: "Dzoni", godine: 27, jezici:
+["Erlang", "Ruby", "Elixir"]}, marija: %{ime: "Marija", godine: 29,
+jezici: ["Elixir", "F#", "Clojure"]}]
 [
-  john:%{age:27,languages:["Erlang","Ruby","Elixir"],name:"John"},
-  mary:%{age:29,languages:["Elixir","F#","Clojure"],name:"Mary"}
+  dzoni:%{godine:27,jezici:["Erlang","Ruby","Elixir"],ime:"Dzoni"},
+  marija:%{godine:29,jezici:["Elixir","F#","Clojure"],ime:"Marija"}
 ]

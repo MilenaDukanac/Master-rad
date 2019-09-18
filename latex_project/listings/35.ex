@@ -1,6 +1,6 @@
-defmodule Math do
-  defmodule Adding do
-    def sum(a, b) do
+defmodule Matematika do
+  defmodule Sabiranje do
+    def saberi(a, b) do
       a + b
     end
   end

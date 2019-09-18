@@ -1,5 +1,5 @@
-defmodule SpawnProcess do
-  def greet do
-    IO.puts "Hello"
+defmodule KreiranjeProcesa do
+  def pozdrav do
+    IO.puts "Zdravo"
   end
 end

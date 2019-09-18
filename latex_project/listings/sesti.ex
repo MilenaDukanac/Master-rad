@@ -1,2 +1,2 @@
-iex(1)>'hello' = = "hello"
+iex(1)>'zdravo' == "zdravo"
 false

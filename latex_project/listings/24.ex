@@ -1,6 +1,6 @@
-iex(4)> users = update_in users[:mary].languages,
-fn languages -> List.delete(languages, "Clojure") end
+iex(4)> korisnici = update_in korisnici[:marija].jezici,
+fn jezici -> List.delete(jezici, "Clojure") end
 [
-  john:%{age:31,languages:["Erlang","Ruby","Elixir"],name:"John"},
-  mary:%{age:29,languages:["Elixir","F#"],name:"Mary"}
+  john:%{godine:31,jezici:["Erlang","Ruby","Elixir"],ime:"Dzoni"},
+  marija:%{godine:29,jezici:["Elixir","F#"],ime:"Marija"}
 ]

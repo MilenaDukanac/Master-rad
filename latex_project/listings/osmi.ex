@@ -1,4 +1,4 @@
-iex(1)>tuple = {:ok, "hello", 1}
-{:ok, "hello", 1}
-iex(2)>elem(tuple, 1)
-"hello"
+iex(1)>torka = {:ok, "zdravo", 1}
+{:ok, "zdravo", 1}
+iex(2)>elem(torka, 1)
+"zdravo"

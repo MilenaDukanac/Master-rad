@@ -1,5 +1,5 @@
-iex(3)> users = put_in users[:john].age, 31
+iex(3)> korisnici = put_in korisnici[:dzoni].godine, 31
 [
-  john:%{age:31,languages:["Erlang","Ruby","Elixir"],name:"John"},
-  mary:%{age:29,languages:["Elixir","F#","Clojure"],name:"Mary"}
+  dzoni:%{godine:31,jezici:["Erlang","Ruby","Elixir"],ime:"John"},
+  marija:%{godine:29,jezici:["Elixir","F#","Clojure"],ime:"Mary"}
 ]

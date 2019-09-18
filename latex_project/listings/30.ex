@@ -1,2 +1,2 @@
-iex(1)>"pas" = = "pas"
+iex(1)>"pas" = "pas"
 "pas"
