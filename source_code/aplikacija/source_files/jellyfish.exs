@@ -1,79 +1,99 @@
 defmodule JellyFish do
   def main(args) do
-    #IO.inspect(jellyfish_algorithm(["AC","CG","AC","GT","CA","GG","AC","GT"], 0.7))
-    kmers = String.split(Enum.at(args, 0), ",")
-    alpha = String.to_float(Enum.at(args, 1))
-    IO.inspect(jellyfish_algorithm(kmers, alpha))
+    {ok, content} = File.read(Enum.at(args, 0))
+    kmers = String.split(String.trim(content, "\r\n"), ",")
+    length_of_kmers = Kernel.length(kmers)
+    #number_of_kmers_in_list = div(length_of_kmers, 4) + 1
+    number_of_kmers_in_list = if(rem(length_of_kmers, 4) == 0) do
+		div(length_of_kmers, 4)
+	else
+		div(length_of_kmers, 4) + 1
+	end
+    list_of_kmers = split_list(Kernel.length(kmers), kmers, [], number_of_kmers_in_list)
+
+    #paralelno
+    #d = DateTime.utc_now
+    list_of_tasks = run_jellyfish(list_of_kmers, [])
+    list_of_maps = run_await(list_of_tasks, [])
+    #t = DateTime.utc_now
+    #final = DateTime.diff(t, d)
+    #Vreme izvrsavanja
+    #IO.puts final
+
+    #sekvencijalno
+    # d = DateTime.utc_now
+    # h_map = jellyfish_algorithm(kmers)
+    # t = DateTime.utc_now
+    # final = DateTime.diff(t, d)
+    # IO.puts final
+    # list_of_maps = [h_map]
+
+    kmer_keys = take_keys(list_of_maps, [])
+    kmer_keys = Enum.uniq(kmer_keys)
+    final_result = create_final_map(kmer_keys, list_of_maps, %{})
+    {:ok, file} = File.open("JellyFishOutput.txt", [:write, :utf8])
+    map = Enum.map_join(final_result, "\n", fn {key, val} -> ~s{#{key} => #{val}} end)
+    IO.binwrite(file, map)
   end
 
-  def symbol_to_number(c) do
-    map = %{"A" => "00", "T" => "01", "C" => "10", "G" => "11"}
-    map[c]
+  def create_final_map([], list_of_new_maps, result), do: result
+  def create_final_map([head|tail], list_of_new_maps, result) do
+    value = iterate_new_maps(list_of_new_maps, head, 0)
+    result = Map.put(result, head, value)
+    result = create_final_map(tail, list_of_new_maps, result)
   end
 
-  def pattern_to_number(_pattern, begin_string, index, length_of_pattern) when index == length_of_pattern do
-    String.to_integer(begin_string, 10)
+  def iterate_new_maps([], key, value), do: value
+  def iterate_new_maps([head|tail], key, value) do
+    tmp = if(Map.get(head, key) != nil) do
+      Map.get(head, key)
+     else
+       0
+     end
+    value = iterate_new_maps(tail, key, value + tmp)
   end
 
-  def pattern_to_number(pattern, begin_string, index, length_of_pattern) do
-    begin_string = begin_string <> symbol_to_number(String.at(pattern, index))
-    pattern_to_number(pattern, begin_string, index + 1, length_of_pattern)
+  def take_keys([], list_of_keys), do: list_of_keys
+  def take_keys([head|tail], list_of_keys) do
+    list_of_keys = take_keys(tail, list_of_keys ++ Map.keys(head))
   end
 
-  def calculate_i(h_table, z, i, size) do
-    if Map.get(h_table, i) != z and Map.get(h_table, i) != "" do
-      i = calculate_i(h_table, z, rem(i + 1, size), size)
+  def run_await([], list_of_maps), do: list_of_maps
+  def run_await([head|tail], list_of_maps) do
+    res = Task.await(head, 100000000)
+    list_of_maps = List.insert_at(list_of_maps, Kernel.length(list_of_maps), res)
+    list_of_maps = run_await(tail, list_of_maps)
+  end
+
+  def run_jellyfish([], list_of_tasks), do: list_of_tasks
+  def run_jellyfish([head|tail], list_of_tasks) do
+    task = Task.async(fn -> jellyfish_algorithm(head) end)
+    list_of_tasks = List.insert_at(list_of_tasks, Kernel.length(list_of_tasks), task)
+    list_of_tasks = run_jellyfish(tail, list_of_tasks)
+  end
+
+  def split_list(index, kmers, result, number_of_kmers_in_list) when index <= 0 do
+    result
+  end
+
+  def split_list(index, kmers, result, number_of_kmers_in_list) do
+    result = List.insert_at(result, Kernel.length(result), Enum.take(kmers, number_of_kmers_in_list))
+    result = split_list(index - number_of_kmers_in_list, Enum.drop(kmers, number_of_kmers_in_list), result, number_of_kmers_in_list)
+  end
+
+  def calculate([], z_table), do: z_table
+  def calculate([head|tail], z_table) do
+    z_table = if(Map.get(z_table, head) == nil) do
+      Map.put(z_table, head, 1)
     else
-      i
+      Map.put(z_table, head, Map.get(z_table, head) + 1)
     end
+    z_table = calculate(tail, z_table)
   end
 
-  #h je hes funkcija i nju definisemo pre pozivanja funkcije i prosledjujemo je kao argument
-  #z je neki k-mer iz velikog skupa k-mera
-  #g je hes tabela
-  #size je velicina hes tabele
-  def hashEntry(h_table, z, size) do
-    i = rem(pattern_to_number(z, "", 0, String.length(z)), size)
-    calculate_i(h_table, z, i, size)
+  def jellyfish_algorithm(z_table) do
+    count_table = calculate(z_table, %{})
   end
-
-  def build_h_table(h_table_empty, 0), do: h_table_empty
-  def build_h_table(h_table_empty, size_of_H) do
-      size_of_H = size_of_H - 1
-      h_table_empty = Map.put(h_table_empty, size_of_H, "")
-      build_h_table(h_table_empty, size_of_H)
-  end
-
-  def build_count_table(count_table_empty, 0), do: count_table_empty
-  def build_count_table(count_table_empty, size_of_count_table) do
-      size_of_count_table = size_of_count_table - 1
-      count_table_empty = Map.put(count_table_empty, size_of_count_table, 0)
-      build_count_table(count_table_empty, size_of_count_table)
-  end
-
-  def calculate(h_table, count_table, [], _size_of_H), do: {h_table, count_table}
-  def calculate(h_table, count_table, [head|tail], size_of_H) do
-    i = hashEntry(h_table, head, size_of_H)
-    if Map.get(h_table, i) == "" do
-      h_table = Map.put(h_table, i, head)
-      count_table = Map.put(count_table, i, 1)
-      {h_table, count_table} = calculate(h_table, count_table, tail, size_of_H)
-    else
-      count_table = Map.put(count_table, i, Map.get(count_table, i) + 1)
-      {h_table, count_table} = calculate(h_table, count_table, tail, size_of_H)
-    end
-  end
-
-  def jellyfish_algorithm(z_table, alfa) do
-    #z_table = ['AC','CG','AC','GT','CA','GG','AC','GT']
-    #alfa = 0.7
-    n = Kernel.length(z_table)
-    size_of_H = Kernel.round(Float.ceil(n/alfa))
-    h_table = build_h_table(%{}, size_of_H)
-    count_table = build_count_table(%{}, size_of_H)
-    {h_table, count_table} = calculate(h_table, count_table, z_table, size_of_H)
-  end
-
 end
 
 JellyFish.main(System.argv)

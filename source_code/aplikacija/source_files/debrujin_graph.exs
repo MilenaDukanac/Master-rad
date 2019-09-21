@@ -1,12 +1,34 @@
-defmodule DeBrujin do
+defmodule DeBrujinGraph do
   def main(args) do
-    IO.inspect debrujin_graph(Enum.at(args, 0), Enum.at(args, 1))
-    # result = debrujin_graph(Enum.at(args, 0), Enum.at(args, 1))
-    # text = Enum.map_join(result, fn{key, val} -> key <> "=>" <> inspect(val) <> "\n" end)
-    # {:ok, file} = File.open("debrujin_results.txt", [:write, :utf8])
-    # IO.binwrite(file, text)
+    {ok, content} = File.read(Enum.at(args, 0))
+    lines = String.split(content, "\n")
+    lines = Enum.filter(lines, fn line -> line != "\r" end)
+    lines = Enum.map(lines, fn line -> String.trim(line, "\r") end)
+    k = String.to_integer(String.trim(Enum.at(lines, 0), "\r"), 10)
+    reads = String.split(Enum.at(lines, 1), ",")
+    #d= DateTime.utc_now
+    list_of_maps = run_debrujin(reads, k, [])
+    # t = DateTime.utc_now
+    # final = DateTime.diff(t, d)
+    #Vreme izvrsavanja
+    # IO.puts final
+    IO.inspect list_of_maps
+    {:ok, file} = File.open("DeBrujinGraphOutput.txt", [:write, :utf8])
+    whole_string = write_to_file(list_of_maps, "")
+    IO.binwrite(file, whole_string)
   end
 
+  def write_to_file([], whole_string), do: whole_string
+  def write_to_file([head|tail], whole_string) do
+    whole_string = whole_string <> Enum.map_join(head, "", fn {key, value} -> ~s{#{key}:#{Enum.join(value, ",")};} end) <> "\n"
+    whole_string = write_to_file(tail, whole_string)
+  end
+
+  def run_debrujin([], k, list_of_maps), do: list_of_maps
+  def run_debrujin([head|tail], k, list_of_maps) do
+    list_of_maps = List.insert_at(list_of_maps, Kernel.length(list_of_maps), debrujin_graph(head, k))
+    list_of_maps = run_debrujin(tail, k, list_of_maps)
+  end
 
   def iterate_string(start_index, end_index, string, kmers, n, k) when start_index == end_index do
     kmers
@@ -19,10 +41,8 @@ defmodule DeBrujin do
   end
 
   def split_kmers(string, k) do
-    kmers = []
     n = String.length(string)
-    end_index = n - k + 1
-    kmers = iterate_string(0, end_index, string, kmers, n, k)
+    kmers = iterate_string(0, n - k + 1, string, [], n, k)
   end
 
   def iterate_kmers([], adjacency_list) do
@@ -51,11 +71,11 @@ defmodule DeBrujin do
   end
 
   def debrujin_graph(string, k) do
-    kmers = split_kmers(string, k)
+    kmers = split_kmers(string, k + 1)
     adjacency_list = %{}
     adjacency_list = iterate_kmers(kmers, adjacency_list)
     adjacency_list
   end
 end
 
-DeBrujin.main(System.argv)
+DeBrujinGraph.main(System.argv)

@@ -1,183 +1,164 @@
 defmodule DSK do
+    def main(args) do
+      path = Enum.at(args, 0)
+      {ok, content} = File.read(path)
+      lines = String.split(content, "\n")
+      lines = Enum.filter(lines, fn line -> line != "\r" end)
+      available_size = String.to_integer(String.trim(Enum.at(lines, 0), "\r"), 10)
+      kmers = String.split(String.trim(Enum.at(lines, 1), "\r"), ",")
+      length_of_kmers = Kernel.length(kmers)
 
-  def main(args) do
-    #IO.inspect(dsk(["AC", "CG", "AC", "GT", "CA", "GG", "AC", "GT"], 6, 5))
-    kmers = String.split(Enum.at(args, 0), ",")
-    M = String.to_float(Enum.at(args, 1))
-    M = String.to_float(Enum.at(args, 2))
-    IO.inspect(dsk(kmers, M, D))
-  end
-
-  def symbol_to_number(c) do
-    mapa = %{"A" => "00", "T" => "01", "C" => "10", "G" => "11"}
-    mapa[c]
-  end
-
-  def pattern_to_number
-  (_pattern, begin_string, index, length_of_pattern) when index == length_of_pattern do
-    String.to_integer(begin_string, 10)
-  end
-
-  def pattern_to_number(pattern, begin_string, index, length_of_pattern) do
-    begin_string = begin_string <> symbol_to_number(String.at(pattern, index))
-    pattern_to_number(pattern, begin_string, index + 1, length_of_pattern)
-  end
-
-  def calculate_i(h_table, z, i, size) do
-    if Map.get(h_table, i) != z and Map.get(h_table, i) != "" do
-      i = calculate_i(h_table, z, rem(i + 1, size), size)
-    else
-      i
-    end
-  end
-
-  #h je hes funkcija i nju definisemo pre pozivanja funkcije i prosledjujemo je kao argument
-  #z je neki k-mer iz velikog skupa k-mera
-  #g je hes tabela
-  #size je velicina hes tabele
-  def hashEntry(h_table, z, size) do
-    i = rem(pattern_to_number(z, "", 0, String.length(z)), size)
-    calculate_i(h_table, z, i, size)
-  end
-
-  def build_h_table(h_table_empty, 0), do: h_table_empty
-  def build_h_table(h_table_empty, size_of_H) do
-      size_of_H = size_of_H - 1
-      h_table_empty = Map.put(h_table_empty, size_of_H, "")
-      build_h_table(h_table_empty, size_of_H)
-  end
-
-  def build_count_table(count_table_empty, 0), do: count_table_empty
-  def build_count_table(count_table_empty, size_of_count_table) do
-      size_of_count_table = size_of_count_table - 1
-      count_table_empty = Map.put(count_table_empty, size_of_count_table, 0)
-      build_count_table(count_table_empty, size_of_count_table)
-  end
-
-  def calculate(h_table, count_table, [], _size_of_H), do: {h_table, count_table}
-  def calculate(h_table, count_table, [head|tail], size_of_H) do
-    i = hashEntry(h_table, head, size_of_H)
-    if Map.get(h_table, i) == "" do
-      h_table = Map.put(h_table, i, head)
-      count_table = Map.put(count_table, i, 1)
-      {h_table, count_table} = calculate(h_table, count_table, tail, size_of_H)
-    else
-      count_table = Map.put(count_table, i, Map.get(count_table, i) + 1)
-      {h_table, count_table} = calculate(h_table, count_table, tail, size_of_H)
-    end
-  end
-
-  def jellyfish_algorithm(z_table, alfa) do
-    n = Kernel.length(z_table)
-    size_of_H = Kernel.round(Float.ceil(n/alfa))
-    h_table = build_h_table(%{}, size_of_H)
-    count_table = build_count_table(%{}, size_of_H)
-    {h_table, count_table} = calculate(h_table, count_table, z_table, size_of_H)
-  end
-
-  def iterate_z([], n_for_iterate, n_list, n_sublist, set_of_empty_sublists), do: set_of_empty_sublists
-
-  def iterate_z([head|tail], n_for_iterate, n_list, n_sublist, set_of_empty_sublists) do
-    # IO.puts head
-    # IO.puts pattern_to_number(head, "", 0, String.length(head))
-    if(rem(pattern_to_number(head, "", 0, String.length(head)), n_list) == n_for_iterate) do
-      j = rem(div(pattern_to_number(head, "", 0, String.length(head)), n_list), n_sublist)
-      #IO.puts "j je #{j}"
-      current = Enum.at(set_of_empty_sublists, j)
-      #IO.inspect current
-      #IO.puts head
-      #current = MapSet.put(current, head)
-      current = List.insert_at(current, 0, head)
-      #IO.inspect current
-      #IO.puts "Trenutni i j je #{j}"
-      #IO.inspect current
-      #set_of_empty_sublists = List.insert_at(set_of_empty_sublists, j, current)
-      set_of_empty_sublists = List.update_at(set_of_empty_sublists, j, fn val -> current end)
-      #IO.puts "Nakon zamene"
-      #IO.inspect set_of_empty_sublists
-      set_of_empty_sublists = iterate_z(tail, n_for_iterate, n_list, n_sublist, set_of_empty_sublists)
-    else
-      #IO.puts "Nije jednak"
-      set_of_empty_sublists = iterate_z(tail, n_for_iterate, n_list, n_sublist, set_of_empty_sublists)
-    end
-  end
-
-  def iterate_n_sublist(-1, set_of_empty_sublists, h_table, count_table), do: {h_table, count_table}
-  def iterate_n_sublist(n_sublist, set_of_empty_sublists, h_table, count_table) do
-    #IO.puts "Uslo u iterate_n_sublist"
-    #IO.inspect n_sublist
-    #IO.inspect Enum.at(set_of_empty_sublists, n_sublist)
-    d_j = Enum.at(set_of_empty_sublists, n_sublist)
-    #IO.inspect d_j
-    #Pokreni jellyfish algoritam
-    {h_table, count_table} = jellyfish_algorithm(d_j, 0.7)
-    if Map.keys(h_table) != [] do
-      #IO.puts "Izvrsen jellyfish h tabela"
-      IO.inspect h_table
+      %{size: size} = File.stat!(Enum.at(args, 0))
+      number_of_lists_of_kmers = if(rem(size, available_size) == 0) do
+        div(size, available_size)
+      else
+        div(size, available_size) + 1
+      end
+      number_of_kmers_in_list = div(length_of_kmers, number_of_lists_of_kmers) + 1
+      lists_of_kmers = split_list(Kernel.length(kmers), kmers, [], number_of_kmers_in_list)
+      #d = DateTime.utc_now
+      dsk(lists_of_kmers)
+      #t = DateTime.utc_now
+      #final = DateTime.diff(t, d)
+      #Vreme izvrsavanja
+      #IO.puts final
     end
 
-    if Map.keys(count_table) != [] do
-      #IO.puts "Izvrsen jellyfish count tabela"
-      IO.inspect count_table
-    end
-    #IO.puts "Proslo jellyfish"
-    {h_table, count_table} = iterate_n_sublist(n_sublist - 1, set_of_empty_sublists, h_table, count_table)
-  end
-
-  def check_list([], ind), do: ind
-  def check_list([head|tail], ind) do
-    if Enum.empty?(head) == false do
-      ind = false
-      tail = []
-      check_list(tail, ind)
-    else
-      check_list(tail, ind)
-    end
-  end
-
-  def iterate_n_list(z_table, -1, n_list, n_sublist, set_of_empty_sublists), do: set_of_empty_sublists
-  def iterate_n_list(z_table, n_for_iterate, n_list, n_sublist, set_of_empty_sublists) do
-    set_of_empty_sublists = List.duplicate([], n_sublist)
-    #IO.inspect set_of_empty_sublists
-    set_of_empty_sublists = iterate_z(z_table, n_for_iterate, n_list, n_sublist, set_of_empty_sublists)
-
-    #IO.puts "Nakon zamene svih"
-    #IO.inspect set_of_empty_sublists
-    ind = true
-    ind = check_list(set_of_empty_sublists, ind)
-
-    if ind == false do
-      IO.inspect set_of_empty_sublists
+    def split_list(index, kmers, result, number_of_kmers_in_list) when index <= 0 do
+      result
     end
 
-    n = Kernel.length(set_of_empty_sublists)
-    h_table = build_h_table(%{}, n)
-    count_table = build_count_table(%{}, n)
-    #IO.puts "Nakon iterate_z"
-    #IO.inspect(set_of_empty_sublists)
-    {h_table, count_table} = iterate_n_sublist(n_sublist - 1, set_of_empty_sublists, h_table, count_table)
-    #IO.inspect h_table
-    #IO.inspect count_table
-    set_of_empty_sublists = iterate_n_list(z_table, n_for_iterate - 1, n_list, n_sublist, set_of_empty_sublists)
-  end
+    def split_list(index, kmers, result, number_of_kmers_in_list) do
+      result = List.insert_at(result, Kernel.length(result), Enum.take(kmers, number_of_kmers_in_list))
+      result = split_list(index - number_of_kmers_in_list, Enum.drop(kmers, number_of_kmers_in_list), result, number_of_kmers_in_list)
+    end
 
-  #M bitova - ciljna memorija
-  #D bitova - ciljna velicina diska
-  #h - hes funkcija
-  def dsk(z_table, m, d) do
-    k = String.length(Enum.at(z_table, 0))
-    n = Kernel.length(z_table)
-    n_list = div(2*k*n, d)
-    n_sublist = div(d*(2*k + 32), round(0.7*(2*k)*m))
-    #IO.puts n_list
-    #IO.puts n_sublist
-    #IO.inspect z_table
-    n_for_iterate = n_list - 1
-    set_of_empty_sublists = List.duplicate([], n_sublist)
 
-    #IO.inspect set_of_empty_sublists
-    set_of_empty_sublists = iterate_n_list(z_table, n_for_iterate, n_list, n_sublist, set_of_empty_sublists)
-  end
+    def create_final_map([], list_of_new_maps, result), do: result
+    def create_final_map([head|tail], list_of_new_maps, result) do
+      value = iterate_new_maps(list_of_new_maps, head, 0)
+      result = Map.put(result, head, value)
+      result = create_final_map(tail, list_of_new_maps, result)
+    end
+
+    def iterate_new_maps([], key, value), do: value
+    def iterate_new_maps([head|tail], key, value) do
+      tmp = if(Map.get(head, key) != nil) do
+         Map.get(head, key)
+        else
+          0
+        end
+      value = iterate_new_maps(tail, key, value + tmp)
+    end
+
+    def iterate_map([], list_of_new_maps), do: list_of_new_maps
+    def iterate_map([head|tail], list_of_new_maps) do
+      list_of_new_maps = List.insert_at(list_of_new_maps, Kernel.length(list_of_new_maps), iterate(Map.keys(elem(head, 0)), elem(head, 0), elem(head, 1), %{}))
+      list_of_new_maps = iterate_map(tail, list_of_new_maps)
+    end
+
+    def iterate([], map1, map2, result), do: result
+    def iterate([head|tail], map1, map2, result) do
+      if(Map.get(map1, head) != "") do
+        result = Map.put(result, Map.get(map1, head), Map.get(map2, head))
+        result = iterate(tail, map1, map2, result)
+      else
+        result = iterate(tail, map1, map2, result)
+      end
+    end
+
+    def take_keys([], list_of_keys), do: list_of_keys
+    def take_keys([head|tail], list_of_keys) do
+      list_of_keys = take_keys(tail, list_of_keys ++ Map.keys(head))
+    end
+
+    def split_list(index, kmers, result, number_of_kmers_in_list) when index <= 0 do
+      result
+    end
+
+    def split_list(index, kmers, result, number_of_kmers_in_list) do
+      result = List.insert_at(result, Kernel.length(result), Enum.take(kmers, number_of_kmers_in_list))
+      result = split_list(index - number_of_kmers_in_list, Enum.drop(kmers, number_of_kmers_in_list), result, number_of_kmers_in_list)
+    end
+
+
+    #Algoritam JellyFish
+
+    def calculate_o([], result_table), do: result_table
+    def calculate_o([head|tail], result_table) do
+      result_table = if(Map.get(result_table, head) == nil) do
+        Map.put(result_table, head, 1)
+      else
+        Map.put(result_table, head, Map.get(result_table, head) + 1)
+      end
+      result_table = calculate_o(tail, result_table)
+    end
+
+    def jellyfish_algorithm(z_table) do
+      count_table = calculate_o(z_table, %{})
+    end
+
+    #Algoritam DSK
+
+    def create_final_map([], list_of_new_maps, result), do: result
+    def create_final_map([head|tail], list_of_new_maps, result) do
+      value = iterate_new_maps(list_of_new_maps, head, 0)
+      result = Map.put(result, head, value)
+      result = create_final_map(tail, list_of_new_maps, result)
+    end
+
+    def iterate_new_maps([], key, value), do: value
+    def iterate_new_maps([head|tail], key, value) do
+      tmp = if(Map.get(head, key) != nil) do
+        Map.get(head, key)
+       else
+         0
+       end
+      value = iterate_new_maps(tail, key, value + tmp)
+    end
+
+    def take_keys([], list_of_keys), do: list_of_keys
+    def take_keys([head|tail], list_of_keys) do
+      list_of_keys = take_keys(tail, list_of_keys ++ Map.keys(head))
+    end
+
+    def run_await([], list_of_maps), do: list_of_maps
+    def run_await([head|tail], list_of_maps) do
+      res = Task.await(head, 100000000)
+      list_of_maps = List.insert_at(list_of_maps, Kernel.length(list_of_maps), res)
+      list_of_maps = run_await(tail, list_of_maps)
+    end
+
+    def run_jellyfish([], list_of_tasks), do: list_of_tasks
+    def run_jellyfish([head|tail], list_of_tasks) do
+      task = Task.async(fn -> jellyfish_algorithm(head) end)
+      list_of_tasks = List.insert_at(list_of_tasks, Kernel.length(list_of_tasks), task)
+      list_of_tasks = run_jellyfish(tail, list_of_tasks)
+    end
+
+    def split_list(index, kmers, result, number_of_kmers_in_list) when index <= 0 do
+      result
+    end
+
+    def split_list(index, kmers, result, number_of_kmers_in_list) do
+      result = List.insert_at(result, Kernel.length(result), Enum.take(kmers, number_of_kmers_in_list))
+      result = split_list(index - number_of_kmers_in_list, Enum.drop(kmers, number_of_kmers_in_list), result, number_of_kmers_in_list)
+    end
+
+    def iterate_jellyfish_paralel(lists_of_kmers, list_of_result_maps) do
+      list_of_tasks = run_jellyfish(lists_of_kmers, [])
+      list_of_maps = run_await(list_of_tasks, [])
+    end
+
+    def dsk(lists_of_kmers) do
+      list_of_result_maps = iterate_jellyfish_paralel(lists_of_kmers, [])
+      kmer_keys = take_keys(list_of_result_maps, [])
+      kmer_keys = Enum.uniq(kmer_keys)
+      final_result = create_final_map(kmer_keys, list_of_result_maps, %{})
+      {:ok, file} = File.open("DSKOutput.txt", [:write, :utf8])
+      map = Enum.map_join(final_result, "\n", fn {key, val} -> ~s{#{key} => #{val}} end)
+      IO.binwrite(file, map)
+    end
 end
 
 DSK.main(System.argv)
