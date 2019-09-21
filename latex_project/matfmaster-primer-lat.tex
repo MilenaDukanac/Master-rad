@@ -52,7 +52,7 @@
     citecolor=blue
 }
 
-\hyphenation{Je-lly-Fi-sh}
+\hyphenation{Je-lly-Fi-sh, pro-se-čnom}
  
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -154,13 +154,7 @@ Elixir je funkcionalan programski jezik nastao 2011. godine. Njegovim tvorcem se
 
 \section{Razvojno stablo}
 
-Na nastanak Elixir-a je uticao programski jezik \textbf{Erlang}. 
-\begin{comment}Elixir radi uz podršku virtualne mašine ovog jezika koja je karakteristična po minimalnom kašnjenju i zavidnoj toleranciji na greške. 
-\end{comment}
-Pri njegovom kreiranju značajnu ulogu u smislu sintakse imao je programski jezik \textbf{Ruby}, a iz jezika kao što su \textbf{Python, Haskell} i \textbf{Clojure} je preuzeo mnoge koncepte. Razvojno stablo jezika Elixir može se videti na slici \ref{fig:razvojnoStablo}. 
-\begin{comment}
-U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekurziji. (izmeni) 
-\end{comment}
+Na nastanak Elixir-a je uticao programski jezik \textbf{Erlang}. Pri njegovom kreiranju značajnu ulogu u smislu sintakse imao je programski jezik \textbf{Ruby}, a iz jezika kao što su \textbf{Python, Haskell} i \textbf{Clojure} je preuzeo mnoge koncepte. Razvojno stablo jezika Elixir može se videti na slici \ref{fig:razvojnoStablo}. 
 
 \begin{figure}[!ht]
   \centering
@@ -168,8 +162,6 @@ U Elixir-u ne postoje objekti i klase, već se sve zasniva na funkcijama i rekur
   \caption{Razvojno stablo jezika Elixir}
   \label{fig:razvojnoStablo}
 \end{figure}
-
-
 
 \subsection{Erlang}
 Firma Erikson je 1981. godine oformila novu laboratoriju \textbf{Erikson CSLab} (engl. \textit{The Ericsson CSLab}) sa ciljem da predlaže i stvara nove arhitekture, koncepte i strukture za buduće softverske sisteme \cite{ErlangBook2}. Jedan od zadataka novonastale laboratorije bio je dodavanje konkurentnih procesa u programski jezik \textbf{Prolog}\footnote{Prolog (engl. \textit{\textbf{PRO}gramming in \textbf{LOG}ic}) je deklarativan programski jezik namenjen rešavanju zadataka simboličke prirode. Prolog se temelji na teorijskom modelu logike prvog reda. Početkom 1970-ih godina \textbf{Alen Kolmerur} (engl. \textit{Alain Colmerauer}) i \textbf{Filip Rusel} (engl. \textit{Philippe Roussel}) na Univerzitetu u Marselju, zajedno sa \textbf{Robertom Kovalskim} (engl. \textit{Robert Kowalski}) sa Departmana veštačke inteligencije na Univerzitetu u Edinburgu , razvili su osnovni dizajn jezika Prolog.} i njegovo unapređivanje. Prolog predstavlja začetak novog programskog jezika koji je 1987. godine nazvan \textbf{Erlang}. Ime je nastalo zahvaljujući inicijativi zaposlenih koji su radili na telefonskim prekidačima, a za koje je jezik dizajniran. Naime, oni su predložili da jezik nosi ime Erlang u čast danskom matematičaru i inženjeru Agneru Krarupu Erlangu (engl. \textit{Agner Krarup Erlang}), a što je ujedno odgovaralo i skraćenici od  "\textbf{Er}icsson \textbf{Lang}uage". Erlang se smatrao dijalektom Prologa sve do 1990. godine, kada je postao potpuno samostalan programski jezik sa sopstvenom sintaksom. Međutim, zadržao je neke delove sintakse i koncepte iz Prologa (promenljive počinju velikim slovom, svaka funkcionalna celina se završava tačkom, poklapanje obrazaca (engl. \textit{pattern matching})).
@@ -230,9 +222,9 @@ Elixir programi koji imaju ekstenziju \textit{.exs} se mogu kompajlirati i izvr�
 
 \section{Osnovne karakteristike}
 
-Hosé Valim je tokom 2010. godine bio zaposlen u kompaniji \textit{Platformatec} \cite{Platformatec} i radio je na poboljšanju performansi okruženja
+Hosé Valim je tokom 2010. godine bio zaposlen u kompaniji \textit{Plataformatec} \cite{Platformatec} i radio je na poboljšanju performansi okruženja
 \textit{Ruby on Rails} na višejezgarnim sistemima. Shvatio je da Ruby nije bio dovoljno dobro dizajniran da reši problem konkurentnosti, pa je započeo istraživanje drugih tehnologija koje bi bile prihvatljivije. Tako je otkrio Erlang i upravo ga je interesovanje prema virtuelnoj mašini jezika Erlang podstaklo da započne pisanje jezika Elixir. Uticaj projekta na kome je do tada radio odrazio se na to da Elixir ima sintaksu koja je nalik na sintaksu jezika Ruby. Ovaj jezik se pokazao veoma dobro pri upravljanju
-milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad dva miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada pet miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}  i \textit{Pinterest} \cite{HistoryOfElixir}.
+milionima simultanih konekcija: u 2015. je zabeleženo upravljanje nad dva miliona \textit{WebSocket} konekcija, dok je u 2017. za skalirani Elixir zabeležena obrada pet miliona istovremenih korisnika. Elixir se danas koristi u velikim kompanijama, kao što su \textit{Discord}, \textit{Motorola Solutions} i \textit{Pinterest} \cite{HistoryOfElixir}.
 
 Elixir je dinamički tipiziran, funkcionalni programski jezik koji se pokreće na vituelnoj mašini jezika Erlang, pa samim tim i nasleđuje pogodna svojstva koje dolaze sa ovim okruženjem kao što su \textbf{konkurentnost} i \textbf{tolerisanje grešaka} \cite{DefinicijaElixira}. Elixir je nadomestio mnoge koncepte koji su nedostajali jeziku Erlang. Neki od njih su  \textbf{metaprogramiranje}\footnote{Tehnika koja omogućava da programi posmatraju druge programe kao svoje podatke i na taj način čitaju i modifikuju i njihov i svoj k$\hat{o}$d u vreme izvršavanja.}, \textbf{polimorfizam}, \textbf{makroi} i \textbf{podrška za alate}. Elixir poseduje podrazumevano okruženje, takozvani \textbf{Kernel}, koji obezbeđuje podršku za osnovne tipove i funkcionalnosti jezika. 
 
@@ -263,7 +255,7 @@ Svaki od ovih tipova, osim poslednja dva, ima odgovarajuće module koji sadrže 
 Atomi su konstante ili simboli, pri čemu njihovo ime predstavlja njihovu vrednost. Počinju dvotačkom (:) i mogu sadržati slova, cifre, simbole \_, @. Mogu se završavati sa ! i ?. Atomi se mogu naći svuda u Elixir-u. U \textit{listama ključnih reči} koje će biti opisane u odeljku \ref{odeljak:ključneReči}, predstavljaju prvu vrednost elementa liste i često se koriste da označe uspeh (\textit{:ok}) ili grešku (\textit{:error}).
 
 \subsubsection{Celi brojevi}
-Celi brojevi u Elixir-u su predstavljeni slično kao i u većini programskih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ se može koristiti za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u potpunosti.
+Celi brojevi u Elixir-u su predstavljeni slično kao i u većini programskih jezika i mogu biti dekadni, heksadekadni, oktalni i binarni. Karakter \_ može da služi za odvajanje blokova cifara. Veoma značajna stvar je da ne postoji fiksna veličina za čuvanje celih brojeva u memoriji, već interna reprezentacija raste kako bi broj mogao biti smešten u potpunosti.
 
 \subsubsection{Brojevi u pokretnom zarezu}
 Brojevi u pokretnom zarezu se zapisuju uz pomoć decimalne tačke po standardu \textit{IEEE 754}. Pre i posle decimalne tačke mora biti najmanje jedna cifra ($1.0$, $0.2456$). Može se koristiti i notacija koja obuhvata navođenje eksponenata ($0.314159e1$, $314159.0e-5$). 
@@ -307,7 +299,9 @@ Torke se u Elixir-u definišu pomoću vitičastih zagrada $\{\,\}$. Kao i liste,
 
 Torke su strukture fiksne dužine koje bi trebalo da sadrže svega nekoliko elemenata koji su zapisani u memoriji jedan za drugim. To znači da se pristup elementu torke ili određivanje dužine torke izvršava u konstantnom vremenu. Razlika u odnosu na liste je u semantici upotrebe. Liste se koriste kada se manipuliše kolekcijom, dok se torke, zbog brzine pristupa njihovim elementima, uglavnom koriste za smeštanje povratne vrednosti funkcije. Na primer, \textit{File.read/1} je funkcija koja se može koristiti za čitanje sadržaja fajla. Ako putanja do fajla postoji, povratna vrednost funkcije je torka sa prvim elementom koji je atom \textit{:ok} i drugim elementom koji je sadržaj datog fajla. U suprotnom, povratna vrednost funkcije će biti torka gde je prvi element atom \textit{:error}, a drugi element opis greške. Primer upotrebe ove funkcije može se videti na listingu \ref{lst:deseti}.
 
+\begin{minipage}{\linewidth}
 \lstinputlisting[language=erlang,label={lst:deseti},caption=Primer upotrebe funkcije \textit{File.read/1},captionpos=b]{deseti.ex}
+\end{minipage}
 
 Indeksi torke počinju od nule, a primer izdvajanja elementa sa indeksom jedan može se videti na listingu \ref{lst:osmi}.
 
@@ -425,7 +419,7 @@ Moguće je i poređenje tipova među sobom. Razlog zbog kojeg se mogu uporediti 
 
 \section{Poklapanje obrazaca}
 
-Poklapanje obrazaca je proveravanje da li se u datoj sekvenci tokena može prepoznati neki obrazac. Ovaj koncept će biti jasniji na praktičnom primeru operatora $=$. U većini programskih jezika, operator $=$ je operator dodele koji levoj strani dodeljuje vrednost izraza na desnoj. U Elixir-u se ovaj operator naziva \textbf{operator uparivanja} (engl. \textit{matching}). On se uspešno izvršava, ako pronađe način da izjednači levu stanu (svoj prvi operand) sa desnom (drugi operand).
+Poklapanje obrazaca podrazumeva proveru da li data sekvenca tokena sadrži neki obrazac. Ovaj koncept će biti jasniji na praktičnom primeru operatora $=$. U većini programskih jezika, operator $=$ je operator dodele koji vrši dodeljivanje desne strane izraza levoj strani izraza. Ovaj operator se u Elixir-u naziva \textbf{operator uparivanja} (engl. \textit{matching}). On se uspešno izvršava, ako uspe da izjednači levu stanu izraza sa desnom.
 
 Na primer, izraz $5 = 2 + 2$ bi rezultirao greškom datom na listingu \ref{lst:28}.
 
@@ -447,7 +441,7 @@ Neka prve tri osobe treba da budu zapamćene. U te svrhe se može iskoristiti po
 
 \lstinputlisting[language=erlang,label={lst:32},caption=Poklapanje obrazaca sa listama,captionpos=b]{32.ex}
 
-Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama \textit{prvi}, \textit{drugi} i \textit{treći}. Ostatak liste je dodeljen pomenljivoj \textit{ostali} pomoću \textbf{pipe operatora $(\,|\,)$}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}.
+Izvršeno je dodeljivanje prve, druge i treće stavke iz liste promenljivama \textit{prvi}, \textit{drugi} i \textit{treći}. Ostatak liste je dodeljen pomenljivoj \textit{ostali} pomoću \textbf{\textit{pipe} operatora $(\,|\,)$}. Vrednost svake od ovih promenljivih može se iščitati na način prikazan na listingu \ref{lst:33}.
 
 \lstinputlisting[language=erlang,label={lst:33},caption=Iščitavanje sadržaja promenljivih,captionpos=b]{33.ex}
 
@@ -721,119 +715,6 @@ postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u pr
 
 \textbf{Algoritam DSK} - Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja  k-mera u skupu očitavanja. Gijom Rizk (u originalu \textit{Guillaume Rizk}) predlaže algoritam koji se naziva \textbf{DSK}. Ideja ovog algoritma je da se skup k-mera podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$. Algoritam $DSK$ će biti detaljno objašnjen u poglavlju \ref{odeljak:DSK}.
 
-\begin{comment}
-
-\newpage
-
-\subsubsection{Jednostavno heširanje}
-
-Problem brojanja k-mera može biti rešen implementacijom asocijativnog niza koristeći \textbf{heširanje}. Heširanje je tehnika kojom se vrsi preslikavanje skupa ključeva na tabelu značajno manjih dimenzija. Idealno bi bilo da funkcija za svaki ključ
-daje jedinstvenu poziciju. Ta funkcija naziva se \textbf{heš funkcija}, a tabela koja se koristi u tom
-postupku zove se \textbf{heš tabela}. Kada je $k$ malo (npr. manje od 10), u procesu brojanja k-mera koristi se \textbf{savršeno heširanje}. Savršeno heširanje garantuje da neće doći do \textbf{kolizije}\footnote{Izraz koji potiče od latinske reči \textit{collisio} i znači sudar, sukob. U ovom kontekstu, moguće je da heš funkcija za dva različita k-mera da istu vrednost, te kažemo da su ta dva k-mera u koliziji, tj. sukobu.}. To je moguće kada se tačno zna koji skup ključeva će biti heširan prilikom dizajniranja heš funkcije. Svaki k-mer $z$ može biti kodiran kao 2k-bitni binarni ceo broj \textit{b(z)} zamenom $A$, $C$, $G$ i $T$ u $z$ sa $00$, $01$, $10$, $11$, respektivno. Tako se izgrađuje tabela $Count[0..4^k - 1]$ veličine $4^k$ u kojoj svaka ulazna vrednost $Count[b(z)]$ čuva frekvenciju k-mera $z$ u skupu $Z$. Preciznije, prvo se vrši inicijalizacija svake ulazne vrednosti u $Count[0..4^k - 1]$ na 0. Zatim se iterativno skenira svaki k-mer $z$ iz $Z$ i uvećava $Count[b(z)]$ za 1. Na kraju, sve ulazne vrednosti različite od nule u $Count[]$ predstavljaju k-mere koji se pojavljuju u $Z$ kao i broj njihovih pojavljivanja.
-
-\end{comment}
-
-\begin{comment}
-Slika \ref{fig:5}(a) predstavlja primer koji ilustruje ovaj jednostavni metod prebrojavanja.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\textwidth]{58_3algoritma.PNG}
-  \caption{Razmatra se skup 4-mera $Z = \{AC; CG; AC; GT; CA; GG; AC; GT\}$: (a) Ilustruje jednostavan metod za brojanje k-mera koji koristi tabelu \textit{Count} veličine 4k. (b) Ilustruje \textit{JellyFish} metod brojanja k-mera koja koristi heš tabelu veličine 7. Heš funkcija je $h(z) = b(z)$ \textit{mod} $7$. Na primer, $GT$ se čuva u tabeli $Count$ sa indeksom 4, jer je $h(GT) = 4$. U ovom primeru se javlja je DNK kolizija. Pošto je i $h(CA) = 4$, $CA$ je u koliziji sa $GT$. Linearnim isprobavanjem $CA$ se ipak čuva u tabeli $Count$ sa indeksom 5. (c) Ilustruje DSK metod brojanja k-mera.
-Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK deli Z u
-4 ($= n_{list} * n_{sublist}$) podliste, a zatim pokreće \textit{JellyFish} algoritam za brojanje k-mera u svakoj podlisti.}
-  \label{fig:5}
-  \source{\cite{WingKinSung}}
-\end{figure}
-
-Neka je $N = |Z|$. Tada je navedeni pristup veoma efikasan. Njegovo vreme izvršavanja je $O(N + 4^k)$, a kako treba izgraditi tabelu veličine $4^k$, prostorna složenost je $O(4^k)$. Kada je $k$ veliko, navedeni algoritam ne može da radi, jer zahteva previše prostora.
-
-\end{comment}
-
-\begin{comment}
-
-\subsubsection{Algoritam JellyFish}
-Moguće je smanjiti veličinu heš tabele koristeći mehanizam \textbf{otvorenog adresiranja}. Otvoreno adresiranje je način rešavanja kolizije u heš tabelama. Kada se desi kolizija, traži se sledeća slobodna lokacija u heš tabeli za smeštanje vrednosti. Postoje tri metode otvorenog adresiranja: \textbf{linearno popunjavanje}, \textbf{kvadratno popunjavanje} i \textbf{duplo heširanje}.
-
-Ovaj mehanizam je iskorišćen u $JellyFish$ algoritmu. Uvodi se heš funkcija $h$. Heš tabela $H[0..\frac{N}{\alpha} - 1]$ čuva niz k-mera iz $Z$, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Faktor opterećenja - broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Svaki k-mer iz $Z$ je heširan u neku vrednost $H[i]$ gde je $i = h(z)$. Izgrađuje se tabela $Count[0..\frac{N}{\alpha} - 1]$, pri čemu $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Ukoliko pri heširanju funcijom $h$ dođe do kolizije, ona se razrešava mehanizmom otvorenog adresiranja. Na ovaj način se pokušava smanjivanje prostora koji je potreban za obavljanje brojanja k-mera.
-
-
-Neka je $h$ heš funkcija i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz k-mera, gde je $\alpha$ \textbf{faktor opterećenja}\footnote{Broj koji kontroliše veličinu heš tabele} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$ gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer iz $Z$ vrši se njegovo  heširanje u neku vrednost $H[i]$ gde je $i = h(z)$. Ako $H[i]$ nije prazan i $H[i] \neq z$, ne možemo čuvati $z$ u $H[i]$, tj. došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti \textbf{linearnim popunjavanjem}. Ovom metodom pokušavamo da uvećamo indeks $i$ za jedan kada se kolizija dogodi sve dok je $H[i] = z$ ili je ulaz $H[i]$ prazan. Nakon što su svi k-meri iz $Z$ obrađeni i sve kolizije razrešene, prikazuje se $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
-
-Funkcija $hashEntry()$ sa slike \ref{fig:6} (donji deo slike) ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća prazan ulaz $H[i]$, onda $z$ ne postoji u heš tabeli i postavljamo $H[i] = z$ i $Count[i] = 1$. U suprotnom, ako $hashEntry(z, h, \frac{N}{\alpha})$ vraća ulaz $H[i] = z$, uvećavamo $Count[i]$ za jedan. Nakon što su svi k-meri iz $Z$ obrađeni, prikazujemo $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nule.
-
-Algoritam \textit{JellyFish} je detaljnije objašnjen na slici \ref{fig:6} (gorni deo slike), dok slika \ref{fig:5} (b) daje primer koji ga ilustruje. On je efikasniji, ukoliko ne postoji kolizija. U praksi je očekivani broj kolizija mali, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Zatim, očekivano vreme izvršavanja je $O(N)$. Što se tiče prostorne složenosti, tabele $H[]$ i $Count[]$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova, pod pretpostavkom da broj zauzima 32 bita. Gore pomenuta ideja smanjivanja veličine heš tabele je iskorišćena u $JellyFish$ algoritmu.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.85\textwidth]{Jellyfish5_9.PNG}
-  \caption{Algoritam Jellyfish i funkcija hashEntry \cite{WingKinSung}}
-  \label{fig:6}
-\end{figure}
-
-Iako algoritam $JellyFish$ koristi manje prostora od metode naivnog prebrojavanja, $JellyFish$ heš tabela mora biti veličine koja je jednaka bar broju jedinstvenih k-mera iz $Z$. $JellyFish$ i dalje zahteva mnogo memorije u slučaju da je broj jedinstvenih k-mera u $Z$ veliki.
-
-\subsubsection{Algoritam \textit{BFCounter}}
-U mnogim aplikacijama, od značaja su samo k-meri koji se pojavljuju najmanje $q$ puta. Kada bi moglo da se izbegne čuvanje k-mera koji se pojavljuju manje od $q$ puta, sačuvalo bi se mnogo memorije. Pol Melsted (engl. \textit{Páll Melsted}) je predložio algoritam  \textbf{BFCounter} koji broji samo k-mere koji se pojavljuju najmanje $q$ puta. On koristi \textit{counting Bloom} filter da odredi da li se k-mer pojavljuje najmanje $q$ puta. To je prostorno efikasna probabilistička struktura podataka koja dozvoljava dodavanje bilo kojih k-mera u nju i ispitivanje da li se k-mer pojavljuje najmanje $q$ puta. 
-
-Iako on može dati pogrešno pozitivan rezultat (pogrešan izveštaj da k-mer postoji ili pogrešno proceniti broj k-mera), ne može dati pogrešno negativan rezultat. \textit{BFCounter} održava \textit{counting Bloom} filter $B$ i heš tabelu $H$ i sastoji od 2 faze. 
-
-Prva faza počinje sa praznim \textit{counting Bloom} filterom $B$ i praznom heš tabelom $H$. U ovoj fazi se skeniraju k-meri iz $Z$ jedan po jedan. Za svaki k-mer $z\inZ$ se proverava da li se $z$ pojavljuje najmanje $q - 1$ puta u \textit{counting Bloom} filteru $B$ utvrđivanjem da li je $countBloom(x, B) \geq q-1$. Ako nije, vrši se umetanje $z$ u $Z$ pomoću $insertBloom(z, B)$. U suprotnom, $z$ se pojavljuje najmanje $q$ puta. Zatim se vrši proveravanje da li je $z$ u heš tabeli $H$. Ako nije, $z$ se umeće u neki prazan ulaz $H[i]$ i postavlja se $Count[i]$ na 0. 
-
-U drugoj fazi se obavlja stvarno brojanje. Vrši se skeniranje k-mera iz $Z$ jedan po jedan. Za svaki k-mer $z$ iz $Z$, ako se $z$ pojavljuje u heširanom ulazu $H[i]$, onda se uvećava $Count[i]$ za jedan.
-
-Detaljan pseudokod je prikazan na slici \ref{fig:7}.
-
-%Figura 5.10
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{BFCounter5_10.PNG}
-\caption{BFCounter \cite{WingKinSung}}
-\label{fig:7}
-\end{figure}
-
-
-Vreme izvršavanja \textit{BFCounter} algoritma je $O(n)$. Što se tiče prostorne složenosti, \textit{counting Bloom} filter zahteva $O(N log(q))$ prostora. Prostor za $H[]$ i $Count[]$ je $\frac{N'}{\alpha}(2k + 32)$ bitova, gde je $N'$ broj k-mera koji se pojavljuju najmanje $q$ puta. Primetimo da je $N' \leq \frac{N}{q}$.
-
-\end{comment}
-
-
-\begin{comment}
-
-\subsubsection{Algoritam DSK}
-Iako je $BFCounter$ prostorno efikasan, njegova prostorna složenost i dalje zavisi od broja $N$ k-mera u $Z$. Neka je memorija fiksirana tako da bude $M$ bitova i neka je memorija diska fiksirana tako da bude $D$ bitova. Da li se može i dalje efikasno izračunati pojavljivanja k-mera? Gijom Rizk (engl. \textit{Guillaume Rizk}) nam daje pozitivan odgovor i predlaže metod koji se naziva \textbf{DSK}.
-
-, a čiji pseudokod je prikazan na slici \ref{fig:63}.
-
-%Figura 5.11
-\begin{figure}[h]
-\centering
-\includegraphics[width=12cm]{DSK5_11.PNG}
-\caption{Algoritam DSK \cite{WingKinSung}}
-\label{fig:63}
-\end{figure}
-
-Ideja ovog metoda je da se skup k-mera $Z$ podeli u različite liste tako da svaka lista bude smeštena na disk koristeći $D$ bitova. Zatim, za svaku listu, k-meri iz liste se dalje dele u podliste tako da svaka podlista može biti sačuvana u memoriji koristeći $M$ bitova. Na kraju, frekvencije k-mera u svakoj podlisti se izračunavaju algoritmom $JellyFish$.
-
-
-\end{comment}
-
-\begin{comment}
-Preciznije, k-meri u $Z$ su podeljeni u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u 2k bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako imamo $N$ k-mera u $Z$, postavlja se $n_{list} = \frac{N}{n_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz $Z$, $z$ se dodeljuje $i$-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. 
-
-Zatim, svaka lista se dalje deli u podliste, pri čemu je svaka dužine $l_sublist$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$.
-
-Broj podlista je jednak $n_{sublist} = \frac{n_{list}}{n_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. Slično, svaka lista je podeljena u podliste heš funkcijom $h$. Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljeno $j$-toj podlisti, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod}
-$n_{sublist} = j$.
-
-Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova,  brojimo pojavljivanja svakog k-mera u podlisti koristeći $JellyFish(d_j, 0.7, h)$ sa slike \ref{fig:6}.
-
-Na slici \ref{fig:5}(c) se može videti primer koji ilustruje izvršavanje algoritma DSK. Neka je $n_{list} = 2$, $n_{sublist} = 2$ and $h(z) = b(z)$ za svaki $z \in Z$. Kako je $n_{list} = 2$, algoritam izvršava 2 iteracije (u nastavku sledi opis nulte iteracije, jer se prva izvršava slično). Prva faza nulte iteracije skenira sve k-mere iz $Z$ i identifikuje svaki k-mer $z \in Z$ koji pripada nultoj listi. Na primer, $h(GG) = 10$, kako je $h(GG)$ \textit{mod} $n_{list} = 0$ i $\frac{h(z)}{n_{list}}$ \textit{mod} $n_{sublist} = 1$, $GG$ pripada nultoj listi i prvoj podlisti. Nakon toga, nulta lista se deli na nultu podlistu $\{CA\}$ i prvu podlistu $\{CG, GG\}$. Obe podliste su zapisane na disku. Druga faza čita svaku podlistu iz memorije i broji k-mere koristeći algoritam $JellyFish$.
-
-Ovaj algoritam će zapisati samo jednom svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, on neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za $i$-tu iteraciju, algoritam numeriše sve k-mere u $Z$, što oduzima $O(n)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}'s$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}'s$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(kN^2)$ očekivanom vremenu. Kad je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
-
-\end{comment}
-
 \section{Konstrukcija kontiga}
 \label{poglavlje:KonstrukcijaKontiga}
 
@@ -861,26 +742,7 @@ Na vrhu je data sekvenca koja predstavlja šablon, a ispod nje sedam očitavanja
 
 \noindent Pravougaonik pokazuje da su baze $C$ i $T$ izvodljivo proširenje šablona. Kako je $T$ konsenzusna baza, metod baznog proširenja će proširiti kontigu bazom $T$. Bazno proširenje se ponavlja sve dok ima konsenzusa. Zatim se prestaje sa proširenjem i dobija se kontiga. Proširenje se izvodi i na $3'$ kraju i na $5'$ kraju šablona.
 
-\begin{comment}
-Slika \ref{fig:8} daje pseudokod ovog metoda.
-
-%Figure 5.13
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.9\textwidth]{SimpleAsembler5_13.PNG}
-\caption{Jednostavan base-by-base asembler proširenja \cite{WingKinSung}} 
-\label{fig:8}
-\end{figure}
-
-\end{comment}
-
 Iako je bazno proširenje jednostavno, ono često daje kratke kontige zbog dva problema. Prvo, početni šablon je nasumično izabrano očitavanje. Ukoliko ono sadrži greške sekvencioniranja ili se nalazi u ponovku, to će uticati na proširenje. Drugi problem je što se može desiti da se šablon proširi u neki od ponovaka. Ponovak stvara grane koje gore navedeni pristup ne može da razreši.
-
-\begin{comment}
-Da bismo rešili prvi problem, biramo očitavanje za šablon, ako je malo verovatno da ono sadrži grešku sekvenciranja ili ako je malo verovatno da će biti u ponovljenom regionu. Koristeći ideju u sekciji 5.3.1, broje se frekvencije svih k-mera svih očitavanja. Očitavanje R se bira za šablon, ako su frekvencije svih njegovih k-mera unutar nekih korisnički definisanih pragova $\theta_{min}$ i $\theta_{max}$. Ako je broj pojavljivanja nekog k-mera manji od $\theta_{min}$, R će verovatno sadržati grešku sekvenciranja. Ako je broj pojavljivanja nekog k-mera veći od $\theta_{max}$, R će se verovatno naći u ponovljenom regionu. Ova dva praga mogu biti određena proučavanjem histograma frekvencija svih k-mera ulaznih sekvenci očitavanja.
-
-Za drugi problem, rešenje je korišćenje informacija o povezivanju paired-end očitavanja za rešavanje nasumičnosti. Ovaj pristup je korišćen od strane $PE-asemblera [9]$. Figura 5.14 ilustruje tu ideju. Pretpostavimo da možemo proširiti šablon koristeći 2 različita očitavanja (crno i sivo). Ne možemo odlučiti koje je ispravo (pogledati Figuru 5.14(a)). Kako svako očitavanje ima svog para, možemo biti u stanju da donesemo odluku. Postoje 2 slučaja. U prvom slučaju, ako parnjak crnom očitavanju može biti poravnat sa šablonom, možemo verovati crnom očitavanju (Figura 5.14(b)). U drugom slučaju, pretpostavimo  da postoji nekoliko očitavanja R koja su poravnata sa šablonom i parnjaci od R mogu biti poravnati sa panjakom crnog očitavanja (pogledati Figuru 5.14(c)). Onda možemo verovati i crnom očitavanju. Drugim rečima, informacije o povezanosti paired-end očitavanja mogu pomoći u  filtriranju onih lažno pozitivnih poravnanja.
-\end{comment}
 
 \subsection{De Brojnov grafovski pristup}
 \label{odeljak:DeBrojnovGraf}
@@ -1088,9 +950,9 @@ Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao pot
 
 \textbf{Izlaz}: Broj pojavljivanja svakog k-mera u skupu \textit{Z}.
 
-1: Kreirati praznu heš tabelu $H[0..\frac{N}{\alpha} - 1]$ tako da svaki ulaz zahteva 2k bitova
+1: Kreirati praznu heš tabelu $H[0..\frac{N}{\alpha} - 1]$ tako da svaki element zauzima $2k$ bitova
 
-2: Kreirati praznu tabelu $Count[0..\frac{N}{\alpha} - 1]$ tako da svaki ulaz zahteva 32 bita 
+2: Kreirati praznu tabelu $Count[0..\frac{N}{\alpha} - 1]$ tako da svaki element zauzima 32 bita 
 
 3: foreach k-mer $z \in Z$ do:
 
@@ -1108,13 +970,13 @@ Algoritam $JellyFish$ je algoritam koji se koristi za brojanje k-mera, a kao pot
 
 10: end for
 
-11: Output $(H[i], Count[i])$ za sve ulaze $H[i]$ različite od nula.
+11: Output $(H[i], Count[i])$ za sve elemente $H[i]$ koji nisu prazni.
 \end{tcolorbox}
 \caption{\textit{JellyFish} algoritam \cite{WingKinSung}}
 \label{box:jellyfish}
 \end{figure}
 
-Neka je $h$ heš funkcija, $Z$ niz k-mera i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz $Z$, gde je $N = |Z|$ i $\alpha$ faktor opterećenja\footnote{Broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer $z$ iz $Z$ vrši se njegovo heširanje u neku vrednost $H[i]$, gde se vrednost indeksa $i$ izračunava pomoću heš funkcije $h$ sa parametrom $z$. Ako je vrednost $H[i]$ postavljena i različita od $z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Kada se kolizija dogodi, indeks $i$ se uvećava za jedan sve dok se ne pronađe prvo prazno mesto $H[i]$ ili mesto gde $H[i]$ ima željenu vrednost $z$.
+Neka je $h$ heš funkcija, $Z$ niz k-mera i $H[0..\frac{N}{\alpha} - 1]$ heš tabela koja čuva niz $Z$, gde je $N = |Z|$ i $\alpha$ faktor opterećenja\footnote{Broj koji kontroliše veličinu heš tabele.} $(0 < \alpha \leq 1)$. Potrebno je izgraditi tabelu $Count[0..\frac{N}{\alpha} - 1]$, gde $Count[i]$ čuva broj pojavljivanja za k-mer $H[i]$. Za svaki k-mer $z$ iz $Z$ vrši se njegovo heširanje u indeks $i$ koji se izračunava pomoću heš funkcije $h$ sa parametrom $z$. Ako je vrednost $H[i]$ postavljena i različita od $z$, $z$ se ne može čuvati u $H[i]$, odnosno došlo je do kolizije. Ona može biti razrešena pomoću mehanizma otvorenog adresiranja. Na primer, kolizija se može razrešiti linearnim popunjavanjem. Kada se kolizija dogodi, indeks $i$ se uvećava za jedan sve dok se ne pronađe prvi prazan element $H[i]$ ili element $H[i]$ koji ima željenu vrednost $z$.
 
 \begin{comment}
 
@@ -1127,7 +989,7 @@ Neka je $h$ heš funkcija, $Z$ niz k-mera i $H[0..\frac{N}{\alpha} - 1]$ heš ta
 
 \end{comment}
 
-Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(H, z, h, \frac{N}{\alpha})$ vraća indeks $i$ za koji vrednost $H[i]$ nije postavljena, onda $z$ ne postoji u heš tabeli i postavlja se da vrednost $H[i]$ bude $z$, pri čemu se njegov broj pojavljivanja $Count[i]$ postavlja na jedan. U suprotnom, ako $hashEntry(H, z, h, \frac{N}{\alpha})$ vraća indeks $i$ za koji je vrednost $H[i]$ jednaka $z$, broj pojavljivanja $Count[i]$ za k-mer $z$ se uvećava za jedan. Nakon što su svi k-meri iz $Z$ obrađeni, prikazuje se uređeni par $(H[i], Count[i])$ koji sadrži k-mer i njegov broj pojavljivanja, za sve vrednosti $H[i]$ različite od nule.
+Funkcija $hashEntry()$ sa slike \ref{box:hashEntry} ilustruje šemu linearnog popunjavanja za razrešavanje kolizije. Ako $hashEntry(H, z, h, \frac{N}{\alpha})$ vraća indeks $i$ za koji vrednost $H[i]$ nije postavljena, onda $z$ ne postoji u heš tabeli i postavlja se da vrednost $H[i]$ bude $z$, pri čemu se njegov broj pojavljivanja $Count[i]$ postavlja na jedan. U suprotnom, ako $hashEntry(H, z, h, \frac{N}{\alpha})$ vraća indeks $i$ za koji je vrednost $H[i]$ jednaka $z$, broj pojavljivanja $Count[i]$ za k-mer $z$ se uvećava za jedan. Nakon što su svi k-meri iz $Z$ obrađeni, prikazuje se uređeni par $(H[i], Count[i])$ koji sadrži k-mer i njegov broj pojavljivanja, za sve elemente $H[i]$ koji nisu prazni.
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
@@ -1162,7 +1024,7 @@ Pretpostavka je da je $h(z) = b(z)$, $n_{list} = 2$ i $n_{sublist} = 2$. DSK del
 Slika \ref{fig:5}(b) daje primer koji ilustruje algoritam $JellyFish$. 
 \end{comment}
 
-Algoritam $JellyFish$ je efikasan, ukoliko ne dolazi do kolizija. U praksi je očekivani broj kolizija mali, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Amortizovana složenost uzastopnog dodavanja većeg broja elemenata je $O(1)$. Očekivano vreme izvršavanja algoritma \textit{JellyFish} je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova. Pretpostavlja se da broj zauzima 32 bita, a k-mer 2k bitova. Kako k-mer predstavlja nisku dužine $k$ izgrađenu na osnovu četiri različita karaktera (A, C, G i T) koji se mogu predstaviti pomoću dva bita (00, 01, 10, 11), to je za čuvanje k-mera potrebno 2k bitova \cite{WingKinSung}.
+Algoritam $JellyFish$ je efikasan, ukoliko ne dolazi do kolizija. U praksi je očekivani broj kolizija mali, ukoliko za faktor opterećenja važi $\alpha \leq 0.7$. Amortizovana složenost uzastopnog dodavanja većeg broja elemenata je $O(1)$. Očekivano vreme izvršavanja algoritma \textit{JellyFish} je $O(N)$. Što se tiče prostorne složenosti, tabele $H$ i $Count$ zahtevaju $\frac{N}{\alpha}(2k + 32)$ bitova. Pretpostavlja se da broj zauzima 32 bita, a k-mer $2k$ bitova. Kako k-mer predstavlja nisku dužine $k$ izgrađenu na osnovu četiri različita karaktera (A, C, G i T) koji se mogu predstaviti pomoću dva bita (00, 01, 10, 11), to je za čuvanje k-mera potrebno $2k$ bitova \cite{WingKinSung}.
 
 Urađene su  dve implementacije ovog algoritma. Prva implementacija simulira prikazani pseudokod, dok druga implementacija koristi mapu iz Elixir-a i njen mehanizam razrešavanja kolizija. Kako je druga implementacija efikasnija, ona se koristi u aplikaciji i eksperimentalni rezultati za nju su prikazani u poglavlju \ref{odeljak:Rezultati}. 
 
@@ -1207,13 +1069,13 @@ Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski
 
 5:\hspace{1cm} for each k-mer $z \in Z$ do
 
-4:\hspace{2cm} if $h(z)$ mod $n_{list} = i$ then
+6:\hspace{2cm} if $h(z)$ mod $n_{list} = i$ then
 
-5:\hspace{3cm} $j = (h(z)$ div $n_{list})$ mod $n_{sublist}$;
+7:\hspace{3cm} $j = (h(z)$ div $n_{list})$ mod $n_{sublist}$;
 
-6:\hspace{3cm} Upisati $z$ na disk u podlistu $d_j$
+8:\hspace{3cm} Upisati $z$ na disk u podlistu $d_j$
 
-7:\hspace{2cm} end if
+9:\hspace{2cm} end if
 
 10:\hspace{1cm} end for
 
@@ -1233,17 +1095,14 @@ Algoritam \textit{DSK} je još jedan algoritam za brojanje k-mera, ali vremenski
 
 \newpage
 
-Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u koju se smeštaju k-meri, broj bitova $M$ u memoriji za čuvanje svake podliste k-mera i heš funkcija $h$. Prvo se k-meri iz skupa $Z$ dele u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u $2k$ bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako je $N$ broj k-mera u $Z$, to je $n_{list} = \frac{N}{l_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno mapira sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz skupa $Z$, $z$ se dodeljuje $i$-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. Zatim, svaka lista se istom heš funkcijom $h$ dalje deli u podliste ${d_0,..., d_{n_{sublist} - 1}}$, pri čemu je svaka dužine $l_{sublist}$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$. Broj podlista je  $n_{sublist} = \frac{n_{list}}{l_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. 
+Neka je dat skup k-mera $Z$, broj bitova $D$ na disku za čuvanje svake liste u koju se smeštaju k-meri, broj bitova $M$ u memoriji za čuvanje svake podliste k-mera i heš funkcija $h$. Prvo se k-meri iz skupa $Z$ dele u $n_{list}$ lista približno slične dužine. Kako disk ima $D$ bitova i svaki k-mer može biti reprezentovan u $2k$ bitova, svaka lista može čuvati $l_{list} =  \frac{D}{2k}$ k-mera. Kako je $N$ broj k-mera u $Z$, to je $n_{list} = \frac{N}{l_{list}} = \frac{2kN}{D}$. Ovo deljenje se obavlja heš funkcijom $h$ koja ravnomerno preslikava sve k-mere u $n_{list}$ lista. Preciznije, za svaki k-mer $z$ iz skupa $Z$, $z$ se dodeljuje $i$-toj listi, ako je $h(z)$ \textit{mod} $n_{list} = i$. Zatim, svaka lista se istom heš funkcijom $h$ dalje deli u podliste ${d_0,..., d_{n_{sublist} - 1}}$, pri čemu je svaka dužine $l_{sublist}$. Svaka podlista će biti obrađena u memoriji pomoću algoritma $JellyFish$, koji zahteva $\frac{l_{sublist}}{0.7}(2k +32)$ bitova. Kako memorija ima $M$ bitova, tako je $l_{sublist} = \frac{0.7M}{(2k + 32)}$. Broj podlista je  $n_{sublist} = \frac{l_{list}}{l_{sublist}} = \frac{D(2k + 32)}{0.7(2k)M}$. 
 
-Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljen $j$-toj podlisti $d_j$, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = {0.7M}{2k + 32}$, koristeći $M$ bitova, vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
+Preciznije, za svaki k-mer $s$ u $i$-toj listi, $s$ je dodeljen $j$-toj podlisti $d_j$, ako je $(\frac{h(s)}{n_{list}})$ \textit{mod} $n_{sublist} = j$. Za svaku podlistu dužine $l_{sublist} = \frac{0.7M}{2k + 32}$, koristeći $M$ bitova, vrši se brojanje pojavljivanja svakog k-mera u podlisti koristeći algoritam $JellyFish(d_j, 0.7, h)$ sa slike \ref{box:jellyfish}.
 
-Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za $i$-tu iteraciju algoritam mapira sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(\frac{kN^2}{D})$ očekivanom vremenu. Kada je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
+Algoritam \textit{DSK} će zapisati samo jednom na disk svaki k-mer iz $Z$, iako će svaki k-mer pročitati $n_{list}$ puta. Stoga, algoritam neće generisati mnogo pristupa disku radi pisanja. Što se tiče vremenske složenosti, za $i$-tu iteraciju algoritam preslikava sve k-mere iz $Z$, što oduzima $O(N)$ vremena. Zatim, algoritam identifikuje $\frac{D}{2k}$ k-mera koji pripadaju $i$-toj listi i zapisuje ih na disk, što oduzima $O(\frac{D}{k})$ vremena. Nakon toga, algoritam  čita $\frac{D}{2k}$ k-mera i izvodi brojanje, što oduzima $O(\frac{D}{k})$ vremena. Tako da svaka iteracija zahteva $O(N + \frac{D}{k}) = O(N)$ vremena, gde je $N > \frac{D}{2k}$. Kako je $n_{list} = \frac{2kN}{D}$ broj iteracija, algoritam se izvršava u $O(\frac{kN^2}{D})$ očekivanom vremenu. Kada je $D = \Theta(N)$, algoritam se izvršava u $O(kN)$ očekivanom vremenu.
 
 Minimizacija broja pristupa disku u implementaciji ovog algoritma nije ostvarena, jer u Elixir-u ne postoji kontrola za to, već je algoritam implementiran samo prateći osnovnu ideju.
 
-% Osnovna ideja je da se ulazna lista k-mera podeli na više manjih podlista nad kojima će se pokrenuti algoritam \textit{JellyFish} i da se rezultati pojedinačnih pokretanja objedine i prikažu kao krajnji rezultat. Ovakva podela je izuzetno važna u situacijama kada se zbog nedovoljne količine memorije kompletni podaci ne mogu istovremeno obrađivati.
-
-% Urađene su dve implementacije ovog algoritma. Prva prati osnovnu ideju koja je u ovom poglavlju predstavljena, a druga koristi implementaciju algoritma \textit{JellyFish} sa mapom i njenim mehanizmom za razrešavanje kolizija. U aplikaciji se koristi druga implementacija, jer je neuporedivo efikasnija.
 
 Heš funkcija $h$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$, u okviru ovog rada je predstavljena funkcijom \textit{pattern\_to\_number} koja koristi pomoćnu funkciju \textit{symbol\_to\_number}. Pomoćna funkcija \textit{symbol\_to\_number} kodira nukleotide pomoću mape, gde su $A$, $T$, $C$ i $G$ ključevi sa vrednostima $00$, $01$, $10$, $11$, respektivno. Funkcija \textit{pattern\_to\_number} prvo na osnovu stringa \textit{pattern} formira listu karaktera \textit{chars} pomoću funkcije \textit{String.graphemes/1}. Zatim se funkcijom \textit{Enum.map/2} kreira nova lista \textit{mapped\_chars} transformacijom svakog karaktera liste \textit{chars} pomoću funkcije \textit{symbol\_to\_number}. Nova lista karaktera se spaja u string \textit{new\_pattern} pomoću funkcije \textit{Enum.join/2}. Na kraju se string \textit{new\_pattern} pretvara u ceo broj funkcijom \textit{String.to\_integer/2} i vraća kao povratna vrednost funkcije \textit{pattern\_to\_number}. Implementacija ovih funkcija u Elixir-u može se videti na listingu \ref{lst:106}.
 
@@ -1253,19 +1112,6 @@ Heš funkcija $h$, koja se koristi i u algoritmu $DSK$ i u algoritmu $JellyFish$
 \label{odeljak:ImplementacijaDB}
 
 De Brojnov grafovski pristup je jedan od pristupa u izgradnji kontiga koji se danas najčešće koristi. Cilj ovog algoritma je da pronađe sve kontige određene veličine, a uz pomoć De Brojnovog grafa. Slika \ref{box:DeBrujinAssembler} daje pseudokod ovog jednostavnog metoda koji na osnovu skupa očitavanja $R$ i parametra $k$ najpre izgrađuje De Brojnov graf $H_k$, a zatim pronalazi sve maksimalne proste putanje i od njih formira kontige.
-
-\begin{comment}
-
-%Algoritam De Brojnov asembler
-%Figura 5.17
-\begin{figure}[!ht]
-\centering
-\includegraphics[width=0.9\textwidth]{Figura5_17.PNG}
-\caption{Jednostavan De Brojnov grafovski asembler \cite{WingKinSung}}
-\label{fig:11}
-\end{figure}
-
-\end{comment}
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
@@ -1295,7 +1141,7 @@ U poglavlju \ref{odeljak:DeBrojnovGraf} je objašnjen pojam  Ojlerove putanje i 
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
-\textbf{Problem Ojlerove putanje}: Pronaći Ojlerovu putanju u grafu.
+\textbf{Problem Ojlerove putanje}: Pronaći Ojlerovu putanju u usmerenom grafu.
 
 Ulaz: Graf.
 
@@ -1307,7 +1153,15 @@ Izlaz: Putanja koja posećuje svaku granu u grafu tačno jednom.
 
 Pri pronalaženju svih Ojlerovih putanja u grafu problem je što neki čvorovi mogu imati više izlaznih i ulaznih grana, te se ne može jednoznačno odrediti čvor koji treba sledeći da se poseti. Broj ulaznih grana u dati čvor naziva se \textbf{ulazni stepen} čvora, a broj izlaznih grana iz datog čvora \textbf{izlazni stepen} čvora. Sa druge strane, u prostom usmerenom grafu u kome svaki čvor ima i ulazni i izlazni stepen jednak jedan, može se jednoznačno odrediti naredni čvor koji treba da se poseti, jer u takvom grafu postoji samo jedan Ojlerov ciklus. Ideja algoritma \textit{AllEulerianCycles} je da se usmereni graf koji sadrži $n \geq 1$ Ojlerovih ciklusa transformiše na $n$ prostih usmerenih grafova koji sadrže tačno jedan Ojlerov ciklus. Ova transformacija ima svojstvo da je lako invertibilna, odnosno na osnovu jedinstvenog Ojlerovog ciklusa jednog od prostih usmerenih grafova moguće je rekonstruisati originalni Ojlerov ciklus polaznog grafa.
 
-Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od jedan sa ulaznom granom $(u, v)$ i izlaznom granom $(v, w)$. Konstruiše se jednostavniji $(u, v, w)$-obilazni graf u kome se uklanjaju grane $(u, v)$ i $(v, w)$, a dodaje se novi čvor $x$ zajedno sa granama $(u, x)$ i $(v, x)$. Nove grane $(u, x)$ i $(v, x)$ u obilaznom grafu nasleđuju oznake uklonjenih grana $(u, v)$ i $(v, w)$, respektivno. S obzirom na ulaznu granu $(u, v)$ u čvor $v$, koji ima $k$ izlaznih grana $(v, w_1)$,..., $(v, w_k)$, može se konstruisati $k$ različitih obilaznih grafova. Nikoja dva obilazna grafa nemaju isti Ojlerov ciklus. Cilj je iterativno konstruisati svaki mogući obilazni graf za dati graf sve dok se ne dobije velika porodica prostih usmerenih grafova. Svaki od ovih grafova će odgovarati različitom Ojlerovom ciklusu datog grafa \cite{bioinformaticsAlg}.
+Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od jedan sa ulaznom granom $(u, v)$ i izlaznom granom $(v, w)$. U gornjem levom delu slike \ref{fig:obilazniGraf} plava i crvena grana predstavljaju grane $(u, v)$ i $(v, w)$, respektivno. Konstruiše se jednostavniji $(u, v, w)$-obilazni graf u kome se uklanjaju grane $(u, v)$ i $(v, w)$, a dodaje se novi čvor $x$ zajedno sa granama $(u, x)$ i $(v, x)$. Nove grane $(u, x)$ i $(v, x)$ u obilaznom grafu nasleđuju oznake uklonjenih grana $(u, v)$ i $(v, w)$, respektivno. Konstrukcija obilaznog grafa može se videti na gornjem desnom delu slike \ref{fig:obilazniGraf}. Na donjem delu iste slike može se videti konstrukcija obilaznog grafa za plavu i zelenu granu. S obzirom na ulaznu granu $(u, v)$ u čvor $v$, koji ima $k$ izlaznih grana $(v, w_1)$,..., $(v, w_k)$, može se konstruisati $k$ različitih obilaznih grafova. Nikoja dva obilazna grafa nemaju isti Ojlerov ciklus. Cilj je iterativno konstruisati svaki mogući obilazni graf za dati graf sve dok se ne dobije velika porodica prostih usmerenih grafova. Svaki od ovih grafova će odgovarati različitom Ojlerovom ciklusu datog grafa \cite{bioinformaticsAlg}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{obilazni_graf.PNG}
+\caption{Primer kreiranja obilaznog grafa \cite{bioinformaticsAlg}}
+\label{fig:obilazniGraf}
+\end{figure}
+
 
 \begin{figure}[!ht]
 \begin{tcolorbox}
@@ -1321,7 +1175,7 @@ Neka je dat čvor $v$ iz grafa $G$ koji ima ulazni stepen veći od jedan sa ulaz
 
 2: while postoji složeni graf $G$ u skupu $AllGraphs$
 
-3:\hspace{1cm} v $=$ čvor sa ulaznim stepenom većim od jedan u grafu $G$
+3:\hspace{1cm} $v$ $=$ čvor sa ulaznim stepenom većim od jedan u grafu $G$
 
 4:\hspace{1cm} foreach ulazna grana $(u, v)$ u čvor $v$
     
@@ -1556,24 +1410,11 @@ Algoritam \textit{JellyFish} i algoritam \textit{DSK} su testirani na realnim po
 % ==============================================================================
 
 % ------------------------------------------------------------------------------
-% Biografija kandidata
-% \begin{biografija}
-%   \textbf{Vuk Stefanović Karadžić} (\emph{Tršić,
-%     26. oktobar/6. novembar 1787. — Beč, 7. februar 1864.}) bio je
-%   srpski filolog, reformator srpskog jezika, sakupljač narodnih
-%   umotvorina i pisac prvog rečnika srpskog jezika.  Vuk je
-%   najznačajnija ličnost srpske književnosti prve polovine XIX
-%   veka. Stekao je i nekoliko počasnih mastera.  Učestvovao je u
-%   Prvom srpskom ustanku kao pisar i činovnik u Negotinskoj krajini, a
-%   nakon sloma ustanka preselio se u Beč, 1813. godine. Tu je upoznao
-%   Jerneja Kopitara, cenzora slovenskih knjiga, na čiji je podsticaj
-%   krenuo u prikupljanje srpskih narodnih pesama, reformu ćirilice i
-%   borbu za uvođenje narodnog jezika u srpsku književnost. Vukovim
-%   reformama u srpski jezik je uveden fonetski pravopis, a srpski jezik
-%   je potisnuo slavenosrpski jezik koji je u to vreme bio jezik
-%   obrazovanih ljudi. Tako se kao najvažnije godine Vukove reforme
-%   ističu 1818., 1836., 1839., 1847. i 1852.
-% \end{biografija}
+%Biografija kandidata
+\begin{biografija}
+  \textbf{Milena Dukanac} (\emph{Čačak,
+    14. april 1994. godine}) završila je Matematički faklutet 2017. godine, modul \textbf{Matematika}, smer \textbf{Računarstvo i informatika}, sa prosečnom ocenom 8.61/10.0. Osnovno obrazovanje je stekla u školi "Vladislav Petković Dis" u Zablaću, gde je bila nosilac Vukove diplome i đak generacije. Srednjoškolsko obrazovanje je stekla u Gimnaziji u Čačku, gde je takođe bila nosilac Vukove diplome. Milena se dvanaest godina bavila folklorom i bila je član KUD-a "Abrašević" u Čačku, sa kojim je putovala po celoj Evropi i osvajala brojne nagrade. Zaposlena je u firmi "Beolink" kao softver inženjer od decembra 2017. godine. Rekreativno se bavi trčanjem i pilatesom.
+\end{biografija}
 % ------------------------------------------------------------------------------
 
 \end{document}
